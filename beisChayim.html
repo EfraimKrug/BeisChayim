@@ -8,6 +8,13 @@ body {
 	background-color:black;
 }
 
+#number {
+	color:white;
+	position:fixed;
+	top: 27px;
+	left: 527px;
+}
+
 h1 {
 	color:white;
 }
@@ -59,20 +66,35 @@ h1 {
 	left: 628px;
 }
 
+#fbook,#gotofbook{
+	position: fixed;
+	top: 27px;
+	left:913px;
+	width:59px;
+	height:59px;
+}
+
 </style>
 <h1>Beis Chayim - a prototype</h1>
 <div id="wholeThing">
+	<!-- <div id=number></div> -->
 	<div id=Name></div>
 	<div id=HName></div>
 	<div id=EDate></div>
 	<div id=HDate></div>
-	<div id=DPic01><img id=Pic01 src="soldiers00x1.jpeg"></div>
-	<div id=DPic02><img id=Pic02 src="elderly00x1.jpeg"></div>
+	<div id=DPic01><img id=Pic01 src="soldiers00x1.jpeg" alt=""></div>
+	<div id=DPic02><img id=Pic02 src="elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
+	<div id=fbook><img id=gotofbook onclick="gotoFBook();" src="facebook2.png" alt=""></div>
 </div>
 <script src="db01.js"></script>
 <script>
+FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
+
+function gotoFBook(){
+	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
+}
 
 function firstLoad(){
 	var i = 0;
@@ -80,12 +102,19 @@ function firstLoad(){
 }
 
 function getNum(i){
-	if(i > 0) return 0;
-	return 1;
+	var last = YahrList.Yahrzeits.length - 1;
+	if(i == last) return 0;
+	return i+1;
 }
 
 function loadElement(i){
-
+	FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
+	if(YahrList.Yahrzeits[i].FBook.length < 10){
+		document.getElementById("gotofbook").src = "";
+	}
+	else {
+		document.getElementById("gotofbook").src = "facebook2.png";
+	}
 	var Name = document.getElementById("Name");
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
 	var HName = document.getElementById("HName");
