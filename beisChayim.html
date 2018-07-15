@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>Beis Chayim</title>
+</head>
+<body onload="firstLoad();">
+<style>
+body {
+	background-color:black;
+}
+
+h1 {
+	color:white;
+}
+
+#Name {
+	position: fixed;
+	top: 127px;
+	left: 528px;
+	color: blue;
+	font-size: 27px;
+}
+#HName {
+	position: fixed;
+	top: 167px;
+	left: 528px;
+	color: cyan;
+	font-size: 27px;
+}
+
+#EDate, #HDate {
+	position: fixed;
+	top: 207px;
+	left: 528px;
+	color: cyan;
+	font-size: 27px;
+}
+
+#HDate {
+	top: 247px;
+}
+
+#Comments01 {
+	position: fixed;
+	top: 707px;
+	left: 128px;
+	color: cyan;
+	font-size: 17px;
+}
+
+#Pic01{
+	position: fixed;
+	top: 127px;
+	left: 128px;
+}
+
+#Pic02{
+	position: fixed;
+	top: 427px;
+	left: 628px;
+}
+
+</style>
+<h1>Beis Chayim - a prototype</h1>
+<div id="wholeThing">
+	<div id=Name></div>
+	<div id=HName></div>
+	<div id=EDate></div>
+	<div id=HDate></div>
+	<div id=DPic01><img id=Pic01 src="soldiers00x1.jpeg"></div>
+	<div id=DPic02><img id=Pic02 src="elderly00x1.jpeg"></div>
+	<div id=Comments01></div>
+</div>
+<script src="db01.js"></script>
+<script>
+var YahrList = JSON.parse(YahrzeitList);
+
+function firstLoad(){
+	var i = 0;
+	setInterval( function(){ loadElement(i = getNum(i)); }, 3000);
+}
+
+function getNum(i){
+	if(i > 0) return 0;
+	return 1;
+}
+
+function loadElement(i){
+
+	var Name = document.getElementById("Name");
+	Name.innerHTML = YahrList.Yahrzeits[i].Name;
+	var HName = document.getElementById("HName");
+	HName.innerHTML = YahrList.Yahrzeits[i].HName;
+	var EDate = document.getElementById("EDate");
+	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
+	var HDate = document.getElementById("HDate");
+	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
+	var Pic01  = document.getElementById("Pic01");
+	Pic01.src = YahrList.Yahrzeits[i].Pic01;
+	var Pic02  = document.getElementById("Pic02");
+	Pic02.src = YahrList.Yahrzeits[i].Pic02;
+	var Comments01 = document.getElementById("Comments01");
+	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
+
+}
+
+</script>
+</body>
+</html>
