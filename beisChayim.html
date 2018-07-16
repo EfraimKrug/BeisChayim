@@ -82,10 +82,10 @@ h1 {
 	<div id=HName></div>
 	<div id=EDate></div>
 	<div id=HDate></div>
-	<div id=DPic01><img id=Pic01 src="soldiers00x1.jpeg" alt=""></div>
-	<div id=DPic02><img id=Pic02 src="elderly00x1.jpeg" alt=""></div>
+	<div id=DPic01><img id=Pic01 src="./img/soldiers00x1.jpeg" alt=""></div>
+	<div id=DPic02><img id=Pic02 src="./img/elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
-	<div id=fbook><img id=gotofbook onclick="gotoFBook();" src="facebook2.png" alt=""></div>
+	<div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div>
 </div>
 <script src="db01.js"></script>
 <script>
@@ -113,7 +113,7 @@ function loadElement(i){
 		document.getElementById("gotofbook").src = "";
 	}
 	else {
-		document.getElementById("gotofbook").src = "facebook2.png";
+		document.getElementById("gotofbook").src = "./img/facebook2.png";
 	}
 	var Name = document.getElementById("Name");
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
@@ -124,9 +124,9 @@ function loadElement(i){
 	var HDate = document.getElementById("HDate");
 	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 	var Pic01  = document.getElementById("Pic01");
-	Pic01.src = YahrList.Yahrzeits[i].Pic01;
+	Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	var Pic02  = document.getElementById("Pic02");
-	Pic02.src = YahrList.Yahrzeits[i].Pic02;
+	Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 
