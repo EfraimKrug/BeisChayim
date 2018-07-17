@@ -13,8 +13,15 @@ class ReadCVS {
     String FBook;
     String Comment01;
 
+    private String fixQuotes(String name){
+       String NameHold = name.substring(1, name.length() - 1);
+       NameHold = NameHold.replaceAll("\"", "'");
+       return "\"" + NameHold + "\"";
+    }
+
     public void parseLine(String line){
 	String[] arr = line.split("\\|");
+	//System.out.println(line);
 	Name = arr[0];
 	HName = arr[1];
 	EDate = arr[2];
@@ -24,6 +31,8 @@ class ReadCVS {
 	FBook = arr[6];
 	Comment01 = arr[7];
 
+	Name = fixQuotes(Name); 
+	HName = fixQuotes(HName);
 	String oline = "'{\"Name\":" + Name + ",\"HName\":" + HName + ",\"EDate\":" + EDate + ",\"HDate\":" + HDate + ",\"Pic01\":" + Pic01 + ","; 
 	oline += "\"Pic02\":" + Pic02 + ",\"FBook\":\"www.facebook.com\",\"Comments01\":" + Comment01 + "},' + ";
 	System.out.println(oline);
@@ -35,7 +44,7 @@ class ReadCVS {
     public void run() throws IOException {
         try {
 
-            File f = new File("./data/a");
+            File f = new File("./data/inLoad");
             BufferedReader b = new BufferedReader(new FileReader(f));
             String readLine = "";
             System.out.println("Reading file using Buffered Reader");

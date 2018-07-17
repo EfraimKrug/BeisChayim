@@ -2,10 +2,19 @@
 <head>
 <title>Beis Chayim</title>
 </head>
-<body onload="firstLoad();">
+<body class=bg onload="firstLoad();">
 <style>
 body {
 	background-color:black;
+	height: 100%;
+}
+
+.bg {
+    background-image: url("img/sunset001.jpeg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #number {
@@ -75,7 +84,23 @@ h1 {
 }
 
 </style>
-<h1>Beis Chayim - a prototype</h1>
+<h1>Beis Chayim</h1>
+<select id=monthSelect onchange="doit();">
+	<option value="Nissan">Nissan</option>
+	<option value="Iyar">Iyar</option>
+	<option value="Sivan">Sivan</option>
+	<option value="Tammuz">Tammuz</option>
+	<option value="Av">Av</option>
+	<option value="Elul">Elul</option>
+	<option value="Tishrei">Tishrei</option>
+	<option value="Marcheshvan">MarCheshvan</option>
+	<option value="Kislev">Kislev</option>
+	<option value="Tevet">Tevet</option>
+	<option value="Shvat">Shvat</option>
+	<option value="Adar">Adar</option>
+	<option value="AdarII">AdarII</option>
+</select>
+
 <div id="wholeThing">
 	<!-- <div id=number></div> -->
 	<div id=Name></div>
@@ -89,6 +114,18 @@ h1 {
 </div>
 <script src="db01.js"></script>
 <script>
+var currentMonth;
+var backgroundTrack = 0;
+
+// ========== selecting the month ======================
+
+function doit(){
+	var month = document.getElementById("monthSelect");
+	currentMonth = month.value;
+	//alert(month.value);
+}
+// ========== going though the list ====================
+
 FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
 
@@ -103,11 +140,25 @@ function firstLoad(){
 
 function getNum(i){
 	var last = YahrList.Yahrzeits.length - 1;
-	if(i == last) return 0;
-	return i+1;
+	i++;
+	var dateHold = YahrList.Yahrzeits[i].HDate;
+
+	if(i > last - 1) i = 0;
+	while(dateHold.indexOf(currentMonth) < 0 && i < last){
+		i++;
+		console.log(i);
+		dateHold = YahrList.Yahrzeits[i].HDate;
+	}	
+	if(i > last - 1) i = 0;	
+	return i;
 }
 
 function loadElement(i){
+	//document.getElementByClass("bg").background-image = "url('img/sunset002.jpeg')";
+	console.log("loading: " + i);
+	var HDate = document.getElementById("HDate");
+	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
+
 	FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
 	if(YahrList.Yahrzeits[i].FBook.length < 10){
 		document.getElementById("gotofbook").src = "";
@@ -119,10 +170,11 @@ function loadElement(i){
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
 	var HName = document.getElementById("HName");
 	HName.innerHTML = YahrList.Yahrzeits[i].HName;
+	if(Name.innerHTML == HName.innerHTML){
+		HName.innerHTML = "";
+	}
 	var EDate = document.getElementById("EDate");
 	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
-	var HDate = document.getElementById("HDate");
-	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 	var Pic01  = document.getElementById("Pic01");
 	Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	var Pic02  = document.getElementById("Pic02");

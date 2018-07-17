@@ -1,5 +1,5 @@
-var YahrzeitList = '{ "Yahrzeits": [' +
-'{"Name":"Chana Bas Tema","HName":"","EDate":"August 23, 1996","HDate":"08 Elul 5756","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
+var YahrzeitList = '{ "Yahrzeits": ['+
+'{"Name":"Chana Bas Tema","HName":"","EDate":"August 23, 1996","HDate":"08 Elul 5756","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},'+
 '{"Name":"Levine","HName":"","EDate":"","HDate":"","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Naachum","HName":"Nachum","EDate":"","HDate":"22 Kislev","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Peshe Raizel","HName":"","EDate":"","HDate":"07 Cheshvan","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
@@ -820,7 +820,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"Name":"Gersh Leiman","HName":"Gersh ben Shmuel","EDate":"November 07, 2006","HDate":"16 Cheshvan 5767","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Gersh Olshansky","HName":"Gersh","EDate":"March 03, 2005","HDate":"22 Adar 5765","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Gersh Teplitsky","HName":"Gersh ben Moshe HaKohen","EDate":"May 30, 1979","HDate":"04 Sivan 5739","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
-'{"Name":"Gertrude `Chaikie` Moscowitz","HName":"Chaya bat Betzalel","EDate":"December 30, 2007","HDate":"21 Tevet 5768","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
+'{"Name":"Gertrude ""Chaikie""Moscowitz","HName":"Chaya bat Betzalel","EDate":"December 30, 2007","HDate":"21 Tevet 5768","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Gertrude Brown","HName":"","EDate":"August 01, 1998","HDate":"09 Av 5758","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Gertrude Ettelman","HName":"Gitel Dvorah Bas Hersh","EDate":"November 01, 1972","HDate":"24 Cheshvan 5733","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Gertrude Halbfinger","HName":"Shime Gute bas Refoel Shraga Feival","EDate":"","HDate":"09 Cheshvan","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
@@ -1142,7 +1142,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"Name":"Jacob Katz","HName":"Yacov ben Moshe Yehudah HaCohen","EDate":"","HDate":"30 Kislev","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Jacob Koocher","HName":"Yacov Ben Yoseph","EDate":"November 26, 1986","HDate":"24 Cheshvan 5747","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Jacob Levi","HName":"","EDate":"","HDate":"6 Tammuz","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
-'{"Name":"Jacob Louis Alpert","HName":"Yaakov Aryeh b`r Yehudah Shlomo","EDate":"June 22, 1994","HDate":"13 Tammuz 5754","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
+'{"Name":"Jacob Louis Alpert","HName":"Yaakov Aryeh b""r Yehudah Shlomo","EDate":"June 22, 1994","HDate":"13 Tammuz 5754","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Jacob Ludensky","HName":"","EDate":"","HDate":"23 Tevet","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Jacob Menkes","HName":"Yaakov","EDate":"","HDate":"13 Sivan","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Jacob Miller","HName":"Yehudah Idel Ben Eliezer","EDate":"November 22, 1949","HDate":"01 Kislev 5710","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
@@ -2240,7 +2240,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"Name":"Sophie Leeper","HName":"","EDate":"July 11, 1979","HDate":"16 Tammuz 5739","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Sophie Platzman","HName":"","EDate":"September 02, 1973","HDate":"05 Elul 5733","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Sophie Shriber","HName":"Shifra bas Zvi Zev","EDate":"September 19, 1985","HDate":"04 Tishrei 5746","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
-'{"Name":"Sophie Weiner","HName":"Sora Bas Hershel","EDate":"July 01, 1983","HDate":"20 Tammuz 5743","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
+'{"Name":"Sophie Weiner","HName":"Sora B\bas Hershel","EDate":"July 01, 1983","HDate":"20 Tammuz 5743","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Sophie Wernick","HName":"Shifra bas Osher","EDate":"September 05, 1976","HDate":"10 Elul 5736","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Sophie Wexler","HName":"Tsipa bas Efraim","EDate":"May 06, 1972","HDate":"22 Iyyar 5732","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Sora bat Avraham","HName":"Sora bas Avraham","EDate":"","HDate":"20 Shevat","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
@@ -2318,7 +2318,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"Name":"Volko Barbarash","HName":"Velvel ben Zeilik","EDate":"June 17, 2000","HDate":"14 Sivan 5760","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Volodya Veksler","HName":"Velvel ben Iosif","EDate":"","HDate":"27 Nissan","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Wesley Bernard Firestone","HName":"","EDate":"April 01, 1988","HDate":"14 Nissan 5748","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
-'{"Name":"William `Bill` Raskind","HName":"זאב וולף בן אליהו משה","EDate":"March 20, 2000","HDate":"13 Adar II 5760","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
+'{"Name":"William ""Bill""Raskind","HName":"זאב וולף בן אליהו משה","EDate":"March 20, 2000","HDate":"13 Adar II 5760","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"William Bord","HName":"","EDate":"February 16, 1971","HDate":"21 Shevat 5731","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"William Feldman","HName":"Avigdor Ben Shlomo","EDate":"June 12, 1974","HDate":"22 Sivan 5734","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"William Jacobs","HName":"Velvel Motel Ben Shlomo Yisroel","EDate":"October 18, 1975","HDate":"13 Cheshvan 5736","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
@@ -2441,4 +2441,4 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"Name":"Zussman Vyrovlansky","HName":"Zussman Ben Avraam Chaim","EDate":"May 07, 1977","HDate":"19 Iyyar 5737","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Zvi Gritushkin","HName":"Zvi Ben Guttman","EDate":"February 23, 1953","HDate":"08 Adar 5713","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
 '{"Name":"Zvi Hirsh Ben Mnachem Mendel","HName":"Zvi Hirsh Ben Mnachem Mendel","EDate":"September 08, 1930","HDate":"15 Elul 5690","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""},' + 
-'{"Name":"Zvi Kayshansku","HName":"Zvi Ben Velvel","EDate":"","HDate":"04 Tevet","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""}]}';
+'{"Name":"Zvi Kayshansku","HName":"Zvi Ben Velvel","EDate":"","HDate":"04 Tevet","Pic01":"","Pic02":"","FBook":"www.facebook.com","Comments01":""}]}'; 
