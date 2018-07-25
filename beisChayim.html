@@ -1,108 +1,32 @@
 <html>
 <head>
+<link rel="stylesheet" href="./css/beisChayim.css">
 <title>Beis Chayim</title>
 </head>
-<body class=bg onload="firstLoad();">
-<style>
-body {
-	background-color:black;
-	height: 100%;
-}
-
-.bg {
-    background-image: url("img/sunset001.jpeg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#number {
-	color:white;
-	position:fixed;
-	top: 27px;
-	left: 527px;
-}
-
-h1 {
-	color:white;
-}
-
-#Name {
-	position: fixed;
-	top: 127px;
-	left: 528px;
-	color: blue;
-	font-size: 27px;
-}
-#HName {
-	position: fixed;
-	top: 167px;
-	left: 528px;
-	color: cyan;
-	font-size: 27px;
-}
-
-#EDate, #HDate {
-	position: fixed;
-	top: 207px;
-	left: 528px;
-	color: cyan;
-	font-size: 27px;
-}
-
-#HDate {
-	top: 247px;
-}
-
-#Comments01 {
-	position: fixed;
-	top: 707px;
-	left: 128px;
-	color: cyan;
-	font-size: 17px;
-}
-
-#Pic01{
-	position: fixed;
-	top: 127px;
-	left: 128px;
-}
-
-#Pic02{
-	position: fixed;
-	top: 427px;
-	left: 628px;
-}
-
-#fbook,#gotofbook{
-	position: fixed;
-	top: 27px;
-	left:913px;
-	width:59px;
-	height:59px;
-}
-
-</style>
-<h1>Beis Chayim</h1>
+<body id=body class=bg onload="firstLoad();">
+<h1 onmouseover="showIt();" >Beis Chayim</h1>
 <select id=monthSelect onchange="doit();">
 	<option value="Nissan">Nissan</option>
-	<option value="Iyar">Iyar</option>
+	<option value="Iyyar">Iyyar</option>
 	<option value="Sivan">Sivan</option>
 	<option value="Tammuz">Tammuz</option>
 	<option value="Av">Av</option>
 	<option value="Elul">Elul</option>
 	<option value="Tishrei">Tishrei</option>
-	<option value="Marcheshvan">MarCheshvan</option>
+	<option value="Cheshvan">Cheshvan</option>
 	<option value="Kislev">Kislev</option>
 	<option value="Tevet">Tevet</option>
-	<option value="Shvat">Shvat</option>
+	<option value="Shevat">Shevat</option>
 	<option value="Adar">Adar</option>
-	<option value="AdarII">AdarII</option>
+</select>
+<select id=actionSelect onchange="doAction();">
+	<option value="nothing"></option>
+	<option value="addNew">New</option>
+	<option value="edit">Edit</option>
+	<option value="select">Select</option>
 </select>
 
 <div id="wholeThing">
-	<!-- <div id=number></div> -->
 	<div id=Name></div>
 	<div id=HName></div>
 	<div id=EDate></div>
@@ -112,78 +36,19 @@ h1 {
 	<div id=Comments01></div>
 	<div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div>
 </div>
-<script src="db01.js"></script>
+<script src="js/db01.js"></script>
+<script src="js/Control.js"></script>
+<script src="js/Circle.js"></script>
 <script>
-var currentMonth;
-var backgroundTrack = 0;
-
-// ========== selecting the month ======================
-
-function doit(){
-	var month = document.getElementById("monthSelect");
-	currentMonth = month.value;
-	//alert(month.value);
-}
-// ========== going though the list ====================
-
-FBookURL = "http://www.facebook.com/First.Last";
-var YahrList = JSON.parse(YahrzeitList);
-
-function gotoFBook(){
-	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
+function doAction(){
+	var action = document.getElementById("actionSelect");
+	if(action.value == "addNew") startNew();
+	action.style.display = 'none';
 }
 
-function firstLoad(){
-	var i = 0;
-	setInterval( function(){ loadElement(i = getNum(i)); }, 3000);
+function startNew(){
+	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
 }
-
-function getNum(i){
-	var last = YahrList.Yahrzeits.length - 1;
-	i++;
-	var dateHold = YahrList.Yahrzeits[i].HDate;
-
-	if(i > last - 1) i = 0;
-	while(dateHold.indexOf(currentMonth) < 0 && i < last){
-		i++;
-		console.log(i);
-		dateHold = YahrList.Yahrzeits[i].HDate;
-	}	
-	if(i > last - 1) i = 0;	
-	return i;
-}
-
-function loadElement(i){
-	//document.getElementByClass("bg").background-image = "url('img/sunset002.jpeg')";
-	console.log("loading: " + i);
-	var HDate = document.getElementById("HDate");
-	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
-
-	FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
-	if(YahrList.Yahrzeits[i].FBook.length < 10){
-		document.getElementById("gotofbook").src = "";
-	}
-	else {
-		document.getElementById("gotofbook").src = "./img/facebook2.png";
-	}
-	var Name = document.getElementById("Name");
-	Name.innerHTML = YahrList.Yahrzeits[i].Name;
-	var HName = document.getElementById("HName");
-	HName.innerHTML = YahrList.Yahrzeits[i].HName;
-	if(Name.innerHTML == HName.innerHTML){
-		HName.innerHTML = "";
-	}
-	var EDate = document.getElementById("EDate");
-	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
-	var Pic01  = document.getElementById("Pic01");
-	Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
-	var Pic02  = document.getElementById("Pic02");
-	Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
-	var Comments01 = document.getElementById("Comments01");
-	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
-
-}
-
 </script>
 </body>
 </html>

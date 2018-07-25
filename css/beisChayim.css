@@ -1,0 +1,104 @@
+
+body {
+	background-color:black;
+	height: 100%;
+	overflow-y:hidden;
+}
+
+.bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {
+    background-image: url("../img/sunset001.jpeg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg0 {
+    background-image: url("../img/sunset000.jpeg");
+}
+
+.bg2 {
+    background-image: url("../img/sunset002.jpeg");
+}
+
+.bg3 {
+    background-image: url("../img/sunset003.jpeg");
+}
+
+.bg4 {
+    background-image: url("../img/sunset004.jpeg");
+}
+
+.bg5 {
+    background-image: url("../img/sunset005.jpeg");
+}
+
+#number {
+	color:white;
+	position:fixed;
+	top: 27px;
+	left: 527px;
+}
+
+h1 {
+	color:white;
+}
+
+#Name {
+	position: fixed;
+	top: 127px;
+	left: 528px;
+	color: blue;
+	font-size: 27px;
+}
+#HName {
+	position: fixed;
+	top: 167px;
+	left: 528px;
+	color: cyan;
+	font-size: 27px;
+}
+
+#EDate, #HDate {
+	position: fixed;
+	top: 207px;
+	left: 528px;
+	color: cyan;
+	font-size: 27px;
+}
+
+#HDate {
+	top: 247px;
+}
+
+#Comments01 {
+	position: fixed;
+	top: 707px;
+	left: 128px;
+	color: cyan;
+	font-size: 17px;
+}
+
+#Pic01{
+	position: fixed;
+	top: 127px;
+	left: 128px;
+}
+
+#Pic02{
+	position: fixed;
+	top: 427px;
+	left: 628px;
+}
+
+#fbook,#gotofbook{
+	position: fixed;
+	top: 27px;
+	left:1513px;
+	width:59px;
+	height:59px;
+	display:inline;
+}
+
+#monthSelect {
+		display:show;
+}
