@@ -1,0 +1,49 @@
+#sbar01, #sbar02, #sbar03, #sbar04, #sbar05, #sbar06, #sbar07, #sbar08, #sbar09 {
+	position: fixed;
+	top: 27px;
+	left:1113px;
+	width:359px;
+	height:39px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 10px;
+	display:inline;
+}
+
+#sbar02 {
+	top: 92px;
+}
+
+#sbar03 {
+	top: 157px;
+}
+
+#sbar04 {
+	top: 222px;
+}
+
+#sbar05 {
+	top: 287px;
+}
+
+#sbar06 {
+	top: 287px;
+}
+
+#sbar07 {
+	top: 287px;
+}
+
+#sbar08 {
+	top: 287px;
+}
+
+#sbar09 {
+	top: 287px;
+}
+
+.sbar {
+	border: 2px solid brown;
+	color:brown;
+	background-color: black;
+}

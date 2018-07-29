@@ -444,7 +444,7 @@ function SameDate(d1, d2) {
 
 // Here are a few support functions for the sample web page
 
-function FormatDateH(cDate) {
+function FormatDateH(cDate, parts=false) {
   var aDate = new Array()
   var cFormatDate
 
@@ -460,7 +460,7 @@ function FormatDateH(cDate) {
       cFormatDate = "Kislev"
       break
     case 4:
-      cFormatDate = "Teves"
+      cFormatDate = "Tevet"
       break
     case 5:
       cFormatDate = "Shevat"
@@ -472,16 +472,16 @@ function FormatDateH(cDate) {
       cFormatDate = (IsLeapYear(Number(aDate[2])) ? "Adar B" : "Adar")
       break
     case 8:
-      cFormatDate = "Nisan"
+      cFormatDate = "Nissan"
       break
     case 9:
-      cFormatDate = "Iyar"
+      cFormatDate = "Iyyar"
       break
     case 10:
       cFormatDate = "Sivan"
       break
     case 11:
-      cFormatDate = "Tamuz"
+      cFormatDate = "Tammuz"
       break
     case 12:
       cFormatDate = "Av"
@@ -490,9 +490,70 @@ function FormatDateH(cDate) {
       cFormatDate = "Elul"
       break
   }
+  if(parts)
+    return {year: aDate[2], month: cFormatDate, day: aDate[1]};
+
   cFormatDate += " " + aDate[1] + ", " + aDate[2]
   return cFormatDate
 }
+
+// excactly the same as FormatDateH, but it returns the date in pieces.
+function FormatDateHParts(cDate) {
+  var aDate = new Array()
+  var cFormatDate
+
+  aDate = cDate.split("/")
+  switch (Number(aDate[0])) {
+    case 1:
+      cFormatDate = "Tishrei"
+      break
+    case 2:
+      cFormatDate = "Cheshvan"
+      break
+    case 3:
+      cFormatDate = "Kislev"
+      break
+    case 4:
+      cFormatDate = "Tevet"
+      break
+    case 5:
+      cFormatDate = "Shevat"
+      break
+    case 6:
+      cFormatDate = "Adar A"
+      break
+    case 7:
+      cFormatDate = (IsLeapYear(Number(aDate[2])) ? "Adar B" : "Adar")
+      break
+    case 8:
+      cFormatDate = "Nissan"
+      break
+    case 9:
+      cFormatDate = "Iyyar"
+      break
+    case 10:
+      cFormatDate = "Sivan"
+      break
+    case 11:
+      cFormatDate = "Tammuz"
+      break
+    case 12:
+      cFormatDate = "Av"
+      break
+    case 13:
+      cFormatDate = "Elul"
+      break
+  }
+  var cFormatDate = {
+    Year: aDate[2],
+    Month: cFormatDate,
+    Day: aDate[1]
+  }
+
+  //cFormatDate += " " + aDate[1] + ", " + aDate[2]
+  return cFormatDate
+}
+
 
 function FormatDate(dDate) {
   var sDate
@@ -534,7 +595,7 @@ function H2G(nYearH, nMonthH, nDateH) {
   document.write("<p>")
 }
 
-function G2H(nYearG, nMonthG, nDateG) {
+function G2H(nYearG, nMonthG, nDateG, doPrint=true) {
   var nYearH
   var nMonthH
   var nDateH
@@ -545,7 +606,12 @@ function G2H(nYearG, nMonthG, nDateG) {
   nDateG  = Number(nDateG)
   dGreg   = new Date(nYearG, nMonthG - 1, nDateG)
 
-  document.write(FormatDate(dGreg) + " -> ")
-  document.write(FormatDateH(GregToHeb(dGreg)))
-  document.write("<p>")
+  var parts = FormatDateH(GregToHeb(dGreg), true);
+
+  if(doPrint){
+    document.write(FormatDate(dGreg) + " -> ")
+    document.write(FormatDateH(GregToHeb(dGreg)))
+    document.write("<p>")
+  }
+  return parts;
 }

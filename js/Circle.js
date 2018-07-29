@@ -4,6 +4,7 @@
 
 FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
+var SideBarList = [];
 
 function gotoFBook(){
 	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
@@ -14,15 +15,28 @@ function firstLoad(){
 	setInterval( function(){ loadElement(i = getNum(i)); }, 3000);
 }
 
+function resetSideBar(){
+		SideBarList = [];
+		for(var i=1; i<6; i++){
+			var name = "sbar0" + i;
+			var e = document.getElementById(name);
+			e.className = "";
+		}
+}
+
 function getNum(i){
 	var last = YahrList.Yahrzeits.length - 1;
 	i++;
 	var dateHold = YahrList.Yahrzeits[i].HDate;
 
-	if(i > last - 1) i = 0;
+	if(i > last - 1){
+		i = 0;
+		resetSideBar();
+	}
+
 	while(dateHold.indexOf(currentMonth) < 0 && i < last){
 		i++;
-		console.log(i);
+		//console.log(i);
 		dateHold = YahrList.Yahrzeits[i].HDate;
 	}
 	if(i > last - 1) i = 0;
@@ -35,7 +49,7 @@ function loadElement(i){
 	var cName = "bg" + n;
 	bd.className = cName;
 
-	console.log("loading: " + i);
+	//console.log("loading: " + i);
 	var HDate = document.getElementById("HDate");
 	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 
@@ -63,5 +77,50 @@ function loadElement(i){
 	Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
+	loadSideBar();
+}
 
+// pushes next entry onto sidebar queue
+function loadSideBarArray(i){
+	var spot = SideBarList.length; //first empty spot
+
+	var outLine;
+
+	outLine = YahrList.Yahrzeits[i].HName + "<br>" +
+											YahrList.Yahrzeits[i].HDate;
+
+  if(!YahrList.Yahrzeits[i].HName)
+	outLine = YahrList.Yahrzeits[i].Name + "<br>" +
+											YahrList.Yahrzeits[i].HDate;
+
+	for(var i=0; i<spot; i++){
+		if(SideBarList[i] == outLine) return;
+	}
+	SideBarList[spot] = outLine;
+	var sbar = document.getElementById("sbar0" + (spot + 1));
+
+	sbar.className = "sbar";
+	sbar.innerHTML = SideBarList[spot];
+}
+
+function loadSideBar(){
+	//console.log("loadSideBar");
+	var today = new Date();
+	sbar01 = document.getElementById("sbar01");
+	//sbar01.innerHTML = "Starting: ";
+	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
+	//console.log(htoday);
+	for(var i = 0; i < YahrList.Yahrzeits.length; i++){
+		var dateHold = YahrList.Yahrzeits[i].HDate;
+		//console.log(dateHold + "==");
+		//console.log(htoday);
+		if(dateHold.indexOf(htoday.month) > -1){
+			dateHold = dateHold.trim();
+			//console.log("[" + dateHold + "][" + dateHold.trim() + "]:" + htoday.day);
+			if(dateHold.substring(0, (dateHold.trim()).indexOf(' ')) == htoday.day){
+				//console.log(YahrList.Yahrzeits[i].HName);
+				loadSideBarArray(i);
+			}
+		}
+	}
 }
