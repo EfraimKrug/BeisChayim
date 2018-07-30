@@ -1,0 +1,13 @@
+
+csv2jsonc.py:
+	Reads inLoad2.csv
+		Created from a download from excel, then run clean01.py
+
+cleanup01.py:
+	Reads inLoad.csv
+		Created from a download from excel
+		Removes quotes, commas, and special characters
+
+		Notice: after this runs, commas are: &comma;
+					 quotation marks are: &quot;
+					 they have to be changed back somewhere
