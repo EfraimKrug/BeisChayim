@@ -53,12 +53,30 @@
 function doAction(){
 	var action = document.getElementById("actionSelect");
 	if(action.value == "addNew") startNew();
-	action.style.display = 'none';
+	if(action.value == "edit") startEdit();
+
+	//action.style.display = 'none';
 }
 
 function startNew(){
 	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
 }
+function startEdit(){
+
+	var params = "ID=" + YahrList.Yahrzeits[currentName].ID;
+	params += "&Name=" + YahrList.Yahrzeits[currentName].Name;
+	params += "&HName=" + YahrList.Yahrzeits[currentName].HName;
+	params += "&EDate=" + YahrList.Yahrzeits[currentName].EDate;
+	params += "&HDate=" + YahrList.Yahrzeits[currentName].HDate;
+	params += "&Pic01=" + YahrList.Yahrzeits[currentName].Pic01;
+	params += "&Pic02=" + YahrList.Yahrzeits[currentName].Pic02;
+	//params += "&FBook=" + YahrList.Yahrzeits[currentName].Pic02;
+	params += "&Comments01=" + YahrList.Yahrzeits[currentName].Comments01;
+
+	console.log(params);
+	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
 </script>
 </body>
 </html>
