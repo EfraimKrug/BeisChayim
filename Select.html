@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Select a Name</title>
+</head>
+<body>
+	<style>
+	.ltr{
+		border:1px solid black;
+		background-color: cyan;
+		padding:3px;
+		width: 14px;
+		text-align:center;
+	}
+	</style>
+	<div id=searchBar>&nbsp;</div>
+<table>
+	<tr>
+		<td class=ltr onclick="scrollto('a');">a</td>
+		<td class=ltr onclick="scrollto('b');">b</td>
+		<td class=ltr onclick="scrollto('c');">c</td>
+		<td class=ltr onclick="scrollto('d');">d</td>
+		<td class=ltr onclick="scrollto('e');">e</td>
+		<td class=ltr onclick="scrollto('f');">f</td>
+		<td class=ltr onclick="scrollto('g');">g</td>
+		<td class=ltr onclick="scrollto('h');">h</td>
+		<td class=ltr onclick="scrollto('i');">i</td>
+		<td class=ltr onclick="scrollto('j');">j</td>
+		<td class=ltr onclick="scrollto('k');">k</td>
+		<td class=ltr onclick="scrollto('l');">l</td>
+		<td class=ltr onclick="scrollto('m');">m</td>
+		<td class=ltr onclick="scrollto('n');">n</td>
+		<td class=ltr onclick="scrollto('o');">o</td>
+		<td class=ltr onclick="scrollto('p');">p</td>
+		<td class=ltr onclick="scrollto('q');">q</td>
+		<td class=ltr onclick="scrollto('r');">r</td>
+		<td class=ltr onclick="scrollto('s');">s</td>
+		<td class=ltr onclick="scrollto('t');">t</td>
+		<td class=ltr onclick="scrollto('u');">u</td>
+		<td class=ltr onclick="scrollto('v');">v</td>
+		<td class=ltr onclick="scrollto('w');">w</td>
+		<td class=ltr onclick="scrollto('x');">x</td>
+		<td class=ltr onclick="scrollto('y');">y</td>
+		<td class=ltr onclick="scrollto('z');">z</td>
+	</tr>
+</table>
+
+<div style="overflow-x:auto;">
+<table id=tbl>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Hebrew Name</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+</div>
+<style>
+button {
+	width: 175px;
+	height: 39px;
+	display: inline;
+}
+
+.invisible {
+	visibility:hidden;
+}
+
+.rowColor01 {
+	background-color: lightgrey;
+}
+
+.rowColor00 {
+	background-color: lightblue;
+}
+
+</style>
+<script src="js/db01.js"></script>
+<script>
+var searchString = '';
+
+var YahrList = JSON.parse(YahrzeitList);
+//YahrList.Yahrzeits.reverse();
+
+function scrollto(let){
+			var sbar = document.getElementById("searchBar");
+			searchString += let;
+			sbar.innerHTML = searchString;
+			cleanUpTable();
+			showNames(searchString);
+			if(searchString.length > 3) searchString = '';
+}
+
+function cleanUpTable(){
+	var tbl = document.getElementById("tbl");
+	for (var i=tbl.rows.length-1; i > 0; i--){
+		tbl.deleteRow(i);
+	}
+}
+
+function showNames(name){
+	var tbl = document.getElementById("tbl");
+	var rowCount = 0;
+	for (var i=0; i < YahrList.Yahrzeits.length; i++){
+			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
+					var row = tbl.insertRow(1);
+					if(rowCount % 2){
+						row.className = "rowColor00";
+					} else {
+						row.className = "rowColor01";
+					}
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					cell1.innerHTML = YahrList.Yahrzeits[i].Name;
+					cell2.innerHTML = YahrList.Yahrzeits[i].HName;
+					cell3.innerHTML = "<button onclick='ShowName(" + YahrList.Yahrzeits[i].ID + ");'>Click</button>";
+					rowCount++;
+				}
+			}
+		}
+
+</script>
+</body>
+
+</html>

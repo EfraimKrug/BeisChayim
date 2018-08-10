@@ -23,7 +23,7 @@
 </select>
 <select id=actionSelect onchange="doAction();">
 	<option value="nothing"></option>
-	<option value="addNew">New</option>
+	<option value="new">New</option>
 	<option value="edit">Edit</option>
 	<option value="select">Select</option>
 </select>
@@ -52,8 +52,10 @@
 <script>
 function doAction(){
 	var action = document.getElementById("actionSelect");
-	if(action.value == "addNew") startNew();
+	if(action.value == "new") startNew();
 	if(action.value == "edit") startEdit();
+	if(action.value == "select") startSelect();
+	action.value = "";
 
 	//action.style.display = 'none';
 }
@@ -61,6 +63,11 @@ function doAction(){
 function startNew(){
 	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
 }
+
+function startSelect(){
+	window.open("Select.html",'_blank','scrollbars=1,toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
 function startEdit(){
 
 	var params = "ID=" + YahrList.Yahrzeits[currentName].ID;
