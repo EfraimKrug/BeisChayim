@@ -1,18 +1,10 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="./css/actionWindow.css">
 <title>Select a Name</title>
 </head>
 <body>
-	<style>
-	.ltr{
-		border:1px solid black;
-		background-color: cyan;
-		padding:3px;
-		width: 14px;
-		text-align:center;
-	}
-	</style>
 	<div id=searchBar>&nbsp;</div>
 <table>
 	<tr>
@@ -42,6 +34,7 @@
 		<td class=ltr onclick="scrollto('x');">x</td>
 		<td class=ltr onclick="scrollto('y');">y</td>
 		<td class=ltr onclick="scrollto('z');">z</td>
+		<td class=ltr onclick="reset();">reset</td>
 	</tr>
 </table>
 
@@ -57,32 +50,15 @@
 	</tbody>
 </table>
 </div>
-<style>
-button {
-	width: 175px;
-	height: 39px;
-	display: inline;
-}
-
-.invisible {
-	visibility:hidden;
-}
-
-.rowColor01 {
-	background-color: lightgrey;
-}
-
-.rowColor00 {
-	background-color: lightblue;
-}
-
-</style>
 <script src="js/db01.js"></script>
 <script>
 var searchString = '';
 
 var YahrList = JSON.parse(YahrzeitList);
 //YahrList.Yahrzeits.reverse();
+function reset(){
+	searchString = '';
+}
 
 function scrollto(let){
 			var sbar = document.getElementById("searchBar");
