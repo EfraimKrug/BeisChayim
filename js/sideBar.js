@@ -25,7 +25,7 @@ function loadSideBarArray(i){
 	}
 	SideBarList[spot] = outLine;
 	var sbar = document.getElementById("sbar0" + (spot + 1));
-
+	//console.log("sbar0" + (spot + 1));
 	sbar.className = "sbar";
 	sbar.innerHTML = SideBarList[spot];
 }

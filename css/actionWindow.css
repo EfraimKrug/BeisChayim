@@ -2,10 +2,23 @@
 body {
 	background-color:black;
 	background-image: url("../img/sunset000.jpeg");
-	height: 100%;
-	overflow-y:hidden;
+//	height: 100%;
+//	overflow-y:hidden;
 }
 
+#choice {
+	position:absolute;
+	background-color: white;
+	color: black;
+	font-size: 14px;
+	left: 450px;
+	top: 50px;
+	z-index: 99;
+	border: 2px solid red;
+	padding: 15px;
+	display:none;
+}
+#
 .sbar {
 	border: 2px solid brown;
 	color:brown;
@@ -32,8 +45,15 @@ button {
 
 .rowColor01 {
 	background-color: lightgrey;
+	padding: 7px;
 }
 
 .rowColor00 {
 	background-color: lightblue;
+	padding: 7px;
+}
+
+.cell {
+	font-family:sans-serif;
+	padding:5px;
 }

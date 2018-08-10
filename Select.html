@@ -6,6 +6,12 @@
 </head>
 <body>
 	<div id=searchBar>&nbsp;</div>
+	<div id=choice>
+		<table>
+			<tr><td onclick="clickEdit();" class=rowColor00>Edit</td></tr>
+			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
+		</table>
+	</div>
 <table>
 	<tr>
 		<td class=ltr onclick="scrollto('a');">a</td>
@@ -40,12 +46,14 @@
 
 <div style="overflow-x:auto;">
 <table id=tbl>
+	<!--
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>Hebrew Name</th>
 		</tr>
 	</thead>
+-->
 	<tbody>
 	</tbody>
 </table>
@@ -53,8 +61,8 @@
 <script src="js/db01.js"></script>
 <script>
 var searchString = '';
-
 var YahrList = JSON.parse(YahrzeitList);
+var currentIDX;
 //YahrList.Yahrzeits.reverse();
 function reset(){
 	searchString = '';
@@ -63,7 +71,6 @@ function reset(){
 function scrollto(let){
 			var sbar = document.getElementById("searchBar");
 			searchString += let;
-			sbar.innerHTML = searchString;
 			cleanUpTable();
 			showNames(searchString);
 			if(searchString.length > 3) searchString = '';
@@ -71,7 +78,7 @@ function scrollto(let){
 
 function cleanUpTable(){
 	var tbl = document.getElementById("tbl");
-	for (var i=tbl.rows.length-1; i > 0; i--){
+	for (var i=tbl.rows.length-1; i > -1; i--){
 		tbl.deleteRow(i);
 	}
 }
@@ -80,24 +87,50 @@ function showNames(name){
 	var tbl = document.getElementById("tbl");
 	var rowCount = 0;
 	for (var i=0; i < YahrList.Yahrzeits.length; i++){
+			//console.log(name + ":" + i);
 			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
-					var row = tbl.insertRow(1);
+					var row = tbl.insertRow(0);
 					if(rowCount % 2){
 						row.className = "rowColor00";
 					} else {
 						row.className = "rowColor01";
 					}
 					var cell1 = row.insertCell(0);
-					var cell2 = row.insertCell(1);
-					var cell3 = row.insertCell(2);
-					cell1.innerHTML = YahrList.Yahrzeits[i].Name;
-					cell2.innerHTML = YahrList.Yahrzeits[i].HName;
-					cell3.innerHTML = "<button onclick='ShowName(" + YahrList.Yahrzeits[i].ID + ");'>Click</button>";
+					var nm = '';
+					if(YahrList.Yahrzeits[i].Name.trim() !== ''){
+						nm = YahrList.Yahrzeits[i].Name;
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm += " { " + YahrList.Yahrzeits[i].HName + " } ";
+						}
+					} else {
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm = YahrList.Yahrzeits[i].HName;
+						}
+					}
+					console.log(i + ":(" + rowCount + ")" + YahrList.Yahrzeits[i].ID);
+					cell1.innerHTML = "<span onclick='choose(" + YahrList.Yahrzeits[i].ID + ")'>" + nm + "</span>";
+					cell1.className = "cell";
+					//YahrList.Yahrzeits[i].Name + "{" + YahrList.Yahrzeits[i].HName + "}";
+					//cell2.innerHTML = ;
+					//cell3.innerHTML = "<button onclick='ShowName(" + YahrList.Yahrzeits[i].ID + ");'>Click</button>";
 					rowCount++;
 				}
 			}
 		}
 
+function clickEdit(){
+	alert(currentIDX);
+	var choice = document.getElementById("choice");
+	choice.style.display = "none";
+}
+
+function choose(id){
+	var choice = document.getElementById("choice");
+	choice.style.display = "inline";
+	var editChoice = document.getElementById("editChoice");
+	currentIDX = id;
+//	alert(id);
+}
 </script>
 </body>
 
