@@ -4,6 +4,10 @@ var backgroundTrack = 0;
 var showButtonSec = false;
 var showButton = false;
 
+// configuration files...
+var config = JSON.parse(ConfigList);
+console.log(config);
+
 // ========== selecting the month ======================
 function showSecurity(){
 	var security = document.getElementById("security");
@@ -43,5 +47,6 @@ function doit(){
 	var month = document.getElementById("monthSelect");
 	//month.style.display = 'none';
 	currentMonth = month.value;
+	hideIt();
 	//alert(month.value);
 }

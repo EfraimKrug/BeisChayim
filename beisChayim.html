@@ -29,6 +29,7 @@
 	<option value="new">New</option>
 	<option value="edit">Edit</option>
 	<option value="select">Select</option>
+	<option value="config">Config</option>
 </select>
 
 <div id="wholeThing">
@@ -49,7 +50,17 @@
 	<div id=sbar07></div>
 	<div id=sbar08></div>
 	<div id=sbar09></div>
+	<div id=sbar010></div>
+	<div id=sbar011></div>
+	<div id=sbar012></div>
+	<div id=sbar013></div>
+	<div id=sbar014></div>
+	<div id=sbar015></div>
+	<div id=sbar016></div>
+
 </div>
+<script src="config/BCConfig"></script>
+
 <script src="js/db01.js"></script>
 <script src="js/Control.js"></script>
 <script src="js/Circle.js"></script>
@@ -58,7 +69,7 @@
 <script src="js/param.js"></script>
 
 <script>
-var PASSWORD = "abc";
+var PASSWORD = config.settings["password"];
 hideIt();
 
 function checkIt(){
@@ -69,6 +80,7 @@ function checkIt(){
 		} else {
 			hideIt();
 		}
+		document.getElementById("secInput").value = '';
 }
 
 function doAction(){
@@ -76,6 +88,8 @@ function doAction(){
 	if(action.value == "new") startNew();
 	if(action.value == "edit") startEdit();
 	if(action.value == "select") startSelect();
+	if(action.value == "config") startConfig();
+
 	action.value = "";
 
 	//action.style.display = 'none';
@@ -92,6 +106,12 @@ function startSelect(){
 function startEdit(){
 	var params = buildParamString(YahrList, currentName);
 	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
+function startConfig(){
+	//var config = JSON.parse(ConfigList);
+	//var params = buildParamString(YahrList, currentName);
+	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
 }
 
 </script>

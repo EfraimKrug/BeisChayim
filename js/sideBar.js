@@ -1,10 +1,12 @@
-var MAX_SLOTS = 9;
+var MAX_SLOTS = config.settings["slots"];
 var offset = 0;
 
 function resetSideBar(){
 		SideBarList = [];
-		for(var i=1; i < MAX_SLOTS + 1; i++){
+		var max = parseInt(MAX_SLOTS) + 1;
+		for(var i=1; i < max; i++){
 			var name = "sbar0" + i;
+			console.log("(" + i + "::" + max + ")" + MAX_SLOTS + ":" + name);
 			var e = document.getElementById(name);
 			e.className = "";
 		}
