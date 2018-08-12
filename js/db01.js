@@ -83,7 +83,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"83","BGround":"","Name":"Alex Krimsky","HName":"Eliyahu Ben Shlomo","EDate":"December 13&comma; 1966","HDate":"30 Kislev 5727","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"84","BGround":"","Name":"Alex Masters","HName":"Elihu Ben Laib Halevi","EDate":"May 18&comma; 1971","HDate":"23 Iyyar 5731","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"85","BGround":"","Name":"Alexander Aronis","HName":"Yitzchok Ben Hersh","EDate":"September 19&comma; 1968","HDate":"27 Elul 5728","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"86","BGround":"","Name":"Alexander Leventhal","HName":"Shmuel","EDate":"August 30&comma; 2008","HDate":"29 Av 5768","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"86","BGround":"","Name":"Alexander Leventhal","HName":"Shmuel","EDate":"August 30&comma; 2008","HDate":"30 Av 5768","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"87","BGround":"","Name":"Alexander Nosovitski","HName":"","EDate":"","HDate":"16 Tammuz","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"88","BGround":"","Name":"Alexander Perchenok","HName":"Simah ben Afroim","EDate":"June 19&comma; 2014","HDate":"21 Sivan 5774","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"89","BGround":"","Name":"Alexandra Oshlanskaya","HName":"Alexandra Bas Dovid","EDate":"January 16&comma; 1993","HDate":"23 Tevet 5753","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -662,7 +662,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"662","BGround":"","Name":"Etta Abramson","HName":"Cheske Etah bas Yacov","EDate":"June 16&comma; 1974","HDate":"26 Sivan 5734","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"663","BGround":"","Name":"Etta Blyumenthal","HName":"","EDate":"","HDate":"28 Adar II","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"664","BGround":"","Name":"Etta Wilgoren","HName":"","EDate":"","HDate":"18 Iyyar","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"665","BGround":"","Name":"Etta Winokur","HName":"","EDate":"August 16&comma; 2004","HDate":"29 Av 5764","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"665","BGround":"","Name":"Etta Winokur","HName":"","EDate":"August 16&comma; 2004","HDate":"01 Elul 5764","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"666","BGround":"","Name":"Ettie Mould","HName":"","EDate":"February 05&comma; 1998","HDate":"09 Shevat 5758","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"667","BGround":"","Name":"Etya Kipnis","HName":"Etya Bas Yitzchok","EDate":"September 01&comma; 1998","HDate":"10 Elul 5758","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"668","BGround":"","Name":"Etya Shekhtman","HName":"","EDate":"March 06&comma; 1997","HDate":"27 Adar 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -1083,9 +1083,9 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"1083","BGround":"","Name":"Isadore Kaplan","HName":"","EDate":"August 14&comma; 1984","HDate":"16 Av 5744","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1084","BGround":"","Name":"Isadore Kravitz","HName":"Yitzchak ben Binyamin Hacohain","EDate":"","HDate":"08 Kislev","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1085","BGround":"","Name":"Isadore Litsky","HName":"Aizel Ben Berel Halaivi","EDate":"December 29&comma; 1971","HDate":"11 Tevet 5732","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1086","BGround":"","Name":"Isadore Lurie","HName":"Yitzchak Ben Zev Volf","EDate":"","HDate":"29 Av","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1086","BGround":"","Name":"Isadore Lurie","HName":"Yitzchak Ben Zev Volf","EDate":"","HDate":"01 Elul","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1087","BGround":"","Name":"Isadore Miller","HName":"Yitzchak Ben Avraham Chaim","EDate":"September 25&comma; 1981","HDate":"26 Elul 5741","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1088","BGround":"","Name":"Isadore Sugerman","HName":"Yisroel ben Zerach","EDate":"September 03&comma; 2005","HDate":"29 Av 5765","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1088","BGround":"","Name":"Isadore Sugerman","HName":"Yisroel ben Zerach","EDate":"September 03&comma; 2005","HDate":"01 Elul 5765","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1089","BGround":"","Name":"Isadore Ziskin","HName":"","EDate":"March 09&comma; 1966","HDate":"17 Adar 5726","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1090","BGround":"","Name":"Isaiah Berger","HName":"Yeshayahu Simcha Ben Yechiel","EDate":"December 31&comma; 2005","HDate":"30 Kislev 5766","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1091","BGround":"","Name":"Isak Binyaminov","HName":"Yitzchak ben Binyamin","EDate":"July 31&comma; 1977","HDate":"16 Av 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -1109,7 +1109,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"1109","BGround":"","Name":"Israel Zamsky","HName":"Yisroel Ben Avraham","EDate":"October 23&comma; 1979","HDate":"02 Cheshvan 5740","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1110","BGround":"","Name":"Israil Layevsky","HName":"","EDate":"July 01&comma; 1990","HDate":"08 Tammuz 5750","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1111","BGround":"","Name":"Istam Yunatanova","HName":"Istam Bat Yosef","EDate":"September 04&comma; 1993","HDate":"18 Elul 5753","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1112","BGround":"","Name":"Istvan Neder","HName":"Yeshaya ben Avraham","EDate":"August 08&comma; 1994","HDate":"1 Elul 5754","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1112","BGround":"","Name":"Istvan Neder","HName":"Yeshaya ben Avraham","EDate":"August 08&comma; 1994","HDate":"01 Elul 5754","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1113","BGround":"","Name":"Ita Vilensky","HName":"","EDate":"September 15&comma; 1942","HDate":"04 Tishrei 5703","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1114","BGround":"","Name":"Itzhik Peltsman","HName":"Yitzchak ben Yisroel","EDate":"May 18&comma; 1972","HDate":"26 Tevet 5732","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1115","BGround":"","Name":"Ivan Sverdlov","HName":"Yitzchok Ben Yeshya","EDate":"September 22&comma; 1998","HDate":"02 Tishrei 5759","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -1668,7 +1668,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"1668","BGround":"","Name":"Morris Markson","HName":"Moshe Eliyahu ben Benyamin","EDate":"February 02&comma; 1964","HDate":"19 Shevat 5724","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1669","BGround":"","Name":"Morris Muscovitz","HName":"Moshe ben Avraham Yitzchak","EDate":"November 26&comma; 1976","HDate":"04 Kislev 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1670","BGround":"","Name":"Morris Radonsky","HName":"Moshe Ben Yaacov","EDate":"November 02&comma; 1963","HDate":"15 Cheshvan 5724","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1671","BGround":"","Name":"Morris Richman","HName":"Moshe ben Yisroel Dovid","EDate":"August 13&comma; 1977","HDate":"29 Av 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1671","BGround":"","Name":"Morris Richman","HName":"Moshe ben Yisroel Dovid","EDate":"August 13&comma; 1977","HDate":"01 Elul 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1672","BGround":"","Name":"Morris Rick","HName":"Moshe Dovid ben Chaim Yoseph","EDate":"January 24&comma; 1929","HDate":"13 Shevat 5689","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1673","BGround":"","Name":"Morris Rutman","HName":"Chaim Moshe Ben Yehoshua Mordecai","EDate":"December 01&comma; 1969","HDate":"21 Kislev 5730","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1674","BGround":"","Name":"Morris Salzberg","HName":"משה צבי בן שלמה","EDate":"December 28&comma; 2017","HDate":"6 Tevet 5775","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -1768,11 +1768,11 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"1768","BGround":"","Name":"Noach Freyman","HName":"","EDate":"August 15&comma; 1949","HDate":"20 Av 5709","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1769","BGround":"","Name":"Noehum ben Mendel","HName":"Noehum ben Mendel","EDate":"","HDate":"03 Av","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1770","BGround":"","Name":"Norma Baum","HName":"Nechama bas Dovid Halaivi","EDate":"January 04&comma; 1977","HDate":"14 Tevet 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1771","BGround":"","Name":"Norman Baker","HName":"","EDate":"September 02&comma; 2016","HDate":"29 Av 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1771","BGround":"","Name":"Norman Baker","HName":"","EDate":"September 02&comma; 2016","HDate":"01 Elul 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1772","BGround":"","Name":"Norman Chaletzky","HName":"Nucham Arbum ben David Baruch","EDate":"September 24&comma; 1997","HDate":"22 Elul 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1773","BGround":"","Name":"Norman Fish","HName":"","EDate":"June 27&comma; 1997","HDate":"22 Sivan 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1774","BGround":"","Name":"Norman Green","HName":"Nachum ben Gedalia","EDate":"January 04&comma; 1980","HDate":"15 Tevet 5740","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1775","BGround":"","Name":"Norman Marcus","HName":"","EDate":"September 02&comma; 2016","HDate":"29 Av 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1775","BGround":"","Name":"Norman Marcus","HName":"","EDate":"September 02&comma; 2016","HDate":"01 Elul 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1776","BGround":"","Name":"Norman Marcus","HName":"","EDate":"August 02&comma; 2016","HDate":"27 Tammuz 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1777","BGround":"","Name":"Norman Metcalf","HName":"Chone ben Nahum","EDate":"April 07&comma; 1974","HDate":"15 Nissan 5734","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1778","BGround":"","Name":"Nuchim Ben Laib","HName":"Nuchim ben Laib","EDate":"August 24&comma; 1999","HDate":"12 Elul 5759","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -1813,7 +1813,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"1813","BGround":"","Name":"Philip Citron","HName":"Shraga Fishel ben Avraham halevi","EDate":"August 11&comma; 1997","HDate":"8 Av 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1814","BGround":"","Name":"Philip Cohen","HName":"Pinchas Ben Mordecai Hacohain","EDate":"March 29&comma; 1989","HDate":"22 Adar II 5749","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1815","BGround":"","Name":"Philip Gladstein","HName":"Ephraim fischel ben Chaim Shlomo","EDate":"","HDate":"28 Shevat 5754","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"1816","BGround":"","Name":"Philip Hahn","HName":"Sorge Feivish Ben Moshe Noah","EDate":"September 02&comma; 1921","HDate":"29 Av 5681","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"1816","BGround":"","Name":"Philip Hahn","HName":"Sorge Feivish Ben Moshe Noah","EDate":"September 02&comma; 1921","HDate":"01 Elul 5681","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1817","BGround":"","Name":"Philip Phillips","HName":"Sorge Fsivish Ben Mordecai Mayer","EDate":"February 12&comma; 1951","HDate":"06 Adar 5711","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1818","BGround":"","Name":"Philip Resnikoff","HName":"Pinchas ben Avraham HaCohen","EDate":"","HDate":"10 Tevet","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"1819","BGround":"","Name":"Philip Shaffer","HName":"","EDate":"March 25&comma; 1977","HDate":"06 Nissan 5737","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -2064,7 +2064,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"2064","BGround":"","Name":"Samuel Epstein","HName":"Shimon Zev ben Zalman Moshe HaLevi","EDate":"May 31&comma; 1935","HDate":"28 Iyyar 5695","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2065","BGround":"","Name":"Samuel Fisher","HName":"Simcha Reuvain ben Pesach Aaron Halevi","EDate":"June 18&comma; 1978","HDate":"13 Sivan 5738","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2066","BGround":"","Name":"Samuel Getman","HName":"Shlomo Ben Yitzchak","EDate":"November 17&comma; 1978","HDate":"17 Cheshvan 5739","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"2067","BGround":"","Name":"Samuel Ginsberg","HName":"","EDate":"","HDate":"29 Av","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"2067","BGround":"","Name":"Samuel Ginsberg","HName":"","EDate":"","HDate":"01 Elul","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2068","BGround":"","Name":"Samuel Gladstein","HName":"Chaim Shlomo ben Aharon","EDate":"","HDate":"22 Adar I 5707","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2069","BGround":"","Name":"Samuel Glick","HName":"Shmuel Ben Koppel","EDate":"March 09&comma; 1980","HDate":"21 Adar 5740","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2070","BGround":"","Name":"Samuel Goldish","HName":"Shmuel Yitzchok Ben Yehuda Leib","EDate":"","HDate":"10 Iyyar","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -2240,7 +2240,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"2240","BGround":"","Name":"Sophie Leeper","HName":"","EDate":"July 11&comma; 1979","HDate":"16 Tammuz 5739","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2241","BGround":"","Name":"Sophie Platzman","HName":"","EDate":"September 02&comma; 1973","HDate":"05 Elul 5733","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2242","BGround":"","Name":"Sophie Shriber","HName":"Shifra bas Zvi Zev","EDate":"September 19&comma; 1985","HDate":"04 Tishrei 5746","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"2243","BGround":"","Name":"Sophie Weiner","HName":"Sora Bas Hershel","EDate":"July 01&comma; 1983","HDate":"20 Tammuz 5743","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' + 
+'{"ID":"2243","BGround":"","Name":"Sophie Weiner","HName":"Sora Bas Hershel","EDate":"July 01&comma; 1983","HDate":"20 Tammuz 5743","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2244","BGround":"","Name":"Sophie Wernick","HName":"Shifra bas Osher","EDate":"September 05&comma; 1976","HDate":"10 Elul 5736","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2245","BGround":"","Name":"Sophie Wexler","HName":"Tsipa bas Efraim","EDate":"May 06&comma; 1972","HDate":"22 Iyyar 5732","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"2246","BGround":"","Name":"Sora bat Avraham","HName":"Sora bas Avraham","EDate":"","HDate":"20 Shevat","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +

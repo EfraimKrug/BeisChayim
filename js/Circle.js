@@ -71,5 +71,6 @@ function loadElement(i){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	currentName = i;
+	//console.log("loading sidebar...");
 	loadSideBar();
 }
