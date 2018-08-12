@@ -59,6 +59,7 @@
 </table>
 </div>
 <script src="js/db01.js"></script>
+<script src="js/param.js"></script>
 <script>
 var searchString = '';
 var YahrList = JSON.parse(YahrzeitList);
@@ -119,7 +120,11 @@ function showNames(name){
 		}
 
 function clickEdit(){
-	alert(currentIDX);
+	//alert(currentIDX);
+	//console.log(YahrList.Yahrzeits[currentIDX]);
+	var params = buildParamString(YahrList, currentIDX);
+	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+
 	var choice = document.getElementById("choice");
 	choice.style.display = "none";
 }

@@ -1,22 +1,42 @@
 // Control.js
 var currentMonth;
 var backgroundTrack = 0;
+var showButtonSec = false;
 var showButton = false;
 
 // ========== selecting the month ======================
+function showSecurity(){
+	var security = document.getElementById("security");
+
+	if(showButtonSec){
+		security.style.display = 'inline';
+		showButtonSec = false;
+	} else {
+		security.style.display = 'none';
+		showButtonSec = true;
+	}
+	//alert(month.value);
+}
+
 function showIt(){
 	var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
-	if(showButton){
-		action.style.display = 'inline';
-		month.style.display = 'inline';
-		showButton = false;
-	} else {
-		action.style.display = 'none';
-		month.style.display = 'none';
-		showButton = true;
-	}
-	//alert(month.value);
+	var security = document.getElementById("security");
+
+	action.style.display = 'inline';
+	month.style.display = 'inline';
+	security.style.display = 'none';
+	showButton = false;
+}
+
+function hideIt(){
+	var month = document.getElementById("monthSelect");
+	var action = document.getElementById("actionSelect");
+	var security = document.getElementById("security");
+
+	action.style.display = 'none';
+	month.style.display = 'none';
+	security.style.display = 'none';
 }
 
 function doit(){

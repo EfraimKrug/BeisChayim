@@ -75,6 +75,6 @@ function loadSideBar(){
 			}
 		}
 	}
-	console.log(offset + ":" + SideBarList);
+	//console.log(offset + ":" + SideBarList);
 	renderSideBarArray();
 }
