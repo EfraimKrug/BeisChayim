@@ -8,22 +8,22 @@
 <h3>Careful: the data you put in this form will show up on the monitor!</h3>
 <table>
 <tr>
-	<td>Name</td><td><input type=text id=name></td>
+				<td>Name</td><td><input type=text id=name></td>
 </tr>
 <tr>
-	<td>Hebrew Name</td><td><input type=text id=hname></td>
+				<td>Hebrew Name</td><td><input type=text id=hname></td>
 </tr>
 <tr>
-	<td>English Date</td><td><input type=text id=edate></td>
+				<td>English Date</td><td><input type=text id=edate></td>
 </tr>
 <tr>
-	<td>Hebrew Date</td><td><input type=text id=hdate></td>
+				<td>Hebrew Date</td><td><input type=text id=hdate></td>
 </tr>
 <tr>
-	<td>Picture #1</td><td><input type=text id=pic01></td>
+				<td>Picture #1</td><td><span id=pic01 ><input id="filename1" type="file" onblur="keepIt(1);"/></span></td>
 </tr>
 <tr>
-        <td>Picture #2</td><td><input type=text id=pic02></td>
+        <td>Picture #2</td><td><span id=pic02><input id="filename2" type="file" onblur="keepIt(2);"/></span></td>
 </tr>
 <tr>
         <td>Facebook</td><td><input type=text id=fbook></td>
@@ -32,7 +32,7 @@
         <td>Comments</td><td><textarea rows=15 cols=75 id=comments01></textarea></td>
 </tr>
 <tr>
-	<td></td><td><button id=submit onclick=addStuff();>Submit</button></td>
+	<td>	</td><td><button id=submit onclick=addStuff();>Submit</button></td>
 </tr>
 </table>
 <style>
@@ -44,13 +44,28 @@ button {
 </style>
 <!-- <button id=button onclick=doit(); onmouseover="showIt();">Save File</button> -->
 <script>
+var fileName01 = "";
+var fileName02 = "";
+
+function keepIt(picNum){
+	if(picNum == 1){
+  	var f = document.getElementById("filename1");
+		fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 2){
+  	var f = document.getElementById("filename2");
+		fileName02 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+}
+
 function addStuff(){
 	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
 	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
 	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
 	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
-	var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("pic01").value) + "\"";
-	var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("pic02").value) + "\"";
+	var pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
+	var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
 	var fbook = "\"FBook\":\"" + escapeHTML(document.getElementById("fbook").value) + "\"";
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
 	var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";

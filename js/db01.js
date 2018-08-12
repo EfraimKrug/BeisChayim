@@ -64,7 +64,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"64","BGround":"","Name":"Abram Turovsky","HName":"","EDate":"September 04&comma; 1942","HDate":"22 Elul 5702","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"65","BGround":"","Name":"Ada Paresky","HName":"","EDate":"January 23&comma; 1997","HDate":"15 Shevat 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"66","BGround":"","Name":"Ada Ruben","HName":"Idah Bas Zvi Mayer","EDate":"December 16&comma; 1978","HDate":"16 Kislev 5739","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
-'{"ID":"67","BGround":"","Name":"Adel bat Taibel Milinevskaya","HName":"Adel Bas Baruch","EDate":"August 30&comma; 2004","HDate":"13 Elul 5764","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"67","BGround":"","Name":"Adel bat Taibel Milinevskaya","HName":"Adel Bas Baruch","EDate":"August 30&comma; 2004","HDate":"13 Elul 5764","Pic01":"female01.jpeg","Pic02":"profemale01.jpeg","FBook":"","Comments01":"I hope these pictures are there!","Mourner":"","Relationship":""},' +
 '{"ID":"68","BGround":"","Name":"Adele Valevich","HName":"","EDate":"January 24&comma; 1997","HDate":"16 Shevat 5757","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"69","BGround":"","Name":"Adelia Zelman","HName":"Adelya bat Yaakov","EDate":"September 23&comma; 2004","HDate":"08 Tishrei 5765","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"70","BGround":"","Name":"Adolph Mednikov","HName":"","EDate":"August 16&comma; 2016","HDate":"12 Av 5776","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
@@ -413,6 +413,7 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"413","BGround":"","Name":"Chaya Sora bat Yosef Velvel","HName":"Chaya Sora bas Yosef Velvel Hacohain","EDate":"","HDate":"25 Iyyar","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"414","BGround":"","Name":"Chaye Ethel Shuman","HName":"Chaye Ethel","EDate":"March 05&comma; 1937","HDate":"22 Adar 5697","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"415","BGround":"","Name":"Chayka Urman","HName":"Chayke Bas Mayer","EDate":"April 24&comma; 1994","HDate":"13 Iyyar 5754","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
+'{"ID":"3990","BGround":"","Name":"joseph schwartz","HName":"yosef ben moshe","EDate":"2017-09-02","HDate":"01 Elul 5777","Pic01":"male01.jpeg","Pic02":"promale01.jpeg","FBook":"","Comments01":"lots and lots of comments..."},' +
 '{"ID":"416","BGround":"","Name":"Chayke Peltsman","HName":"Chaike Bas Hershel","EDate":"May 18&comma; 1971","HDate":"29 Iyyar 5731","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"417","BGround":"","Name":"Chayke Vasershteyn","HName":"Chayke bas Shmuel","EDate":"","HDate":"08 Iyyar","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +
 '{"ID":"418","BGround":"","Name":"Cheena Siegel","HName":"Cheena bat Yaakov","EDate":"","HDate":"17 Tevet 5686","Pic01":"","Pic02":"","FBook":"","Comments01":"","Mourner":"","Relationship":""},' +

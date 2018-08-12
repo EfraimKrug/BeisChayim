@@ -1,0 +1,24 @@
+<html>
+<body>
+<input id="filename" type="file"/><button onclick="keepIt();">keep it</button>
+
+<h1>File work</h1>
+<div id=out></div>
+<div id=picr><img id="pic" name="pic"></div>
+</body>
+<script>
+//var l  = "./img/promale01.jpeg";
+var p = document.getElementById("pic");
+//p.src = l;
+//alert(p.src);
+
+function keepIt(){
+  var d = document.getElementById("out");
+  var f = document.getElementById("filename");
+  //var p = document.getElementById("pic");
+
+  d.innerHTML = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
+  p.src = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
+}
+</script>
+</html>
