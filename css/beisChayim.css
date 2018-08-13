@@ -48,27 +48,29 @@ h1 {
 	position: fixed;
 	top: 127px;
 	left: 528px;
+	width: 365px;
 	color: blue;
 	font-size: 27px;
 }
 #HName {
 	position: fixed;
-	top: 167px;
+	top: 207px;
 	left: 528px;
+	width: 365px;
 	color: cyan;
 	font-size: 27px;
 }
 
 #EDate, #HDate {
 	position: fixed;
-	top: 207px;
+	top: 287px;
 	left: 528px;
 	color: cyan;
 	font-size: 27px;
 }
 
 #HDate {
-	top: 247px;
+	top: 327px;
 }
 
 #Comments01 {

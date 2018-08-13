@@ -1,6 +1,7 @@
 /*
  * ========== going though the list ====================
  */
+TIME_FACTOR = config.settings["time_factor"];
 
 FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
@@ -13,7 +14,8 @@ function gotoFBook(){
 
 function firstLoad(){
 	var i = 0;
-	setInterval( function(){ loadElement(i = getNum(i)); }, 3000);
+	var tf = TIME_FACTOR * 1000;
+	setInterval( function(){ loadElement(i = getNum(i)); }, tf);
 }
 
 
@@ -71,5 +73,6 @@ function loadElement(i){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	currentName = i;
+	//console.log("loading sidebar...");
 	loadSideBar();
 }

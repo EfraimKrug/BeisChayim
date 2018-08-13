@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./css/actionWindow.css">
+<title>Select a Name</title>
+</head>
+<body>
+	<div id=searchBar>&nbsp;</div>
+	<div id=choice>
+		<table>
+			<tr><td onclick="clickEdit();" class=rowColor00>Edit</td></tr>
+			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
+		</table>
+	</div>
+<table>
+	<tr>
+		<td class=ltr onclick="scrollto('a');">a</td>
+		<td class=ltr onclick="scrollto('b');">b</td>
+		<td class=ltr onclick="scrollto('c');">c</td>
+		<td class=ltr onclick="scrollto('d');">d</td>
+		<td class=ltr onclick="scrollto('e');">e</td>
+		<td class=ltr onclick="scrollto('f');">f</td>
+		<td class=ltr onclick="scrollto('g');">g</td>
+		<td class=ltr onclick="scrollto('h');">h</td>
+		<td class=ltr onclick="scrollto('i');">i</td>
+		<td class=ltr onclick="scrollto('j');">j</td>
+		<td class=ltr onclick="scrollto('k');">k</td>
+		<td class=ltr onclick="scrollto('l');">l</td>
+		<td class=ltr onclick="scrollto('m');">m</td>
+		<td class=ltr onclick="scrollto('n');">n</td>
+		<td class=ltr onclick="scrollto('o');">o</td>
+		<td class=ltr onclick="scrollto('p');">p</td>
+		<td class=ltr onclick="scrollto('q');">q</td>
+		<td class=ltr onclick="scrollto('r');">r</td>
+		<td class=ltr onclick="scrollto('s');">s</td>
+		<td class=ltr onclick="scrollto('t');">t</td>
+		<td class=ltr onclick="scrollto('u');">u</td>
+		<td class=ltr onclick="scrollto('v');">v</td>
+		<td class=ltr onclick="scrollto('w');">w</td>
+		<td class=ltr onclick="scrollto('x');">x</td>
+		<td class=ltr onclick="scrollto('y');">y</td>
+		<td class=ltr onclick="scrollto('z');">z</td>
+		<td class=ltr onclick="reset();">reset</td>
+	</tr>
+</table>
+
+<div style="overflow-x:auto;">
+<table id=tbl>
+	<!--
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Hebrew Name</th>
+		</tr>
+	</thead>
+-->
+	<tbody>
+	</tbody>
+</table>
+</div>
+<script src="js/db01.js"></script>
+<script src="js/param.js"></script>
+<script>
+var searchString = '';
+var YahrList = JSON.parse(YahrzeitList);
+var currentIDX;
+//YahrList.Yahrzeits.reverse();
+function reset(){
+	searchString = '';
+}
+
+function scrollto(let){
+			var sbar = document.getElementById("searchBar");
+			searchString += let;
+			cleanUpTable();
+			showNames(searchString);
+			if(searchString.length > 3) searchString = '';
+}
+
+function cleanUpTable(){
+	var tbl = document.getElementById("tbl");
+	for (var i=tbl.rows.length-1; i > -1; i--){
+		tbl.deleteRow(i);
+	}
+}
+
+function showNames(name){
+	var tbl = document.getElementById("tbl");
+	var rowCount = 0;
+	for (var i=0; i < YahrList.Yahrzeits.length; i++){
+			//console.log(name + ":" + i);
+			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
+					var row = tbl.insertRow(0);
+					if(rowCount % 2){
+						row.className = "rowColor00";
+					} else {
+						row.className = "rowColor01";
+					}
+					var cell1 = row.insertCell(0);
+					var nm = '';
+					if(YahrList.Yahrzeits[i].Name.trim() !== ''){
+						nm = YahrList.Yahrzeits[i].Name;
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm += " { " + YahrList.Yahrzeits[i].HName + " } ";
+						}
+					} else {
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm = YahrList.Yahrzeits[i].HName;
+						}
+					}
+					console.log(i + ":(" + rowCount + ")" + YahrList.Yahrzeits[i].ID);
+					cell1.innerHTML = "<span onclick='choose(" + YahrList.Yahrzeits[i].ID + ")'>" + nm + "</span>";
+					cell1.className = "cell";
+					//YahrList.Yahrzeits[i].Name + "{" + YahrList.Yahrzeits[i].HName + "}";
+					//cell2.innerHTML = ;
+					//cell3.innerHTML = "<button onclick='ShowName(" + YahrList.Yahrzeits[i].ID + ");'>Click</button>";
+					rowCount++;
+				}
+			}
+		}
+
+function clickEdit(){
+	//alert(currentIDX);
+	//console.log(YahrList.Yahrzeits[currentIDX]);
+	var params = buildParamString(YahrList, currentIDX);
+	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+
+	var choice = document.getElementById("choice");
+	choice.style.display = "none";
+}
+
+function choose(id){
+	var choice = document.getElementById("choice");
+	choice.style.display = "inline";
+	var editChoice = document.getElementById("editChoice");
+	currentIDX = id;
+//	alert(id);
+}
+</script>
+</body>
+
+</html>

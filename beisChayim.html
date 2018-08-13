@@ -6,8 +6,11 @@
 <title>Beis Chayim</title>
 </head>
 <body id=body class=bg onload="firstLoad();">
-<h1 onmouseover="showIt();" >Beis Chayim</h1>
-<select id=monthSelect onchange="setMonth();">
+<div id=security>
+	<input id=secInput type=password width=20px onchange="checkIt();"/>
+</div>
+<h1 onmouseover="showSecurity();" >Beis Chayim</h1>
+<select id=monthSelect onchange="doit();">
 	<option value="Nissan">Nissan</option>
 	<option value="Iyyar">Iyyar</option>
 	<option value="Sivan">Sivan</option>
@@ -23,9 +26,10 @@
 </select>
 <select id=actionSelect onchange="doAction();">
 	<option value="nothing"></option>
-	<option value="addNew">New</option>
+	<option value="new">New</option>
 	<option value="edit">Edit</option>
 	<option value="select">Select</option>
+	<option value="config">Config</option>
 </select>
 
 <div id="wholeThing">
@@ -42,22 +46,51 @@
 	<div id=sbar03></div>
 	<div id=sbar04></div>
 	<div id=sbar05></div>
+	<div id=sbar06></div>
+	<div id=sbar07></div>
+	<div id=sbar08></div>
+	<div id=sbar09></div>
+	<div id=sbar010></div>
+	<div id=sbar011></div>
+	<div id=sbar012></div>
+	<div id=sbar013></div>
+	<div id=sbar014></div>
+	<div id=sbar015></div>
+	<div id=sbar016></div>
+
 </div>
+<script src="config/BCConfig"></script>
+
 <script src="js/db01.js"></script>
 <script src="js/Control.js"></script>
 <script src="js/Circle.js"></script>
 <script src="js/sideBar.js"></script>
 <script src="js/dtConversion.js"></script>
+<script src="js/param.js"></script>
 
 <script>
-//initialize...
-document.getElementById("actionSelect").value = "";
-document.getElementById("monthSelect").value = "elul";
+var PASSWORD = config.settings["password"];
+hideIt();
+
+function checkIt(){
+		var secInput = document.getElementById("secInput").value;
+		//console.log(secInput + ":" + PASSWORD);
+		if(secInput == PASSWORD){
+			showIt();
+		} else {
+			hideIt();
+		}
+		document.getElementById("secInput").value = '';
+}
 
 function doAction(){
 	var action = document.getElementById("actionSelect");
-	if(action.value == "addNew") startNew();
+	if(action.value == "new") startNew();
 	if(action.value == "edit") startEdit();
+	if(action.value == "select") startSelect();
+	if(action.value == "config") startConfig();
+
+	action.value = "";
 
 	//action.style.display = 'none';
 }
@@ -65,24 +98,20 @@ function doAction(){
 function startNew(){
 	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
 }
+
+function startSelect(){
+	window.open("Select.html",'_blank','scrollbars=1,toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
 function startEdit(){
-
-	var params = "ID=" + YahrList.Yahrzeits[currentName].ID;
-	params += "&Name=" + YahrList.Yahrzeits[currentName].Name;
-	params += "&HName=" + YahrList.Yahrzeits[currentName].HName;
-	params += "&EDate=" + YahrList.Yahrzeits[currentName].EDate;
-	params += "&HDate=" + YahrList.Yahrzeits[currentName].HDate;
-	params += "&Pic01=" + YahrList.Yahrzeits[currentName].Pic01;
-	params += "&Pic02=" + YahrList.Yahrzeits[currentName].Pic02;
-	params += "&BGround=" + YahrList.Yahrzeits[currentName].BGround;
-	params += "&MournBy=" + YahrList.Yahrzeits[currentName].MournBy;
-	params += "&Relationship=" + YahrList.Yahrzeits[currentName].Relationship;
-
-	//params += "&FBook=" + YahrList.Yahrzeits[currentName].Pic02;
-	params += "&Comments01=" + YahrList.Yahrzeits[currentName].Comments01;
-
-	console.log(params);
+	var params = buildParamString(YahrList, currentName);
 	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
+function startConfig(){
+	//var config = JSON.parse(ConfigList);
+	//var params = buildParamString(YahrList, currentName);
+	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
 }
 
 </script>
