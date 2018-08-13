@@ -1,0 +1,1 @@
+var YahrzeitList = '{ "Yahrzeits": [' +

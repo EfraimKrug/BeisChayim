@@ -1,37 +1,52 @@
 <html>
 <head>
-<title>Writing file</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./css/beisChayimEdit.css">
+	<title>Writing file</title>
 </head>
-<body>
-<h3>Careful: the data you put in this form will show up on the monitor!</h3>
+<body class=bgEdit>
+<h3 onclick="alert(createNewID());">Careful: the data you put in this form will show up on the monitor!</h3>
 <table>
-<tr>
-	<td>Name</td><td><input type=text id=name></td>
-</tr>
-<tr>
-	<td>Hebrew Name</td><td><input type=text id=hname></td>
-</tr>
-<tr>
-	<td>English Date</td><td><input type=text id=edate></td>
-</tr>
-<tr>
-	<td>Hebrew Date</td><td><input type=text id=hdate></td>
-</tr>
-<tr>
-	<td>Picture #1</td><td><input type=text id=pic01></td>
-</tr>
-<tr>
-        <td>Picture #2</td><td><input type=text id=pic02></td>
-</tr>
-<tr>
-        <td>Facebook</td><td><input type=text id=fbook></td>
-</tr>
-<tr>
+	<tr>
+		<td>Name</td><td><input type=text id=name></td>
+	</tr>
+	<tr>
+		<td>Background</td><td><input type=text id=bground></td>
+	</tr>
+	<tr>
+		<td>Hebrew Name</td><td><input type=text id=hname></td>
+	</tr>
+	<tr>
+		<td>English Date</td><td><input type=text id=edate></td>
+	</tr>
+	<tr>
+		<td>Hebrew Date</td><td><input type=text id=hdate></td>
+	</tr>
+	<tr>
+		<td>Picture #1</td><td><input type=text id=pic01></td>
+	</tr>
+	<tr>
+	  <td>Picture #2</td><td><input type=text id=pic02></td>
+	</tr>
+	<tr>
+	  <td>Mourned by</td><td><input type=text id=mournby></td>
+	</tr>
+	<tr>
+	  <td>Relationship</td><td><input type=text id=relationship></td>
+	</tr>
+
+	<!--
+	<tr>
+	        <td>Facebook</td><td><input type=text id=fbook></td>
+	</tr>
+	-->
+	<tr>
         <td>Comments</td><td><textarea rows=15 cols=75 id=comments01></textarea></td>
-</tr>
-<tr>
-	<td></td><td><button id=submit onclick=addStuff();>Submit</button></td>
-</tr>
+	</tr>
+	<tr>
+				<td></td>
+				<td><button id=submit onclick=addStuff();>Submit</button></td>
+	</tr>
 </table>
 <style>
 button {
@@ -41,18 +56,49 @@ button {
 }
 </style>
 <!-- <button id=button onclick=doit(); onmouseover="showIt();">Save File</button> -->
+<script src="js/db01.js"></script>
 <script>
+var YahrList = JSON.parse(YahrzeitList);
+
+function createNewID(){
+	var idList = [];
+	for(var i=0; i < YahrList.Yahrzeits.length; i++){
+			if(YahrList.Yahrzeits[i].ID < 99999){
+				idList.push(YahrList.Yahrzeits[i].ID);
+			}
+	}
+
+	// console.log(idList);
+
+	idList.sort();
+	if(idList.length == 0){
+		//console.log("empty");
+		return 90001;
+	} else {
+		return Number(idList[idList.length - 1]) + 1;
+	}
+}
+
 function addStuff(){
+	var nextID = createNewID();
+	alert(nextID);
+	var id = "\"ID\":\"00" + nextID + "\"";
 	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
+	var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
 	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
 	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
 	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
 	var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("pic01").value) + "\"";
 	var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("pic02").value) + "\"";
-	var fbook = "\"FBook\":\"" + escapeHTML(document.getElementById("fbook").value) + "\"";
+	var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("mournby").value) + "\"";
+	var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("relationship").value) + "\"";
+
+	var fbook = "\"FBook\":\"\"";
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
-	var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";
-	download(line, escapeHTML("BEISCHAYIM" + document.getElementById("name").value), "text/plain");
+	//var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";
+	var line = "'{" + id + "," + bground + "," + name + ","  + hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' +";
+	console.log(line);
+	download(line, escapeHTML("$$BC$$New00" + nextID), "text/plain");
 }
 // Function to download data to a file
 function download(data, filename, type) {

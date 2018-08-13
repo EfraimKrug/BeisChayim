@@ -7,7 +7,7 @@
 </head>
 <body id=body class=bg onload="firstLoad();">
 <h1 onmouseover="showIt();" >Beis Chayim</h1>
-<select id=monthSelect onchange="doit();">
+<select id=monthSelect onchange="setMonth();">
 	<option value="Nissan">Nissan</option>
 	<option value="Iyyar">Iyyar</option>
 	<option value="Sivan">Sivan</option>
@@ -50,6 +50,10 @@
 <script src="js/dtConversion.js"></script>
 
 <script>
+//initialize...
+document.getElementById("actionSelect").value = "";
+document.getElementById("monthSelect").value = "elul";
+
 function doAction(){
 	var action = document.getElementById("actionSelect");
 	if(action.value == "addNew") startNew();
@@ -59,7 +63,7 @@ function doAction(){
 }
 
 function startNew(){
-	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
+	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
 }
 function startEdit(){
 
@@ -70,6 +74,10 @@ function startEdit(){
 	params += "&HDate=" + YahrList.Yahrzeits[currentName].HDate;
 	params += "&Pic01=" + YahrList.Yahrzeits[currentName].Pic01;
 	params += "&Pic02=" + YahrList.Yahrzeits[currentName].Pic02;
+	params += "&BGround=" + YahrList.Yahrzeits[currentName].BGround;
+	params += "&MournBy=" + YahrList.Yahrzeits[currentName].MournBy;
+	params += "&Relationship=" + YahrList.Yahrzeits[currentName].Relationship;
+
 	//params += "&FBook=" + YahrList.Yahrzeits[currentName].Pic02;
 	params += "&Comments01=" + YahrList.Yahrzeits[currentName].Comments01;
 

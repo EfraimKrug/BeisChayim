@@ -1,13 +1,18 @@
-
-csv2jsonc.py:
-	Reads inLoad2.csv
-		Created from a download from excel, then run clean01.py
+~/bin/BChStep01.sh -
+		Requires downloaded file to be: ~/code/beisChayim/data/yahrzeits.csv (as downloaded from shulcloud)
+		Creates ~/code/beisChayim/data/out01 and out02
+		Copies file into ~/code/beisChayim/js/db01.js
 
 cleanup01.py:
-	Reads inLoad.csv
+	Reads ~/code/beisChayim/data/yahrzeits.csv
 		Created from a download from excel
 		Removes quotes, commas, and special characters
 
 		Notice: after this runs, commas are: &comma;
 					 quotation marks are: &quot;
+					 backslashes are: $bslash;
+
 					 they have to be changed back somewhere
+
+csv2jsond.py:
+	Creats JSON file...

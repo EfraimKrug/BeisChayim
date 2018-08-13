@@ -1,5 +1,5 @@
 // Control.js
-var currentMonth;
+var currentMonth = "Elul";
 var backgroundTrack = 0;
 var showButton = false;
 
@@ -16,12 +16,9 @@ function showIt(){
 		month.style.display = 'none';
 		showButton = true;
 	}
-	//alert(month.value);
 }
 
-function doit(){
+function setMonth(){
 	var month = document.getElementById("monthSelect");
-	//month.style.display = 'none';
 	currentMonth = month.value;
-	//alert(month.value);
 }

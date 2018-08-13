@@ -5,11 +5,13 @@ def cleanField(field):
 	f1 = first.replace("'", "&quot;")
 	f2 = f1.replace('"', "&quot;")
 	f3 = f2.replace(",", "&comma;")
-	return f3
+	f4 = f3.replace("\\", "&bslash;")
+	return f4
 
 
 #print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('inLoad.csv') as csvfile:
+with open('yahrzeits.csv') as csvfile:
+	lineCount = 0
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
 	l = list(lineread)
 	lineArray = []
@@ -17,6 +19,7 @@ with open('inLoad.csv') as csvfile:
 		if isinstance(field, list)  and len(field) > 0:
 			for f in field:
 				lineArray.append(cleanField(f))
-
-		print(",".join(lineArray))
+		if lineCount > 0:
+			print(",".join(lineArray))
+		lineCount  = lineCount + 1
 		lineArray = []
