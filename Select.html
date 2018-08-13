@@ -109,7 +109,8 @@ function showNames(name){
 						}
 					}
 					console.log(i + ":(" + rowCount + ")" + YahrList.Yahrzeits[i].ID);
-					cell1.innerHTML = "<span onclick='choose(" + YahrList.Yahrzeits[i].ID + ")'>" + nm + "</span>";
+					//cell1.innerHTML = "<span onclick='choose(" + YahrList.Yahrzeits[i].ID + ")'>" + nm + "</span>";
+					cell1.innerHTML = "<span onclick='choose(" + i + ")'>" + nm + "</span>";
 					cell1.className = "cell";
 					//YahrList.Yahrzeits[i].Name + "{" + YahrList.Yahrzeits[i].HName + "}";
 					//cell2.innerHTML = ;
@@ -122,6 +123,7 @@ function showNames(name){
 function clickEdit(){
 	//alert(currentIDX);
 	//console.log(YahrList.Yahrzeits[currentIDX]);
+	console.log(currentIDX);
 	var params = buildParamString(YahrList, currentIDX);
 	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
 
@@ -130,6 +132,7 @@ function clickEdit(){
 }
 
 function choose(id){
+	console.log(id);
 	var choice = document.getElementById("choice");
 	choice.style.display = "inline";
 	var editChoice = document.getElementById("editChoice");

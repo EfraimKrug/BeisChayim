@@ -94,8 +94,9 @@ function addStuffEdit(){
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
 	//var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";
 	var line = "'{" + id + "," + bground + "," + name + ","  + hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' +";
-	console.log(line);
+	//console.log(line);
 	download2(line, escapeHTML("$$BC$$" + ID), "text/plain");
+	//window.close();
 }
 // Function to download data to a file
 function download2(data, filename, type) {

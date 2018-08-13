@@ -30,7 +30,7 @@ function renderSideBarArray(){
 	var listCounter = offset;
 	var slotCounter = 1;
 
-	for (var i=0; i < MAX_SLOTS; i++){
+	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
 		sbar.className = "sbar";
 		sbar.innerHTML = SideBarList[listCounter];
