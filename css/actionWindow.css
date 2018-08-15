@@ -1,7 +1,8 @@
 
 body {
 	background-color:black;
-	background-image: url("../img/sunset000.jpeg");
+	background-image: url("../img/sunset003.jpeg");
+	background-repeat: no-repeat;
 //	height: 100%;
 //	overflow-y:hidden;
 }

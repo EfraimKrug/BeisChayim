@@ -1,0 +1,2 @@
+mv ~/code/beisChayim/data/BCConfig ~/code/beisChayim/config/BCConfig
+firefox ~/code/beisChayim/beisChayim.html

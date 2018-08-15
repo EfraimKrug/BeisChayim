@@ -6,7 +6,7 @@
 </head>
 <body class=bgEdit>
 <h3>Careful: the data you put in this form will show up on the monitor!</h3>
-<div id=ID></div>
+<!-- <div id=ID></div> -->
 <table>
 <tr>
 	<td>Name</td><td><input type=text id=name></td>
@@ -23,7 +23,7 @@
 <tr>
 	<td>Hebrew Date</td><td><input type=text id=hdate></td>
 </tr>
-<<tr>
+<tr>
 		<td>Picture #1</td><td><span class=fname id=pic01 ></span><input id="filename1" type="file" onblur="keepFileName(1);"/></td>
 </tr>
 <tr>
@@ -68,7 +68,6 @@ location.search.substr(1).split("&").forEach(function(item) {
     queryDict[item.split("=")[0]] = item.split("=")[1]
 })
 
-console.log(queryDict);
 var ID = queryDict["ID"];
 document.getElementById("ID").innerHTML = ID;
 document.getElementById("name").value = queryDict["Name"].replace(/%20/g," ");
@@ -83,9 +82,6 @@ document.getElementById("relationship").value = queryDict["Relationship"].replac
 //document.getElementById("fbook").value = queryDict["FBook"].replace(/%20/g," ");
 document.getElementById("comments01").value = queryDict["Comments01"].replace(/%20/g," ");
 </script>
-
 <script src="js/download.js"></script>
 </body>
-
-
 </html>

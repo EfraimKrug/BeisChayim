@@ -1,0 +1,15 @@
+button {
+	width: 175px;
+	height: 39px;
+	display: inline;
+}
+
+#kboard {
+		width: 175px;
+		height: 175px;
+		background-color: white;
+		text_align: center;
+}
+.kb {
+		padding: 15px;
+}

@@ -3,11 +3,18 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="./css/beisChayim.css">
 <link rel="stylesheet" href="./css/sideBar.css">
+<link rel="stylesheet" href="./css/config.css">
 <title>Beis Chayim</title>
 </head>
 <body id=body class=bg onload="firstLoad();">
 <div id=security>
-	<input id=secInput type=password width=20px onchange="checkIt();"/>
+	<!-- <input id=secInput type=text width=10px onchange="checkIt();" onblur="checkIt();"/> -->
+								<table id=kboard>
+									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
+									<tr><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
+									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
+									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
+								</table>
 </div>
 <h1 onmouseover="showSecurity();" >Beis Chayim</h1>
 <select id=monthSelect onchange="doit();">
@@ -68,19 +75,18 @@
 <script src="js/dtConversion.js"></script>
 <script src="js/param.js"></script>
 
+
 <script>
 var PASSWORD = config.settings["password"];
 hideIt();
 
 function checkIt(){
-		var secInput = document.getElementById("secInput").value;
-		//console.log(secInput + ":" + PASSWORD);
-		if(secInput == PASSWORD){
+		if(passkey == PASSWORD){
 			showIt();
+			passkey = "";
 		} else {
 			hideIt();
 		}
-		document.getElementById("secInput").value = '';
 }
 
 function doAction(){
@@ -112,6 +118,23 @@ function startConfig(){
 	//var config = JSON.parse(ConfigList);
 	//var params = buildParamString(YahrList, currentName);
 	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+}
+
+var passkey = "";
+var pkLetterCount = 0;
+
+function kbclick(ky){
+	passkey += ky;
+	if(pkLetterCount > 3){
+		passkey = "";
+		pkLetterCount = 0;
+	}
+	else {
+		if(pkLetterCount == 3){
+			checkIt();
+		}
+		pkLetterCount++;
+	}
 }
 
 </script>
