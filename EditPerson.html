@@ -23,11 +23,11 @@
 <tr>
 	<td>Hebrew Date</td><td><input type=text id=hdate></td>
 </tr>
-<tr>
-	<td>Picture #1</td><td><input type=text id=pic01></td>
+<<tr>
+		<td>Picture #1</td><td><span class=fname id=pic01 ></span><input id="filename1" type="file" onblur="keepFileName(1);"/></td>
 </tr>
 <tr>
-  <td>Picture #2</td><td><input type=text id=pic02></td>
+    <td>Picture #2</td><td><span class=fname id=pic02></span><input id="filename2" type="file" onblur="keepFileName(2);"/></td>
 </tr>
 <tr>
   <td>Mourned by</td><td><input type=text id=mournby></td>
@@ -42,21 +42,27 @@
 </tr>
 -->
 <tr>
-        <td>Comments</td><td><textarea rows=15 cols=75 id=comments01></textarea></td>
+    <td>Comments</td><td><textarea rows=15 cols=75 id=comments01></textarea></td>
 </tr>
 <tr>
-	<td></td><td><button id=submit onclick=addStuffEdit();>Submit</button></td>
+	<td></td><td><button id=submit onclick=addStuff(1);>Submit</button></td>
 </tr>
 </table>
+
 <style>
 button {
 	width: 175px;
 	height: 39px;
 	display: inline;
 }
-</style>
-<script>
 
+.fname {
+  font-style: italic;
+  padding-right: 25px;
+}
+</style>
+
+<script>
 var queryDict = {}
 location.search.substr(1).split("&").forEach(function(item) {
     queryDict[item.split("=")[0]] = item.split("=")[1]
@@ -70,72 +76,15 @@ document.getElementById("bground").value = queryDict["BGround"].replace(/%20/g,"
 document.getElementById("hname").value = queryDict["HName"].replace(/%20/g," ");
 document.getElementById("edate").value = queryDict["EDate"].replace(/%20/g," ");
 document.getElementById("hdate").value = queryDict["HDate"].replace(/%20/g," ");
-document.getElementById("pic01").value = queryDict["Pic01"].replace(/%20/g," ");
-document.getElementById("pic02").value = queryDict["Pic02"].replace(/%20/g," ");
+document.getElementById("pic01").innerHTML = queryDict["Pic01"].replace(/%20/g," ");
+document.getElementById("pic02").innerHTML = queryDict["Pic02"].replace(/%20/g," ");
 document.getElementById("mournby").value = queryDict["MournBy"].replace(/%20/g," ");
 document.getElementById("relationship").value = queryDict["Relationship"].replace(/%20/g," ");
-
 //document.getElementById("fbook").value = queryDict["FBook"].replace(/%20/g," ");
 document.getElementById("comments01").value = queryDict["Comments01"].replace(/%20/g," ");
-
-function addStuffEdit(){
-	var id = "\"ID\":\"" + ID + "\"";
-	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
-	var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
-	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
-	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
-	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
-	var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("pic01").value) + "\"";
-	var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("pic02").value) + "\"";
-	var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("mournby").value) + "\"";
-	var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("relationship").value) + "\"";
-
-	var fbook = "\"FBook\":\"\"";
-	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
-	//var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";
-	var line = "'{" + id + "," + bground + "," + name + ","  + hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' +";
-	//console.log(line);
-	download2(line, escapeHTML("$$BC$$" + ID), "text/plain");
-	//window.close();
-}
-// Function to download data to a file
-function download2(data, filename, type) {
-    var file = new Blob([data], {type: type});
-    if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
-        var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }, 0);
-    }
-}
-
-var escapeHTML = function(unsafe) {
-  return unsafe.replace(/[&<"',>]/g, function(m) {
-    switch (m) {
-      case '&':
-        return '&amp;';
-      case '<':
-        return '&lt;';
-      case '>':
-        return '&gt;';
-      case ',':
-        return '&comma;';
-      case '"':
-        return '&quot;';
-      default:
-        return '&#039;';
-    }
-  });
-};
 </script>
+
+<script src="js/download.js"></script>
 </body>
 
 

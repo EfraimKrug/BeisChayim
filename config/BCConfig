@@ -1,1 +1,1 @@
-var ConfigList = '{ "settings": {"time_factor":"4","password":"abc","slots":"9"}}';
+var ConfigList = '{ "settings": {"time_factor":"2","password":"abc","slots":"2"}}';

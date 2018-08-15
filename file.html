@@ -1,6 +1,12 @@
 <html>
 <body>
-<input id="filename" type="file"/><button onclick="keepIt();">keep it</button>
+<style>
+.fname {
+  font-style: italic;
+  padding-right: 25px;
+}
+</style>
+<span class=fname id=oldfile></span><input id="filename" type="file" value="replace"/><button onclick="keepIt();">keep it</button>
 
 <h1>File work</h1>
 <div id=out></div>
@@ -9,6 +15,10 @@
 <script>
 //var l  = "./img/promale01.jpeg";
 var p = document.getElementById("pic");
+var o = document.getElementById("oldfile");
+o.innerHTML = "stuff.txt";
+var f = document.getElementById("filename");
+f.value = "stuff.txt";
 //p.src = l;
 //alert(p.src);
 
@@ -16,9 +26,8 @@ function keepIt(){
   var d = document.getElementById("out");
   var f = document.getElementById("filename");
   //var p = document.getElementById("pic");
-
-  d.innerHTML = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
-  p.src = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
+  //d.innerHTML = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
+  //p.src = "./img/" + f.value.substring(f.value.lastIndexOf('\\') + 1);
 }
 </script>
 </html>

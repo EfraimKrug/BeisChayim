@@ -3,43 +3,44 @@
 	top: 27px;
 	left:1013px;
 	width:359px;
-	height:39px;
+	height:45px;
 	font-weight: bold;
-	padding: 10px;
-	margin: 10px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	margin: 5px;
 	display:inline;
 }
 
 #sbar02 {
-	top: 92px;
+	top: 97px;
 }
 
 #sbar03 {
-	top: 157px;
+	top: 167px;
 }
 
 #sbar04 {
-	top: 222px;
+	top: 237px;
 }
 
 #sbar05 {
-	top: 287px;
+	top: 307px;
 }
 
 #sbar06 {
-	top: 352px;
+	top: 377px;
 }
 
 #sbar07 {
-	top: 417px;
+	top: 447px;
 }
 
 #sbar08 {
-	top: 482px;
+	top: 515px;
 }
 
 #sbar09 {
-	top: 547px;
+	top: 587px;
 }
 
 .sbar {
