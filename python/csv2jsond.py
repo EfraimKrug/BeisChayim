@@ -1,6 +1,6 @@
 import csv
 print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('out01') as csvfile:
+with open('data/out01') as csvfile:
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
 	l = list(lineread)
 
@@ -60,6 +60,7 @@ with open('out01') as csvfile:
 		newline.append("\"Pic01\":\"\"")
 		newline.append("\"Pic02\":\"\"")
 		newline.append("\"FBook\":\"\"")
+		newline.append("\"PayLevel\":\"\"")
 		newline.append("\"Comments01\":\"\"")
 
 		if linecount > 1:

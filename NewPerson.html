@@ -38,6 +38,16 @@
   			<td>Relationship</td><td><input type=text id=relationship></td>
 </tr>
 <tr>
+  <td>Pay Level</td><td><select id=paylevel onchange="setPayLevel();">
+																											<option value="0">none</option>
+																											<option value="1">copper</option>
+																											<option value="2">bronze</option>
+																											<option value="3">silver</option>
+																											<option value="4">gold</option>
+																										</select>
+	</td>
+</tr>
+<tr>
         <td>Comments</td><td><textarea rows=15 cols=75 id=comments01></textarea></td>
 </tr>
 <tr>
@@ -59,77 +69,10 @@ button {
 var YahrList = JSON.parse(YahrzeitList);
 var ID;
 
-// function addStuff(){
-// 	var nextID = createNewID();
-// 	alert(nextID);
-// 	var id = "\"ID\":\"00" + nextID + "\"";
-// 	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
-// 	var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
-// 	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
-// 	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
-// 	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
-// 	var pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
-// 	var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
-// 	var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("mournby").value) + "\"";
-// 	var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("relationship").value) + "\"";
-//
-// 	var fbook = "\"FBook\":\"" + escapeHTML(document.getElementById("fbook").value) + "\"";
-// 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
-// 	//var line = "'{" + name + "," + hname + "," + edate + "," + hdate + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "}'";
-// 	var line = "'{" + id + "," + bground + "," + name + ","  + hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' +";
-// 	console.log(line);
-// 	download(line, escapeHTML("$$BC$$New00" + nextID), "text/plain");
-// }
-// Function to download data to a file
-// function download(data, filename, type) {
-//     var file = new Blob([data], {type: type});
-//     if (window.navigator.msSaveOrOpenBlob) // IE10+
-//         window.navigator.msSaveOrOpenBlob(file, filename);
-//     else { // Others
-//         var a = document.createElement("a"),
-//                 url = URL.createObjectURL(file);
-//         a.href = url;
-//         a.download = filename;
-//         document.body.appendChild(a);
-//         a.click();
-//         setTimeout(function() {
-//             document.body.removeChild(a);
-//             window.URL.revokeObjectURL(url);
-//         }, 0);
-//     }
-// }
-// function doit(){
-// 	var data = "This is the data for the file";
-// 	var filename = "down.txt";
-// 	var type = "text/plain";
-// 	download(data,filename,type);
-// }
-// function changeIt(){
-// 	var btn = document.getElementById("button");
-// 	if(btn.style.display == 'none'){
-// 		btn.style.display = 'inline';
-// 		return;
-// 	}
-// 	btn.style.display = 'none';
-// }
-// var escapeHTML = function(unsafe) {
-//   return unsafe.replace(/[&<"',>]/g, function(m) {
-//     switch (m) {
-//       case '&':
-//         return '&amp;';
-//       case '<':
-//         return '&lt;';
-//       case '>':
-//         return '&gt;';
-//       case ',':
-//         return '&comma;';
-//       case '"':
-//         return '&quot;';
-//       default:
-//         return '&#039;';
-//     }
-//   });
-// };
+function setPayLevel(){
+		//var payLevelElt = document.getElementById("paylevel");
+		//payLevel = payLevelElt.value;
+}
 </script>
 </body>
 

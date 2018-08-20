@@ -6,7 +6,7 @@
 </head>
 <body class=bgEdit>
 <h3>Careful: the data you put in this form will show up on the monitor!</h3>
-<!-- <div id=ID></div> -->
+<div id=ID></div>
 <table>
 <tr>
 	<td>Name</td><td><input type=text id=name></td>
@@ -34,6 +34,16 @@
 </tr>
 <tr>
   <td>Relationship</td><td><input type=text id=relationship></td>
+</tr>
+<tr>
+  <td>Pay Level</td><td><select id=paylevel onchange="setPayLevel();">
+																											<option value="0">none</option>
+																											<option value="1">copper</option>
+																											<option value="2">bronze</option>
+																											<option value="3">silver</option>
+																											<option value="4">gold</option>
+																										</select>
+	</td>
 </tr>
 
 <!--
@@ -81,6 +91,12 @@ document.getElementById("mournby").value = queryDict["MournBy"].replace(/%20/g,"
 document.getElementById("relationship").value = queryDict["Relationship"].replace(/%20/g," ");
 //document.getElementById("fbook").value = queryDict["FBook"].replace(/%20/g," ");
 document.getElementById("comments01").value = queryDict["Comments01"].replace(/%20/g," ");
+document.getElementById("paylevel").value = queryDict["PayLevel"].replace(/%20/g," ");
+
+function setPayLevel(){
+		//var payLevelElt = document.getElementById("paylevel");
+		//payLevel = payLevelElt.value;
+}
 </script>
 <script src="js/download.js"></script>
 </body>

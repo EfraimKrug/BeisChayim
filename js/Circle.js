@@ -6,6 +6,7 @@ TIME_FACTOR = config.settings["time_factor"];
 FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
 var SideBarList = [];
+var PayLevelList = [];
 var currentName = 0;
 
 function gotoFBook(){
@@ -44,7 +45,6 @@ function loadElement(i){
 	var cName = "bg" + n;
 	bd.className = cName;
 
-	//console.log("loading: " + i);
 	var HDate = document.getElementById("HDate");
 	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 
@@ -73,6 +73,6 @@ function loadElement(i){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	currentName = i;
-	//console.log("loading sidebar...");
-	loadSideBar();
+
+	setTimeout(loadSideBar, 1500)
 }

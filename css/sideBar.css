@@ -4,7 +4,7 @@
 	left:1013px;
 	width:359px;
 	height:45px;
-	font-weight: bold;
+	font-weight: normal;
 	padding-top: 5px;
 	padding-bottom: 15px;
 	margin: 5px;
@@ -43,8 +43,49 @@
 	top: 587px;
 }
 
-.sbar {
-	border: 2px solid brown;
-	color:brown;
-	background-color: black;
+.sbar, .sbarpl0, .sbarpl {
+	border: 2px solid #fffbf1;
+	color:#fffbf1;
+	font-family:sans-serif;
+	text-shadow: 2px 2px #000000;
+	background-image: url('../img/PlaqueBG.gif');
+	background-repeat:repeat;
+}
+
+.sbarpl1 {
+	border: 2px solid #fffbf1;
+	color:#fffbf1;
+	font-family:sans-serif;
+	text-shadow: 2px 2px #000000;
+	background-image: url('../img/bgbronze.jpg');
+	background-repeat:repeat;
+}
+
+.sbarpl2 {
+	border: 2px solid #fffbf1;
+	color:#fffbf1;
+	font-family:sans-serif;
+	text-shadow: 2px 2px #000000;
+	background-image: url('../img/bgcopper.jpg');
+	background-repeat:repeat;
+}
+
+.sbarpl3 {
+	border: 2px solid #fffbf1;
+	color:#fffbf1;
+	font-size: 1.1em;
+	font-family:sans-serif;
+	text-shadow: 2px 2px #000000;
+	background-image: url('../img/bgsilver.jpg');
+	background-repeat:repeat;
+}
+
+.sbarpl4 {
+	border: 2px solid #fffbf1;
+	color:#fffbf1;
+	font-size: 1.2em;
+	font-family:sans-serif;
+	text-shadow: 2px 2px #000000;
+	background-image: url('../img/bggold.jpg');
+	background-repeat:repeat;
 }

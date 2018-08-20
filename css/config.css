@@ -7,9 +7,12 @@ button {
 #kboard {
 		width: 175px;
 		height: 175px;
-		background-color: white;
+		background-color: beige;
 		text_align: center;
+		border: 8px solid black;
 }
 .kb {
 		padding: 15px;
+		margin: 15px;
+		border: 1px dashed blue;
 }

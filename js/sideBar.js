@@ -6,7 +6,7 @@ function resetSideBar(){
 		var max = parseInt(MAX_SLOTS) + 1;
 		for(var i=1; i < max; i++){
 			var name = "sbar0" + i;
-			console.log("(" + i + "::" + max + ")" + MAX_SLOTS + ":" + name);
+			//console.log("(" + i + "::" + max + ")" + MAX_SLOTS + ":" + name);
 			var e = document.getElementById(name);
 			e.className = "";
 		}
@@ -26,6 +26,11 @@ function SideBarCounterInc(SBCounter){
 	return SBCounter + 1;
 }
 
+function getBGround(pl){
+	console.log("sbarpl" + pl);
+	return "sbarpl" + pl;
+}
+
 function renderSideBarArray(){
 	var listCounter = offset;
 	var slotCounter = 1;
@@ -33,6 +38,7 @@ function renderSideBarArray(){
 	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
 		sbar.className = "sbar";
+		sbar.className = getBGround(PayLevelList[listCounter]);
 		sbar.innerHTML = SideBarList[listCounter];
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
@@ -60,7 +66,7 @@ function loadSideBarArray(i){
 	for(var j=0; j < spot; j++){
 		if(SideBarList[j] == outLine) return;
 	}
-
+	PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel;
 	SideBarList[spot] = outLine;
 }
 

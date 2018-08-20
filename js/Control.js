@@ -6,7 +6,7 @@ var showButton = false;
 
 // configuration files...
 var config = JSON.parse(ConfigList);
-console.log(config);
+//console.log(config);
 
 // ========== selecting the month ======================
 function showSecurity(){
@@ -15,6 +15,8 @@ function showSecurity(){
 	if(showButtonSec){
 		security.style.display = 'inline';
 		showButtonSec = false;
+		passkey = '';
+		pkLetterCount = 0;
 	} else {
 		security.style.display = 'none';
 		showButtonSec = true;

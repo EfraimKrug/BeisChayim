@@ -81,9 +81,11 @@ var PASSWORD = config.settings["password"];
 hideIt();
 
 function checkIt(){
+	//console.log("checkIt: " + passkey);
 		if(passkey == PASSWORD){
 			showIt();
 			passkey = "";
+			pkLetterCount = 0;
 		} else {
 			hideIt();
 		}
@@ -103,21 +105,23 @@ function doAction(){
 
 function startNew(){
 	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	hideIt();
 }
 
 function startSelect(){
 	window.open("Select.html",'_blank','scrollbars=1,toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	hideIt();
 }
 
 function startEdit(){
 	var params = buildParamString(YahrList, currentName);
 	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	hideIt();
 }
 
 function startConfig(){
-	//var config = JSON.parse(ConfigList);
-	//var params = buildParamString(YahrList, currentName);
 	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	hideIt();
 }
 
 var passkey = "";

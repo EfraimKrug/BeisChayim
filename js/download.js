@@ -40,6 +40,7 @@ function addStuff(edit){
 	if(!edit){
 		ID = createNewID();
 	}
+
 	var id = "\"ID\":\"" + ID + "\"";
 	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
 	var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
@@ -57,11 +58,15 @@ function addStuff(edit){
 	}
 	var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("mournby").value) + "\"";
 	var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("relationship").value) + "\"";
-
+	var pl = document.getElementById("paylevel").value;
+	if(pl == ""){
+		pl = "0";
+	}
+	var paylevel = "\"PayLevel\":\"" + pl + "\"";
 	var fbook = "\"FBook\":\"\"";
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
 	var line = "'{" + id + "," + bground + "," + name + ","  +
-	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," +
+	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
 	pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' + " ;
 	if(!edit){
 		download(line, escapeHTML("$$BC$$New00" + ID), "text/plain");
@@ -89,7 +94,7 @@ function download(data, filename, type) {
 }
 
 function escapeHTML(usafe) {
-  return usafe.replace(/[&<"',>]/g, function(m) {
+  return usafe.replace(/[&<"',>\n\r]/g, function(m) {
     switch (m) {
       case '&':
         return '&amp;';
@@ -101,6 +106,10 @@ function escapeHTML(usafe) {
         return '&comma;';
       case '"':
         return '&quot;';
+			case '\n':
+				return '&#013;';
+			case '\r':
+				return '&#010;';
       default:
         return '&#039;';
     }

@@ -11,6 +11,7 @@ function buildParamString(YahrList, currentIDX){
   params += "&Pic02=" + YahrList.Yahrzeits[currentIDX].Pic02;
   params += "&MournBy=" + YahrList.Yahrzeits[currentIDX].MournBy;
   params += "&Relationship=" + YahrList.Yahrzeits[currentIDX].Relationship;
+  params += "&PayLevel=" + YahrList.Yahrzeits[currentIDX].PayLevel;
 
   //params += "&FBook=" + YahrList.Yahrzeits[currentName].Pic02;
   params += "&Comments01=" + YahrList.Yahrzeits[currentIDX].Comments01;

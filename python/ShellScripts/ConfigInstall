@@ -1,2 +1,6 @@
-mv ~/code/beisChayim/data/BCConfig ~/code/beisChayim/config/BCConfig
-firefox ~/code/beisChayim/beisChayim.html
+cd ~/code/beisChayim
+mv data/BCConfig config/BCConfig
+
+# restart browswer
+pkill -f firefox
+firefox beisChayim.html &
