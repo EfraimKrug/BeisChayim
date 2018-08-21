@@ -41,8 +41,14 @@ function getNum(i){
 
 function loadElement(i){
 	var bd = document.getElementById("body");
-	var n = i % 5;
-	var cName = "bg" + n;
+	//var n = i % 5;
+	var cName = "";
+	console.log("[" + YahrList.Yahrzeits[i].PayLevel + "]");
+	if(!YahrList.Yahrzeits[i].PayLevel){
+		cName = "bg0";
+	} else {
+		cName = "bg" + YahrList.Yahrzeits[i].PayLevel;
+	}
 	bd.className = cName;
 
 	var HDate = document.getElementById("HDate");
@@ -64,12 +70,18 @@ function loadElement(i){
 	if(Name.innerHTML == HName.innerHTML){
 		HName.innerHTML = "";
 	}
+
 	var EDate = document.getElementById("EDate");
 	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
-	var Pic01  = document.getElementById("Pic01");
-	Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
-	var Pic02  = document.getElementById("Pic02");
-	Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
+	if(YahrList.Yahrzeits[i].PayLevel > 1){
+		var Pic01  = document.getElementById("Pic01");
+		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
+	}
+
+	if(YahrList.Yahrzeits[i].PayLevel > 2){
+		var Pic02  = document.getElementById("Pic02");
+		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
+	}
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	currentName = i;

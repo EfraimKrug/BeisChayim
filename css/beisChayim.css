@@ -1,11 +1,18 @@
 
 body {
-	background-color:black;
 	height: 100%;
 	overflow-y:hidden;
 }
 
 .bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {
+		background-color:black;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {
     background-image: url("../img/sunset001.jpeg");
     height: 100%;
     background-position: center;
@@ -14,23 +21,31 @@ body {
 }
 .bg0 {
     background-image: url("../img/sunset000.jpeg");
+} */
+
+.bg0 {
+		background-color:black;
+}
+
+.bg1 {
+    background-image: url("../img/sunset000.jpeg");
 }
 
 .bg2 {
-    background-image: url("../img/sunset002.jpeg");
+    background-image: url("../img/sunset003.jpeg");
 }
 
 .bg3 {
-    background-image: url("../img/sunset003.jpeg");
+    background-image: url("../img/sunset005.jpeg");
 }
 
 .bg4 {
     background-image: url("../img/sunset004.jpeg");
 }
 
-.bg5 {
+/* .bg5 {
     background-image: url("../img/sunset005.jpeg");
-}
+} */
 
 
 #number {
