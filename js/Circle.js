@@ -76,33 +76,13 @@ function loadElement(i){
 	}
 	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
 
-<<<<<<< HEAD
-	EDate = document.getElementById("EDate");
-
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var DDate = new Date(YahrList.Yahrzeits[i].EDate);
-	var EnDate = new Date(DDate.getTime() + DDate.getTimezoneOffset() * 60000);
-
-	var m = months[EnDate.getMonth()]
-	var d = EnDate.getDate();
-	var y = EnDate.getYear() + 1900;
-	var sep = ", ";
-	if(!m) m = "";
-	if(!d){d = ""; sep = "";}
-	if(!y){y = ""; sep = "";}
-	EDate.innerHTML = m + " " + d + sep + y;
-
-	var Pic01  = document.getElementById("Pic01");
-	var Pic02  = document.getElementById("Pic02");
-
-=======
 	var EDate = document.getElementById("EDate");
 	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
 	var Pic01  = document.getElementById("Pic01");
 	var Pic02  = document.getElementById("Pic02");
->>>>>>> 874f4f97df2f8dc22a5c22fdeffba7c353529fb3
+
 	Pic01.src = "";
 	Pic02.src = "";
 

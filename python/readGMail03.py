@@ -44,8 +44,12 @@ def read_email_from_gmail():
                     msg = email.message_from_string(response_part[1])
                     email_subject = msg['subject']
                     email_from = msg['from']
-                    print 'From : ' + email_from + '\n'
-                    print 'Subject : ' + email_subject + '\n'
+                    body = msg['body']
+                    r = email_subject.index("Post")
+                    if r > -1:
+                        print 'From : ' + email_from + '\n'
+                        print 'Subject : ' + email_subject + '\n'
+                        print 'Body : ' + body
 
     except Exception, e:
         print str(e)
