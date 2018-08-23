@@ -12,7 +12,7 @@ with open('data/out01') as csvfile:
 		newline = []
 		l2 = list(x)
 		newline.append("'{\"ID\":\"" + l2[0][0] + "\"")
-		newline.append("\"BGround\":\"\"")
+		#newline.append("\"BGround\":\"\"")
 		if len(l2[1]) > 0:
 			newline.append("\"Name\":\"" + l2[1][0] + "\"")
 		else:
@@ -59,7 +59,7 @@ with open('data/out01') as csvfile:
 
 		newline.append("\"Pic01\":\"\"")
 		newline.append("\"Pic02\":\"\"")
-		newline.append("\"FBook\":\"\"")
+		#newline.append("\"FBook\":\"\"")
 		newline.append("\"PayLevel\":\"\"")
 		newline.append("\"Comments01\":\"\"")
 

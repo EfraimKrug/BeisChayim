@@ -2,6 +2,9 @@
 
 var fileName01 = "";
 var fileName02 = "";
+var lastNewID = 0;
+
+//localStorage.removeItem("lastNewID");
 
 function keepFileName(picNum){
 	if(picNum == 1){
@@ -15,7 +18,6 @@ function keepFileName(picNum){
 	}
 }
 
-
 function createNewID(){
 	var idList = [];
 	for(var i=0; i < YahrList.Yahrzeits.length; i++){
@@ -24,26 +26,37 @@ function createNewID(){
 			}
 	}
 
-	// console.log(idList);
+	lastNewID = localStorage.getItem("lastNewID") || 90000;
+	//if(localStorage.getItem("lastNewID")){
+	//	lastNewID = localStorage.getItem("lastNewID");
+	//} else {
+	//	lastNewID = 90000;
+	localStorage.setItem("lastNewID",lastNewID);
+	//}
 
+	idList.push(lastNewID);
 	idList.sort();
+
 	if(idList.length == 0){
-		//console.log("empty");
-		return 90001;
+		localStorage.setItem("lastNewID",90001);
+		return "0090001";
 	} else {
-		return Number(idList[idList.length - 1]) + 1;
+		var h = Number(idList[idList.length - 1]) + 1;
+		localStorage.setItem("lastNewID", h);
+		return (Number(idList[idList.length - 1]) + 1);
 	}
 }
 
 
 function addStuff(edit){
+	var id = "\"ID\":\"" + ID + "\"";
 	if(!edit){
 		ID = createNewID();
+		id = "\"ID\":\"00" + ID + "\"";
 	}
 
-	var id = "\"ID\":\"" + ID + "\"";
 	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
-	var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
+	//var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
 	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
 	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
 	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
@@ -63,7 +76,7 @@ function addStuff(edit){
 		pl = "0";
 	}
 	var paylevel = "\"PayLevel\":\"" + pl + "\"";
-	var fbook = "\"FBook\":\"\"";
+	//var fbook = "\"FBook\":\"\"";
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
 	var line = "'{" + id + "," + bground + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +

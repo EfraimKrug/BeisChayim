@@ -47,7 +47,7 @@
 	<div id=DPic01><img id=Pic01 src="./img/soldiers00x1.jpeg" alt=""></div>
 	<div id=DPic02><img id=Pic02 src="./img/elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
-	<div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div>
+	<!-- <div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div> -->
 	<div id=sbar01></div>
 	<div id=sbar02></div>
 	<div id=sbar03></div>
@@ -115,7 +115,7 @@ function startSelect(){
 
 function startEdit(){
 	var params = buildParamString(YahrList, currentName);
-	window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	window.open("EditPerson.html?" + params, '_blank','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,directories=0, width=750px,height=750px');
 	hideIt();
 }
 

@@ -27,7 +27,7 @@ function SideBarCounterInc(SBCounter){
 }
 
 function getBGround(pl){
-	console.log("sbarpl" + pl);
+	//console.log("sbarpl" + pl);
 	return "sbarpl" + pl;
 }
 
