@@ -32,14 +32,17 @@ body {
 }
 
 .bg2 {
+		font-size:1.1em;
     background-image: url("../img/sunset003.jpeg");
 }
 
 .bg3 {
+		font-size:1.2em;
     background-image: url("../img/sunset005.jpeg");
 }
 
 .bg4 {
+		font-size:1.3em;
     background-image: url("../img/sunset004.jpeg");
 }
 
@@ -64,10 +67,36 @@ h1 {
 	top: 127px;
 	left: 528px;
 	width: 365px;
-	color: yellow;
 	font-size: 27px;
 }
+
+.Name, .Name0, .Name1, .Name2, .Name3, .Name4 {
+	position: fixed;
+	top: 127px;
+	left: 528px;
+	width: 365px;
+	color: white;
+	font-size: 27px;
+}
+
+.Name1, .Name2 {
+	color: yellow;
+}
+
+.Name3, .Name4 {
+	color: purple;
+}
+
 #HName {
+	position: fixed;
+	top: 207px;
+	left: 528px;
+	width: 365px;
+	//color: cyan;
+	font-size: 27px;
+}
+
+.HName, .HName0, .HName1, .HName2, .HName3, .HName4 {
 	position: fixed;
 	top: 207px;
 	left: 528px;
@@ -76,11 +105,19 @@ h1 {
 	font-size: 27px;
 }
 
+.HName1, .HName2 {
+	color: black;
+}
+
+.HName3, .HName4 {
+	color: purple;
+}
+
 #EDate, #HDate {
 	position: fixed;
 	top: 287px;
 	left: 528px;
-	color: cyan;
+//	color: cyan;
 	font-size: 27px;
 }
 
@@ -88,12 +125,40 @@ h1 {
 	top: 327px;
 }
 
+.edate, .edate0 {
+	color:cyan;
+}
+
+.hdate, .hdate0 {
+	color:cyan;
+}
+
+.edate1,.edate2,.edate3,.edate4
+.hdate1,.hdate2,.hdate4{
+	color: black;
+}
+
+.hdate3 {
+	color:yellow;
+}
+
 #Comments01 {
 	position: fixed;
 	top: 707px;
 	left: 128px;
-	color: cyan;
 	font-size: 17px;
+}
+
+.Comment010 {
+	color: cyan;
+}
+
+.Comment011, .Comment012, .Comment014 {
+	color: black;
+}
+
+ .Comment013 {
+	color:yellow;
 }
 
 #Pic01{

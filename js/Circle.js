@@ -53,6 +53,7 @@ function loadElement(i){
 
 	var HDate = document.getElementById("HDate");
 	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
+	HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 
 	//FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
 	//if(YahrList.Yahrzeits[i].FBook.length < 17){
@@ -65,12 +66,17 @@ function loadElement(i){
 	//}
 	var Name = document.getElementById("Name");
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
+	Name.className = "Name" + YahrList.Yahrzeits[i].PayLevel;
+	//console.log("[" + Name.className + "]");
+
 	var HName = document.getElementById("HName");
 	HName.innerHTML = YahrList.Yahrzeits[i].HName;
 	if(Name.innerHTML == HName.innerHTML){
 		HName.innerHTML = "";
 	}
+	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
 
+<<<<<<< HEAD
 	EDate = document.getElementById("EDate");
 
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -89,6 +95,14 @@ function loadElement(i){
 	var Pic01  = document.getElementById("Pic01");
 	var Pic02  = document.getElementById("Pic02");
 
+=======
+	var EDate = document.getElementById("EDate");
+	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
+	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
+
+	var Pic01  = document.getElementById("Pic01");
+	var Pic02  = document.getElementById("Pic02");
+>>>>>>> 874f4f97df2f8dc22a5c22fdeffba7c353529fb3
 	Pic01.src = "";
 	Pic02.src = "";
 
@@ -101,6 +115,8 @@ function loadElement(i){
 	}
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
+	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
+
 	currentName = i;
 
 	setTimeout(loadSideBar, 1500)

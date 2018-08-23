@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"193945","BGround":"","Name":" Levine","HName":"","EDate":"","HDate":"        ","MournBy":"","Relationship":"","Pic01":"","Pic02":"","FBook":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193254","BGround":"","Name":" Naachum","HName":"Nachum","EDate":"","HDate":"22 Kislev","MournBy":"","Relationship":"","Pic01":"","Pic02":"","FBook":"","PayLevel":"","Comments01":""},' + 
@@ -2449,3 +2450,5 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"193842","BGround":"","Name":"Zvi Gritushkin","HName":"Zvi Ben Guttman","EDate":"1953-02-23","HDate":"08 Adar 5713","MournBy":"","Relationship":"","Pic01":"","Pic02":"","FBook":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"192881","BGround":"","Name":"Zvi Hirsh Ben Mnachem Mendel","HName":"Zvi Hirsh Ben Mnachem Mendel","EDate":"1930-09-08","HDate":"15 Elul 5690","MournBy":"","Relationship":"","Pic01":"","Pic02":"","FBook":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193319","BGround":"","Name":"Zvi Kayshansku","HName":"Zvi Ben Velvel","EDate":"","HDate":"04 Tevet","MournBy":"","Relationship":"","Pic01":"","Pic02":"","FBook":"","PayLevel":"","Comments01":""}]}';
+=======
+>>>>>>> 874f4f97df2f8dc22a5c22fdeffba7c353529fb3
