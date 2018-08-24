@@ -85,12 +85,16 @@ function loadElement(i){
 
 	Pic01.src = "";
 	Pic02.src = "";
+	Pic01.style.visibility = "hidden";
+	Pic02.style.visibility = "hidden";
 
 	if(YahrList.Yahrzeits[i].PayLevel > 1){
+		Pic01.style.visibility = "visible";
 		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	}
 
 	if(YahrList.Yahrzeits[i].PayLevel > 2){
+		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}
 	var Comments01 = document.getElementById("Comments01");

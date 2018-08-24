@@ -78,9 +78,9 @@ function addStuff(edit){
 	var paylevel = "\"PayLevel\":\"" + pl + "\"";
 	//var fbook = "\"FBook\":\"\"";
 	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
-	var line = "'{" + id + "," + bground + "," + name + ","  +
+	var line = "'{" + id + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
-	pic01 + "," + pic02 + "," + fbook + "," + comments01 + "},' + " ;
+	pic01 + "," + pic02 + "," + comments01 + "},' + " ;
 	if(!edit){
 		download(line, escapeHTML("$$BC$$New00" + ID), "text/plain");
 	} else {

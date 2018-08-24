@@ -163,14 +163,20 @@ h1 {
 
 #Pic01{
 	position: fixed;
+	visibility: visible;
 	top: 127px;
 	left: 128px;
+	width: 365px;
+	height: 256px;
 }
 
 #Pic02{
 	position: fixed;
+	visibility: visible;
 	top: 427px;
 	left: 628px;
+	width: 365px;
+	height: 256px;
 }
 
 #fbook,#gotofbook{

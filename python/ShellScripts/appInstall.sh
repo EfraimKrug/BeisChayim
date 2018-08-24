@@ -1,4 +1,6 @@
 # install beisChayim
+# note - install python
+# note - install firefox - configure options->download->always ask
 [ -e ~/Downloads ] || echo "No Downloads folder: please create ~/Downloads"
 [ -e ~/Downloads/BeisChayim-version01.zip ] || echo "No zip file! Please download BeisChayim-version01.zip (github/EfraimKrug)"
 [ -e ~/bcCode ] || mkdir ~/bcCode
