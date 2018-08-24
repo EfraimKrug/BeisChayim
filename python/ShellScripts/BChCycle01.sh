@@ -16,13 +16,15 @@ cp ~/code/beisChayim/js/db01.js ~/code/beisChayim/data/work/db01-0.js
 
 # create the new db01.js
 cp ~/code/beisChayim/data/out02 ~/code/beisChayim/js/db01.js
+cd ~/code/beisChayim
 python ~/code/beisChayim/python/collect.py > ~/code/beisChayim/data/out03
 
 # store all the update files
 mv ~/code/beisChayim/data/\$\$BC\$\$* ~/code/beisChayim/data/used
 cp ~/code/beisChayim/data/out03 ~/code/beisChayim/js/db01.js
+cp ~/code/beisChayim/data/out03 ~/code/beisChayim/data/out02
 
 # restart browswer
 pkill -f firefox
-firefox ~/code/beisChayim/beisChayim.html
+firefox ~/code/beisChayim/beisChayim.html &
 ###############################################################################
