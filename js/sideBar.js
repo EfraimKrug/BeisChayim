@@ -38,6 +38,16 @@ function renderSideBarArray(){
 	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
 		sbar.className = "sbar";
+		sbar.style.left = getLeftOffset(3,0);
+		if(slotCounter < 4){
+			sbar.style.top = getTopOffset(1, slotCounter);
+		} else {
+			if(slotCounter < 8){
+				sbar.style.top = getTopOffset(2, slotCounter - 4);
+			} else {
+				sbar.style.top = getTopOffset(3, slotCounter - 8);
+			}
+		}
 		sbar.className = getBGround(PayLevelList[listCounter]);
 		sbar.innerHTML = SideBarList[listCounter];
 		listCounter = ListCounterInc(listCounter);
