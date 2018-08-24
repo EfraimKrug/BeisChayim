@@ -13,6 +13,33 @@ var currentName = 0;
 //	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
 //}
 
+function positionElts(){
+		var name = document.getElementById("Name");
+		name.style.top = getTopOffset(2,0);
+		name.style.left = getLeftOffset(2,0);
+
+		var hname = document.getElementById("HName");
+		hname.style.top = getTopOffset(2,1);
+		hname.style.left = getLeftOffset(2,0);
+
+		var hdate = document.getElementById("HDate");
+		hdate.style.top = getTopOffset(2,2);
+		hdate.style.left = getLeftOffset(2,0);
+
+		var edate = document.getElementById("EDate");
+		edate.style.top = getTopOffset(2,3);
+		edate.style.left = getLeftOffset(2,0);
+
+		var pic01  = document.getElementById("Pic01");
+		pic01.style.top = getTopOffset(1,3);
+		pic01.style.left = getLeftOffset(1,0);
+
+		var pic02  = document.getElementById("Pic02");
+		pic02.style.top = getTopOffset(2,3);
+		pic02.style.left = getLeftOffset(2,0);
+
+}
+
 function firstLoad(){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
@@ -40,6 +67,7 @@ function getNum(i){
 }
 
 function loadElement(i){
+	positionElts();
 	var bd = document.getElementById("body");
 	//var n = i % 5;
 	var cName = "";
@@ -97,6 +125,7 @@ function loadElement(i){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}
+	
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
