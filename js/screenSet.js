@@ -28,18 +28,18 @@ function check(){
 
 function getLeft(pos){
     switch(pos){
-      case 1: return leftCol01 + "px";
-      case 2: return leftCol02 + "px";
-      case 3: return leftCol03 + "px";
+      case 1: return Math.floor(leftCol01) + "px";
+      case 2: return Math.floor(leftCol02) + "px";
+      case 3: return Math.floor(leftCol03) + "px";
       default: return "0px";
     }
 }
 
 function getTop(pos){
     switch(pos){
-      case 1: return topRow01 + "px";
-      case 2: return topRow02 + "px";
-      case 3: return topRow03 + "px";
+      case 1: return Math.floor(topRow01) + "px";
+      case 2: return Math.floor(topRow02) + "px";
+      case 3: return Math.floor(topRow03) + "px";
       default: return "0px";
     }
 }
@@ -47,6 +47,7 @@ function getTop(pos){
 //offsets in quarters
 function getTopOffset(pos, offset){
   var os;
+  //console.log("offset: " + offset);
   switch(offset){
     case 0: os = 0; break;
     case 1: os = hBiteSize; break;
@@ -54,17 +55,18 @@ function getTopOffset(pos, offset){
     case 3: os = hBiteSize * 3; break;
     default: os = 0; break;
   }
-
+  //console.log("os: " + os + " pos: " + pos);
   switch(pos){
-    case 1: return (topRow01 + os) + "px";
-    case 2: return (topRow02 + os) + "px";
-    case 3: return (topRow03 + os) + "px";
+    case 1: return Math.floor(topRow01 + os) + "px";
+    case 2: return Math.floor(topRow02 + os) + "px";
+    case 3: return Math.floor(topRow03 + os) + "px";
     default: return "0px";
   }
 }
 
 function getLeftOffset(pos, offset){
   var os;
+  //console.log("wBiteSize: " + wBiteSize + "leftCol01(" + leftCol01 + ") leftCol02(" + leftCol02 + ")");
   switch(offset){
     case 0: os = 0; break;
     case 1: os = wBiteSize; break;
@@ -74,9 +76,9 @@ function getLeftOffset(pos, offset){
   }
 
   switch(pos){
-    case 1: return (leftCol01 + os) + "px";
-    case 2: return (leftCol02 + os) + "px";
-    case 3: return (leftCol03 + os) + "px";
+    case 1: return Math.floor(leftCol01 + os) + "px";
+    case 2: return Math.floor(leftCol02 + os) + "px";
+    case 3: return Math.floor(leftCol03 + os) + "px";
     default: return "0px";
   }
 }

@@ -15,6 +15,8 @@ mv ~/bcCode/beisChayim/python/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 mv ~/bcCode/beisChayim/python/ShellScripts/ConfigInstall ~/bin/ConfigInstall
 #
 mv ~/bcCode/beisChayim/python/ShellScripts/xinitrc ~/.xinitrc
+chmod +x  ~/.xinitrc
+#
 chmod +x ~/bin/BChStep01
 chmod +x ~/bin/BChCycle01
 chmod +x ~/bin/ConfigInstall

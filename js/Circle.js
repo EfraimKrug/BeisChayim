@@ -40,7 +40,15 @@ function positionElts(){
 
 }
 
+// plaque display
 function firstLoad(){
+	buildPanel01();
+	//renderOnebyOne();
+	renderingPlaques();
+}
+
+// individual name display
+function renderOnebyOne(){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
 	setInterval( function(){ loadElement(i = getNum(i)); }, tf);

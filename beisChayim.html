@@ -4,9 +4,10 @@
 <link rel="stylesheet" href="./css/beisChayim.css">
 <link rel="stylesheet" href="./css/sideBar.css">
 <link rel="stylesheet" href="./css/config.css">
+<link rel="stylesheet" href="./css/panel.css">
 <title>Beis Chayim</title>
 </head>
-<body id=body class=bg onload="firstLoad();">
+<body id=body class=bg0 onload="firstLoad();">
 <div id=security>
 	<!-- <input id=secInput type=text width=10px onchange="checkIt();" onblur="checkIt();"/> -->
 								<table id=kboard>
@@ -116,6 +117,7 @@ function startSelect(){
 	hideIt();
 }
 
+//note: currentName is actually the index
 function startEdit(){
 	var params = buildParamString(YahrList, currentName);
 	window.open("EditPerson.html?" + params, '_blank','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,directories=0, width=750px,height=750px');
@@ -127,8 +129,8 @@ function startConfig(){
 	hideIt();
 }
 
-var passkey = "";
 var pkLetterCount = 0;
+var passkey = "";
 
 function kbclick(ky){
 	passkey += ky;
@@ -145,5 +147,73 @@ function kbclick(ky){
 }
 
 </script>
+<!-- panel starts here -->
+	<div id=pbarA01></div>
+	<div id=pbarA02></div>
+	<div id=pbarA03></div>
+	<div id=pbarA04></div>
+	<div id=pbarA05></div>
+	<div id=pbarA06></div>
+	<div id=pbarA07></div>
+	<div id=pbarA08></div>
+	<div id=pbarA09></div>
+	<div id=pbarA10></div>
+	<div id=pbarA11></div>
+	<div id=pbarA12></div>
+
+	<div id=pbarB01></div>
+	<div id=pbarB02></div>
+	<div id=pbarB03></div>
+	<div id=pbarB04></div>
+	<div id=pbarB05></div>
+	<div id=pbarB06></div>
+	<div id=pbarB07></div>
+	<div id=pbarB08></div>
+	<div id=pbarB09></div>
+	<div id=pbarB10></div>
+	<div id=pbarB11></div>
+	<div id=pbarB12></div>
+
+	<div id=pbarC01></div>
+	<div id=pbarC02></div>
+	<div id=pbarC03></div>
+	<div id=pbarC04></div>
+	<div id=pbarC05></div>
+	<div id=pbarC06></div>
+	<div id=pbarC07></div>
+	<div id=pbarC08></div>
+	<div id=pbarC09></div>
+	<div id=pbarC10></div>
+	<div id=pbarC11></div>
+	<div id=pbarC12></div>
+
+	<div id=pbarD01></div>
+	<div id=pbarD02></div>
+	<div id=pbarD03></div>
+	<div id=pbarD04></div>
+	<div id=pbarD05></div>
+	<div id=pbarD06></div>
+	<div id=pbarD07></div>
+	<div id=pbarD08></div>
+	<div id=pbarD09></div>
+	<div id=pbarD10></div>
+	<div id=pbarD11></div>
+	<div id=pbarD12></div>
+
+	<div id=pbarE01></div>
+	<div id=pbarE02></div>
+	<div id=pbarE03></div>
+	<div id=pbarE04></div>
+	<div id=pbarE05></div>
+	<div id=pbarE06></div>
+	<div id=pbarE07></div>
+	<div id=pbarE08></div>
+	<div id=pbarE09></div>
+	<div id=pbarE10></div>
+	<div id=pbarE11></div>
+	<div id=pbarE12></div>
+
+<script src="js/buildPanel.js"></script>
+<!-- panel ends here -->
 </body>
 </html>

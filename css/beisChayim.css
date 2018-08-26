@@ -163,7 +163,7 @@ h1 {
 
 #Pic01{
 	position: fixed;
-	visibility: visible;
+	visibility: hidden;
 	top: 127px;
 	left: 128px;
 	width: 365px;
@@ -172,7 +172,7 @@ h1 {
 
 #Pic02{
 	position: fixed;
-	visibility: visible;
+	visibility: hidden;
 	top: 427px;
 	left: 628px;
 	width: 365px;
