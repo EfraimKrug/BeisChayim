@@ -1,10 +1,9 @@
 //buildPanel.js
 TIME_FACTOR = config.settings["time_factor"];
-COLUMN_COUNT = 3;
-ROW_COUNT = 9;
+COLUMN_COUNT = config.settings["column_count"];
+ROW_COUNT = config.settings["row_count"];
 var YahrList = JSON.parse(YahrzeitList);
-var MAX_SLOTS = config.settings["slots"];
-
+var MAX_SLOTS = config.settings["slots"]
 var panelArray = [];
 
 function buildPanel01(){
@@ -63,10 +62,9 @@ function renderingPlaques(){
 
 function getEdit(idx){
   currentName = idx;
-  //currentIDX = idx;
-  //alert(currentIDX);
   startEdit();
 }
+
 var currentPosition = 0;
 function renderScreen(){
   //console.log(currentPosition);

@@ -2,7 +2,8 @@
  * ========== going though the list ====================
  */
 TIME_FACTOR = config.settings["time_factor"];
-
+//DISPLAY_SETTING = 0;
+DISPLAY_SETTING = config.settings["display_type"];
 //FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
 var SideBarList = [];
@@ -37,14 +38,17 @@ function positionElts(){
 		var pic02  = document.getElementById("Pic02");
 		pic02.style.top = getTopOffset(2,2);
 		pic02.style.left = getLeftOffset(2,0);
-
 }
 
 // plaque display
 function firstLoad(){
-	buildPanel01();
-	//renderOnebyOne();
-	renderingPlaques();
+	if(DISPLAY_SETTING == 1){
+			renderOnebyOne();
+		}
+	if(DISPLAY_SETTING == 0){
+		buildPanel01();
+		renderingPlaques();
+	}
 }
 
 // individual name display

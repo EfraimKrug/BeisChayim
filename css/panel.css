@@ -12,6 +12,7 @@
 	padding-top: 5px;
 	padding-bottom: 15px;
 	margin: 5px;
+	z-index: 20;
 	display:none;
 }
 

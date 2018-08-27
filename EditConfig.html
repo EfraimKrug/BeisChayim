@@ -13,6 +13,15 @@
 	 </style>
 <h3>Configuration</h3>
 <table>
+	<tr><td>
+<table>
+<tr>
+	<td class=configLabel>Display</td><td><select id=display_type>
+														<option value="0">Plaques</option>
+														<option value="1">One by One</option>
+													</select>
+	</td>
+</tr>
 <tr>
 	<td class=configLabel>Time (1-15)</td><td><select id=time_factor>
 														<option value="2">2</option>
@@ -23,6 +32,7 @@
 														<option value="15">15</option>
 														<option value="20">20</option>
 														<option value="60">60</option>
+													</select>
 		</td>
 
 <!--		<input type=text id=time_factor></td> -->
@@ -55,8 +65,38 @@
 
 	<!-- <td>sNumber of day slots (9)</td><td><input type=text id=slots></td> -->
 </tr>
-<tr>
-	<td></td><td><button id=submit onclick=addStuffConfig();>Submit</button></td>
+</table>
+</td>
+<td>
+	<table>
+		<tr>
+			<td class=configLabel>Rows (2-4)</td><td><select id=row_count>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+
+				</td>
+
+			<!-- <td>sNumber of day slots (9)</td><td><input type=text id=slots></td> -->
+		</tr>
+
+		<tr>
+			<td class=configLabel>Columns (2-4)</td><td><select id=column_count>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+				</td>
+
+			<!-- <td>sNumber of day slots (9)</td><td><input type=text id=slots></td> -->
+		</tr>
+		<tr>
+			<td></td><td><button id=submit onclick=addStuffConfig();>Submit</button></td>
+		</tr>
+	</table>
+</td>
 </tr>
 </table>
 <script src="config/BCConfig"></script>

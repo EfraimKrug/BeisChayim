@@ -9,15 +9,21 @@ var config = JSON.parse(ConfigList);
 //console.log(config);
 
 // ========== selecting the month ======================
+function autoSecClose(){
+	var security = document.getElementById("security");
+	security.style.display = 'none';
+	showButtonSec = true;
+}
+
 function showSecurity(){
 	var security = document.getElementById("security");
-
+	
 	if(showButtonSec){
 		security.style.display = 'inline';
 		showButtonSec = false;
 		passkey = '';
 		pkLetterCount = 0;
-		setTimeout(showSecurity, 10000)
+		setTimeout(autoSecClose, 10000)
 	} else {
 		security.style.display = 'none';
 		showButtonSec = true;

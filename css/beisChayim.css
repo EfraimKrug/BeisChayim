@@ -2,6 +2,7 @@
 body {
 	height: 100%;
 	overflow-y:hidden;
+	z-index: 1;
 }
 
 .bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {
@@ -10,6 +11,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+		z-index: 10;
 }
 
 /* .bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {
@@ -68,6 +70,7 @@ h1 {
 	left: 528px;
 	width: 365px;
 	font-size: 27px;
+	z-index: 20;
 }
 
 .Name, .Name0, .Name1, .Name2, .Name3, .Name4 {
@@ -94,6 +97,7 @@ h1 {
 	width: 365px;
 	//color: cyan;
 	font-size: 27px;
+	z-index: 20;
 }
 
 .HName, .HName0, .HName1, .HName2, .HName3, .HName4 {
@@ -119,10 +123,12 @@ h1 {
 	left: 528px;
 //	color: cyan;
 	font-size: 27px;
+	z-index: 20;
 }
 
 #HDate {
 	top: 327px;
+	z-index: 20;
 }
 
 .edate, .edate0 {
@@ -147,6 +153,7 @@ h1 {
 	top: 707px;
 	left: 128px;
 	font-size: 17px;
+	z-index: 20;
 }
 
 .Comment010 {
@@ -168,6 +175,7 @@ h1 {
 	left: 128px;
 	width: 365px;
 	height: 256px;
+	z-index: 20;
 }
 
 #Pic02{
@@ -177,6 +185,7 @@ h1 {
 	left: 628px;
 	width: 365px;
 	height: 256px;
+	z-index: 20;
 }
 
 #fbook,#gotofbook{
@@ -198,6 +207,7 @@ h1 {
 	padding: 10px;
 	margin: 10px;
 	display:inline;
+	z-index: 20;
 }
 
 #sbar02 {
@@ -239,14 +249,22 @@ h1 {
 }
 
 #monthSelect {
-		display:show;
+		display:show
+}
+
+#security{
+	z-index:30;
+}
+
+#kboard{
+	z-index:30;
 }
 
 #test {
 	position: absolute;
 	left: 550px;
 	top: 700px;
-	z-index: 99;
+	z-index:30;
 	width: 15px;
 	height: 15px;
 	background-color: red;

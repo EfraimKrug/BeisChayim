@@ -83,7 +83,7 @@ location.search.substr(1).split("&").forEach(function(item) {
 var ID = queryDict["ID"];
 document.getElementById("ID").innerHTML = ID;
 document.getElementById("name").value = queryDict["Name"].replace(/%20/g," ");
-document.getElementById("bground").value = queryDict["BGround"].replace(/%20/g," ");
+//document.getElementById("bground").value = queryDict["BGround"].replace(/%20/g," ");
 document.getElementById("hname").value = queryDict["HName"].replace(/%20/g," ");
 document.getElementById("edate").value = queryDict["EDate"].replace(/%20/g," ");
 document.getElementById("hdate").value = queryDict["HDate"].replace(/%20/g," ");
@@ -94,7 +94,7 @@ document.getElementById("relationship").value = queryDict["Relationship"].replac
 //document.getElementById("fbook").value = queryDict["FBook"].replace(/%20/g," ");
 document.getElementById("comments01").value = queryDict["Comments01"].replace(/%20/g," ");
 document.getElementById("paylevel").value = queryDict["PayLevel"].replace(/%20/g," ");
-
+console.log(queryDict);
 function setPayLevel(){
 		//var payLevelElt = document.getElementById("paylevel");
 		//payLevel = payLevelElt.value;

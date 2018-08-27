@@ -6,16 +6,23 @@ var pkLetterCount = 0;
 
 var config = JSON.parse(ConfigList);
 //console.log(config);
+document.getElementById("display_type").value = config.settings["display_type"].replace(/%20/g,"");
 document.getElementById("time_factor").value = config.settings["time_factor"].replace(/%20/g,"");
 document.getElementById("password").value = config.settings["password"].replace(/%20/g,"");
 document.getElementById("slots").value = config.settings["slots"].replace(/%20/g,"");
+document.getElementById("column_count").value = config.settings["column_count"].replace(/%20/g,"");
+document.getElementById("row_count").value = config.settings["row_count"].replace(/%20/g,"");
 
 function addStuffConfig(){
+	var display_type = "\"display_type\":\"" + escapeHTML(document.getElementById("display_type").value) + "\"";
 	var time_factor = "\"time_factor\":\"" + escapeHTML(document.getElementById("time_factor").value) + "\"";
 	var password = "\"password\":\"" + escapeHTML(document.getElementById("password").value) + "\"";
 	var slots = "\"slots\":\"" + escapeHTML(document.getElementById("slots").value) + "\"";
+	var column_count = "\"column_count\":\"" + escapeHTML(document.getElementById("column_count").value) + "\"";
+	var row_count = "\"row_count\":\"" + escapeHTML(document.getElementById("row_count").value) + "\"";
+
 	var fline = "var ConfigList = '{ \"settings\": ";
-	var line = "{" + time_factor + "," + password + "," + slots + "}}';";
+	var line = "{" + display_type + "," + time_factor + "," + password + "," + slots + "," + column_count + "," + row_count +"}}';";
 	download(fline + line, "BCConfig", "text/plain");
 }
 
