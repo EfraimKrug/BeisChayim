@@ -55,9 +55,10 @@ function calcOffset(i){
     return i % 4;
 }
 
-function renderingPlaques(){
+function renderingPlaques(callback){
+    console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
   	var tf = TIME_FACTOR * 1000;
-  	setInterval( function(){ if(currentPosition > panelArray.length){ currentPosition = 0; return 0;}; renderScreen(); }, tf);
+  	PlaqueInterval = setInterval( function(){ if(currentPosition > panelArray.length){ currentPosition = 0; return 0;}; renderScreen(callback); }, tf);
 }
 
 function getEdit(idx){
@@ -65,9 +66,23 @@ function getEdit(idx){
   startEdit();
 }
 
+function hideScreen02(){
+  var vi = 0;
+  for(var x=0; x < 12; x++){
+      vi++;
+      if(vi < 10) vi = "0" + vi;
+      if(vi > 12) vi = "01";
+      for(var j=0; j < 5; j++){
+        var pbar = document.getElementById(getColID(j) + vi);
+        //console.log(j + ":" + vi + ":" + getColID(j) + vi);
+        pbar.style.display = "none";
+      }
+    }
+}
+
 var currentPosition = 0;
-function renderScreen(){
-  //console.log(currentPosition);
+function renderScreen(callback){
+  //console.log(panelArray[815][0]);
   var vi = 0;
   for(var x=0; (currentPosition < panelArray.length && x < ROW_COUNT); currentPosition++, x++){
       vi++;
@@ -89,10 +104,14 @@ function renderScreen(){
         pbar.style.padding = "5px";
         pbar.style.margin = "5px";
         pbar.style.display = "inline";
-
+        //console.log("j: " + j + " currenPosition: " + currentPosition + "  panelArray[currentPosition]" +  panelArray[currentPosition]);
         var dt = panelArray[currentPosition][j]["Date"];
         if(panelArray[currentPosition][j]["Date"].substring(0,1) == "0"){
           dt = panelArray[currentPosition][j]["Date"].substring(1);
+        }
+        if(currentPosition > panelArray.length - 2  || !(panelArray[currentPosition][j])){
+          currentPosition = 0;
+          callback();
         }
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
       }
