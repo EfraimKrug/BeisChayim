@@ -1,5 +1,5 @@
 var YahrzeitList = '{ "Yahrzeits": [' +
-'{"ID":"193945","Name":" Levine","HName":"","EDate":"","HDate":"        ","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' +
+'{"ID":"193945","Name":" Levine son of Billy the Bone","HName":"Hammer and Hammer, very hamish","EDate":"2001-09-01","HDate":"17 Elul 5759","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' +
 '{"ID":"193254","Name":" Naachum","HName":"Nachum","EDate":"","HDate":"22 Kislev","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' +
 '{"ID":"194451","Name":" Peshe Raizel","HName":"","EDate":"","HDate":"07 Cheshvan","MournBy":"Eleanor Pearlman","Relationship":"mother","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' +
 '{"ID":"194288","Name":" Plotz","HName":"","EDate":"","HDate":"        ","MournBy":"Fruma Lungin","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' +

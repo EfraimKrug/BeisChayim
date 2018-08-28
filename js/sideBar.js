@@ -1,4 +1,5 @@
 var offset = 0;
+var FONT_SIZE = "14";
 
 function resetSideBar(){
 		SideBarList = [];
@@ -26,7 +27,6 @@ function SideBarCounterInc(SBCounter){
 }
 
 function getBGround(pl){
-	//console.log("sbarpl" + pl);
 	return "sbarpl" + pl;
 }
 
@@ -59,6 +59,10 @@ function renderSideBarArray(){
 			}
 		}
 		sbar.className = getBGround(PayLevelList[listCounter]);
+		//var fs = FONT_SIZE;
+		var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
+		sbar.style.fontSize = fs + "px";
+
 		sbar.innerHTML = SideBarList[listCounter];
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);

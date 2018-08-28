@@ -61,7 +61,7 @@ function hideScreen01(){
 }
 
 function endCycle(){
-	//console.log("endCycle: " + DISPLAY_SETTING);
+	console.log("endCycle: " + DISPLAY_SETTING);
 	if(DISPLAY_SETTING == 2){
 			switchLoad();
 	} else {
@@ -95,14 +95,22 @@ function switchLoad(){
 }
 // plaque display
 function firstLoad(){
+	clearInterval(OneByInterval);
+	clearInterval(PlaqueInterval);
+
+	hideScreen01();
+	hideSideBarArray();
+	hideScreen02();
+	buildPanel01();
+
 	if(DISPLAY_SETTING == 1 || DISPLAY_SETTING == 2){
 			processRunning = 0;
 			renderOnebyOne(endCycle);
 		}
+
 	if(DISPLAY_SETTING == 0){
 		processRunning = 1;
 		currentPosition = 0;
-		buildPanel01();
 		renderingPlaques(endCycle);
 	}
 }
@@ -111,6 +119,7 @@ function firstLoad(){
 function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
+	loadElement(0, callback);
 	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
 }
 
@@ -183,8 +192,11 @@ function loadElement(i, callback){
 	}
 	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
 
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var EDate = document.getElementById("EDate");
-	EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
+	var dt = new Date(YahrList.Yahrzeits[i].EDate);
+	//EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
+	EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
 	var Pic01  = document.getElementById("Pic01");
