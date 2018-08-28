@@ -89,6 +89,7 @@ function renderScreen(){
         pbar.style.padding = "5px";
         pbar.style.margin = "5px";
         pbar.style.display = "inline";
+        pbar.style.zIndex = 5;
 
         var dt = panelArray[currentPosition][j]["Date"];
         if(panelArray[currentPosition][j]["Date"].substring(0,1) == "0"){

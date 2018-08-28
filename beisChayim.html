@@ -16,7 +16,10 @@
 									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
 								</table>
 </div>
-<h1 onmouseover="showSecurity();" >Beis Chayim</h1>
+<h1 id=sTitle onmouseover="showSecurity();" >Beis Chayim</h1>
+
+<table id=accessMenu>
+	<tr><td>
 <select id=monthSelect onchange="doit();">
 	<option value="Nissan">Nissan</option>
 	<option value="Iyyar">Iyyar</option>
@@ -31,6 +34,8 @@
 	<option value="Shevat">Shevat</option>
 	<option value="Adar">Adar</option>
 </select>
+</td>
+<td>
 <select id=actionSelect onchange="doAction();">
 	<option value="nothing"></option>
 	<option value="new">New</option>
@@ -38,7 +43,9 @@
 	<option value="select">Select</option>
 	<option value="config">Config</option>
 </select>
-
+</td>
+</tr>
+</table>
 <div id="wholeThing">
 	<div id=Name></div>
 	<div id=HName></div>

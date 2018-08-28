@@ -249,10 +249,18 @@ h1 {
 }
 
 #monthSelect {
-		display:show
+		position: relative;
+		display:show;
+		z-index:30;
 }
 
 #security{
+	position: absolute;
+	z-index:30;
+}
+
+#actionSelect{
+	position:relative;
 	z-index:30;
 }
 

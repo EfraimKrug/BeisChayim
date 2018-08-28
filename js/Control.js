@@ -17,7 +17,8 @@ function autoSecClose(){
 
 function showSecurity(){
 	var security = document.getElementById("security");
-	
+
+	//alert(security.style.zIndex);
 	if(showButtonSec){
 		security.style.display = 'inline';
 		showButtonSec = false;
