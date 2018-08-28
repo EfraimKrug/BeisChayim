@@ -1,9 +1,7 @@
 /*
  * ========== going though the list ====================
  */
-TIME_FACTOR = config.settings["time_factor"];
 //DISPLAY_SETTING = 0;
-DISPLAY_SETTING = config.settings["display_type"];
 //FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
 var SideBarList = [];
@@ -78,8 +76,10 @@ function switchLoad(){
 	if (processRunning == 0){
 		processRunning = 1;
 		//console.log("renderingPlaques" + processRunning);
+		currentPosition = 0;
 		clearInterval(OneByInterval);
 		hideScreen01();
+		hideSideBarArray();
 		buildPanel01();
 		renderingPlaques(endCycle);
 	} else {
@@ -101,6 +101,7 @@ function firstLoad(){
 		}
 	if(DISPLAY_SETTING == 0){
 		processRunning = 1;
+		currentPosition = 0;
 		buildPanel01();
 		renderingPlaques(endCycle);
 	}
@@ -135,9 +136,11 @@ function getNum(i){
 
 var lastI = -1;
 function loadElement(i, callback){
-	console.log("loadElement: " + i + ":" + lastI);
+	//console.log("loadElement: " + i + ":" + lastI);
 	if(i < lastI){
-		callback();
+		var tf = TIME_FACTOR * 1000;
+		setTimeout(callback, 1500);
+		//callback();
 		lastI = -1;
 		return;
 	} else {
@@ -208,5 +211,5 @@ function loadElement(i, callback){
 
 	currentName = i;
 
-	setTimeout(loadSideBar, 1500);
+	setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
 }

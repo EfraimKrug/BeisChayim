@@ -4,8 +4,6 @@ var backgroundTrack = 0;
 var showButtonSec = false;
 var showButton = false;
 
-// configuration files...
-var config = JSON.parse(ConfigList);
 //console.log(config);
 
 // ========== selecting the month ======================

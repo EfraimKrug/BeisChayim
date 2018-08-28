@@ -1,4 +1,3 @@
-var MAX_SLOTS = config.settings["slots"];
 var offset = 0;
 
 function resetSideBar(){
@@ -31,6 +30,16 @@ function getBGround(pl){
 	return "sbarpl" + pl;
 }
 
+function hideSideBarArray(){
+	var slotCounter = 1;
+
+	//for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
+	for (var i=1; i < 17 ; i++){
+		var sbar = document.getElementById("sbar0" + i);
+		sbar.style.display = "none";
+	}
+}
+
 function renderSideBarArray(){
 	var listCounter = offset;
 	var slotCounter = 1;
@@ -38,6 +47,7 @@ function renderSideBarArray(){
 	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
 		sbar.className = "sbar";
+		sbar.style.display = "inline";
 		sbar.style.left = getLeftOffset(3,0);
 		if(slotCounter < 4){
 			sbar.style.top = getTopOffset(1, slotCounter);
