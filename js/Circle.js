@@ -38,27 +38,82 @@ function positionElts(){
 		var pic02  = document.getElementById("Pic02");
 		pic02.style.top = getTopOffset(2,2);
 		pic02.style.left = getLeftOffset(2,0);
+
+		name.style.display = "inline";
+		hname.style.display = "inline";
+		hdate.style.display = "inline";
+		edate.style.display = "inline";
+		pic01.style.display = "inline";
+		pic02.style.display = "inline";
 }
 
+function hideScreen01(){
+			var name = document.getElementById("Name");
+			name.style.display = "none";
+			var hname = document.getElementById("HName");
+			hname.style.display = "none";
+			var hdate = document.getElementById("HDate");
+			hdate.style.display = "none";
+			var edate = document.getElementById("EDate");
+			edate.style.display = "none";
+			var pic01  = document.getElementById("Pic01");
+			pic01.style.display = "none";
+			var pic02  = document.getElementById("Pic02");
+			pic02.style.display = "none";
+}
+
+function endCycle(){
+	//console.log("endCycle: " + DISPLAY_SETTING);
+	if(DISPLAY_SETTING == 2){
+			switchLoad();
+	} else {
+			firstLoad();
+	}
+}
+
+var processRunning = -1;
+var PlaqueInterval;
+var OneByInterval;
+function switchLoad(){
+	if (processRunning == 0){
+		processRunning = 1;
+		//console.log("renderingPlaques" + processRunning);
+		clearInterval(OneByInterval);
+		hideScreen01();
+		buildPanel01();
+		renderingPlaques(endCycle);
+	} else {
+	if (processRunning == 1){
+		processRunning = 0;
+		//console.log("renderOnebyOne" + processRunning);
+		hideScreen02();
+		clearInterval(PlaqueInterval);
+		renderOnebyOne(endCycle);
+		}
+	}
+
+}
 // plaque display
 function firstLoad(){
-	if(DISPLAY_SETTING == 1){
-			renderOnebyOne();
+	if(DISPLAY_SETTING == 1 || DISPLAY_SETTING == 2){
+			processRunning = 0;
+			renderOnebyOne(endCycle);
 		}
 	if(DISPLAY_SETTING == 0){
+		processRunning = 1;
 		buildPanel01();
-		renderingPlaques();
+		renderingPlaques(endCycle);
 	}
 }
 
 // individual name display
-function renderOnebyOne(){
+function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
-	setInterval( function(){ loadElement(i = getNum(i)); }, tf);
+	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
 }
 
-
+//returns index of next entry in our month
 function getNum(i){
 	var last = YahrList.Yahrzeits.length - 1;
 	i++;
@@ -78,7 +133,16 @@ function getNum(i){
 	return i;
 }
 
-function loadElement(i){
+var lastI = -1;
+function loadElement(i, callback){
+	console.log("loadElement: " + i + ":" + lastI);
+	if(i < lastI){
+		callback();
+		lastI = -1;
+		return;
+	} else {
+		lastI = i;
+	}
 	positionElts();
 	var bd = document.getElementById("body");
 	//var n = i % 5;
@@ -144,5 +208,5 @@ function loadElement(i){
 
 	currentName = i;
 
-	setTimeout(loadSideBar, 1500)
+	setTimeout(loadSideBar, 1500);
 }
