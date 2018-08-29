@@ -1,7 +1,9 @@
 //buildPanel.js
 TIME_FACTOR = config.settings["time_factor"];
 COLUMN_COUNT = config.settings["column_count"];
+//COLUMN_COUNT = 3;
 ROW_COUNT = config.settings["row_count"];
+
 var YahrList = JSON.parse(YahrzeitList);
 var MAX_SLOTS = config.settings["slots"]
 var panelArray = [];
@@ -56,7 +58,7 @@ function calcOffset(i){
 }
 
 function renderingPlaques(callback){
-    console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
+    //console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
   	var tf = TIME_FACTOR * 1000;
   	PlaqueInterval = setInterval( function(){ if(currentPosition > panelArray.length){ currentPosition = 0; return 0;}; renderScreen(callback); }, tf);
 }
@@ -94,15 +96,19 @@ function renderScreen(callback){
         pbar.style.position = "absolute";
         pbar.style.left = getLeft(j+1);
         pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
+        //console.log("top: " + pbar.style.top);
         pbar.className = getBGround(YahrList.Yahrzeits[currentPosition+j].PayLevel);
         //pbar.setAttribute("onclick", "alert(" + YahrList.Yahrzeits[currentPosition+j].ID + ")" );
         pbar.setAttribute("onclick", "getEdit(" + (currentPosition + j) + ")" );
 
-        pbar.style.width = "359px";
-        pbar.style.height = "45px";
+        //pbar.style.width = "359px";
+        pbar.style.width = getWSquareSize() + "px";
+        //pbar.style.height = "45px";
+        pbar.style.height = getHBiteSize() + "px";
         pbar.style.font = "normal";
+        pbar.style.fontSize = (getHBiteSize() / 4) + "px";
         pbar.style.padding = "5px";
-        pbar.style.margin = "5px";
+        pbar.style.margin = "0px";
         pbar.style.display = "inline";
         //console.log("j: " + j + " currenPosition: " + currentPosition + "  panelArray[currentPosition]" +  panelArray[currentPosition]);
         var dt = panelArray[currentPosition][j]["Date"];
