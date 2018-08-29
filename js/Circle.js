@@ -18,26 +18,38 @@ function positionElts(){
 		var name = document.getElementById("Name");
 		name.style.top = getTopOffset(1,3);
 		name.style.left = getLeftOffset(2,0);
+		name.style.width = getWSquareSize() + "px";
+		name.style.fontSize = (getHBiteSize() / 2.5) + "px";
+
 
 		var hname = document.getElementById("HName");
 		hname.style.top = getTopOffset(2,0);
 		hname.style.left = getLeftOffset(2,0);
+		hname.style.width = getWSquareSize() + "px";
+		hname.style.fontSize = (getHBiteSize() / 2.5) + "px";
 
 		var hdate = document.getElementById("HDate");
 		hdate.style.top = getTopOffset(2,1);
 		hdate.style.left = getLeftOffset(2,0);
+		hdate.style.width = getWSquareSize() + "px";
+		hdate.style.fontSize = (getHBiteSize() / 2.5) + "px";
 
 		var edate = document.getElementById("EDate");
 		edate.style.top = getTopOffset(2,2);
 		edate.style.left = getLeftOffset(2,0);
+		edate.style.width = getWSquareSize() + "px";
+		edate.style.fontSize = (getHBiteSize() / 2.5) + "px";
 
 		var pic01  = document.getElementById("Pic01");
 		pic01.style.top = getTopOffset(1,2);
 		pic01.style.left = getLeftOffset(1,0);
+		pic01.style.width = (getWSquareSize() * .75) + "px";
+		pic01.style.height = (getHSquareSize() * .75) + "px";
 
 		var pic02  = document.getElementById("Pic02");
-		pic02.style.top = getTopOffset(2,2);
+		pic02.style.top = getTopOffset(2,3);
 		pic02.style.left = getLeftOffset(2,0);
+		pic02.style.width = getWSquareSize() + "px";
 
 		name.style.display = "inline";
 		hname.style.display = "inline";

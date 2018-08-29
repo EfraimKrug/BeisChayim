@@ -3,7 +3,7 @@
 // first design was 3X3 screen...
 // options are 3, 4, or 5...
 //
-var NUM_SCREEN_SQUARES = 4;
+//var GRID_SIZE = 4;
 var margin = 28;
 
 var hSquareSize = 0;
@@ -123,8 +123,8 @@ function initScreen(){
   var sWidth = screen.width;
   var sHeight = screen.height;
 
-  wSquareSize = (sWidth - (2 * margin)) / NUM_SCREEN_SQUARES;
-  hSquareSize = (sHeight - (2 * margin)) / (NUM_SCREEN_SQUARES - .3);
+  wSquareSize = (sWidth - (2 * margin)) / GRID_SIZE;
+  hSquareSize = (sHeight - (2 * margin)) / (GRID_SIZE - .3);
 
   topRow01 = (.2 * hSquareSize) + margin;
   topRow02 = (1.2 * hSquareSize) + margin;
