@@ -17,8 +17,9 @@ function buildPanel01(){
       }
       var n = i / COLUMN_COUNT;
       n = Math.floor(n);
-      panelArray[n].push({"ID":"","Name":"", "Date":"", "PayLevel":""});
+      panelArray[n].push({"ID":"","Name":"", "Date":"", "PayLevel":"", "IDX":""});
       panelArray[n][j]["ID"] = YahrList.Yahrzeits[i].ID;
+      panelArray[n][j]["IDX"] = i;
       panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].HName;
       panelArray[n][j]["Date"] = YahrList.Yahrzeits[i].HDate;
       panelArray[n][j]["PayLevel"] = YahrList.Yahrzeits[i].PayLevel;
@@ -98,7 +99,7 @@ function renderScreen(callback){
         pbar.style.left = getLeft(j+1);
         pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
-        pbar.setAttribute("onclick", "getEdit(" + (currentPosition + j) + ")" );
+        pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
 
         pbar.style.width = "359px";
         pbar.style.height = "45px";
