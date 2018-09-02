@@ -1,4 +1,9 @@
 //buildPanel.js
+TIME_FACTOR = config.settings["time_factor"];
+COLUMN_COUNT = config.settings["column_count"];
+//COLUMN_COUNT = 3;
+ROW_COUNT = config.settings["row_count"];
+
 var YahrList = JSON.parse(YahrzeitList);
 var panelArray = [];
 
@@ -100,11 +105,14 @@ function renderScreen(callback){
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
         pbar.setAttribute("onclick", "getEdit(" + (currentPosition + j) + ")" );
 
-        pbar.style.width = "359px";
-        pbar.style.height = "45px";
+        //pbar.style.width = "359px";
+        pbar.style.width = getWSquareSize() + "px";
+        //pbar.style.height = "45px";
+        pbar.style.height = getHBiteSize() + "px";
         pbar.style.font = "normal";
+        pbar.style.fontSize = (getHBiteSize() / 4) + "px";
         pbar.style.padding = "5px";
-        pbar.style.margin = "5px";
+        pbar.style.margin = "0px";
         pbar.style.display = "inline";
         pbar.style.zIndex = 5;
         //console.log(panelArray[currentPosition]);
