@@ -2,6 +2,7 @@
 body {
 	height: 100%;
 	overflow-y:hidden;
+	font-size: 32px;
 	z-index: 1;
 }
 
@@ -11,6 +12,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+		font-size: 32px;
 		z-index: 10;
 }
 
@@ -66,7 +68,13 @@ body {
 }
 
 h1 {
-	color:white;
+	//color:black;
+}
+
+h1 {
+		font-size: 26px;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 #Name {
@@ -85,14 +93,19 @@ h1 {
 	width: 365px;
 	color: white;
 	font-size: 27px;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.Name1, .Name2 {
-	color: yellow;
+.Name1 {
+	color: white;
 }
 
-.Name3, .Name4 {
-	color: purple;
+.Name {
+	color: black;
+}
+
+.Name2, .Name3, .Name4 {
+	color: black;
 }
 
 #HName {
@@ -110,16 +123,17 @@ h1 {
 	top: 207px;
 	left: 528px;
 	width: 365px;
-	color: cyan;
-	font-size: 27px;
-}
-
-.HName1, .HName2 {
 	color: black;
+	font-size: 27px;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.HName3, .HName4 {
-	color: purple;
+.HName1 {
+	color: white;
+}
+
+.HName2, .HName3, .HName4 {
+	color: black;
 }
 
 #EDate, #HDate {
@@ -136,21 +150,31 @@ h1 {
 	z-index: 20;
 }
 
-.edate, .edate0 {
-	color:cyan;
+.edate, .edate1, .edate2,.edate3,.edate4,
+.hdate, .hdate1,.hdate2, .hdate3, .hdate4 {
+	color:black;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.hdate, .hdate0 {
-	color:cyan;
+.hdate{
+	color:black;
 }
 
-.edate1,.edate2,.edate3,.edate4
+.edate1 {
+	color:white;
+}
+
+.hdate1 {
+	color:white;
+}
+
+.edate2,.edate3,.edate4
 .hdate1,.hdate2,.hdate4{
 	color: black;
 }
 
 .hdate3 {
-	color:yellow;
+	color:black;
 }
 
 #Comments01 {
@@ -162,7 +186,7 @@ h1 {
 }
 
 .Comment010 {
-	color: cyan;
+	color: black;
 }
 
 .Comment011, .Comment012, .Comment014 {
@@ -170,7 +194,7 @@ h1 {
 }
 
  .Comment013 {
-	color:yellow;
+	color:black;
 }
 
 #Pic01{
