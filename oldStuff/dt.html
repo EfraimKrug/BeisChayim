@@ -1,0 +1,19 @@
+<html>
+
+<script src="../js/dtConversion.js"></script>
+<script>
+var monthCheck = [];
+
+//var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+dt = new Date(-2900000000000);
+for (var i=0; i < 55000; i++){
+  dt.setDate(dt.getDate() + 1);
+  var m = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+  var h = G2H(dt.getFullYear(), (dt.getMonth() + 1), dt.getDate());
+  monthCheck.push({m:h});
+  }
+//console.log(monthCheck);
+</script>
+<script src="../js/dtConversion.js"></script>
+
+</html>
