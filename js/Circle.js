@@ -147,7 +147,7 @@ function getNum(i){
 
 var lastI = -1;
 function loadElement(i, callback){
-	console.log("loadElement: " + i + ":" + lastI);
+	//console.log("loadElement: " + i + ":" + lastI);
 	if(i < lastI){
 		callback();
 		lastI = -1;
