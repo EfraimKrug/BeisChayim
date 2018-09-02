@@ -26,26 +26,31 @@ body {
 } */
 
 .bg0 {
-		background-color:black;
+		//background-color:black;
+		background-image: url("../img/Kotel01.jpg");
 }
 
 .bg1 {
-    background-image: url("../img/sunset000.jpeg");
+    //background-image: url("../img/sunset000.jpeg");
+		background-image: url("../img/Rock001.jpg");
 }
 
 .bg2 {
 		font-size:1.1em;
-    background-image: url("../img/sunset003.jpeg");
+    //background-image: url("../img/sunset003.jpeg");
+		background-image: url("../img/Rock003.jpg");
 }
 
 .bg3 {
 		font-size:1.2em;
-    background-image: url("../img/sunset005.jpeg");
+    //background-image: url("../img/sunset005.jpeg");
+		background-image: url("../img/Rock005.jpg");
 }
 
 .bg4 {
 		font-size:1.3em;
-    background-image: url("../img/sunset004.jpeg");
+    //background-image: url("../img/sunset004.jpeg");
+		background-image: url("../img/Rock004.jpg");
 }
 
 /* .bg5 {

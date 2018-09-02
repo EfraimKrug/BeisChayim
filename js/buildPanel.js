@@ -1,8 +1,8 @@
 //buildPanel.js
-TIME_FACTOR = config.settings["time_factor"];
-COLUMN_COUNT = config.settings["column_count"];
+//TIME_FACTOR = config.settings["time_factor"];
+//COLUMN_COUNT = config.settings["column_count"];
 //COLUMN_COUNT = 3;
-ROW_COUNT = config.settings["row_count"];
+//ROW_COUNT = config.settings["row_count"];
 
 var YahrList = JSON.parse(YahrzeitList);
 var panelArray = [];
@@ -77,7 +77,7 @@ function hideScreen02(){
       if(vi > 12) vi = "01";
       for(var j=0; j < 5; j++){
         var pbar = document.getElementById(getColID(j) + vi);
-        console.log(getColID(j) + vi);
+        //console.log(getColID(j) + vi);
         pbar.style.display = "none";
       }
     }
