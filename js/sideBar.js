@@ -8,19 +8,19 @@ function resetSideBar(){
 			var name = "sbar0" + i;
 			//console.log("(" + i + "::" + max + ")" + MAX_SLOTS + ":" + name);
 			var e = document.getElementById(name);
-			e.className = "";
+			//e.className = "";
 		}
 }
 
 function ListCounterInc(lCounter){
-	if(lCounter >= (SideBarList.length - 1)){
+	if(lCounter >= SideBarList.length - 1){
 		return 0;
 	}
 	return lCounter + 1;
 }
 
 function SideBarCounterInc(SBCounter){
-	if(SBCounter > MAX_SLOTS - 1){
+	if(SBCounter >= MAX_SLOTS){
 		return 1;
 	}
 	return SBCounter + 1;
@@ -40,58 +40,59 @@ function hideSideBarArray(){
 	}
 }
 
-function renderSideBarArray(){
-	var listCounter = offset;
-	var slotCounter = 1;
+function getGridColumn(){
+	var col = getPenUltimateColumn();
+	if (col < 4) col = 4;
+	return col;
+}
 
+var listCounter = 0;
+var slotCounter = 1;
+
+function renderSideBarArray(){
+	MAX_SLOTS = SideBarList.length < MAX_SLOTS ? SideBarList.length : MAX_SLOTS;
 	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
+		var sect;
 		sbar.className = "sbar";
 		sbar.style.display = "inline";
-		sbar.style.left = getLeftOffset(3,0);
-		if(slotCounter < 4){
-			sbar.style.top = getTopOffset(1, slotCounter);
-		} else {
-			if(slotCounter < 8){
-				sbar.style.top = getTopOffset(2, slotCounter - 4);
-			} else {
-				sbar.style.top = getTopOffset(3, slotCounter - 8);
-			}
-		}
+		sbar.style.left = getLeftOffset(getGridColumn(),0);
+		sbar.style.top = getBoxTop(slotCounter);
 		sbar.className = getBGround(PayLevelList[listCounter]);
-		//var fs = FONT_SIZE;
-		var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
+		sbar.style.height = getTwoRowHeight() + "px";
+		sbar.style.width = getBoxWidth() + "px";
+		//var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
+		//console.log("font: " + fs + "::" + listCounter);
+		fs = parseInt(getTwoRowFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
-
 		sbar.innerHTML = SideBarList[listCounter];
+		// + "{" + getHSquareSize() + "," + sbar.style.top + "}";
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
 	}
-	offset = ListCounterInc(offset);
-	//if(offset > SideBarList.length - 1){ offset = 0; }
-	//else {offset++;}
 }
 
-// pushes next entry onto sidebar queue
+// pushes next entry onto 2 parallel arrays
 function loadSideBarArray(i){
 	var spot = SideBarList.length; //first empty spot
-	//console.log("Length: " + spot);
-	//console.log("Offset: " + offset);
 	var outLine;
 
 	outLine = YahrList.Yahrzeits[i].HName + "<br>" +
 											YahrList.Yahrzeits[i].HDate;
 
   if(!YahrList.Yahrzeits[i].HName)
-	outLine = YahrList.Yahrzeits[i].Name + "<br>" +
+		outLine = YahrList.Yahrzeits[i].Name + "<br>" +
 											YahrList.Yahrzeits[i].HDate;
 
   // notice - there are 9 slots on the sidebar, so we cycle through them
 	for(var j=0; j < spot; j++){
 		if(SideBarList[j] == outLine) return;
 	}
-	PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel;
+
+	PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel ? YahrList.Yahrzeits[i].PayLevel : 0;
+	//PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel;
 	SideBarList[spot] = outLine;
+	//console.log(spot + ":" + YahrList.Yahrzeits[i].PayLevel);
 }
 
 function loadSideBar(){

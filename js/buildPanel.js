@@ -43,6 +43,9 @@ function getColID(idx){
     case 2: return "pbarC";
     case 3: return "pbarD";
     case 4: return "pbarE";
+    case 5: return "pbarF";
+    case 6: return "pbarG";
+    case 7: return "pbarH";
   }
 }
 
@@ -85,6 +88,7 @@ function hideScreen02(){
 
 var currentPosition = 0;
 function renderScreen(callback){
+  hideScreen02();
   var tf = TIME_FACTOR * 1000;
   var vi = 0;
   for(var row_count=0; (currentPosition < panelArray.length && row_count < ROW_COUNT); currentPosition++, row_count++){
@@ -107,11 +111,12 @@ function renderScreen(callback){
         pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
 
         //pbar.style.width = "359px";
-        pbar.style.width = getWSquareSize() + "px";
+        //pbar.style.width = getWSquareSize() + "px";
+        pbar.style.width = getBoxWidth() + "px";
         //pbar.style.height = "45px";
-        pbar.style.height = getHBiteSize() + "px";
+        pbar.style.height = getTwoRowHeight() + "px";
         pbar.style.font = "normal";
-        pbar.style.fontSize = (getHBiteSize() / 4) + "px";
+        pbar.style.fontSize = getTwoRowFont() + "px";
         pbar.style.padding = "5px";
         pbar.style.margin = "0px";
         pbar.style.display = "inline";

@@ -11,41 +11,79 @@ var currentName = 0;
 //function gotoFBook(){
 //	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
 //}
+function correctHFontSize(val){
+		return val/2;
+}
+
+function getNextTop(t){
+	if(t >= BITES_PER_SQUARE - 1) return 0;
+	return t + 1;
+}
 
 function positionElts(){
+		var t = BITES_PER_SQUARE;
+		var s = 2;
 		var name = document.getElementById("Name");
-		name.style.top = getTopOffset(1,3);
+		name.style.top = getTopOffset(s, t);
 		name.style.left = getLeftOffset(2,0);
 		name.style.width = getWSquareSize() + "px";
-		name.style.fontSize = (getHBiteSize() / 2.5) + "px";
+		name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
-
-		var hname = document.getElementById("HName");
-		hname.style.top = getTopOffset(2,0);
-		hname.style.left = getLeftOffset(2,0);
-		hname.style.width = getWSquareSize() + "px";
-		hname.style.fontSize = (getHBiteSize() / 2.5) + "px";
-
-		var hdate = document.getElementById("HDate");
-		hdate.style.top = getTopOffset(2,1);
-		hdate.style.left = getLeftOffset(2,0);
-		hdate.style.width = getWSquareSize() + "px";
-		hdate.style.fontSize = (getHBiteSize() / 2.5) + "px";
-
-		var edate = document.getElementById("EDate");
-		edate.style.top = getTopOffset(2,2);
-		edate.style.left = getLeftOffset(2,0);
-		edate.style.width = getWSquareSize() + "px";
-		edate.style.fontSize = (getHBiteSize() / 2.5) + "px";
-
+		//console.log("name s: " + s + "t: " + t);
 		var pic01  = document.getElementById("Pic01");
-		pic01.style.top = getTopOffset(1,2);
+		pic01.style.top = getTopOffset(s,BITES_PER_SQUARE);
 		pic01.style.left = getLeftOffset(1,0);
 		pic01.style.width = (getWSquareSize() * .75) + "px";
 		pic01.style.height = (getHSquareSize() * .75) + "px";
 
+		t += 1;
+		if(t > BITES_PER_SQUARE){
+			s++;
+			t = 0;
+		}
+		//console.log("hname - s: " + s + "t: " + t);
+
+		var hname = document.getElementById("HName");
+		hname.style.top = getTopOffset(s, t);
+		hname.style.left = getLeftOffset(2,0);
+		hname.style.width = getWSquareSize() + "px";
+		hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+
+		t += 1;
+		if(t > BITES_PER_SQUARE){
+			s++;
+			t = 0;
+		}
+		//console.log("hdate s: " + s + "t: " + t);
+
+		var hdate = document.getElementById("HDate");
+		hdate.style.top = getTopOffset(s,t);
+		hdate.style.left = getLeftOffset(2,0);
+		hdate.style.width = getWSquareSize() + "px";
+		hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+
+		t += 1;
+		if(t > BITES_PER_SQUARE){
+			s++;
+			t = 0;
+		}
+		//console.log("edate s: " + s + "t: " + t);
+
+		var edate = document.getElementById("EDate");
+		edate.style.top = getTopOffset(s,t);
+		edate.style.left = getLeftOffset(2,0);
+		edate.style.width = getWSquareSize() + "px";
+		edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+
+		t += 1;
+		if(t > BITES_PER_SQUARE){
+			s++;
+			t = 0;
+		}
+		//console.log("s: " + s + "t: " + t);
+
 		var pic02  = document.getElementById("Pic02");
-		pic02.style.top = getTopOffset(2,3);
+		pic02.style.top = getTopOffset(s,t);
 		pic02.style.left = getLeftOffset(2,0);
 		pic02.style.width = getWSquareSize() + "px";
 
@@ -73,7 +111,7 @@ function hideScreen01(){
 }
 
 function endCycle(){
-	console.log("endCycle: " + DISPLAY_SETTING);
+	//console.log("endCycle: " + DISPLAY_SETTING);
 	if(DISPLAY_SETTING == 2){
 			switchLoad();
 	} else {
