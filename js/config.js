@@ -40,7 +40,7 @@ function addStuffConfig(){
 	var grid_size = "\"grid_size\":\"" + escapeHTML(document.getElementById("grid_size").value) + "\"";
 
 	var fline = "var ConfigList = '{ \"settings\": ";
-	var line = "{" + display_type + "," + time_factor + "," + password + "," + slots + "," + column_count + "," + row_count + "," + grid_size + "}}';";
+	var line = "{" + display_type + "," + time_factor + "," + password + "," + slots + "," + column_count + "," + row_count + "," + screen_title + "," + grid_size + "}}';";
 
 	download(fline + line, "BCConfig", "text/plain");
 }

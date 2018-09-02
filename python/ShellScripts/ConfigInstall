@@ -1,6 +1,0 @@
-cd ~/code/beisChayim
-mv data/BCConfig config/BCConfig
-
-# restart browser
-pkill -f firefox
-firefox beisChayim.html &
