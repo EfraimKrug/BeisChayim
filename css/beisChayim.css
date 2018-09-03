@@ -75,6 +75,8 @@ h1 {
 		font-size: 26px;
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+		padding: 5px;
+		margin: 5px;
 }
 
 #Name {

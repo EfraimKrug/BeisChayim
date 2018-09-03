@@ -5,18 +5,24 @@
 <link rel="stylesheet" href="./css/sideBar.css">
 <link rel="stylesheet" href="./css/config.css">
 <link rel="stylesheet" href="./css/panel.css">
+<link rel="stylesheet" href="./css/editWindow.css">
+<link rel="stylesheet" href="./css/newWindow.css">
+<link rel="stylesheet" href="./css/selectWindow.css">
+
 <title>Beis Chayim</title>
+
 </head>
-<body id=body class=bg0 onload="firstLoad();">
+<body  onload="firstLoad();">
+<div id=body class=bg0>
 <div id=security>
 								<table id=kboard>
 									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
-									<tr><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
+									<tr><link rel="stylesheet" href="./css/panel.css"><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
 									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
 									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
 								</table>
 </div>
-<h1 id=sTitle onmouseover="showSecurity();" >Beis Chayim</h1>
+<h1 id=sTitle onmouseover="showSecurity();" onclick="doSelect();">Beis Chayim</h1>
 
 <table id=accessMenu>
 	<tr><td>
@@ -107,7 +113,7 @@ function checkIt(){
 function doAction(){
 	var action = document.getElementById("actionSelect");
 	if(action.value == "new") startNew();
-	if(action.value == "edit") startEdit();
+	if(action.value == "edit") doEdit();
 	if(action.value == "select") startSelect();
 	if(action.value == "config") startConfig();
 
@@ -127,11 +133,11 @@ function startSelect(){
 }
 
 //note: currentName is actually the index
-function startEdit(){
-	var params = buildParamString(YahrList, currentName);
-	window.open("EditPerson.html?" + params, '_blank','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,directories=0, width=750px,height=750px');
-	hideIt();
-}
+//function startEdit(){
+	//var params = buildParamString(YahrList, currentName);
+	//window.open("EditPerson.html?" + params, '_blank','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,directories=0, width=750px,height=750px');
+	//hideIt();
+//}
 
 function startConfig(){
 	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
@@ -262,5 +268,321 @@ function kbclick(ky){
 	<div id=pbarH12></div>
 
 <!-- panel ends here -->
+</div>
+<!-- edit panel begins here -->
+<div id=editPanel>
+	<!-- <h3>Careful: the data you put in this form will show up on the monitor!</h3>
+	-->
+<div id=ID></div>
+<table id=editTable>
+	<tr>
+		<td>Name</td><td><input type=text id=editName></td>
+	</tr>
+	<tr>
+		<td>Hebrew Name</td><td><input type=text id=editHName></td>
+	</tr>
+		<tr>
+			<td>English Date</td><td><input type=text id=editEDate></td>
+		</tr>
+		<tr>
+			<td>Hebrew Date</td><td><input type=text id=editHDate></td>
+		</tr>
+		<tr>
+				<td>Picture #1</td><td><span class=fname id=editPic01 ></span><input id="editFilename1" type="file" onblur="keepFileName(1);"/></td>
+		</tr>
+		<tr>
+		    <td>Picture #2</td><td><span class=fname id=editPic02></span><input id="editFilename2" type="file" onblur="keepFileName(2);"/></td>
+		</tr>
+		<tr>
+		  <td>Mourned by</td><td><input type=text id=editMournby></td>
+		</tr>
+		<tr>
+		  <td>Relationship</td><td><input type=text id=editRelationship></td>
+		</tr>
+		<tr>
+		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
+																													<option value="0">none</option>
+																													<option value="1">copper</option>
+																													<option value="2">bronze</option>
+																													<option value="3">silver</option>
+																													<option value="4">gold</option>
+																												</select>
+			</td>
+		</tr>
+
+		<tr>
+		    <td>Comments</td><td><textarea rows=5 cols=75 id=editComments01></textarea></td>
+		</tr>
+		<tr>
+			<td></td><td><button id=submit onclick=editAddStuff();>Submit</button></td>
+		</tr>
+		</table>
+</table>
+
+	<script>
+
+	function resetScreen(){
+		screen01 = document.getElementById("body");
+		editPanel = document.getElementById("editPanel");
+		screen01.style.display = "block";
+		editPanel.style.display = "none";
+	}
+
+	function editAddStuff(){
+			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
+	}
+
+	function doEdit(){
+			var params = buildParamString(YahrList, currentName);
+			screen01 = document.getElementById("body");
+			editPanel = document.getElementById("editPanel");
+			screen01.style.display = "none";
+			editPanel.style.display = "block";
+			editPanel.className = "editPanel";
+			//console.log(params);
+			var queryDict = {}
+			params.substr(1).split("&").forEach(function(item) {
+			    queryDict[item.split("=")[0]] = item.split("=")[1]
+			})
+			loadEdit(queryDict);
+	}
+
+	function loadEdit(queryDict){
+			var ID = queryDict["ID"];
+
+			document.getElementById("ID").innerHTML = ID;
+			document.getElementById("editName").value = queryDict["Name"].replace(/%20/g," ");
+			document.getElementById("editHName").value = queryDict["HName"].replace(/%20/g," ");
+			document.getElementById("editEDate").value = queryDict["EDate"].replace(/%20/g," ");
+			document.getElementById("editHDate").value = queryDict["HDate"].replace(/%20/g," ");
+			document.getElementById("editPic01").innerHTML = queryDict["Pic01"].replace(/%20/g," ");
+			document.getElementById("editPic02").innerHTML = queryDict["Pic02"].replace(/%20/g," ");
+			document.getElementById("editMournby").value = queryDict["MournBy"].replace(/%20/g," ");
+			document.getElementById("editRelationship").value = queryDict["Relationship"].replace(/%20/g," ");
+			document.getElementById("editComments01").value = queryDict["Comments01"].replace(/%20/g," ");
+			document.getElementById("editPaylevel").value = queryDict["PayLevel"].replace(/%20/g," ");
+	}
+	</script>
+	<script src="js/download.js"></script>
+</div>
+<!-- edit panel ends here -->
+<!-- new panel begins here -->
+<div id=newPanel>
+<table id=newTable>
+<tr>
+				<td>Name</td><td><input type=text id=newName></td>
+</tr>
+<tr>
+				<td>Hebrew Name</td><td><input type=text id=newHName></td>
+</tr>
+<tr>
+				<td>Gregorian Date</td><td><input type=text id=newEDate></td>
+</tr>
+<tr>
+				<td>Hebrew Date</td><td><input type=text id=newHDate></td>
+</tr>
+<tr>
+				<td>Picture #1</td><td><span id=newPic01 ><input id="newFilename1" type="file" onblur="keepFileName(1);"/></span></td>
+</tr>
+<tr>
+        <td>Picture #2</td><td><span id=newPic02><input id="newFilename2" type="file" onblur="keepFileName(2);"/></span></td>
+</tr>
+<tr>
+  			<td>Mourned by</td><td><input type=text id=newMournby></td>
+</tr>
+<tr>
+  			<td>Relationship</td><td><input type=text id=newRelationship></td>
+</tr>
+<tr>
+  <td>Pay Level</td><td><select id=newPaylevel onchange="setPayLevel();">
+																											<option value="0">none</option>
+																											<option value="1">copper</option>
+																											<option value="2">bronze</option>
+																											<option value="3">silver</option>
+																											<option value="4">gold</option>
+																										</select>
+	</td>
+</tr>
+<tr>
+        <td>Comments</td><td><textarea rows=5 cols=75 id=newComments01></textarea></td>
+</tr>
+<tr>
+	<td>	</td><td><button id=submit onclick=newAddStuff();>Submit</button></td>
+</tr>
+</table>
+<script>
+
+function resetScreenFromNew(){
+	screen01 = document.getElementById("body");
+	newPanel = document.getElementById("newPanel");
+	screen01.style.display = "block";
+	newPanel.style.display = "none";
+}
+
+function newAddStuff(){
+		addStuff(0, 0, resetScreenFromNew);
+}
+
+function doNew(){
+		//var params = buildParamString(YahrList, currentName);
+		screen01 = document.getElementById("body");
+		newPanel = document.getElementById("newPanel");
+		screen01.style.display = "none";
+		newPanel.style.display = "block";
+		newPanel.className = "newPanel";
+		loadNew();
+}
+
+function loadNew(){
+		document.getElementById("ID").innerHTML = "";
+		document.getElementById("newName").value = "";
+		document.getElementById("newHName").value = "";
+		document.getElementById("newEDate").value = "";
+		document.getElementById("newHDate").value = "";
+		document.getElementById("newPic01").innerHTML = "";
+		document.getElementById("newPic02").innerHTML = "";
+		document.getElementById("newMournby").value = "";
+		document.getElementById("newRelationship").value = "";
+		document.getElementById("newComments01").value = "";
+		document.getElementById("newPaylevel").value = "";
+}
+</script>
+
+</div>
+<!-- new panel ends here -->
+
+<!-- select panel beginse here -->
+
+<div id=selectPanel>
+	<div id=searchBar>&nbsp;</div>
+	<div id=choice>
+		<table>
+			<tr><td onclick="clickEdit();" class=rowColor00>Edit</td></tr>
+			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
+		</table>
+	</div>
+<table>
+	<tr>
+		<td class=ltr onclick="scrollto('a');">a</td>
+		<td class=ltr onclick="scrollto('b');">b</td>
+		<td class=ltr onclick="scrollto('c');">c</td>
+		<td class=ltr onclick="scrollto('d');">d</td>
+		<td class=ltr onclick="scrollto('e');">e</td>
+		<td class=ltr onclick="scrollto('f');">f</td>
+		<td class=ltr onclick="scrollto('g');">g</td>
+		<td class=ltr onclick="scrollto('h');">h</td>
+		<td class=ltr onclick="scrollto('i');">i</td>
+		<td class=ltr onclick="scrollto('j');">j</td>
+		<td class=ltr onclick="scrollto('k');">k</td>
+		<td class=ltr onclick="scrollto('l');">l</td>
+		<td class=ltr onclick="scrollto('m');">m</td>
+		<td class=ltr onclick="scrollto('n');">n</td>
+		<td class=ltr onclick="scrollto('o');">o</td>
+		<td class=ltr onclick="scrollto('p');">p</td>
+		<td class=ltr onclick="scrollto('q');">q</td>
+		<td class=ltr onclick="scrollto('r');">r</td>
+		<td class=ltr onclick="scrollto('s');">s</td>
+		<td class=ltr onclick="scrollto('t');">t</td>
+		<td class=ltr onclick="scrollto('u');">u</td>
+		<td class=ltr onclick="scrollto('v');">v</td>
+		<td class=ltr onclick="scrollto('w');">w</td>
+		<td class=ltr onclick="scrollto('x');">x</td>
+		<td class=ltr onclick="scrollto('y');">y</td>
+		<td class=ltr onclick="scrollto('z');">z</td>
+		<td class=ltr onclick="reset();">reset</td>
+	</tr>
+</table>
+
+<div style="overflow-x:auto;">
+<table id=tbl>
+	<tbody>
+	</tbody>
+</table>
+</div>
+<script>
+var searchString = '';
+var currentIDX;
+//YahrList.Yahrzeits.reverse();
+function doSelect(){
+		//var params = buildParamString(YahrList, currentName);
+		screen01 = document.getElementById("body");
+		selectPanel = document.getElementById("selectPanel");
+		screen01.style.display = "none";
+		selectPanel.style.display = "block";
+		selectPanel.className = "selectPanel";
+}
+
+function reset(){
+	searchString = '';
+}
+
+function scrollto(let){
+			var sbar = document.getElementById("searchBar");
+			searchString += let;
+			cleanUpTable();
+			showNames(searchString);
+			if(searchString.length > 3) searchString = '';
+}
+
+function cleanUpTable(){
+	var tbl = document.getElementById("tbl");
+	for (var i=tbl.rows.length-1; i > -1; i--){
+		tbl.deleteRow(i);
+	}
+}
+
+function showNames(name){
+	var tbl = document.getElementById("tbl");
+	var rowCount = 0;
+	for (var i=0; i < YahrList.Yahrzeits.length; i++){
+			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
+					var row = tbl.insertRow(0);
+					if(rowCount % 2){
+						row.className = "rowColor00";
+					} else {
+						row.className = "rowColor01";
+					}
+					var cell1 = row.insertCell(0);
+					var nm = '';
+					if(YahrList.Yahrzeits[i].Name.trim() !== ''){
+						nm = YahrList.Yahrzeits[i].Name;
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm += " { " + YahrList.Yahrzeits[i].HName + " } ";
+						}
+					} else {
+						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+							nm = YahrList.Yahrzeits[i].HName;
+						}
+					}
+					cell1.innerHTML = "<span onclick='choose(" + i + ")'>" + nm + "</span>";
+					cell1.className = "cell";
+					rowCount++;
+				}
+			}
+		}
+
+function clickEdit(){
+	doEdit();
+	// var params = buildParamString(YahrList, currentIDX);
+	// window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	//
+	var choice = document.getElementById("choice");
+	choice.style.display = "none";
+	selectPanel = document.getElementById("selectPanel");
+	selectPanel.style.display = "none";
+
+}
+
+function choose(id){
+	var choice = document.getElementById("choice");
+	choice.style.display = "inline";
+	var editChoice = document.getElementById("editChoice");
+	currentIDX = id;
+}
+</script>
+</div>
+
+
+<!-- select panel ends here -->
 </body>
 </html>

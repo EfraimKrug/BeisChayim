@@ -48,36 +48,62 @@ function createNewID(){
 }
 
 
-function addStuff(edit){
+function addStuff(ID, edit, callback){
 	var id = "\"ID\":\"" + ID + "\"";
 	if(!edit){
 		ID = createNewID();
 		id = "\"ID\":\"00" + ID + "\"";
 	}
 
-	var name = "\"Name\":\"" + escapeHTML(document.getElementById("name").value) + "\"";
-	//var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
-	var hname = "\"HName\":\"" + escapeHTML(document.getElementById("hname").value) + "\"";
-	var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("edate").value) + "\"";
-	var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("hdate").value) + "\"";
-	var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("pic01").innerHTML) + "\"";
-	var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("pic02").innerHTML) + "\"";
+	if(edit){
+		var name = "\"Name\":\"" + escapeHTML(document.getElementById("editName").value) + "\"";
+		//var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
+		var hname = "\"HName\":\"" + escapeHTML(document.getElementById("editHName").value) + "\"";
+		var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("editEDate").value) + "\"";
+		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("editHDate").value) + "\"";
+		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("editPic01").innerHTML) + "\"";
+		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("editPic02").innerHTML) + "\"";
+		if(fileName01.trim() !== ""){
+			pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
+		}
+		if(fileName02.trim() !== ""){
+			var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
+		}
+		var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("editMournby").value) + "\"";
+		var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("editRelationship").value) + "\"";
+		var pl = document.getElementById("editPaylevel").value;
+		if(pl == ""){
+			pl = "0";
+		}
+		var paylevel = "\"PayLevel\":\"" + pl + "\"";
+		//var fbook = "\"FBook\":\"\"";
+		var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("editComments01").value) + "\"";
 
-	if(fileName01.trim() !== ""){
-		pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
-	}
-	if(fileName02.trim() !== ""){
-		var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
-	}
-	var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("mournby").value) + "\"";
-	var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("relationship").value) + "\"";
-	var pl = document.getElementById("paylevel").value;
-	if(pl == ""){
-		pl = "0";
-	}
-	var paylevel = "\"PayLevel\":\"" + pl + "\"";
-	//var fbook = "\"FBook\":\"\"";
-	var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("comments01").value) + "\"";
+  } else {
+		var name = "\"Name\":\"" + escapeHTML(document.getElementById("newName").value) + "\"";
+		//var bground = "\"BGround\":\"" + escapeHTML(document.getElementById("bground").value) + "\"";
+		var hname = "\"HName\":\"" + escapeHTML(document.getElementById("newHName").value) + "\"";
+		var edate = "\"EDate\":\"" + escapeHTML(document.getElementById("newEDate").value) + "\"";
+		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("newHDate").value) + "\"";
+		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("newPic01").innerHTML) + "\"";
+		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("newPic02").innerHTML) + "\"";
+
+		if(fileName01.trim() !== ""){
+			pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
+		}
+		if(fileName02.trim() !== ""){
+			var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
+		}
+		var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("newMournby").value) + "\"";
+		var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("newRelationship").value) + "\"";
+		var pl = document.getElementById("newPaylevel").value;
+		if(pl == ""){
+			pl = "0";
+		}
+		var paylevel = "\"PayLevel\":\"" + pl + "\"";
+		//var fbook = "\"FBook\":\"\"";
+		var comments01 = "\"Comments01\":\"" + escapeHTML(document.getElementById("newComments01").value) + "\"";
+}
 	var line = "'{" + id + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
 	pic01 + "," + pic02 + "," + comments01 + "},' + " ;
@@ -86,13 +112,14 @@ function addStuff(edit){
 	} else {
 		download(line, escapeHTML("$$BC$$" + ID), "text/plain");
 	}
+	callback();
 }
 // Function to download data to a file
 function download(data, filename, type) {
     var file = new Blob([data], {type: type});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
+	  else { // Other
         var a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;
