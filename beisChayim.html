@@ -579,6 +579,45 @@ function choose(id){
 	var editChoice = document.getElementById("editChoice");
 	currentIDX = id;
 }
+
+function setPanel(){
+  var pbarH08 = document.getElementById("pbarH08");
+  pbarH08.style.display = "inline";
+  pbarH08.className = "pbarpl4";
+	pbarH08.style.position = "absolute";
+	//pbarH08.style.height = getTwoRowHeight();
+	pbarH08.style.height = getHSquareSize() + "px";
+	pbarH08.style.zIndex = 99;
+	pbarH08.style.width = getWSquareSize() + "px";
+	pbarH08.style.border = "2px solid black";
+	pbarH08.innerHTML = "this is the town and these are the people";
+	pbarH08.style.fontSize = getLargeFont();
+	//for(var i=1; i < 8; i++){
+		pbarH08.style.top = getTopOffset(3,1);
+		pbarH08.style.left = getLeft(5);
+	//	alert("left=1");
+	//}
+	var pbarH07 = document.getElementById("pbarH07");
+  pbarH07.style.display = "inline";
+  pbarH07.className = "pbarpl3";
+	pbarH07.style.position = "absolute";
+	//pbarH08.style.height = getTwoRowHeight();
+	pbarH07.style.height = getHBiteSize() + "px";
+	pbarH07.style.zIndex = 99;
+	pbarH07.style.width = getWSquareSize() + "px";
+	pbarH07.style.border = "2px solid black";
+	pbarH07.innerHTML = "this is the town and these are the people this is the town and these are the people";
+	pbarH07.style.fontSize = getLargeFont() + "px";
+	//for(var i=1; i < 8; i++){
+		pbarH07.style.top = getTopOffset(3,0);
+		pbarH07.style.left = getLeft(5);
+		//alert(pbarH07.style.fontSize);
+	//	alert("left=1");
+	//}
+
+}
+//setPanel();
+
 </script>
 </div>
 

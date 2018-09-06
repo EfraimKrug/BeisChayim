@@ -7,7 +7,7 @@
 //
 var BITES_PER_SQUARE = 4;
 
-var margin = 28;
+var margin = 96;
 
 var hSquareSize = 0;
 var wSquareSize = 0;
@@ -69,6 +69,9 @@ function check(){
 }
 
 function getLeft(pos){
+    if(pos > GRID_SIZE){
+      pos = GRID_SIZE;
+    }
     switch(pos){
       case 1: return Math.floor(leftCol01) + "px";
       case 2: return Math.floor(leftCol02) + "px";
@@ -82,6 +85,9 @@ function getLeft(pos){
 }
 
 function getTop(pos){
+    if(pos > GRID_SIZE){
+      pos = parseInt(GRID_SIZE);
+    }
     switch(pos){
       case 1: return Math.floor(topRow01) + "px";
       case 2: return Math.floor(topRow02) + "px";
@@ -161,17 +167,24 @@ function getTwoRowHeight(){
   return hBiteSize / 1.6;
 }
 
-function getTwoRowFont(){
+function getLargeFont(){
+  return getHSquareSize() / parseInt(GRID_SIZE);
+}
+
+function getSmallFont(){
   //return hBiteSize - 24;
-  return hBiteSize / 4;
+  //return parseInt(getWSquareSize() / 18)
+  return parseInt(getHSquareSize() / 11)
+  //return hBiteSize / 2;
 }
 
 function initScreen(){
   var sWidth = screen.width;
   var sHeight = screen.height;
 
-  wSquareSize = (sWidth - (2 * margin)) / GRID_SIZE;
-  hSquareSize = (sHeight -(2 * margin)) / GRID_SIZE;
+  GSPlusOne = parseInt(GRID_SIZE) + 1;
+  wSquareSize = (sWidth - (2 * margin)) / GSPlusOne;
+  hSquareSize = (sHeight -(2 * margin)) / GSPlusOne;
 
   topRow01 = margin;
   topRow02 = hSquareSize + margin;

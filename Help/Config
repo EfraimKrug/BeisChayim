@@ -1,0 +1,55 @@
+1) Configure your browswer
+
+  * We suggest you run your application in firefox under ubuntu (or lubuntu).
+
+  * This is a very light system for very small computers. You don't need
+    a whole lot of computer power to run this!
+
+  * Click the icon on the right side of your browser, and find 'preferences'
+
+  * Scroll down until you find "Downloads"
+    Click the option "Save files to "... and point that to "Downloads".
+    This should be the default setting...
+    Close the page.
+
+1) Configure your application
+
+  * when the application is running, tap the top left
+  area over the name (probably your shul's name).
+
+  * a number panel will appear. tap in your pin number.
+
+  * the right box gives a drop down list menu -
+    choose "config"
+
+    * The "Configuration Screen" comes up.
+
+    Display:        There are three choices.
+        1) Plaques - that shows screens full of plaques...
+        2) One by One - that shows an individual display for each name, and
+        3) Alternate - shows all the plaques, then shows each name one by one...
+
+    Screen Title:   This is the name on the top left corner of your display.
+
+    Time (1 - 15):  The application cycles through each name, or each screen
+        of plaques. This field allows you to determine how long each screen
+        should show. 1 is 1 second. 15 is fifteen seconds.
+
+    Password:       This is simply a way to keep kids out. There does not have to
+        be very much security.
+
+    Slots:          When the display is showing one name at a time, there is also
+        an option to show plaques for todays yahrzeits on the right side. You can
+        have between 5 and 9 slots - that is names showing at one time. The names
+        then cycle through the positions.
+
+    Rows:           This is the number of rows for the plaque display.
+
+    Columns:        The number of columns for the plaque display.
+
+    Grid Size:      Can be 4 or 5. This is a way of adjusting the positioning of
+        the elements.
+
+  Hit submit. Save the file. Close the screen.
+
+  
