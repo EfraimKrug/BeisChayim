@@ -9,7 +9,6 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"192258","Name":"Aaron Ben Mark","HName":"Aaron Ben Mark","EDate":"1916-05-05","HDate":"02 Iyyar 5676","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193035","Name":"Aaron Frank","HName":"Avraham Zalman Ben Ezrael Mayer","EDate":"1972-10-11","HDate":"03 Cheshvan 5733","MournBy":"Evelyn Shear","Relationship":"brother","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194140","Name":"Aaron Resnikoff","HName":"Aharon ben Avraham haCohen","EDate":"","HDate":"02 Tishrei","MournBy":"Jeffrey Houben","Relationship":"uncle","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
-'{"ID":"0090006","Name":"Next Guy","HName":"Menachem ben Guyman","EDate":"1990-09-10","HDate":"13 Elul 5750","MournBy":"","Relationship":"","PayLevel":"4","Pic01":"4ladysoldiers.jpeg","Pic02":"profemale01.jpeg","Comments01":"Gold it is..."},' + 
 '{"ID":"194315","Name":"Aaron Temkin","HName":"Aaron ben Reuvain","EDate":"","HDate":"19 Adar","MournBy":"Eliyahu Temkin","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193891","Name":"Abe Fischer","HName":"Avraham ben Eliezer HaLevi","EDate":"","HDate":"27 Nissan","MournBy":"Andrew Fischer","Relationship":"cousin","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194532","Name":"Abigail May","HName":"Aliza Malka","EDate":"1986-02-13","HDate":"04 Adar 5746","MournBy":"Elizabeth May","Relationship":"sister","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
