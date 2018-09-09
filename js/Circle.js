@@ -193,6 +193,19 @@ function getNum(i){
 	return i;
 }
 
+function formDate(dt){
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var m = dt.getMonth() ? dt.getMonth() : "";
+	var d = dt.getDate() ? dt.getDate() : "";
+	var y = dt.getFullYear() ? dt.getFullYear() : "";
+
+	if(m && d && y) return (months[m] + " " + d + ", " + y);
+	if(m && d) return (months[m] + " " + d);
+	if(m && y) return (months[m] +  " " + y);
+	if(d && y) return (y);
+	return "";
+}
+
 var lastI = -1;
 function loadElement(i, callback){
 	//console.log("loadElement: " + i + ":" + lastI);
@@ -218,7 +231,9 @@ function loadElement(i, callback){
 	bd.className = cName;
 
 	var HDate = document.getElementById("HDate");
-	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
+	HDate.innerHTML = (YahrList.Yahrzeits[i].HDate ?
+											YahrList.Yahrzeits[i].HDate:"");
+
 	HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 
 	//FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
@@ -242,11 +257,12 @@ function loadElement(i, callback){
 	}
 	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
 
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var EDate = document.getElementById("EDate");
+	//var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	//var EDate = document.getElementById("EDate");
 	var dt = new Date(YahrList.Yahrzeits[i].EDate);
 	//EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
-	EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
+	//EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
+	EDate.innerHTML = formDate(dt);
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
 	var Pic01  = document.getElementById("Pic01");
