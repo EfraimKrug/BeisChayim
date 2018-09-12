@@ -82,7 +82,10 @@
 
 </div>
 <script src="config/BCConfig"></script>
+<script src="config/ScreenConfig"></script>
+
 <script src="js/config.js"></script>
+<script src="js/screenSet.js"></script>
 <script src="js/db01.js"></script>
 <script src="js/config.js"></script>
 <script src="js/Control.js"></script>
@@ -90,7 +93,6 @@
 <script src="js/sideBar.js"></script>
 <script src="js/dtConversion.js"></script>
 <script src="js/param.js"></script>
-<script src="js/screenSet.js"></script>
 <script src="js/buildPanel.js"></script>
 
 
@@ -112,9 +114,9 @@ function checkIt(){
 
 function doAction(){
 	var action = document.getElementById("actionSelect");
-	if(action.value == "new") startNew();
+	if(action.value == "new") doNew();
 	if(action.value == "edit") doEdit();
-	if(action.value == "select") startSelect();
+	if(action.value == "select") doSelect();
 	if(action.value == "config") startConfig();
 
 	action.value = "";
@@ -381,11 +383,14 @@ function kbclick(ky){
 <tr>
 				<td>Hebrew Date</td><td><input type=text id=newHDate></td>
 </tr>
+
+				<td>Relationship</td><td><input type=text id=editRelationship></td>
+
 <tr>
-				<td>Picture #1</td><td><span id=newPic01 ><input id="newFilename1" type="file" onblur="keepFileName(1);"/></span></td>
+				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(1);"/></td>
 </tr>
 <tr>
-        <td>Picture #2</td><td><span id=newPic02><input id="newFilename2" type="file" onblur="keepFileName(2);"/></span></td>
+        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(2);"/></td>
 </tr>
 <tr>
   			<td>Mourned by</td><td><input type=text id=newMournby></td>

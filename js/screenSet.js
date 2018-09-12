@@ -1,4 +1,46 @@
 // screen placement...
+var screenConfig = JSON.parse(ScreenConfigList);
+// Straight configuration values
+function getTopName1(){
+  return screenConfig.settings["OneByName1"] + "px";
+}
+
+function getName1Font(){
+  return screenConfig.settings["OneByName1Font"] + "px";
+}
+
+function getName2Font(){
+  return screenConfig.settings["OneByName2Font"] + "px";
+}
+
+function getDate1Font(){
+  return screenConfig.settings["OneByDate1Font"] + "px";
+}
+
+function getDate2Font(){
+  return screenConfig.settings["OneByDate2Font"] + "px";
+}
+
+function getTopName2(){
+  return screenConfig.settings["OneByName2"] + "px";
+}
+
+function getTopDate1(){
+  return screenConfig.settings["OneByDate1"] + "px";
+}
+
+function getTopDate2(){
+  return screenConfig.settings["OneByDate2"] + "px";
+}
+
+function getTopPic1(){
+  return screenConfig.settings["OneByPic1"] + "px";
+}
+
+function getTopPic2(){
+  return screenConfig.settings["OneByPic2"] + "px";
+}
+
 // this determines how many screen partitions we support....
 // first design was 3X3 screen...
 // options are 3, 4, or 5...
