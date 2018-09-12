@@ -24,14 +24,16 @@ function positionElts(){
 		var t = BITES_PER_SQUARE;
 		var s = 2;
 		var name = document.getElementById("Name");
-		name.style.top = getTopOffset(s, t);
+		//name.style.top = getTopOffset(s, t);
+		name.style.top = getTopName1();
 		name.style.left = getLeftOffset(2,0);
 		name.style.width = getWSquareSize() + "px";
-		name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		name.style.fontSize = getName1Font();
+		//name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
 		//console.log("name s: " + s + "t: " + t);
 		var pic01  = document.getElementById("Pic01");
-		pic01.style.top = getTopOffset(s,BITES_PER_SQUARE);
+		pic01.style.top = getTopPic1();
 		pic01.style.left = getLeftOffset(1,0);
 		pic01.style.width = (getWSquareSize() * .75) + "px";
 		pic01.style.height = (getHSquareSize() * .75) + "px";
@@ -44,10 +46,12 @@ function positionElts(){
 		//console.log("hname - s: " + s + "t: " + t);
 
 		var hname = document.getElementById("HName");
-		hname.style.top = getTopOffset(s, t);
+		//hname.style.top = getTopOffset(s, t);
+		hname.style.top = getTopName2();
 		hname.style.left = getLeftOffset(2,0);
 		hname.style.width = getWSquareSize() + "px";
-		hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		//hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		hname.style.fontSize = getName2Font();
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -57,10 +61,11 @@ function positionElts(){
 		//console.log("hdate s: " + s + "t: " + t);
 
 		var hdate = document.getElementById("HDate");
-		hdate.style.top = getTopOffset(s,t);
+		hdate.style.top = getTopDate1();
 		hdate.style.left = getLeftOffset(2,0);
 		hdate.style.width = getWSquareSize() + "px";
-		hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		hdate.style.fontSize = getName1Font();
+		//hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -70,10 +75,11 @@ function positionElts(){
 		//console.log("edate s: " + s + "t: " + t);
 
 		var edate = document.getElementById("EDate");
-		edate.style.top = getTopOffset(s,t);
+		edate.style.top = getTopDate2();
 		edate.style.left = getLeftOffset(2,0);
 		edate.style.width = getWSquareSize() + "px";
-		edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		//edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		edate.style.fontSize = getName2Font();
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -83,7 +89,7 @@ function positionElts(){
 		//console.log("s: " + s + "t: " + t);
 
 		var pic02  = document.getElementById("Pic02");
-		pic02.style.top = getTopOffset(s,t);
+		pic02.style.top = getTopPic2();
 		pic02.style.left = getLeftOffset(2,0);
 		pic02.style.width = getWSquareSize() + "px";
 
@@ -193,19 +199,6 @@ function getNum(i){
 	return i;
 }
 
-function formDate(dt){
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var m = dt.getMonth() ? dt.getMonth() : "";
-	var d = dt.getDate() ? dt.getDate() : "";
-	var y = dt.getFullYear() ? dt.getFullYear() : "";
-
-	if(m && d && y) return (months[m] + " " + d + ", " + y);
-	if(m && d) return (months[m] + " " + d);
-	if(m && y) return (months[m] +  " " + y);
-	if(d && y) return (y);
-	return "";
-}
-
 var lastI = -1;
 function loadElement(i, callback){
 	//console.log("loadElement: " + i + ":" + lastI);
@@ -231,9 +224,7 @@ function loadElement(i, callback){
 	bd.className = cName;
 
 	var HDate = document.getElementById("HDate");
-	HDate.innerHTML = (YahrList.Yahrzeits[i].HDate ?
-											YahrList.Yahrzeits[i].HDate:"");
-
+	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 	HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 
 	//FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
@@ -257,12 +248,11 @@ function loadElement(i, callback){
 	}
 	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
 
-	//var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	//var EDate = document.getElementById("EDate");
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var EDate = document.getElementById("EDate");
 	var dt = new Date(YahrList.Yahrzeits[i].EDate);
 	//EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
-	//EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
-	EDate.innerHTML = formDate(dt);
+	EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
 	var Pic01  = document.getElementById("Pic01");
@@ -273,12 +263,12 @@ function loadElement(i, callback){
 	Pic01.style.visibility = "hidden";
 	Pic02.style.visibility = "hidden";
 
-	if(YahrList.Yahrzeits[i].PayLevel > 1){
+	if((YahrList.Yahrzeits[i].PayLevel > 1) && YahrList.Yahrzeits[i].Pic01){
 		Pic01.style.visibility = "visible";
 		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	}
 
-	if(YahrList.Yahrzeits[i].PayLevel > 2){
+	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}

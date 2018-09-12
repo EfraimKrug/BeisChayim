@@ -1,5 +1,5 @@
 var YahrzeitList = '{ "Yahrzeits": [' +
-'{"ID":"193945","Name":" Levine","HName":"","EDate":"","HDate":"        ","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
+'{"ID":"193945","Name":" Levine son of Billy the Bone","HName":"Hammer and Hammer&comma; very hamish","EDate":"2001-09-01","HDate":"22 Elul 5759","MournBy":"","Relationship":"","PayLevel":"0","Pic01":"","Pic02":"","Comments01":""},' + 
 '{"ID":"193254","Name":" Naachum","HName":"Nachum","EDate":"","HDate":"22 Kislev","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194451","Name":" Peshe Raizel","HName":"","EDate":"","HDate":"07 Cheshvan","MournBy":"Eleanor Pearlman","Relationship":"mother","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194288","Name":" Plotz","HName":"","EDate":"","HDate":"        ","MournBy":"Fruma Lungin","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
@@ -9,8 +9,8 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"192258","Name":"Aaron Ben Mark","HName":"Aaron Ben Mark","EDate":"1916-05-05","HDate":"02 Iyyar 5676","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193035","Name":"Aaron Frank","HName":"Avraham Zalman Ben Ezrael Mayer","EDate":"1972-10-11","HDate":"03 Cheshvan 5733","MournBy":"Evelyn Shear","Relationship":"brother","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194140","Name":"Aaron Resnikoff","HName":"Aharon ben Avraham haCohen","EDate":"","HDate":"02 Tishrei","MournBy":"Jeffrey Houben","Relationship":"uncle","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
-'{"ID":"0090005","Name":"New Guy","HName":"Nachman ben Guyman","EDate":"1983-09-07","HDate":"13 Elul 5743","MournBy":"","Relationship":"","PayLevel":"3","Pic01":"soldiers001.jpeg","Pic02":"male01.jpeg","Comments01":"Nachman&comma; what a guy..."},' + 
 '{"ID":"194315","Name":"Aaron Temkin","HName":"Aaron ben Reuvain","EDate":"","HDate":"19 Adar","MournBy":"Eliyahu Temkin","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
+'{"ID":"0090013","Name":"","HName":"","EDate":"","HDate":"","MournBy":"","Relationship":"","PayLevel":"0","Pic01":"","Pic02":"","Comments01":""},' + 
 '{"ID":"193891","Name":"Abe Fischer","HName":"Avraham ben Eliezer HaLevi","EDate":"","HDate":"27 Nissan","MournBy":"Andrew Fischer","Relationship":"cousin","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"194532","Name":"Abigail May","HName":"Aliza Malka","EDate":"1986-02-13","HDate":"04 Adar 5746","MournBy":"Elizabeth May","Relationship":"sister","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
 '{"ID":"193072","Name":"Abraham B. Cohen","HName":"Avraham Ben Eliezer Zvi Hacohain","EDate":"1960-11-02","HDate":"12 Cheshvan 5721","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PayLevel":"","Comments01":""},' + 
