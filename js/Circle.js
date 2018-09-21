@@ -202,8 +202,13 @@ function loadElement(i, callback){
 	bd.className = cName;
 
 	var HDate = document.getElementById("HDate");
-	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
-	HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
+	if(YahrList.Yahrzeits[i].HDate){
+		HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
+		if(HDate.innerHTML.substring(0,1) == '0'){
+			 HDate.innerHTML = YahrList.Yahrzeits[i].HDate.substring(1);
+		}
+		HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
+	}
 
 	var Name = document.getElementById("Name");
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
@@ -220,7 +225,15 @@ function loadElement(i, callback){
 	var EDate = document.getElementById("EDate");
 	var dt = new Date(YahrList.Yahrzeits[i].EDate);
 
-	EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
+	var d = dt.getDate() ? dt.getDate() : "";
+	var y = dt.getFullYear() ? dt.getFullYear() : "";
+	var m = dt.getMonth() ? dt.getMonth() : "";
+
+	EDate.innerHTML = (d && m) ? months[m] + " " + d : "";
+	EDate.innerHTML = (m && y) ? months[m] + " " + y : "";
+	EDate.innerHTML = (d && y) ? d + " " + y : "";
+
+	EDate.innerHTML = (d && m && y) ? months[m] + " " + d + ", " + y : "";
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
 	var Pic01  = document.getElementById("Pic01");
