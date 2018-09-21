@@ -51,6 +51,7 @@ var slotCounter = 1;
 
 function renderSideBarArray(){
 	MAX_SLOTS = SideBarList.length < MAX_SLOTS ? SideBarList.length : MAX_SLOTS;
+	//console.log(SideBarList.length);
 	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 		var sbar = document.getElementById("sbar0" + slotCounter);
 		var sect;
@@ -63,7 +64,7 @@ function renderSideBarArray(){
 		sbar.style.width = getBoxWidth() + "px";
 		//var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
 		//console.log("font: " + fs + "::" + listCounter);
-		fs = parseInt(getTwoRowFont()) + parseInt(PayLevelList[listCounter]);
+		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
 		sbar.innerHTML = SideBarList[listCounter];
 		// + "{" + getHSquareSize() + "," + sbar.style.top + "}";

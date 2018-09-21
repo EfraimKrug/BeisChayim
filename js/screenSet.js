@@ -21,6 +21,10 @@ function getDate2Font(){
   return screenConfig.settings["OneByDate2Font"] + "px";
 }
 
+function getSideBarFont(){
+  return screenConfig.settings["SideBarFont"] + "px";  
+}
+
 function getTopName2(){
   return screenConfig.settings["OneByName2"] + "px";
 }
