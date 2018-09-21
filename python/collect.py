@@ -34,18 +34,18 @@ with open(masterfile) as mfl:
         pSw = 0
         for e in idxs:
             if idx == e[0]:
-                print e[1]
+                print (e[1])
                 pSw = 1
                 countNew = countNew + 1
         if pSw == 0:
-            print line,
+            print (line),
             countOld = countOld + 1
 
         pSw = 0
 
         if newPrinted < 1 and countOld > 10:
             for d in newidxs:
-                print d[1]
+                print (d[1])
                 countNew = countNew + 1
             newPrinted = 1
 
