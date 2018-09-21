@@ -1,18 +1,14 @@
 /*
  * ========== going though the list ====================
  */
-//DISPLAY_SETTING = 0;
-//FBookURL = "http://www.facebook.com/First.Last";
 var YahrList = JSON.parse(YahrzeitList);
 var SideBarList = [];
 var PayLevelList = [];
 var currentName = 0;
 
-//function gotoFBook(){
-//	window.open(FBookURL ,'_blank','toolbar=no,location=no,status=no,menubar=no,width=450px,height=450px');
-//}
 function correctHFontSize(val){
-		return val/2;
+		return val;
+		//return val/2;
 }
 
 function getNextTop(t){
@@ -24,30 +20,28 @@ function positionElts(){
 		var t = BITES_PER_SQUARE;
 		var s = 2;
 		var name = document.getElementById("Name");
-		name.style.top = getTopOffset(s, t);
+		//name.style.top = getTopOffset(s, t);
+		name.style.top = getTopName1();
 		name.style.left = getLeftOffset(2,0);
 		name.style.width = getWSquareSize() + "px";
-		name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		name.style.fontSize = getName1Font();
+		//name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
-		//console.log("name s: " + s + "t: " + t);
 		var pic01  = document.getElementById("Pic01");
-		pic01.style.top = getTopOffset(s,BITES_PER_SQUARE);
+		pic01.style.top = getTopPic1();
 		pic01.style.left = getLeftOffset(1,0);
 		pic01.style.width = (getWSquareSize() * .75) + "px";
 		pic01.style.height = (getHSquareSize() * .75) + "px";
-
-		t += 1;
-		if(t > BITES_PER_SQUARE){
-			s++;
-			t = 0;
-		}
-		//console.log("hname - s: " + s + "t: " + t);
+		t = getNextTop(t);
+		if(t == 0) s++;
 
 		var hname = document.getElementById("HName");
-		hname.style.top = getTopOffset(s, t);
+		//hname.style.top = getTopOffset(s, t);
+		hname.style.top = getTopName2();
 		hname.style.left = getLeftOffset(2,0);
 		hname.style.width = getWSquareSize() + "px";
-		hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		//hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		hname.style.fontSize = getName2Font();
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -57,10 +51,11 @@ function positionElts(){
 		//console.log("hdate s: " + s + "t: " + t);
 
 		var hdate = document.getElementById("HDate");
-		hdate.style.top = getTopOffset(s,t);
+		hdate.style.top = getTopDate1();
 		hdate.style.left = getLeftOffset(2,0);
 		hdate.style.width = getWSquareSize() + "px";
-		hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		hdate.style.fontSize = getName1Font();
+		//hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -70,20 +65,17 @@ function positionElts(){
 		//console.log("edate s: " + s + "t: " + t);
 
 		var edate = document.getElementById("EDate");
-		edate.style.top = getTopOffset(s,t);
+		edate.style.top = getTopDate2();
 		edate.style.left = getLeftOffset(2,0);
 		edate.style.width = getWSquareSize() + "px";
-		edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		//edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+		edate.style.fontSize = getName2Font();
 
-		t += 1;
-		if(t > BITES_PER_SQUARE){
-			s++;
-			t = 0;
-		}
-		//console.log("s: " + s + "t: " + t);
+		t = getNextTop(t);
+		if(t == 0) s++;
 
 		var pic02  = document.getElementById("Pic02");
-		pic02.style.top = getTopOffset(s,t);
+		pic02.style.top = getTopPic2();
 		pic02.style.left = getLeftOffset(2,0);
 		pic02.style.width = getWSquareSize() + "px";
 
@@ -111,7 +103,6 @@ function hideScreen01(){
 }
 
 function endCycle(){
-	//console.log("endCycle: " + DISPLAY_SETTING);
 	if(DISPLAY_SETTING == 2){
 			switchLoad();
 	} else {
@@ -125,7 +116,6 @@ var OneByInterval;
 function switchLoad(){
 	if (processRunning == 0){
 		processRunning = 1;
-		//console.log("renderingPlaques" + processRunning);
 		currentPosition = 0;
 		clearInterval(OneByInterval);
 		hideScreen01();
@@ -135,7 +125,6 @@ function switchLoad(){
 	} else {
 	if (processRunning == 1){
 		processRunning = 0;
-		//console.log("renderOnebyOne" + processRunning);
 		hideScreen02();
 		clearInterval(PlaqueInterval);
 		renderOnebyOne(endCycle);
@@ -173,7 +162,6 @@ function renderOnebyOne(callback){
 	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
 }
 
-//returns index of next entry in our month
 function getNum(i){
 	var last = YahrList.Yahrzeits.length - 1;
 	i++;
@@ -195,11 +183,9 @@ function getNum(i){
 
 var lastI = -1;
 function loadElement(i, callback){
-	//console.log("loadElement: " + i + ":" + lastI);
 	if(i < lastI){
 		var tf = TIME_FACTOR * 1000;
 		setTimeout(callback, 1500);
-		//callback();
 		lastI = -1;
 		return;
 	} else {
@@ -207,9 +193,7 @@ function loadElement(i, callback){
 	}
 	positionElts();
 	var bd = document.getElementById("body");
-	//var n = i % 5;
 	var cName = "";
-	//console.log("[" + YahrList.Yahrzeits[i].PayLevel + "]");
 	if(!YahrList.Yahrzeits[i].PayLevel){
 		cName = "bg0";
 	} else {
@@ -221,19 +205,9 @@ function loadElement(i, callback){
 	HDate.innerHTML = YahrList.Yahrzeits[i].HDate;
 	HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 
-	//FBookURL = "http://" + YahrList.Yahrzeits[i].FBook;
-	//if(YahrList.Yahrzeits[i].FBook.length < 17){
-	//	document.getElementById("gotofbook").src = "";
-	//	document.getElementById("gotofbook").style.display = 'none';
-	//}
-	//else {
-	//	document.getElementById("gotofbook").src = "./img/facebook2.png";
-	//	document.getElementById("gotofbook").style.display = 'inline';
-	//}
 	var Name = document.getElementById("Name");
 	Name.innerHTML = YahrList.Yahrzeits[i].Name;
 	Name.className = "Name" + YahrList.Yahrzeits[i].PayLevel;
-	//console.log("[" + Name.className + "]");
 
 	var HName = document.getElementById("HName");
 	HName.innerHTML = YahrList.Yahrzeits[i].HName;
@@ -245,7 +219,7 @@ function loadElement(i, callback){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var EDate = document.getElementById("EDate");
 	var dt = new Date(YahrList.Yahrzeits[i].EDate);
-	//EDate.innerHTML = YahrList.Yahrzeits[i].EDate;
+
 	EDate.innerHTML = months[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
 	EDate.className = "edate" + YahrList.Yahrzeits[i].PayLevel;
 
@@ -257,12 +231,12 @@ function loadElement(i, callback){
 	Pic01.style.visibility = "hidden";
 	Pic02.style.visibility = "hidden";
 
-	if(YahrList.Yahrzeits[i].PayLevel > 1){
+	if((YahrList.Yahrzeits[i].PayLevel > 1) && YahrList.Yahrzeits[i].Pic01){
 		Pic01.style.visibility = "visible";
 		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	}
 
-	if(YahrList.Yahrzeits[i].PayLevel > 2){
+	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}

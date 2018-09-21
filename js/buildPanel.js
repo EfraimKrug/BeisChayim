@@ -92,7 +92,7 @@ function renderScreen(callback){
   var tf = TIME_FACTOR * 1000;
   var vi = 0;
   for(var row_count=0; (currentPosition < panelArray.length && row_count < ROW_COUNT); currentPosition++, row_count++){
-      vi++;
+      vi+=2;
       if(vi < 10) vi = "0" + vi;
       if(vi > 12) vi = "01";
       for(var j=0; j < COLUMN_COUNT; j++){
@@ -114,10 +114,11 @@ function renderScreen(callback){
         //pbar.style.width = getWSquareSize() + "px";
         pbar.style.width = getBoxWidth() + "px";
         //pbar.style.height = "45px";
-        pbar.style.height = getTwoRowHeight() + "px";
+        //pbar.style.height = getTwoRowHeight() + "px";
+        pbar.style.height = getHBiteSize() + "px";
         pbar.style.font = "normal";
-        pbar.style.fontSize = getTwoRowFont() + "px";
-        pbar.style.padding = "5px";
+        pbar.style.fontSize = getSmallFont() + "px";
+        pbar.style.padding = "0px";
         pbar.style.margin = "0px";
         pbar.style.display = "inline";
         pbar.style.zIndex = 5;

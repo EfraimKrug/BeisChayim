@@ -1,7 +1,7 @@
 function buildParamString(YahrList, currentIDX){
   //console.log(currentIDX);
   //console.log(YahrList.Yahrzeits[currentIDX]);
-  var params = "ID=" + YahrList.Yahrzeits[currentIDX].ID;
+  var params = "&ID=" + YahrList.Yahrzeits[currentIDX].ID;
   params += "&BGround=" + YahrList.Yahrzeits[currentIDX].BGround;
   params += "&Name=" + YahrList.Yahrzeits[currentIDX].Name;
   params += "&HName=" + YahrList.Yahrzeits[currentIDX].HName;
