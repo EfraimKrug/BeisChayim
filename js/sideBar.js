@@ -58,9 +58,11 @@ function renderSideBarArray(){
 		sbar.className = "sbar";
 		sbar.style.display = "inline";
 		sbar.style.left = getLeftOffset(getGridColumn(),0);
-		sbar.style.top = getBoxTop(slotCounter);
+		//sbar.style.top = getBoxTop(slotCounter);
+		sbar.style.top = getSideBarTop(slotCounter);
 		sbar.className = getBGround(PayLevelList[listCounter]);
-		sbar.style.height = getTwoRowHeight() + "px";
+		//sbar.style.height = getTwoRowHeight() + "px";
+		sbar.style.height = getSideBarHeight();
 		sbar.style.width = getBoxWidth() + "px";
 		//var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
 		//console.log("font: " + fs + "::" + listCounter);
@@ -107,8 +109,8 @@ function loadSideBar(){
 			if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
 				loadSideBarArray(i);
 			}
+			//console.log(offset + ":" + SideBarList);
 		}
 	}
-	//console.log(offset + ":" + SideBarList);
 	renderSideBarArray();
 }

@@ -91,30 +91,31 @@ function renderScreen(callback){
   hideScreen02();
   var tf = TIME_FACTOR * 1000;
   var vi = 0;
+
   for(var row_count=0; (currentPosition < panelArray.length && row_count < ROW_COUNT); currentPosition++, row_count++){
-      vi+=2;
+      //console.log("top: " + currentPosition + ":" + row_count + ":" + panelArray.length);
+      vi = parseInt(vi) + 2;
       if(vi < 10) vi = "0" + vi;
       if(vi > 12) vi = "01";
+      //console.log(vi);
       for(var j=0; j < COLUMN_COUNT; j++){
         if(!(panelArray[currentPosition][j])){
           currentPosition = 0;
           setTimeout(callback, tf);
-          //callback();
           return;
         }
-        //console.log(getColID(j) + vi);
+
         var pbar = document.getElementById(getColID(j) + vi);
+        //console.log(getColID(j) + ":" + vi);
         pbar.style.position = "absolute";
         pbar.style.left = getLeft(j+1);
         pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
+        pbar.style.top = getTopOffset(row_count);
+        //console.log(vi + ":" + getTopOffset(calcRow(vi), calcOffset(vi)));
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
         pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
 
-        //pbar.style.width = "359px";
-        //pbar.style.width = getWSquareSize() + "px";
         pbar.style.width = getBoxWidth() + "px";
-        //pbar.style.height = "45px";
-        //pbar.style.height = getTwoRowHeight() + "px";
         pbar.style.height = getHBiteSize() + "px";
         pbar.style.font = "normal";
         pbar.style.fontSize = getSmallFont() + "px";
@@ -122,7 +123,6 @@ function renderScreen(callback){
         pbar.style.margin = "0px";
         pbar.style.display = "inline";
         pbar.style.zIndex = 5;
-        //console.log(panelArray[currentPosition]);
 
         var dt = panelArray[currentPosition][j]["Date"];
         if(panelArray[currentPosition][j]["Date"].substring(0,1) == "0"){
@@ -133,7 +133,6 @@ function renderScreen(callback){
         if(currentPosition > panelArray.length - 2 ){
           currentPosition = 0;
           setTimeout(callback, tf);
-          //callback();
           return;
         }
       }

@@ -1,6 +1,17 @@
 // screen placement...
 var screenConfig = JSON.parse(ScreenConfigList);
 // Straight configuration values
+function getSideBarHeight(){
+  return screenConfig.settings["SideBarHeight"];
+}
+
+function getSideBarTop(n){
+  var boxHeight = parseInt(getSideBarHeight());
+  var top = (boxHeight * n) + (30 * n);
+  //if(top < 100) alert(boxHeight + ":" + n + ":" + top);
+  return top + "px";
+}
+
 function getTopName1(){
   return screenConfig.settings["OneByName1"] + "px";
 }
@@ -22,7 +33,7 @@ function getDate2Font(){
 }
 
 function getSideBarFont(){
-  return screenConfig.settings["SideBarFont"] + "px";  
+  return screenConfig.settings["SideBarFont"] + "px";
 }
 
 function getTopName2(){
@@ -153,8 +164,15 @@ function getBoxTop(slotCounter){
     return getTopOffset(row, bite);
 }
 
+function getTopOffset(row){
+    var offset = 127;
+    //var r = (row * BITES_PER_SQUARE);
+    //  console.log(r);
+    return  ((row * 37) + offset) + "px";
+}
+
 //offsets in quarters
-function getTopOffset(pos, offset){
+function _getTopOffset(pos, offset){
   var os;
   //console.log("pos: " + pos + " offset: " + offset);
   if(offset > BITES_PER_SQUARE) offset = offset % BITES_PER_SQUARE;
