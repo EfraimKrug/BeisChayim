@@ -14,6 +14,7 @@
 	margin: 5px;
 	z-index: 20;
 	display:none;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .pbarpl0 {
@@ -61,4 +62,5 @@
 	text-shadow: 2px 2px #000000;
 	background-image: url('../img/bggold.jpg');
 	background-repeat:repeat;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 2), 0 0 40px rgba(0, 0, 0, 2) inset;
 }

@@ -1,10 +1,13 @@
 // screen placement...
 var screenConfig = JSON.parse(ScreenConfigList);
+var panelConfig = JSON.parse(PanelConfigList);
+
 // Straight configuration values
 function getSideBarHeight(){
   return screenConfig.settings["SideBarHeight"];
 }
 
+//SideBar values
 function getSideBarTop(n){
   var boxHeight = parseInt(getSideBarHeight());
   var top = (boxHeight * n) + (30 * n);
@@ -56,12 +59,38 @@ function getTopPic2(){
   return screenConfig.settings["OneByPic2"] + "px";
 }
 
-// this determines how many screen partitions we support....
-// first design was 3X3 screen...
-// options are 3, 4, or 5...
-//
-// Grid Size: can be 4,5,6,7
-//
+// Panel values
+function getTopOffset(row){
+    var offset = parseInt(panelConfig.settings["PanelOffset"]);
+    var rowHeight = parseInt(panelConfig.settings["RowHeight"]);
+
+    return  ((row * rowHeight) + offset) + "px";
+}
+
+function getPanelBoxWidth(){
+    return parseInt(panelConfig.settings["BoxWidth"]);
+}
+
+function getPanelBoxHeight(){
+    return parseInt(panelConfig.settings["BoxHeight"]);
+}
+
+function getPanelFont(){
+    return parseInt(panelConfig.settings["PanelFont"]);
+}
+
+function getColumnWidth(){
+    return parseInt(panelConfig.settings["ColumnWidth"]);
+}
+
+function getColumnOffset(col){
+    var offset = parseInt(panelConfig.settings["PanelLeftOffset"]);
+    var colWidth = parseInt(panelConfig.settings["ColumnWidth"]);
+
+    return  ((col * colWidth) + offset) + "px";
+}
+
+// the following code is becoming obsolete...
 var BITES_PER_SQUARE = 4;
 
 var margin = 96;
@@ -164,12 +193,6 @@ function getBoxTop(slotCounter){
     return getTopOffset(row, bite);
 }
 
-function getTopOffset(row){
-    var offset = 127;
-    //var r = (row * BITES_PER_SQUARE);
-    //  console.log(r);
-    return  ((row * 37) + offset) + "px";
-}
 
 //offsets in quarters
 function _getTopOffset(pos, offset){

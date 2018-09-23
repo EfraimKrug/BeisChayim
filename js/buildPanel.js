@@ -108,22 +108,29 @@ function renderScreen(callback){
         var pbar = document.getElementById(getColID(j) + vi);
         //console.log(getColID(j) + ":" + vi);
         pbar.style.position = "absolute";
-        pbar.style.left = getLeft(j+1);
-        pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
+        //pbar.style.left = getLeft(j+1);
+        pbar.style.left = getColumnOffset(j);
+
+        //pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
         pbar.style.top = getTopOffset(row_count);
         //console.log(vi + ":" + getTopOffset(calcRow(vi), calcOffset(vi)));
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
         pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
 
-        pbar.style.width = getBoxWidth() + "px";
-        pbar.style.height = getHBiteSize() + "px";
+        pbar.style.width = getPanelBoxWidth() + "px";
+        pbar.style.height = getPanelBoxHeight() + "px";
         pbar.style.font = "normal";
-        pbar.style.fontSize = getSmallFont() + "px";
+
+        pbar.style.fontSize = getPanelFont() + "px";
+        if(panelArray[currentPosition][j]["Name"].length > 28){
+          pbar.style.fontSize = (getPanelFont() - 2) + "px";          
+        }
+
         pbar.style.padding = "0px";
         pbar.style.margin = "0px";
         pbar.style.display = "inline";
         pbar.style.zIndex = 5;
-
+        //console.log(pbar.style.width + ":" + pbar.style.left);
         var dt = panelArray[currentPosition][j]["Date"];
         if(panelArray[currentPosition][j]["Date"].substring(0,1) == "0"){
           dt = panelArray[currentPosition][j]["Date"].substring(1);
