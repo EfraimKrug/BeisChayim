@@ -69,7 +69,8 @@ function renderingPlaques(callback){
 
 function getEdit(idx){
   currentName = idx;
-  startEdit();
+  currentIDX = idx;
+  doEdit();
 }
 
 function hideScreen02(){
@@ -123,10 +124,10 @@ function renderScreen(callback){
 
         pbar.style.fontSize = getPanelFont() + "px";
         if(panelArray[currentPosition][j]["Name"].length > 28){
-          pbar.style.fontSize = (getPanelFont() - 2) + "px";          
+          pbar.style.fontSize = (getPanelFont() - 2) + "px";
         }
 
-        pbar.style.padding = "0px";
+        pbar.style.padding = "3px";
         pbar.style.margin = "0px";
         pbar.style.display = "inline";
         pbar.style.zIndex = 5;
@@ -136,6 +137,7 @@ function renderScreen(callback){
           dt = panelArray[currentPosition][j]["Date"].substring(1);
         }
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
+        tempID = panelArray[currentPosition][j]["IDX"];
 
         if(currentPosition > panelArray.length - 2 ){
           currentPosition = 0;

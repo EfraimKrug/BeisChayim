@@ -4,6 +4,7 @@
 var YahrList = JSON.parse(YahrzeitList);
 var SideBarList = [];
 var PayLevelList = [];
+var YahrzeitListSpotList = [];
 var currentName = 0;
 
 function correctHFontSize(val){
@@ -23,15 +24,19 @@ function positionElts(){
 		//name.style.top = getTopOffset(s, t);
 		name.style.top = getTopName1();
 		name.style.left = getLeftOffset(2,0);
-		name.style.width = getWSquareSize() + "px";
+		//name.style.width = getWSquareSize() + "px";
+		name.style.width = getOneByWidth();
 		name.style.fontSize = getName1Font();
 		//name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
 		var pic01  = document.getElementById("Pic01");
 		pic01.style.top = getTopPic1();
 		pic01.style.left = getLeftOffset(1,0);
-		pic01.style.width = (getWSquareSize() * .75) + "px";
-		pic01.style.height = (getHSquareSize() * .75) + "px";
+		//pic01.style.width = (getWSquareSize() * .75) + "px";
+		//pic01.style.height = (getHSquareSize() * .75) + "px";
+		pic01.style.width =  "145px";
+		pic01.style.height = "175px";
+
 		t = getNextTop(t);
 		if(t == 0) s++;
 
@@ -39,7 +44,8 @@ function positionElts(){
 		//hname.style.top = getTopOffset(s, t);
 		hname.style.top = getTopName2();
 		hname.style.left = getLeftOffset(2,0);
-		hname.style.width = getWSquareSize() + "px";
+		//hname.style.width = getWSquareSize() + "px";
+		hname.style.width = getOneByWidth();
 		//hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 		hname.style.fontSize = getName2Font();
 
@@ -53,7 +59,8 @@ function positionElts(){
 		var hdate = document.getElementById("HDate");
 		hdate.style.top = getTopDate1();
 		hdate.style.left = getLeftOffset(2,0);
-		hdate.style.width = getWSquareSize() + "px";
+		//hdate.style.width = getWSquareSize() + "px";
+		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
 		//hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
@@ -67,7 +74,8 @@ function positionElts(){
 		var edate = document.getElementById("EDate");
 		edate.style.top = getTopDate2();
 		edate.style.left = getLeftOffset(2,0);
-		edate.style.width = getWSquareSize() + "px";
+		//edate.style.width = getWSquareSize() + "px";
+		edate.style.width = getOneByWidth();
 		//edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 		edate.style.fontSize = getName2Font();
 

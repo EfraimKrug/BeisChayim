@@ -7,9 +7,12 @@ var lastNewID = 0;
 //localStorage.removeItem("lastNewID");
 
 function keepFileName(picNum){
+	//alert("AB" + document.getElementById("editFilename1").value);
 	if(picNum == 1){
   	var f = document.getElementById("filename1");
-		fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+		fileName01 = document.getElementById("editFilename1").value;
+		alert(fileName01);
+		//fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
 	}
 
 	if(picNum == 2){
@@ -63,9 +66,11 @@ function addStuff(ID, edit, callback){
 		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("editHDate").value) + "\"";
 		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("editPic01").innerHTML) + "\"";
 		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("editPic02").innerHTML) + "\"";
+		//console.log("pic01: " + pic01);
 		if(fileName01.trim() !== ""){
 			pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
 		}
+		//console.log("And" + pic01);
 		if(fileName02.trim() !== ""){
 			var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
 		}
@@ -107,6 +112,7 @@ function addStuff(ID, edit, callback){
 	var line = "'{" + id + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
 	pic01 + "," + pic02 + "," + comments01 + "},' + " ;
+	console.log("LINE: " + line);
 	if(!edit){
 		download(line, escapeHTML("$$BC$$New00" + ID), "text/plain");
 	} else {

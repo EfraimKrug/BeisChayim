@@ -57,7 +57,8 @@ function renderSideBarArray(){
 		var sect;
 		sbar.className = "sbar";
 		sbar.style.display = "inline";
-		sbar.style.left = getLeftOffset(getGridColumn(),0);
+		sbar.style.left = getSideBarLeft();
+		//getLeftOffset(getGridColumn(),0);
 		//sbar.style.top = getBoxTop(slotCounter);
 		sbar.style.top = getSideBarTop(slotCounter);
 		sbar.className = getBGround(PayLevelList[listCounter]);
@@ -70,6 +71,10 @@ function renderSideBarArray(){
 		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
 		sbar.innerHTML = SideBarList[listCounter];
+		sbar.setAttribute("onclick", "getEdit(" + YahrzeitListSpotList[listCounter] + ")" );
+		//currentIDX = listCounter;
+		//sbar.setAttribute("onclick", "getEdit(" + listCounter + ")" );
+
 		// + "{" + getHSquareSize() + "," + sbar.style.top + "}";
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
@@ -96,12 +101,14 @@ function loadSideBarArray(i){
 	PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel ? YahrList.Yahrzeits[i].PayLevel : 0;
 	//PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel;
 	SideBarList[spot] = outLine;
+	YahrzeitListSpotList[spot] = i;
 	//console.log(spot + ":" + YahrList.Yahrzeits[i].PayLevel);
 }
 
 function loadSideBar(){
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
+	currentMonth = htoday.month;
 	resetSideBar();
 	for(var i = 0; i < YahrList.Yahrzeits.length; i++){
 		var dateHold = YahrList.Yahrzeits[i].HDate;

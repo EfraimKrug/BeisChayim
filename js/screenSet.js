@@ -7,12 +7,20 @@ function getSideBarHeight(){
   return screenConfig.settings["SideBarHeight"];
 }
 
+function getSideBarLeft(){
+  return screenConfig.settings["SideBarLeft"];
+}
+
 //SideBar values
 function getSideBarTop(n){
   var boxHeight = parseInt(getSideBarHeight());
   var top = (boxHeight * n) + (30 * n);
   //if(top < 100) alert(boxHeight + ":" + n + ":" + top);
   return top + "px";
+}
+
+function getOneByWidth(){
+  return screenConfig.settings["OneByWidth"] + "px";
 }
 
 function getTopName1(){

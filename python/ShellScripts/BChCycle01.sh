@@ -4,6 +4,8 @@
 # from shulcloud...
 ###############################################################################
 
+mv ~/Downloads/\$\$BC\$\$* ~/code/beisChayim/data
+
 # move files 5 cycles back...
 
 mv ~/code/beisChayim/data/work/db01-4.js ~/code/beisChayim/data/work/db01-5.js
