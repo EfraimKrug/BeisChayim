@@ -63,7 +63,8 @@ function renderSideBarArray(){
 		sbar.className = getBGround(PayLevelList[listCounter]);
 		//sbar.style.height = getTwoRowHeight() + "px";
 		sbar.style.height = getSideBarHeight();
-		sbar.style.width = getBoxWidth() + "px";
+		//sbar.style.width = getBoxWidth() + "px";
+		sbar.style.width = getPanelSideBoxWidth() + "px";
 		//var fs = parseInt(FONT_SIZE) + parseInt(PayLevelList[listCounter]);
 		//console.log("font: " + fs + "::" + listCounter);
 		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);

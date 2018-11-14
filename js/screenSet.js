@@ -71,6 +71,10 @@ function getPanelBoxWidth(){
     return parseInt(panelConfig.settings["BoxWidth"]);
 }
 
+function getPanelSideBoxWidth(){
+    return parseInt(panelConfig.settings["SideBoxWidth"]);
+}
+
 function getPanelBoxHeight(){
     return parseInt(panelConfig.settings["BoxHeight"]);
 }

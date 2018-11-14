@@ -1,1 +1,1 @@
-var ConfigList = '{ "settings": {"display_type":"0","time_factor":"2","password":"6543","slots":"7","column_count":"6","row_count":"12","screen_title":"Kadimah Toras-Moshe","grid_size":"6"}}';
+var ConfigList = '{ "settings": {"display_type":"1","time_factor":"2","password":"6543","slots":"7","column_count":"3","row_count":"6","screen_title":"Kadimah Toras-Moshe","grid_size":"6"}}';
