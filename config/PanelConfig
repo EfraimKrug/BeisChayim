@@ -1,1 +1,4 @@
+//10.1" screen:
 var PanelConfigList = '{ "settings": {"PanelOffset":"120","PanelLeftOffset":"120", "BoxHeight":"30", "RowHeight":"37", "BoxWidth":"159", "ColumnWidth":"179", "PanelFont":"10", "SideBoxWidth":"259"}}';
+//17" screen
+//var PanelConfigList = '{ "settings": {"PanelOffset":"120","PanelLeftOffset":"120", "BoxHeight":"30", "RowHeight":"37", "BoxWidth":"159", "ColumnWidth":"179", "PanelFont":"10", "SideBoxWidth":"259"}}';

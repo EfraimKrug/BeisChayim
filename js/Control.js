@@ -11,43 +11,51 @@ function autoSecClose(){
 	var security = document.getElementById("security");
 	security.style.display = 'none';
 	showButtonSec = true;
+	hideIt();
+}
+
+function hideSecurity(){
+	var security = document.getElementById("security");
+	security.style.display = 'none';
+	showButtonSec = true;
+	initKeys();
 }
 
 function showSecurity(){
 	var security = document.getElementById("security");
-
 	//alert(security.style.zIndex);
-	if(showButtonSec){
+	if(showButtonSec && showButton){
 		security.style.display = 'inline';
 		showButtonSec = false;
-		passkey = '';
-		pkLetterCount = 0;
+		initKeys();
+		//passkey = '';
+		//pkLetterCount = 0;
 		setTimeout(autoSecClose, 10000)
 	} else {
-		security.style.display = 'none';
-		showButtonSec = true;
+		initKeys();
+		hideSecurity()
 	}
+	hideIt();
 }
 
 function showIt(){
 	var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
-	var security = document.getElementById("security");
 
 	action.style.display = 'inline';
 	month.style.display = 'inline';
-	security.style.display = 'none';
+
 	showButton = false;
+	hideSecurity();
 }
 
 function hideIt(){
 	var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
-	var security = document.getElementById("security");
 
 	action.style.display = 'none';
 	month.style.display = 'none';
-	security.style.display = 'none';
+	showButton = true;
 }
 
 function doit(){

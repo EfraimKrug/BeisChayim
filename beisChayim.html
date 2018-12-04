@@ -22,7 +22,7 @@
 									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
 								</table>
 </div>
-<h1 id=sTitle onmouseover="showSecurity();" onclick="doSelect();">Beis Chayim</h1>
+<div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
 
 <table id=accessMenu>
 	<tr><td>
@@ -99,8 +99,14 @@
 
 <script>
 hideIt();
+hideSecurity();
 var sTitle = document.getElementById("sTitle");
 sTitle.innerHTML = SCREEN_TITLE;
+
+function initKeys(){
+	passkey = "";
+	pkLetterCount = 0;	
+}
 
 function checkIt(){
 	//console.log("checkIt: " + passkey);

@@ -46,8 +46,9 @@
 .sbar, .sbarpl0, .sbarpl {
 	border: 2px solid #fffbf1;
 	color:#fffbf1;
+	color:#000000;
 	font-family:sans-serif;
-	text-shadow: 2px 2px #000000;
+	text-shadow: 0px 0px #000000;
 	background-image: url('../img/PlaqueBG.gif');
 	background-repeat:repeat;
 	padding-left:15px;
