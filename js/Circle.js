@@ -224,7 +224,7 @@ function loadElement(i, callback){
 
 	var HName = document.getElementById("HName");
 	HName.innerHTML = YahrList.Yahrzeits[i].HName;
-	if(Name.innerHTML == HName.innerHTML){
+	if(Name.innerHTML.trim().toLowerCase() == HName.innerHTML.trim().toLowerCase()){
 		HName.innerHTML = "";
 	}
 	HName.className = "HName" + YahrList.Yahrzeits[i].PayLevel;
