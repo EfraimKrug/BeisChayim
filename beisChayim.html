@@ -105,7 +105,7 @@ sTitle.innerHTML = SCREEN_TITLE;
 
 function initKeys(){
 	passkey = "";
-	pkLetterCount = 0;	
+	pkLetterCount = 0;
 }
 
 function checkIt(){
@@ -350,15 +350,14 @@ function kbclick(ky){
 			var params = buildParamString(YahrList, currentIDX);
 			screen01 = document.getElementById("body");
 			editPanel = document.getElementById("editPanel");
-			screen01.style.display = "none";
+			editPanel.style.zIndex = 20;
 			editPanel.style.display = "block";
 			editPanel.className = "editPanel";
-			//console.log(params);
+
 			var queryDict = {}
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
-			//console.log(queryDict);
 			loadEdit(queryDict);
 	}
 

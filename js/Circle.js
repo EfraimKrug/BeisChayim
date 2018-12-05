@@ -266,7 +266,7 @@ function loadElement(i, callback){
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
 
-	currentName = i;
-
+	//currentName = i;
+	currentIDX = i;
 	setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
 }
