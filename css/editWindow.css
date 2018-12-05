@@ -22,10 +22,12 @@
 
 #editTable {
 	position: absolute;
-	left:127px;
-	top: 127px;
+	left:0px;
+	top: 0px;
 	background-image: url("../img/sunset003.jpeg");
 	border:2px solid black;
+	margin: 36px;
+	padding: 36px;
 }
 
 button {
