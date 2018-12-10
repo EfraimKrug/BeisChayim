@@ -284,7 +284,7 @@ function kbclick(ky){
 <div id=ID></div>
 <table id=editTable>
 	<tr>
-		<td>Name</td><td><input type=text id=editName></td><td><button onclick=goBack();>Click to return</span></td>
+		<td>Name</td><td><input type=text id=editName></td><td><button onclick=goBack('editPanel');>Click to return</span></td>
 	</tr>
 	<tr>
 		<td>Hebrew Name</td><td><input type=text id=editHName></td>
@@ -328,15 +328,15 @@ function kbclick(ky){
 </table>
 
 	<script>
-	function goBack(){
-		resetScreen();
+	function goBack(oldPanel){
+		resetScreen(oldPanel);
 	}
 
-	function resetScreen(){
+	function resetScreen(oldPanel){
 		screen01 = document.getElementById("body");
-		editPanel = document.getElementById("editPanel");
+		oldPanel = document.getElementById(oldPanel);
 		screen01.style.display = "block";
-		editPanel.style.display = "none";
+		oldPanel.style.display = "none";
 	}
 
 	function editAddStuff(){
@@ -349,15 +349,19 @@ function kbclick(ky){
 			var params = buildParamString(YahrList, currentIDX);
 			screen01 = document.getElementById("body");
 			editPanel = document.getElementById("editPanel");
-			screen01.style.display = "none";
+			editPanel.style.zIndex = 20;
 			editPanel.style.display = "block";
 			editPanel.className = "editPanel";
-			//console.log(params);
+
 			var queryDict = {}
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
+<<<<<<< HEAD
 			console.log(editPanel);
+=======
+			hideIt();
+>>>>>>> 966c592ea003ed32d8664ae7ebdd35871f6e91ee
 			loadEdit(queryDict);
 	}
 
@@ -384,8 +388,13 @@ function kbclick(ky){
 <div id=newPanel>
 <table id=newTable>
 <tr>
+		<td>Name</td><td><input type=text id=newName></td><td><button onclick=goBack('newPanel');>Click to return</span></td>
+</tr>
+<!--
+<tr>
 				<td>Name</td><td><input type=text id=newName></td>
 </tr>
+-->
 <tr>
 				<td>Hebrew Name</td><td><input type=text id=newHName></td>
 </tr>
@@ -442,11 +451,13 @@ function newAddStuff(){
 
 function doNew(){
 		//var params = buildParamString(YahrList, currentName);
-		screen01 = document.getElementById("body");
+		//screen01 = document.getElementById("body");
 		newPanel = document.getElementById("newPanel");
-		screen01.style.display = "none";
-		newPanel.style.display = "block";
+		//screen01.style.display = "none";
+		newPanel.style.zIndex = 20;
+		newPanel.style.display = "inline";
 		newPanel.className = "newPanel";
+		hideIt();
 		loadNew();
 }
 
@@ -478,6 +489,11 @@ function loadNew(){
 			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
 		</table>
 	</div>
+<table>
+	<tr>
+			<td></td><td></td><td><button onclick=goBack('selectPanel');>Click to return</span></td>
+	</tr>
+</table>
 <table>
 	<tr>
 		<td class=ltr onclick="scrollto('a');">a</td>
@@ -522,11 +538,13 @@ var currentIDX;
 //YahrList.Yahrzeits.reverse();
 function doSelect(){
 		//var params = buildParamString(YahrList, currentName);
-		screen01 = document.getElementById("body");
+		//screen01 = document.getElementById("body");
 		selectPanel = document.getElementById("selectPanel");
-		screen01.style.display = "none";
+		//screen01.style.display = "none";
 		selectPanel.style.display = "block";
 		selectPanel.className = "selectPanel";
+		selectPanel.style.zIndex = 20;
+		hideIt();
 }
 
 function reset(){
