@@ -39,28 +39,28 @@ function showSecurity(){
 }
 
 function showIt(){
-	var month = document.getElementById("monthSelect");
+	//var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
 
 	action.style.display = 'inline';
-	month.style.display = 'inline';
+	//month.style.display = 'inline';
 
 	showButton = false;
 	hideSecurity();
 }
 
 function hideIt(){
-	var month = document.getElementById("monthSelect");
+	//var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
 
 	action.style.display = 'none';
-	month.style.display = 'none';
+	//month.style.display = 'none';
 	showButton = true;
 }
 
 function doit(){
-	var month = document.getElementById("monthSelect");
-	currentMonth = month.value;
+	//var month = document.getElementById("monthSelect");
+	//currentMonth = month.value;
 	hideIt();
 	//alert(month.value);
 }

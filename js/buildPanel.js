@@ -7,6 +7,37 @@
 var YahrList = JSON.parse(YahrzeitList);
 var panelArray = [];
 
+function fixDate(dt){
+  var year = "";
+  var d = dt.trim();
+  d = d.replace(/\s+/g, "?");
+  d = d.replace(/\,+/g, "?");
+  d = d.replace(/&comma;/g, "?");
+  d = d.replace(/[?]+/g, "?");
+
+  var dArray = d.split('?');
+  if(dArray.length > 2){
+    dArray[1] = dArray[1].toLowerCase().indexOf('eve') > -1 ? 'Tevet': dArray[1];
+    return dArray[0] + " " + dArray[1] + ", " + dArray[2];
+  }
+
+  return dArray[0] + " " + dArray[1];
+}
+
+function checkToday(checkDate){
+	var today = new Date();
+	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
+	currentMonth = htoday.month;
+	var dateHold = fixDate(checkDate);
+		if(dateHold.indexOf(htoday.month) > -1){
+			dateHold = dateHold.trim();
+			if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
+				return true;
+			}
+		}
+	return false;
+}
+
 function buildPanel01(){
   var outLine;
   var lag = -1;
@@ -137,6 +168,11 @@ function renderScreen(callback){
           dt = panelArray[currentPosition][j]["Date"].substring(1);
         }
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
+        pbar.style.border = "1px solid black";
+        if(checkToday(dt)){
+          pbar.style.borderTop = "2px solid red";
+          pbar.style.borderLeft = "2px solid red";
+        }
         tempID = panelArray[currentPosition][j]["IDX"];
 
         if(currentPosition > panelArray.length - 2 ){

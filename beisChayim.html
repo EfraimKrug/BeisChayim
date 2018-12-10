@@ -26,6 +26,7 @@
 
 <table id=accessMenu>
 	<tr><td>
+<!--
 <select id=monthSelect onchange="doit();">
 	<option value="Nissan">Nissan</option>
 	<option value="Iyyar">Iyyar</option>
@@ -40,6 +41,7 @@
 	<option value="Shevat">Shevat</option>
 	<option value="Adar">Adar</option>
 </select>
+-->
 </td>
 <td>
 <select id=actionSelect onchange="doAction();">
@@ -58,6 +60,8 @@
 	<div id=EDate></div>
 	<div id=HDate></div>
 	<div id=DPic01><img id=Pic01 src="./img/soldiers00x1.jpeg" alt=""></div>
+<!--	<div id=DPic01><div id=Pic01></div></div>
+	<div id=DPic02><div id=Pic02></div></div> -->
 	<div id=DPic02><img id=Pic02 src="./img/elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
 	<!-- <div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div> -->
@@ -308,7 +312,7 @@ function kbclick(ky){
 		  <td>Relationship</td><td><input type=text id=editRelationship></td>
 		</tr>
 		<tr>
-		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
+		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel('editPaylevel');">
 																													<option value="0">none</option>
 																													<option value="1">copper</option>
 																													<option value="2">bronze</option>
@@ -339,6 +343,11 @@ function kbclick(ky){
 		oldPanel.style.display = "none";
 	}
 
+	function setPayLevel(editPaylevel){
+			ePayLevel = document.getElementById("editPaylevel");
+			//alert(ePayLevel.value);
+	}
+
 	function editAddStuff(){
 			//alert("B" + document.getElementById("editFilename1").value);
 			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
@@ -354,6 +363,7 @@ function kbclick(ky){
 			editPanel.className = "editPanel";
 
 			var queryDict = {}
+			params = params.replace(/&comma;/g,",");
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
@@ -373,6 +383,9 @@ function kbclick(ky){
 			document.getElementById("editHName").value = queryDict["HName"].replace(/%20/g," ");
 			document.getElementById("editEDate").value = queryDict["EDate"].replace(/%20/g," ");
 			document.getElementById("editHDate").value = queryDict["HDate"].replace(/%20/g," ");
+			if(document.getElementById("editHDate").value.toLowerCase() == "teves"){
+				document.getElementById("editHDate").value = "Tevet";
+			}
 			document.getElementById("editPic01").innerHTML = queryDict["Pic01"].replace(/%20/g," ");
 			document.getElementById("editPic02").innerHTML = queryDict["Pic02"].replace(/%20/g," ");
 			document.getElementById("editMournby").value = queryDict["MournBy"].replace(/%20/g," ");
@@ -408,10 +421,10 @@ function kbclick(ky){
 				<td>Relationship</td><td><input type=text id=editRelationship></td>
 
 <tr>
-				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(1);"/></td>
+				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(3);"/></td>
 </tr>
 <tr>
-        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(2);"/></td>
+        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(4);"/></td>
 </tr>
 <tr>
   			<td>Mourned by</td><td><input type=text id=newMournby></td>

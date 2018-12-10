@@ -27,6 +27,10 @@ function getTopName1(){
   return screenConfig.settings["OneByName1"] + "px";
 }
 
+function getLeftOffsetName(){
+  return screenConfig.settings["LeftOffsetName"] + "px";
+}
+
 function getName1Font(){
   return screenConfig.settings["OneByName1Font"] + "px";
 }
@@ -57,6 +61,14 @@ function getTopDate1(){
 
 function getTopDate2(){
   return screenConfig.settings["OneByDate2"] + "px";
+}
+
+function getLeftPic1(){
+  return screenConfig.settings["LeftPic1"] + "px";
+}
+
+function getLeftPic2(){
+  return screenConfig.settings["LeftPic2"] + "px";
 }
 
 function getTopPic1(){
@@ -231,6 +243,7 @@ function _getTopOffset(pos, offset){
     default: return "0px";
   }
 }
+
 
 function getLeftOffset(pos, offset){
   var os;

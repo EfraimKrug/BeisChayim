@@ -17,7 +17,7 @@ mv /home/efraiim/code/beisChayim/data/work/db01-0.js /home/efraiim/code/beisChay
 cp /home/efraiim/code/beisChayim/js/db01.js /home/efraiim/code/beisChayim/data/work/db01-0.js
 
 # create the new db01.js
-cp /home/efraiim/code/beisChayim/data/out02 /home/efraiim/code/beisChayim/js/db01.js
+#cp /home/efraiim/code/beisChayim/data/out02 /home/efraiim/code/beisChayim/js/db01.js
 cd /home/efraiim/code/beisChayim
 python /home/efraiim/code/beisChayim/python/collect.py > /home/efraiim/code/beisChayim/data/out03
 
