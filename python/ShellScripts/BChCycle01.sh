@@ -17,7 +17,7 @@ mv ~/code/beisChayim/data/work/db01-0.js ~/code/beisChayim/data/work/db01-1.js
 cp ~/code/beisChayim/js/db01.js ~/code/beisChayim/data/work/db01-0.js
 
 # create the new db01.js
-cp ~/code/beisChayim/data/out02 ~/code/beisChayim/js/db01.js
+#cp ~/code/beisChayim/data/out02 ~/code/beisChayim/js/db01.js
 cd ~/code/beisChayim
 python ~/code/beisChayim/python/collect.py > ~/code/beisChayim/data/out03
 

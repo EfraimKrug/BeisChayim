@@ -21,32 +21,30 @@ function positionElts(){
 		var t = BITES_PER_SQUARE;
 		var s = 2;
 		var name = document.getElementById("Name");
-		//name.style.top = getTopOffset(s, t);
 		name.style.top = getTopName1();
-		name.style.left = getLeftOffset(2,0);
-		//name.style.width = getWSquareSize() + "px";
+		name.style.left = getLeftOffsetName();
 		name.style.width = getOneByWidth();
 		name.style.fontSize = getName1Font();
-		//name.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
+
+		var dpic01  = document.getElementById("DPic01");
+		dpic01.style.top = getTopPic1();
+		dpic01.style.left = getLeftPic1();
 
 		var pic01  = document.getElementById("Pic01");
-		pic01.style.top = getTopPic1();
-		pic01.style.left = getLeftOffset(1,0);
-		//pic01.style.width = (getWSquareSize() * .75) + "px";
-		//pic01.style.height = (getHSquareSize() * .75) + "px";
-		pic01.style.width =  "145px";
-		pic01.style.height = "175px";
+		//pic01.style.top = getTopPic1();
+		//pic01.style.left = getLeftOffset(1,0);
+		pic01.style.left = "0px";
+		//pic01.style.width =  "145px";
+		//pic01.style.height = "175px";
 
 		t = getNextTop(t);
 		if(t == 0) s++;
 
 		var hname = document.getElementById("HName");
-		//hname.style.top = getTopOffset(s, t);
 		hname.style.top = getTopName2();
-		hname.style.left = getLeftOffset(2,0);
-		//hname.style.width = getWSquareSize() + "px";
+		hname.style.left = getLeftOffsetName();
+		//hname.style.left = getLeftOffset(2,0);
 		hname.style.width = getOneByWidth();
-		//hname.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 		hname.style.fontSize = getName2Font();
 
 		t += 1;
@@ -54,26 +52,24 @@ function positionElts(){
 			s++;
 			t = 0;
 		}
-		//console.log("hdate s: " + s + "t: " + t);
 
 		var hdate = document.getElementById("HDate");
 		hdate.style.top = getTopDate1();
-		hdate.style.left = getLeftOffset(2,0);
-		//hdate.style.width = getWSquareSize() + "px";
+		//hdate.style.left = getLeftOffset(2,0);
+		hdate.style.left = getLeftOffsetName();
 		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
-		//hdate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
 			s++;
 			t = 0;
 		}
-		//console.log("edate s: " + s + "t: " + t);
 
 		var edate = document.getElementById("EDate");
 		edate.style.top = getTopDate2();
-		edate.style.left = getLeftOffset(2,0);
+		edate.style.left = getLeftOffsetName();
+		//edate.style.left = getLeftOffset(2,0);
 		//edate.style.width = getWSquareSize() + "px";
 		edate.style.width = getOneByWidth();
 		//edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
@@ -82,10 +78,16 @@ function positionElts(){
 		t = getNextTop(t);
 		if(t == 0) s++;
 
+		var dpic02  = document.getElementById("DPic02");
+		dpic02.style.top = getTopPic2();
+		dpic02.style.left = getLeftPic2();
+
 		var pic02  = document.getElementById("Pic02");
-		pic02.style.top = getTopPic2();
-		pic02.style.left = getLeftOffset(2,0);
-		pic02.style.width = getWSquareSize() + "px";
+		pic02.style.left = getLeftPic2();
+		//pic02.style.top = getTopPic2();
+		//pic02.style.left = getLeftPic2();
+		//pic02.style.left = getLeftOffset(2,0);
+		//pic02.style.width = getWSquareSize() + "px";
 
 		name.style.display = "inline";
 		hname.style.display = "inline";
@@ -166,7 +168,9 @@ function firstLoad(){
 function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
-	loadElement(0, callback);
+	setCurrentMonth();
+	console.log(currentMonth);
+	loadElement(i = getNum(0), callback);
 	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
 }
 
@@ -179,11 +183,14 @@ function getNum(i){
 		i = 0;
 		resetSideBar();
 	}
-
 	while(dateHold.indexOf(currentMonth) < 0 && i < last){
 		i++;
-		//console.log(i);
 		dateHold = YahrList.Yahrzeits[i].HDate;
+		if(dateHold.indexOf('Teves') > -1){
+			var start = dateHold.indexOf('Teves');
+			dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
+			//console.log(dateHold);
+		}
 	}
 	if(i > last - 1) i = 0;
 	return i;
@@ -215,6 +222,7 @@ function loadElement(i, callback){
 		if(HDate.innerHTML.substring(0,1) == '0'){
 			 HDate.innerHTML = YahrList.Yahrzeits[i].HDate.substring(1);
 		}
+		HDate.innerHTML = fixDate(HDate.innerHTML);
 		HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 	}
 

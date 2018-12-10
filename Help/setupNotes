@@ -1,0 +1,3 @@
+make sure to mod beisChayim/data to 666
+  >> cd ~/code/beisChayim
+  >> sudo chmod -R 777 ./data

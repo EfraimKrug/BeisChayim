@@ -9,16 +9,28 @@ var lastNewID = 0;
 function keepFileName(picNum){
 	//alert("AB" + document.getElementById("editFilename1").value);
 	if(picNum == 1){
-  	var f = document.getElementById("filename1");
-		fileName01 = document.getElementById("editFilename1").value;
-		alert(fileName01);
-		//fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+  	var f = document.getElementById("editFilename1");
+		//fileName01 = document.getElementById("editFilename1").value;
+		fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
 	}
 
 	if(picNum == 2){
-  	var f = document.getElementById("filename2");
+  	var f = document.getElementById("editFilename2");
 		fileName02 = f.value.substring(f.value.lastIndexOf('\\') + 1);
 	}
+
+	//
+	// newPanel
+	if(picNum == 3){
+  	var f = document.getElementById("newFilename1");
+		fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 4){
+  	var f = document.getElementById("newFilename2");
+		fileName02 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
 }
 
 function createNewID(){

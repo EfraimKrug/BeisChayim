@@ -1,7 +1,24 @@
 
 body {
-	height: 100%;
+	top: 0px;
+	bottom: -20px;
+	left: 0px;
+	right: 0px;
+	margin: 0px;
+	margin-right: -20px;
+	margin-bottom: 0px;
 	overflow-y:hidden;
+	font-size: 32px;
+	z-index: 1;
+}
+
+#body {
+	postion:absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	//overflow-y:hidden;
 	font-size: 32px;
 	z-index: 1;
 }
@@ -102,17 +119,17 @@ h1 {
 	width: 365px;
 	color: white;
 	font-size: 27px;
-	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .Name1 {
-	color: white;
+	color: black;
 }
 
 .Name {
 	letter-spacing: 2px;
 	color: black;
-	text-shadow: -1px 0 black, 0 0px white, 1px 0 black, 0 -0px white;
+	text-shadow: -1px 0 black, 0 0px black, 1px 0 black, 0 -0px black;
 }
 
 .Name2, .Name3, .Name4 {
@@ -136,16 +153,16 @@ h1 {
 	width: 365px;
 	color: black;
 	font-size: 27px;
-	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .HName {
 	letter-spacing: 2px;
-	text-shadow: -1px 0 black, 0 0px white, 1px 0 black, 0 -0px white;
+	text-shadow: -1px 0 black, 0 0px black, 1px 0 black, 0 -0px black;
 }
 
 .HName1 {
-	color: white;
+	color: black;
 }
 
 .HName2, .HName3, .HName4 {
@@ -169,13 +186,13 @@ h1 {
 .edate, .edate1, .edate2,.edate3,.edate4,
 .hdate, .hdate1,.hdate2, .hdate3, .hdate4 {
 	color:black;
-	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .hdate{
 	letter-spacing: 2px;
 	color:black;
-	text-shadow: -1px 0 black, 0 0px white, 1px 0 black, 0 -0px white;
+	text-shadow: -1px 0 black, 0 0px black, 1px 0 black, 0 -0px black;
 }
 
 .edate{
@@ -185,11 +202,11 @@ h1 {
 }
 
 .edate1 {
-	color:white;
+	color:black;
 }
 
 .hdate1 {
-	color:white;
+	color:black;
 }
 
 .edate2,.edate3,.edate4
@@ -203,8 +220,9 @@ h1 {
 
 #Comments01 {
 	position: fixed;
-	top: 707px;
+	top: 670px;
 	left: 128px;
+	width: 45%;
 	font-size: 17px;
 	z-index: 20;
 }
@@ -221,23 +239,41 @@ h1 {
 	color:black;
 }
 
-#Pic01{
-	position: fixed;
-	visibility: hidden;
-	top: 127px;
-	left: 128px;
-	width: 365px;
+#DPic01{
+	position: absolute;
+	top: 197px;
+	left: 8px;
+	width: 213px;
+	height: 213px;
+}
+
+#DPic02{
+	position: absolute;
+	top: 410px;
+	left: 228px;
+	width: 265px;
 	height: 256px;
+}
+
+#Pic01{
+	position: relative;
+	visibility: hidden;
+	left: 0px;
+	/*width: 365px;
+	height: 356px; */
+	height: 100%;
 	z-index: 20;
 }
 
 #Pic02{
-	position: fixed;
+	position: relative;
 	visibility: hidden;
-	top: 427px;
+	left: 0px;
+	/*top: 427px;
 	left: 628px;
-	width: 365px;
-	height: 256px;
+	width: 265px;
+	height: 266px; */
+	height: 100%;
 	z-index: 20;
 }
 
