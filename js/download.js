@@ -124,7 +124,7 @@ function addStuff(ID, edit, callback){
 	var line = "'{" + id + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
 	pic01 + "," + pic02 + "," + comments01 + "},' + " ;
-	console.log("LINE: " + line);
+	//console.log("LINE: " + line);
 	if(!edit){
 		download(line, escapeHTML("$$BC$$New00" + ID), "text/plain");
 	} else {

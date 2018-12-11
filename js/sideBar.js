@@ -104,7 +104,7 @@ function loadSideBar(){
 		if(dateHold.indexOf('Teves') > -1){
 			var start = dateHold.indexOf('Teves');
 			dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
-			console.log(dateHold);
+			//console.log(dateHold);
 		}
 		if(dateHold.indexOf(htoday.month) > -1){
 			dateHold = dateHold.trim();

@@ -60,8 +60,6 @@
 	<div id=EDate></div>
 	<div id=HDate></div>
 	<div id=DPic01><img id=Pic01 src="./img/soldiers00x1.jpeg" alt=""></div>
-<!--	<div id=DPic01><div id=Pic01></div></div>
-	<div id=DPic02><div id=Pic02></div></div> -->
 	<div id=DPic02><img id=Pic02 src="./img/elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
 	<!-- <div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div> -->
@@ -284,7 +282,6 @@ function kbclick(ky){
 </div>
 <!-- edit panel begins here -->
 <div id=editPanel>
-	<h3>Careful: the data you put in this form will show up on the monitor!</h3>
 <div id=ID></div>
 <table id=editTable>
 	<tr>
@@ -312,7 +309,7 @@ function kbclick(ky){
 		  <td>Relationship</td><td><input type=text id=editRelationship></td>
 		</tr>
 		<tr>
-		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel('editPaylevel');">
+		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
 																													<option value="0">none</option>
 																													<option value="1">copper</option>
 																													<option value="2">bronze</option>
@@ -343,11 +340,6 @@ function kbclick(ky){
 		oldPanel.style.display = "none";
 	}
 
-	function setPayLevel(editPaylevel){
-			ePayLevel = document.getElementById("editPaylevel");
-			//alert(ePayLevel.value);
-	}
-
 	function editAddStuff(){
 			//alert("B" + document.getElementById("editFilename1").value);
 			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
@@ -363,15 +355,10 @@ function kbclick(ky){
 			editPanel.className = "editPanel";
 
 			var queryDict = {}
-			params = params.replace(/&comma;/g,",");
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
-<<<<<<< HEAD
-			console.log(editPanel);
-=======
 			hideIt();
->>>>>>> 966c592ea003ed32d8664ae7ebdd35871f6e91ee
 			loadEdit(queryDict);
 	}
 
@@ -383,9 +370,6 @@ function kbclick(ky){
 			document.getElementById("editHName").value = queryDict["HName"].replace(/%20/g," ");
 			document.getElementById("editEDate").value = queryDict["EDate"].replace(/%20/g," ");
 			document.getElementById("editHDate").value = queryDict["HDate"].replace(/%20/g," ");
-			if(document.getElementById("editHDate").value.toLowerCase() == "teves"){
-				document.getElementById("editHDate").value = "Tevet";
-			}
 			document.getElementById("editPic01").innerHTML = queryDict["Pic01"].replace(/%20/g," ");
 			document.getElementById("editPic02").innerHTML = queryDict["Pic02"].replace(/%20/g," ");
 			document.getElementById("editMournby").value = queryDict["MournBy"].replace(/%20/g," ");
@@ -421,10 +405,10 @@ function kbclick(ky){
 				<td>Relationship</td><td><input type=text id=editRelationship></td>
 
 <tr>
-				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(3);"/></td>
+				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(1);"/></td>
 </tr>
 <tr>
-        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(4);"/></td>
+        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(2);"/></td>
 </tr>
 <tr>
   			<td>Mourned by</td><td><input type=text id=newMournby></td>
@@ -504,7 +488,9 @@ function loadNew(){
 	</div>
 <table>
 	<tr>
-			<td></td><td></td><td><button onclick=goBack('selectPanel');>Click to return</span></td>
+			<td><span><button onclick=navUp(searchString);>Up</span></td>
+			<td><span><button onclick=navDown(searchString);>Down</span></td>
+			<td><span><button onclick=goBack('selectPanel');>Click to return</span></td>
 	</tr>
 </table>
 <table>
@@ -566,6 +552,7 @@ function reset(){
 
 function scrollto(let){
 			var sbar = document.getElementById("searchBar");
+			_lastI = 0;
 			searchString += let;
 			cleanUpTable();
 			showNames(searchString);
@@ -579,32 +566,71 @@ function cleanUpTable(){
 	}
 }
 
+var topWindow = 0;
+var _lastI = 0;
+
+function navUp(name){
+	//console.log("navUp: " + _lastI);
+	var ps = 2 * PAGE_SIZE;
+	_lastI-=ps;
+	if(_lastI < 0) _lastI = 0;
+	//console.log("navUp: (" + name + ")" + _lastI);
+	showNames(name);
+	//alert("Up");
+}
+
+function navDown(name){
+	//console.log("navDown: " + _lastI);
+	//_lastI+=PAGE_SIZE;
+	if(_lastI < 0) _lastI = 0;
+	//console.log("navDown: (" + name + ")" + _lastI);
+	showNames(name);
+	//alert("Down");
+}
+
+function clearTable(tbl){
+		//console.log("clearTable: " + _lastI);
+		var rCount = tbl.rows.length;
+		for (i=0; i < rCount; i++){
+			tbl.deleteRow(0);
+		}
+}
+
 function showNames(name){
-	var tbl = document.getElementById("tbl");
+	//console.log("showNames: " + _lastI);
 	var rowCount = 0;
+	var tbl = document.getElementById("tbl");
+	clearTable(tbl);
+	var rowFlip = true;
 	for (var i=0; i < YahrList.Yahrzeits.length; i++){
 			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
-					var row = tbl.insertRow(0);
-					if(rowCount % 2){
-						row.className = "rowColor00";
-					} else {
-						row.className = "rowColor01";
-					}
-					var cell1 = row.insertCell(0);
-					var nm = '';
-					if(YahrList.Yahrzeits[i].Name.trim() !== ''){
-						nm = YahrList.Yahrzeits[i].Name;
-						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
-							nm += " { " + YahrList.Yahrzeits[i].HName + " } ";
-						}
-					} else {
-						if(YahrList.Yahrzeits[i].HName.trim() !== ''){
-							nm = YahrList.Yahrzeits[i].HName;
-						}
-					}
-					cell1.innerHTML = "<span onclick='choose(" + i + ")'>" + nm + "</span>";
-					cell1.className = "cell";
-					rowCount++;
+				if(i < _lastI) continue;
+				if(rowCount >= PAGE_SIZE) continue;
+							var row = tbl.insertRow(0);
+							if(rowFlip){
+								row.className = "rowColor00";
+							} else {
+								row.className = "rowColor01";
+							}
+							rowFlip = !rowFlip;
+
+							var nm = '';
+							if(YahrList.Yahrzeits[i].Name.trim() !== ''){
+								nm = YahrList.Yahrzeits[i].Name;
+								if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+									nm += " { " + YahrList.Yahrzeits[i].HName + " } ";
+								}
+							} else {
+								if(YahrList.Yahrzeits[i].HName.trim() !== ''){
+									nm = YahrList.Yahrzeits[i].HName;
+								}
+							}
+							var cell1 = row.insertCell(0);
+							cell1.innerHTML = "<span onclick='choose(" + i + ")'>" + nm + "</span>";
+							cell1.className = "cell";
+							_lastI = i;
+							//console.log("Updated _lastI: " + _lastI);
+							rowCount++;
 				}
 			}
 		}
