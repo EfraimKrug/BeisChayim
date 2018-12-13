@@ -1,10 +1,10 @@
 # reinstall shell scripts
-cp ~/code/beisChayim/python/ShellScripts/* ~/bin
-cd ~/bin
-chmod +x *.sh
-mv appInstall.sh appInstall
-mv BChCycle01.sh BChCycle01
-mv BChCycle02.sh BChCycle02
-mv BChStep01.sh BChStep01
-mv ShellInstall.sh ShellInstall
-mv ConfigInstall.sh ConfigInstall
+cp $HOME/bcCode/beisChayim/python/ShellScripts/*.sh $HOME/bin
+cd $HOME/bin
+mv $HOME/bin/appInstall.sh $HOME/bin/appInstall
+mv $HOME/bin/BChCycle01.sh $HOME/bin/_BChCycle01
+#mv $HOME/BChCycle02.sh $HOME/BChCycle02
+#mv $HOME/BChStep01.sh $HOME/BChStep01
+mv $HOME/bin/ShellInstall.sh $HOME/bin/ShellInstall
+mv $HOME/bin/ConfigInstall.sh $HOME/bin/_ConfigInstall
+chmod 555 $HOME/bin/*.sh

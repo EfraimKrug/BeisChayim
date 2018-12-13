@@ -87,6 +87,13 @@ function getTopOffset(row){
     return  ((row * rowHeight) + offset) + "px";
 }
 
+function getTopOffsetInt(row){
+    var offset = parseInt(panelConfig.settings["PanelOffset"]);
+    var rowHeight = parseInt(panelConfig.settings["RowHeight"]);
+
+    return  ((row * rowHeight) + offset);
+}
+
 function getPanelBoxWidth(){
     return parseInt(panelConfig.settings["BoxWidth"]);
 }
@@ -105,6 +112,13 @@ function getPanelFont(){
 
 function getColumnWidth(){
     return parseInt(panelConfig.settings["ColumnWidth"]);
+}
+
+function getColumnOffsetInt(col){
+    var offset = parseInt(panelConfig.settings["PanelLeftOffset"]);
+    var colWidth = parseInt(panelConfig.settings["ColumnWidth"]);
+
+    return  ((col * colWidth) + offset);
 }
 
 function getColumnOffset(col){

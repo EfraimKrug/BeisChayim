@@ -57,7 +57,7 @@ function buildPanel01(){
       panelArray[n][j]["ID"] = YahrList.Yahrzeits[i].ID;
       panelArray[n][j]["IDX"] = i;
       panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].HName;
-      panelArray[n][j]["Date"] = YahrList.Yahrzeits[i].HDate;
+      panelArray[n][j]["Date"] = fixDate(YahrList.Yahrzeits[i].HDate);
       panelArray[n][j]["PayLevel"] = YahrList.Yahrzeits[i].PayLevel;
       if(!YahrList.Yahrzeits[i].HName)
   	     panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].Name;
@@ -170,8 +170,17 @@ function renderScreen(callback){
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
         pbar.style.border = "1px solid black";
         if(checkToday(dt)){
-          pbar.style.borderTop = "2px solid red";
-          pbar.style.borderLeft = "2px solid red";
+          console.log("Name: " + pbar.innerHTML + ": Checking: " + dt);
+          pbar.style.border = "4px solid orange";
+          pbar.style.zIndex = 10;
+          pbar.style.padding = "5px";
+          pbar.style.width = (getPanelBoxWidth() - 8) + "px";
+          pbar.style.height = (getPanelBoxHeight() - 8) + "px";
+          pbar.style.top = (getTopOffsetInt(row_count) - 2) + "px";
+          pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
+
+          //pbar.style.color = "red";
+          //pbar.style.borderLeft = "2px solid red";
         }
         tempID = panelArray[currentPosition][j]["IDX"];
 

@@ -53,7 +53,8 @@ function renderSideBarArray(){
 		var sect;
 		sbar.className = "sbar";
 		sbar.style.display = "inline";
-		sbar.style.left = getSideBarLeft();
+		sbar.style.left = getSideBarLeft() + "px";
+		//sbar.style.left = "1199px";
 		sbar.style.top = getSideBarTop(slotCounter);
 		sbar.className = getBGround(PayLevelList[listCounter]);
 		sbar.style.height = getSideBarHeight();
