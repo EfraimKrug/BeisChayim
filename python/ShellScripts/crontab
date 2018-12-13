@@ -8,6 +8,6 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # m h dom mon dow user	command
-* 2 * * *   	efraim  export  DISPLAY=:0 && firefox /home/efraim/code/BeisChayim/beisChayim.html &>/home/efraim/cron.log
+* 2 * * *   	efraim  export  DISPLAY=:0 && firefox /home/efraim/code/BeisChayim/BeisChayim.html &>/home/efraim/cron.log
 */2 * * * *     efraim  export  DISPLAY=:0 && /home/efraim/bin/BChCycle01 &>/home/efraim/cron.log
 #

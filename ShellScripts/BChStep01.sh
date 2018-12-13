@@ -30,5 +30,5 @@ cp $HOME/code/BeisChayim/data/out03 $HOME/code/BeisChayim/data/out02
 
 # restart browswer
 pkill -f firefox
-firefox $HOME/code/BeisChayim/BeisChayim.html &
+firefox $HOME/code/BeisChayim/beisChayim.html &
 ###############################################################################
