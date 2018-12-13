@@ -15,8 +15,8 @@ mv $HOME/bcCode/BeisChayim-version03 $HOME/bcCode/beisChayim
 mv $HOME/bcCode/beisChayim/python/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 sed -i 's/$HOME/\/home\/efraim/g' ShellInstall
 #
-mv $HOME/bcCode/beisChayim/python/ShellScripts/.xinitrc $HOME/.xinitrc
-chmod +x  $HOME/.xinitrc
+#mv $HOME/bcCode/beisChayim/python/ShellScripts/.xinitrc $HOME/.xinitrc
+#chmod +x  $HOME/.xinitrc
 #
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
