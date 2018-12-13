@@ -8,12 +8,16 @@ cp $HOME/Downloads/BeisChayim-version03.zip $HOME/bcCode/BeisChayim.zip
 cd $HOME/bcCode
 unzip $HOME/bcCode/BeisChayim.zip
 #
+mkdir $HOME/bcCode/BeisChayim/data
+mkdir $HOME/bcCode/BeisChayim/data/work
+mkdir $HOME/bcCode/BeisChayim/data/used
+
 rm $HOME/bcCode/BeisChayim.zip
 mv $HOME/bcCode/BeisChayim-version03 $HOME/bcCode/beisChayim
 #mv $HOME/bcCode/beisChayim/python/ShellScripts/BChStep01.sh $HOME/bin/BChStep01
 #mv ~/bcCode/beisChayim/python/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 mv $HOME/bcCode/beisChayim/python/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
-sed -i 's/$HOME/\/home\/efraim/g' ShellInstall
+#sed -i 's/$HOME/\/home\/efraim/g' ShellInstall
 #
 #mv $HOME/bcCode/beisChayim/python/ShellScripts/.xinitrc $HOME/.xinitrc
 #chmod +x  $HOME/.xinitrc
