@@ -1,32 +1,32 @@
 ###############################################################################
-# this runs every 10 minutes.
-# remember - this is exactly like BChCycle01, but it does not restart the
-# browser
+# this runs every night.
+# remember - this is running without getting new data
+# from shulcloud...
 ###############################################################################
-date >> /home/efraiim/code/beisChayim/log/CycleLog
-mv /home/efraiim/Downloads/\$\$BC\$\$* /home/efraiim/code/beisChayim/data
 
-# move filesom 5 cycles back...
+[ -n "$(find /home/efraim/Downloads -name '\$\$BC\$\$*' | head -1)" ] && mv /home/efraim/Downloads/\$\$BC\$\$* /home/efraim/code/BeisChayim/data
 
-mv /home/efraiim/code/beisChayim/data/work/db01-4.js /home/efraiim/code/beisChayim/data/work/db01-5.js
-mv /home/efraiim/code/beisChayim/data/work/db01-3.js /home/efraiim/code/beisChayim/data/work/db01-4.js
-mv /home/efraiim/code/beisChayim/data/work/db01-2.js /home/efraiim/code/beisChayim/data/work/db01-3.js
-mv /home/efraiim/code/beisChayim/data/work/db01-1.js /home/efraiim/code/beisChayim/data/work/db01-2.js
-mv /home/efraiim/code/beisChayim/data/work/db01-0.js /home/efraiim/code/beisChayim/data/work/db01-1.js
+# move files 5 cycles back...
 
-cp /home/efraiim/code/beisChayim/js/db01.js /home/efraiim/code/beisChayim/data/work/db01-0.js
+mv /home/efraim/code/BeisChayim/data/work/db01-4.js /home/efraim/code/BeisChayim/data/work/db01-5.js
+mv /home/efraim/code/BeisChayim/data/work/db01-3.js /home/efraim/code/BeisChayim/data/work/db01-4.js
+mv /home/efraim/code/BeisChayim/data/work/db01-2.js /home/efraim/code/BeisChayim/data/work/db01-3.js
+mv /home/efraim/code/BeisChayim/data/work/db01-1.js /home/efraim/code/BeisChayim/data/work/db01-2.js
+mv /home/efraim/code/BeisChayim/data/work/db01-0.js /home/efraim/code/BeisChayim/data/work/db01-1.js
+
+cp /home/efraim/code/BeisChayim/js/db01.js /home/efraim/code/BeisChayim/data/work/db01-0.js
 
 # create the new db01.js
-#cp /home/efraiim/code/beisChayim/data/out02 /home/efraiim/code/beisChayim/js/db01.js
-cd /home/efraiim/code/beisChayim
-python /home/efraiim/code/beisChayim/python/collect.py > /home/efraiim/code/beisChayim/data/out03
+#cp /home/efraim/code/BeisChayim/data/out02 /home/efraim/code/BeisChayim/js/db01.js
+cd /home/efraim/code/BeisChayim
+python /home/efraim/code/BeisChayim/python/collect.py > /home/efraim/code/BeisChayim/data/out03
 
 # store all the update files
-mv /home/efraiim/code/beisChayim/data/\$\$BC\$\$* /home/efraiim/code/beisChayim/data/used
-cp /home/efraiim/code/beisChayim/data/out03 /home/efraiim/code/beisChayim/js/db01.js
-cp /home/efraiim/code/beisChayim/data/out03 /home/efraiim/code/beisChayim/data/out02
-#
+[ -n "$(find /home/efraim/code/BeisChayim/data/work -name '\$\$BC\$\$*' | head -1)" ] && mv /home/efraim/code/BeisChayim/data/\$\$BC\$\$* /home/efraim/code/BeisChayim/data/used
+cp /home/efraim/code/BeisChayim/data/out03 /home/efraim/code/BeisChayim/js/db01.js
+cp /home/efraim/code/BeisChayim/data/out03 /home/efraim/code/BeisChayim/data/out02
+
 # restart browswer
 #pkill -f firefox
-#firefox /home/efraiim/code/beisChayim/beisChayim.html &
+#firefox /home/efraim/code/BeisChayim/beisChayim.html &
 ###############################################################################
