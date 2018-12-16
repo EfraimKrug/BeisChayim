@@ -1,22 +1,22 @@
-cd $HOME/bcCode/BeisChayim
+cd $HOME/code/BeisChayim
 ###############################################################################
 # this is a restart from the gitgo.. that is - it starts from the
 # shulcloud download.. and it goes through history of all updates
 ###############################################################################
-cp $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data
+
 # get the shulcloud file cleaned up... and converted to json
-python $HOME/bcCode/BeisChayim/python/cleanup01.py > $HOME/bcCode/BeisChayim/data/out01
-python $HOME/bcCode/BeisChayim/python/csv2jsond.py > $HOME/bcCode/BeisChayim/data/out02
+python $HOME/code/BeisChayim/python/cleanup01.py > $HOME/code/BeisChayim/data/out01
+python $HOME/code/BeisChayim/python/csv2jsond.py > $HOME/code/BeisChayim/data/out02
 
 # move files 5 cycles back...
-mv $HOME/bcCode/BeisChayim/data/work/db01-4.js $HOME/bcCode/BeisChayim/data/work/db01-5.js
-mv $HOME/bcCode/BeisChayim/data/work/db01-3.js $HOME/bcCode/BeisChayim/data/work/db01-4.js
-mv $HOME/bcCode/BeisChayim/data/work/db01-2.js $HOME/bcCode/BeisChayim/data/work/db01-3.js
-mv $HOME/bcCode/BeisChayim/data/work/db01-1.js $HOME/bcCode/BeisChayim/data/work/db01-2.js
-mv $HOME/bcCode/BeisChayim/data/work/db01-0.js $HOME/bcCode/BeisChayim/data/work/db01-1.js
+mv $HOME/code/BeisChayim/data/work/db01-4.js $HOME/code/BeisChayim/data/work/db01-5.js
+mv $HOME/code/BeisChayim/data/work/db01-3.js $HOME/code/BeisChayim/data/work/db01-4.js
+mv $HOME/code/BeisChayim/data/work/db01-2.js $HOME/code/BeisChayim/data/work/db01-3.js
+mv $HOME/code/BeisChayim/data/work/db01-1.js $HOME/code/BeisChayim/data/work/db01-2.js
+mv $HOME/code/BeisChayim/data/work/db01-0.js $HOME/code/BeisChayim/data/work/db01-1.js
 
-cp $HOME/bcCode/BeisChayim/js/db01.js $HOME/bcCode/BeisChayim/data/work/db01-0.js
-cp $HOME/bcCode/BeisChayim/data/out02 $HOME/bcCode/BeisChayim/js/db01.js
+cp $HOME/code/BeisChayim/js/db01.js $HOME/code/BeisChayim/data/work/db01-0.js
+cp $HOME/code/BeisChayim/data/out02 $HOME/code/BeisChayim/js/db01.js
 
 # # now move all the old change files back...
 # cp data/used/$$BC$$* data
@@ -32,4 +32,4 @@ cp $HOME/bcCode/BeisChayim/data/out02 $HOME/bcCode/BeisChayim/js/db01.js
 #
 # # restart browswer
 # #pkill -f firefox
-# #firefox $HOME/bcCode/BeisChayim/beisChayim.html &
+# #firefox beisChayim.html &
