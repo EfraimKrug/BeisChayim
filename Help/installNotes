@@ -1,0 +1,77 @@
+How to set up beisChayim
+=========================
+
+1)  Download the zip file from github
+A) Open your browser
+B) enter: https://github.com/EfraimKrug/BeisChayim in the navigation bar
+C) find "Branch:master"
+1) click on the downarray
+2) highlight 'version03'
+D) find "Clone or download"
+1) click on the downarray
+2) click "Download ZIP"
+E) click ok
+
+==> check your work so far: you should be able to navigate
+to your "Downloads" file, and see a file called:
+BeisChayim-version03.zip
+
+<sigh of relief>
+
+2) Back in the browser on github
+A) click on "ShellScripts"
+B) click on "appInstall"
+C) use your mouse to highlight all the text in that file
+D) and copy (press CONTROL-C)
+E) open a new file and paste the text in
+F) save the new file as ~/bin/appInstall
+1) open a terminal
+2) mkdir ~/bin
+3) vi ~/bin/appInstall
+4) i
+5) CONTROL-SHIFT-V  (all together)
+6) ESCAPE
+7) :
+8) w <ENTER>
+9) :
+10) q <ENTER>
+11) chmod 555 ~/bin/appInstall
+
+==> check your work so far: if you type
+ls -l ~/bin
+amd you should see a list of files. The only file in
+the list should be 'appInstall' and should show (on the
+left of the name) -r-xr-xr-x
+
+<large sigh of relief>
+
+3) In the terminal, type: ~/bin/appInstall <ENTER>
+
+==> check your work so far: you should find an entire directory of
+stuff in your home directory called "bcCode". If it is there,
+everything is good!
+
+<another large sigh of relief>
+
+4) In the terminal, type:
+    sudo vi /etc/crontab <ENTER>
+
+5) more the cursor (enter or down arrow) to the first character of the last line, and type:
+    i <ENTER>
+    <ESCAPE>
+    arrow-up
+    i
+
+6) then copy and paste:
+    37 * * * *      efraim  export  DISPLAY=:0 && $HOME/bin/BChCycle01 &>$HOME/cron.log
+    <ESCAPE>
+    :
+    w<ENTER>
+    :
+    q<ENTER>
+
+<largest sigh of relief>
+
+==> check your work so far: type:
+  cat /etc/crontab
+  and you should see the new line you just put in!

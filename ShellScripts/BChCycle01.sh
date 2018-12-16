@@ -4,7 +4,8 @@
 # from shulcloud...
 ###############################################################################
 
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && mv $HOME/Downloads/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data
+[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] || exit 0 
+mv $HOME/Downloads/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data
 
 # move files 5 cycles back...
 
@@ -25,6 +26,9 @@ python $HOME/bcCode/BeisChayim/python/collect.py > $HOME/bcCode/BeisChayim/data/
 [ -n "$(find $HOME/bcCode/BeisChayim/data/work -name '\$\$BC\$\$*' | head -1)" ] && mv $HOME/bcCode/BeisChayim/data/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data/used
 cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/js/db01.js
 cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/data/out02
+
+# check and install config files
+[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
 
 # restart browswer
 pkill -f firefox

@@ -4,7 +4,8 @@
 # from shulcloud...
 ###############################################################################
 
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && mv $HOME/Downloads/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data
+[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] || exit 0 
+mv $HOME/Downloads/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data
 
 # move files 5 cycles back...
 
