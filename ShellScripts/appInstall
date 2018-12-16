@@ -10,7 +10,6 @@ unzip $HOME/bcCode/BeisChayim.zip
 #
 rm $HOME/bcCode/BeisChayim.zip
 mv $HOME/bcCode/BeisChayim-version03 $HOME/bcCode/BeisChayim
-cp ~/bcCode/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/bcCode/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
