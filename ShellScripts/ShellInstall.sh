@@ -1,5 +1,5 @@
 # reinstall shell scripts
-cp $HOME/bcCode/beisChayim/python/ShellScripts/*.sh $HOME/bin
+cp $HOME/bcCode/beisChayim/ShellScripts/*.sh $HOME/bin
 cd $HOME/bin
 mv $HOME/bin/appInstall.sh $HOME/bin/appInstall
 mv $HOME/bin/BChCycle01.sh $HOME/bin/_BChCycle01
