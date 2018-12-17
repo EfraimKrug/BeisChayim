@@ -10,7 +10,7 @@ def cleanField(field):
 
 
 #print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('data/yahrzeits.csv') as csvfile:
+with open('/home/efraim/bcCode/BeisChayim/data/yahrzeits.csv') as csvfile:
 	lineCount = 0
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
 	l = list(lineread)

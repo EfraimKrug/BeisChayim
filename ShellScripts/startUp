@@ -32,4 +32,4 @@ cp $HOME/bcCode/BeisChayim/data/out02 $HOME/bcCode/BeisChayim/js/db01.js
 #
 # restart browswer
 pkill -f firefox
-firefox $HOME/bcbcCode/BeisChayim/beisChayim.html &
+firefox $HOME/bcCode/BeisChayim/beisChayim.html &

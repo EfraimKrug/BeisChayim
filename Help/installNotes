@@ -63,7 +63,8 @@ everything is good!
     i
 
 6) then copy and paste:
-    37 * * * *      efraim  export  DISPLAY=:0 && $HOME/bin/BChCycle01 &>$HOME/cron.log
+    */2 * * * *      efraim  export  DISPLAY=:0 && $HOME/bin/BChCycle01 &>$HOME/cron.log
+    */3 * * * *      efraim  export  DISPLAY=:0 && $HOME/bin/ConfigInstall &>$HOME/cron.log
     <ESCAPE>
     :
     w<ENTER>
