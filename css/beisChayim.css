@@ -56,8 +56,8 @@ body {
 }
 
 .bg1 {
-    //background-image: url("../img/sunset000.jpeg");
-		background-image: url("../img/Rock001.jpg");
+    background-image: url("../img/sunset004.jpeg");
+		//background-image: url("../img/Rock001.jpg");
 }
 
 .bg2 {
@@ -69,7 +69,7 @@ body {
 .bg3 {
 		font-size:1.2em;
     //background-image: url("../img/sunset005.jpeg");
-		background-image: url("../img/Rock005.jpg");
+		background-image: url("../img/Rock002.jpg");
 }
 
 .bg4 {
