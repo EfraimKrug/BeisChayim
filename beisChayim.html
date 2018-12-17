@@ -345,8 +345,10 @@ function kbclick(ky){
 			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
 	}
 
-	function doEdit(){
+	function doEdit(id){
 			//var params = buildParamString(YahrList, currentName);
+			if(id !== undefined) currentIDX = id;
+			//console.log(YahrList.Yahrzeits[currentIDX].Name);
 			var params = buildParamString(YahrList, currentIDX);
 			screen01 = document.getElementById("body");
 			editPanel = document.getElementById("editPanel");
@@ -480,12 +482,14 @@ function loadNew(){
 
 <div id=selectPanel>
 	<div id=searchBar>&nbsp;</div>
+	<!--
 	<div id=choice>
 		<table>
 			<tr><td onclick="clickEdit();" class=rowColor00>Edit</td></tr>
 			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
 		</table>
 	</div>
+-->
 <table>
 	<tr>
 			<td><span><button onclick=navUp(searchString);>Up</span></td>
@@ -648,10 +652,16 @@ function clickEdit(){
 }
 
 function choose(id){
-	var choice = document.getElementById("choice");
-	choice.style.display = "inline";
-	var editChoice = document.getElementById("editChoice");
+	//var choice = document.getElementById("choice");
+	//choice.style.display = "inline";
+	//console.log(YahrList.Yahrzeits[id].Name);
+	//var editChoice = document.getElementById("editChoice");
 	currentIDX = id;
+	//var choice = document.getElementById("choice");
+	//choice.style.display = "none";
+	selectPanel = document.getElementById("selectPanel");
+	selectPanel.style.display = "none";
+	doEdit(currentIDX);
 }
 
 function setPanel(){
