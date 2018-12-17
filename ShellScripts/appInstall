@@ -10,7 +10,11 @@ unzip $HOME/bcCode/BeisChayim.zip
 #
 rm $HOME/bcCode/BeisChayim.zip
 mv $HOME/bcCode/BeisChayim-version03 $HOME/bcCode/BeisChayim
+cp ~/bcCode/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/bcCode/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
+mkdir $HOME/bcCode/BeisChayim/data
+mkdir $HOME/bcCode/BeisChayim/data/work
+mkdir $HOME/bcCode/BeisChayim/data/used
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
 echo "You need to create a 'yahrzeits.csv' file and put it in $HOME/bcCode/BeisChayim/data/yahrzeits.csv"
