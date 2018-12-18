@@ -4,7 +4,7 @@
 # from shulcloud...
 ###############################################################################
 
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] || exit 0 
+[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] || exit 0
 mv $HOME/Downloads/\$\$BC\$\$* $HOME/bcCode/BeisChayim/data
 
 # move files 5 cycles back...
@@ -31,6 +31,6 @@ cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/data/out02
 [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
 
 # restart browswer
-pkill -f firefox
-firefox $HOME/bcCode/BeisChayim/beisChayim.html &
+pkill -f chromium-browswer
+chromium-browswer --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
 ###############################################################################

@@ -31,5 +31,5 @@ cp $HOME/bcCode/BeisChayim/data/out02 $HOME/bcCode/BeisChayim/js/db01.js
 # cp data/out03 js/db01.js
 #
 # restart browswer
-pkill -f firefox
-firefox $HOME/bcCode/BeisChayim/beisChayim.html &
+pkill -f chromium-browswer
+chromium-browswer --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
