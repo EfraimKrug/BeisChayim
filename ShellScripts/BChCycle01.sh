@@ -31,6 +31,6 @@ cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/data/out02
 [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
 
 # restart browswer
-pkill -f chromium-browswer
-chromium-browswer --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
+pkill -f chromium-browser
+chromium-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
 ###############################################################################
