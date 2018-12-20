@@ -3,6 +3,8 @@ cd $HOME/bcCode/BeisChayim
 # this is a restart from the gitgo.. that is - it starts from the
 # shulcloud download.. and it goes through history of all updates
 ###############################################################################
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || exit 0
+mv $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/config/yahrzeits.csv
 
 # get the shulcloud file cleaned up... and converted to json
 python $HOME/bcCode/BeisChayim/python/cleanup01.py > $HOME/bcCode/BeisChayim/data/out01
