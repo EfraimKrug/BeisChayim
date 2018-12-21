@@ -1,7 +1,6 @@
-cd $HOME/code/BeisChayim/work
-cp /etc/crontab crontab.txt
-echo '*/2 * * * *      pi  export  DISPLAY=:0 && $HOME/bin/BChCycle01 &>$HOME/cron.log' >> crontab.txt
-echo '*/3 * * * *      pi  export  DISPLAY=:0 && $HOME/bin/ConfigInstall &>$HOME/cron.log' >> crontab.txt
-cat crontab.txt
-sudo cp crontab.txt /etc/crontab
-b0st0n
+cd $HOME/code/BeisChayim
+[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] || exit 0
+mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
+# restart browser
+pkill -f chromium-browser
+chromium-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
