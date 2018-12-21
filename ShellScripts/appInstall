@@ -17,4 +17,7 @@ mkdir $HOME/bcCode/BeisChayim/data/work
 mkdir $HOME/bcCode/BeisChayim/data/used
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
+sudo apt-get install xscreensaver
+b0st0n
+y
 echo "You need to create a 'yahrzeits.csv' file and put it in $HOME/bcCode/BeisChayim/data/yahrzeits.csv"
