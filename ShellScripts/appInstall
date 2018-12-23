@@ -1,10 +1,12 @@
 # install beisChayim
 # note - install python
 # note - install firefox - configure options->download->always ask
+cd $HOME/Downloads
+wget https://github.com/EfraimKrug/BeisChayim/archive/Screen10.1.zip
 [ -e $HOME/Downloads ] || echo "No Downloads folder: please create $HOME/Downloads"
-[ -e $HOME/Downloads/BeisChayim-Screen10.1.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
+[ -e $HOME/Downloads/Screen10.1.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
 [ -e $HOME/bcCode ] || mkdir $HOME/bcCode
-cp $HOME/Downloads/BeisChayim-Screen10.1.zip $HOME/bcCode/BeisChayim.zip
+cp $HOME/Downloads/Screen10.1.zip $HOME/bcCode/BeisChayim.zip
 cd $HOME/bcCode
 unzip $HOME/bcCode/BeisChayim.zip
 #
