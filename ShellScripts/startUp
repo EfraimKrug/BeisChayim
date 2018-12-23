@@ -35,5 +35,5 @@ $HOME/bin/editCrontab
 # cp data/out03 js/db01.js
 #
 # restart browswer
-pkill -f chromium-browser
-chromium-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
+pkill -f sensible-browser
+sensible-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
