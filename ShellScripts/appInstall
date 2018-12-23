@@ -1,10 +1,17 @@
 # install beisChayim
 # note - install python
 # note - install firefox - configure options->download->always ask
+cd $HOME/Downloads
+
+echo "**********************************************************************************************************"
+echo "*            We are downloading the BeisChayim zip file...                                               *"
+echo "**********************************************************************************************************"
+
+wget https://github.com/EfraimKrug/BeisChayim/archive/Screen10.1.zip
 [ -e $HOME/Downloads ] || echo "No Downloads folder: please create $HOME/Downloads"
-[ -e $HOME/Downloads/BeisChayim-Screen10.1.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
+[ -e $HOME/Downloads/Screen10.1.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
 [ -e $HOME/bcCode ] || mkdir $HOME/bcCode
-cp $HOME/Downloads/BeisChayim-Screen10.1.zip $HOME/bcCode/BeisChayim.zip
+cp $HOME/Downloads/Screen10.1.zip $HOME/bcCode/BeisChayim.zip
 cd $HOME/bcCode
 unzip $HOME/bcCode/BeisChayim.zip
 #
@@ -17,7 +24,17 @@ mkdir $HOME/bcCode/BeisChayim/data/work
 mkdir $HOME/bcCode/BeisChayim/data/used
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
+
+echo "**********************************************************************************************************"
+echo "*            For Raspberri Pi, we need to install a screen saver (to turn off)                           *"
+echo "**********************************************************************************************************"
+
 sudo apt-get install xscreensaver
-b0st0n
-y
-echo "You need to create a 'yahrzeits.csv' file and put it in $HOME/bcCode/BeisChayim/data/yahrzeits.csv"
+#b0st0n
+#y
+
+echo "**********************************************************************************************************"
+echo "*   You need to create a 'yahrzeits.csv' file and put it in $HOME/bcCode/BeisChayim/data/yahrzeits.csv   *"
+echo "*   If you are using ShulCloud, you can download your yahrzeits file from there                          *"
+echo "*   otherwise, you will have to build it - (in excel)                                                    *"
+echo "**********************************************************************************************************"
