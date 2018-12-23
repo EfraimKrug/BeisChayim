@@ -15,7 +15,7 @@ chmod 555 $HOME/bin/startUp
 chmod 555 $HOME/bin/editConfig
 chmod 555 $HOME/bin/editCrontab
 
-#cd $HOME/bcCode/BeisChayim/python 
-#sed -i -e 's#\/pi\/#\/efraim\/#g' cleanup01.py
-#sed -i -e 's#\/pi\/#\/efraim\/#g' collect.py
-#sed -i -e 's#\/pi\/#\/efraim\/#g' csv2jsond.py
+cd $HOME/bcCode/BeisChayim/python 
+sed -i -e 's#@@@@@#'$HOME'#g'  cleanup01.py
+sed -i -e 's#@@@@@#'$HOME'#g' collect.py
+sed -i -e 's#@@@@@#'$HOME'#g' csv2jsond.py
