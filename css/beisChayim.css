@@ -243,7 +243,7 @@ h1 {
 	position: absolute;
 	top: 197px;
 	left: 8px;
-	width: 213px;
+	max-width: 213px;
 	height: 213px;
 }
 
@@ -251,7 +251,7 @@ h1 {
 	position: absolute;
 	top: 410px;
 	left: 228px;
-	width: 265px;
+	width: 313px;
 	height: 256px;
 }
 
@@ -259,8 +259,8 @@ h1 {
 	position: relative;
 	visibility: hidden;
 	left: 0px;
-	/*width: 365px;
-	height: 356px; */
+	max-width: 213px;
+	height: 356px; 
 	height: 100%;
 	z-index: 20;
 }
