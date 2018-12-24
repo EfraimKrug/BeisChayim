@@ -7,7 +7,7 @@ newidxs = []
 countNew = 0
 countOld = 0
 
-masterfile = '/home/pi/bcCode/BeisChayim/js/db01.js'
+masterfile = '@@@@@/bcCode/BeisChayim/js/db01.js'
 path = '@@@@@/bcCode/BeisChayim/data/'
 
 for filename in os.listdir(path):
