@@ -31,6 +31,20 @@ cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/data/out02
 [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
 
 # restart browswer
-pkill -f sensible-browser
-sensible-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
+#pkill -f sensible-browser
+#sensible-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
+# restart browswer
+ff=$(update-alternatives --config gnome-www-browser | grep firefox | wc -l)
+if [ $ff -gt 0 ]
+then
+        pkill -f firefox
+        firefox  $HOME/bcCode/BeisChayim/beisChayim.html &
+fi
+
+ch=$(update-alternatives --config gnome-www-browser | grep chromium | wc -l)
+if [ $ch -gt 0 ]
+then
+        pkill -f chromium-browser
+        chromium-browser --start-fullscreen  $HOME/bcCode/BeisChayim/beisChayim.html &
+fi
 ###############################################################################

@@ -35,5 +35,17 @@ $HOME/bin/editCrontab
 # cp data/out03 js/db01.js
 #
 # restart browswer
-pkill -f sensible-browser
-sensible-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
+ff=$(update-alternatives --config gnome-www-browser | grep firefox | wc -l)
+if [ $ff -gt 0 ]
+then
+	pkill -f firefox
+	firefox  $HOME/bcCode/BeisChayim/beisChayim.html &
+fi
+
+ch=$(update-alternatives --config gnome-www-browser | grep chromium | wc -l)
+if [ $ch -gt 0 ]
+then
+        pkill -f chromium-browser 
+        chromium-browser --start-fullscreen  $HOME/bcCode/BeisChayim/beisChayim.html &
+fi
+
