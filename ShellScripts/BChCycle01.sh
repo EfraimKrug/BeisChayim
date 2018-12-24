@@ -34,14 +34,14 @@ cp $HOME/bcCode/BeisChayim/data/out03 $HOME/bcCode/BeisChayim/data/out02
 #pkill -f sensible-browser
 #sensible-browser --start-fullscreen $HOME/bcCode/BeisChayim/beisChayim.html &
 # restart browswer
-ff=$(update-alternatives --config gnome-www-browser | grep firefox | wc -l)
+ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)
 if [ $ff -gt 0 ]
 then
         pkill -f firefox
         firefox  $HOME/bcCode/BeisChayim/beisChayim.html &
 fi
 
-ch=$(update-alternatives --config gnome-www-browser | grep chromium | wc -l)
+ch=$(update-alternatives --display gnome-www-browser | grep chromium | wc -l)
 if [ $ch -gt 0 ]
 then
         pkill -f chromium-browser
