@@ -7,6 +7,7 @@ mv $HOME/bin/BChCycle01.sh $HOME/bin/BChCycle01
 mv $HOME/bin/ConfigInstall.sh $HOME/bin/ConfigInstall
 mv $HOME/bin/editCrontab.sh editCrontab
 mv $HOME/bin/turnOn.sh turnOn
+mv $HOME/bin/cleanUp.sh cleanUp
 
 rm $HOME/bin/ShellInstall.sh
 
@@ -16,6 +17,7 @@ chmod 555 $HOME/bin/startUp
 chmod 555 $HOME/bin/editConfig
 chmod 555 $HOME/bin/editCrontab
 chmod 555 $HOME/bin/turnOn
+chmod 555 $HOME/bin/cleanUp
 
 cd $HOME/bcCode/BeisChayim/python
 sed -i -e 's#@@@@@#'$HOME'#g'  cleanup01.py
