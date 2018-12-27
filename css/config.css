@@ -19,3 +19,15 @@ button {
 		border: 1px dashed blue;
 		z-index: 30;
 }
+
+#keyShow {
+	position: absolute;
+	top: 59px;
+	left: 498px;
+	width: 175px;
+	height: 39px;
+	border: 2px solid black;
+	background-color: pink;
+	text-align: center;
+	display: hidden;
+}

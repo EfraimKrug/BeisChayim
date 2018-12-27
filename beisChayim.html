@@ -14,6 +14,7 @@
 </head>
 <body  onload="firstLoad();">
 <div id=body class=bg0>
+<div id=keyShow></div>
 <div id=security>
 								<table id=kboard>
 									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
@@ -159,11 +160,15 @@ var pkLetterCount = 0;
 var passkey = "";
 
 function kbclick(ky){
-	alert("TEST: (" + ky + ")");
+	kS = document.getElementById("keyShow");
+	ks.style.display = 'inline';
 	passkey += ky;
+	ks.innerHTML = passkey;
 	if(pkLetterCount > 3){
 		passkey = "";
 		pkLetterCount = 0;
+		ks.innerHTML = "";
+		ks.style.display = hidden;
 	}
 	else {
 		if(pkLetterCount == 3){
