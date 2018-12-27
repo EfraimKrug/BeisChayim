@@ -17,6 +17,8 @@ function autoSecClose(){
 function hideSecurity(){
 	var security = document.getElementById("security");
 	security.style.display = 'none';
+	var ks = document.getElementById("keyShow");
+	ks.style.display = 'none';
 	showButtonSec = true;
 	initKeys();
 }

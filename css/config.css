@@ -21,13 +21,13 @@ button {
 }
 
 #keyShow {
+	display: none;
 	position: absolute;
+	text-align: center;
 	top: 59px;
 	left: 498px;
-	width: 175px;
+	width: 155px;
 	height: 39px;
 	border: 2px solid black;
-	background-color: pink;
-	text-align: center;
-	display: hidden;
+	background-color: blue;
 }
