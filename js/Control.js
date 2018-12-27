@@ -10,6 +10,8 @@ var showButton = false;
 function autoSecClose(){
 	var security = document.getElementById("security");
 	security.style.display = 'none';
+	var ks = document.getElementById("keyShow");
+	ks.style.display = 'none';
 	showButtonSec = true;
 	hideIt();
 }
@@ -32,7 +34,7 @@ function showSecurity(){
 		initKeys();
 		//passkey = '';
 		//pkLetterCount = 0;
-		setTimeout(autoSecClose, 10000)
+		setTimeout(autoSecClose, 30000)
 	} else {
 		initKeys();
 		hideSecurity()
