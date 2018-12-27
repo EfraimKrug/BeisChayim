@@ -1,13 +1,15 @@
 
 body {
 	top: 0px;
-	bottom: -20px;
+	bottom: 0px;
 	left: 0px;
 	right: 0px;
 	margin: 0px;
-	margin-right: -20px;
+	margin-right: 0px;
 	margin-bottom: 0px;
-	overflow-y:hidden;
+	height: 100%;
+	width: 100%
+	overflow:hidden;
 	font-size: 32px;
 	z-index: 1;
 }
@@ -252,7 +254,7 @@ h1 {
 	top: 410px;
 	left: 228px;
 	width: 313px;
-	height: 256px;
+	max-height: 256px;
 }
 
 #Pic01{
@@ -260,7 +262,7 @@ h1 {
 	visibility: hidden;
 	left: 0px;
 	max-width: 213px;
-	height: 356px; 
+	height: 356px;
 	height: 100%;
 	z-index: 20;
 }
@@ -271,8 +273,8 @@ h1 {
 	left: 0px;
 	/*top: 427px;
 	left: 628px;
-	width: 265px;
-	height: 266px; */
+	width: 265px; */
+	max-height: 256px;
 	height: 100%;
 	z-index: 20;
 }
