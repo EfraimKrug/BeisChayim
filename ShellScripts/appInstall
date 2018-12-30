@@ -16,7 +16,7 @@ cd $HOME/bcCode
 unzip $HOME/bcCode/BeisChayim.zip
 #
 rm $HOME/bcCode/BeisChayim.zip
-mv $HOME/bcCode/BeisChayim-Screen10.1 $HOME/bcCode/BeisChayim
+mv $HOME/bcCode/BeisChayim-Screen10.1 $HOME/bbcCode/BeisChayim
 cp ~/bcCode/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/bcCode/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 mkdir $HOME/bcCode/BeisChayim/data

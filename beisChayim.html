@@ -12,7 +12,7 @@
 <title>Beis Chayim</title>
 
 </head>
-<body  onload="firstLoad();">
+<body  id=appBody onload="firstLoad();">
 <div id=body class=bg0>
 <div id=keyShow></div>
 <div id=security>
@@ -123,6 +123,7 @@ function checkIt(){
 }
 
 function doAction(){
+	saveAutoTime();
 	var action = document.getElementById("actionSelect");
 	if(action.value == "new") doNew();
 	if(action.value == "edit") doEdit();
@@ -160,6 +161,7 @@ var pkLetterCount = 0;
 var passkey = "";
 
 function kbclick(ky){
+	saveAutoTime();
 	ks = document.getElementById("keyShow");
 	ks.style.display = 'inline';
 	passkey += ky;
@@ -337,6 +339,7 @@ function kbclick(ky){
 	<script>
 	function goBack(oldPanel){
 		resetScreen(oldPanel);
+		addBodyListener();
 	}
 
 	function resetScreen(oldPanel){
@@ -561,6 +564,7 @@ function reset(){
 }
 
 function scrollto(let){
+			saveAutoTime();
 			var sbar = document.getElementById("searchBar");
 			_lastI = 0;
 			searchString += let;
@@ -580,6 +584,7 @@ var topWindow = 0;
 var _lastI = 0;
 
 function navUp(name){
+	saveAutoTime();
 	//console.log("navUp: " + _lastI);
 	var ps = 2 * PAGE_SIZE;
 	_lastI-=ps;
@@ -590,6 +595,7 @@ function navUp(name){
 }
 
 function navDown(name){
+	saveAutoTime();
 	//console.log("navDown: " + _lastI);
 	//_lastI+=PAGE_SIZE;
 	if(_lastI < 0) _lastI = 0;

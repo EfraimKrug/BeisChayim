@@ -162,6 +162,7 @@ function firstLoad(){
 		currentPosition = 0;
 		renderingPlaques(endCycle);
 	}
+	addBodyListener();
 }
 
 // individual name display
@@ -169,7 +170,7 @@ function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
 	setCurrentMonth();
-	console.log(currentMonth);
+	//console.log(currentMonth);
 	loadElement(i = getNum(0), callback);
 	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
 }

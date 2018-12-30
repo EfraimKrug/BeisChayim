@@ -7,12 +7,27 @@ var showButton = false;
 //console.log(config);
 
 // ========== selecting the month ======================
+var autoTimeStamp = new Date();
+
+function saveAutoTime(){
+			autoTimeStamp = new Date();
+}
+
 function autoSecClose(){
+	var autoTimeStampComp = new Date();
+	var advancedTimeStamp = new Date(autoTimeStamp.getTime() + (60 * 1000));
+	console.log(autoTimeStampComp + " <? " + advancedTimeStamp);
+	if (autoTimeStampComp < advancedTimeStamp){
+		setTimeout(autoSecClose, 10000);
+		return;
+	}
+
 	var security = document.getElementById("security");
 	security.style.display = 'none';
 	var ks = document.getElementById("keyShow");
 	ks.style.display = 'none';
 	showButtonSec = true;
+	addBodyListener();
 	hideIt();
 }
 
@@ -34,7 +49,8 @@ function showSecurity(){
 		initKeys();
 		//passkey = '';
 		//pkLetterCount = 0;
-		setTimeout(autoSecClose, 30000)
+		removeBodyListener();
+		setTimeout(autoSecClose, 10000);
 	} else {
 		initKeys();
 		hideSecurity()
@@ -67,4 +83,17 @@ function doit(){
 	//currentMonth = month.value;
 	hideIt();
 	//alert(month.value);
+}
+
+/////////////////////////////////////////////////////////////////////////
+// adding and removing listeners - to clean up for touch screen...
+/////////////////////////////////////////////////////////////////////////
+function addBodyListener(){
+	bd = document.getElementById("appBody");
+	appBody.addEventListener("click",showSecurity,true);
+}
+
+function removeBodyListener(){
+	bd = document.getElementById("appBody");
+	appBody.removeEventListener("click",showSecurity,true);
 }
