@@ -9,10 +9,9 @@
 <link rel="stylesheet" href="./css/newWindow.css">
 <link rel="stylesheet" href="./css/selectWindow.css">
 
-<title>Beis Chayim</title>
 
 </head>
-<body  onload="firstLoad();">
+<body  onload="firstLoad();"  onclick="showSecurity();">
 <div id=body class=bg0>
 <div id=keyShow></div>
 <div id=security>
@@ -20,10 +19,10 @@
 									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
 									<tr><link rel="stylesheet" href="./css/panel.css"><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
 									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
-									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
+									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('Enter');">Enter</td></tr>
 								</table>
 </div>
-<div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
+<div id=spanTitle><h1 id=sTitle>Beis Chayim</h1></span>
 
 <table id=accessMenu>
 	<tr><td>
@@ -128,9 +127,7 @@ function doAction(){
 	if(action.value == "edit") doEdit();
 	if(action.value == "select") doSelect();
 	if(action.value == "config") startConfig();
-
 	action.value = "";
-
 	//action.style.display = 'none';
 }
 
@@ -158,22 +155,23 @@ function startConfig(){
 
 var pkLetterCount = 0;
 var passkey = "";
+var KBOARD = false;
 
 function kbclick(ky){
+	KBOARD = true;
 	ks = document.getElementById("keyShow");
 	ks.style.display = 'inline';
-	passkey += ky;
-	ks.innerHTML = passkey;
-	if(pkLetterCount > 3){
+	if(ky == 'Enter'){
+		checkIt();
+		ky = "";
+		//KBOARD = false;
 		passkey = "";
 		pkLetterCount = 0;
 		ks.innerHTML = "";
 		ks.style.display = hidden;
-	}
-	else {
-		if(pkLetterCount == 3){
-			checkIt();
-		}
+	} else {
+		passkey += ky;
+		ks.innerHTML = passkey;
 		pkLetterCount++;
 	}
 }
@@ -337,6 +335,7 @@ function kbclick(ky){
 	<script>
 	function goBack(oldPanel){
 		resetScreen(oldPanel);
+		KBOARD = false;
 	}
 
 	function resetScreen(oldPanel){
@@ -668,6 +667,7 @@ function choose(id){
 	selectPanel = document.getElementById("selectPanel");
 	selectPanel.style.display = "none";
 	doEdit(currentIDX);
+	reset();
 }
 
 function setPanel(){

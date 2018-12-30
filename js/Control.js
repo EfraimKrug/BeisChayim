@@ -13,6 +13,7 @@ function autoSecClose(){
 	var ks = document.getElementById("keyShow");
 	ks.style.display = 'none';
 	showButtonSec = true;
+	KBOARD = false;
 	hideIt();
 }
 
@@ -26,8 +27,9 @@ function hideSecurity(){
 }
 
 function showSecurity(){
+	if(KBOARD) return;
+	//alert("showSecurity");
 	var security = document.getElementById("security");
-	//alert(security.style.zIndex);
 	if(showButtonSec && showButton){
 		security.style.display = 'inline';
 		showButtonSec = false;
@@ -54,7 +56,6 @@ function showIt(){
 }
 
 function hideIt(){
-	//var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
 
 	action.style.display = 'none';
