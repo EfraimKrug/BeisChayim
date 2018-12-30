@@ -20,7 +20,7 @@
 									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
 									<tr><link rel="stylesheet" href="./css/panel.css"><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
 									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
-									<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
+									<tr><td class=kb onclick="kbclick('clear');"><=</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('Enter');">Enter</td></tr>
 								</table>
 </div>
 <div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
@@ -164,20 +164,22 @@ function kbclick(ky){
 	saveAutoTime();
 	ks = document.getElementById("keyShow");
 	ks.style.display = 'inline';
-	passkey += ky;
-	ks.innerHTML = passkey;
-	if(pkLetterCount > 3){
+	if (ky == 'Enter'){
+		checkIt();
 		passkey = "";
 		pkLetterCount = 0;
 		ks.innerHTML = "";
 		ks.style.display = hidden;
+		return;
 	}
-	else {
-		if(pkLetterCount == 3){
-			checkIt();
-		}
+	if (ky == 'clear'){
+		pkLetterCount--;
+		passkey = passkey.substring(0,pkLetterCount);
+	} else {
 		pkLetterCount++;
+		passkey += ky;
 	}
+	ks.innerHTML = passkey;
 }
 
 </script>
