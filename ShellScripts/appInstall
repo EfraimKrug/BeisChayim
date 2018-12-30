@@ -7,16 +7,16 @@ echo "**************************************************************************
 echo "*            We are downloading the BeisChayim zip file...                                               *"
 echo "**********************************************************************************************************"
 
-wget https://github.com/EfraimKrug/BeisChayim/archive/Screen10.1.zip
+wget https://github.com/EfraimKrug/BeisChayim/archive/Screen10.1Touch1.0.zip
 [ -e $HOME/Downloads ] || echo "No Downloads folder: please create $HOME/Downloads"
-[ -e $HOME/Downloads/Screen10.1.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
+[ -e $HOME/Downloads/Screen10.1Touch1.0.zip ] || echo "No zip file! Please download BeisChayim-Screen10.1.zip (github/EfraimKrug)"
 [ -e $HOME/bcCode ] || mkdir $HOME/bcCode
-cp $HOME/Downloads/Screen10.1.zip $HOME/bcCode/BeisChayim.zip
+cp $HOME/Downloads/Screen10.1Touch1.0.zip $HOME/bcCode/BeisChayim.zip
 cd $HOME/bcCode
 unzip $HOME/bcCode/BeisChayim.zip
 #
 rm $HOME/bcCode/BeisChayim.zip
-mv $HOME/bcCode/BeisChayim-Screen10.1 $HOME/bcCode/BeisChayim
+mv $HOME/bcCode/BeisChayim-Screen10.1Touch1.0 $HOME/bcCode/BeisChayim
 cp ~/bcCode/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/bcCode/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 mkdir $HOME/bcCode/BeisChayim/data
@@ -30,6 +30,8 @@ echo "*            For Raspberri Pi, we need to install a screen saver (to turn 
 echo "**********************************************************************************************************"
 
 sudo apt-get install xscreensaver
+sudo apt-get install firefox-esr
+sudo apt-get install matchbox-keyboard
 #b0st0n
 #y
 
@@ -44,15 +46,15 @@ echo "*   That was step 1. Now, on to step 2:                                   
 echo "*   Now, make sure you have the yahrzeits.csv file in ~/Downloads, then run startUp                      *"
 echo "**********************************************************************************************************"
 A
-echo 
-echo 
+echo
+echo
 B
 B
 B
 B
 B
-A 
 A
-echo "  
+A
+echo "
 A
 echo " "
