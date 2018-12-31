@@ -8,6 +8,7 @@ mv $HOME/bin/ConfigInstall.sh $HOME/bin/ConfigInstall
 mv $HOME/bin/editCrontab.sh editCrontab
 mv $HOME/bin/turnOn.sh turnOn
 mv $HOME/bin/cleanUp.sh cleanUp
+mv $HOME/bin/readEmail.sh readEmail
 
 rm $HOME/bin/ShellInstall.sh
 

@@ -59,7 +59,8 @@ with open('@@@@@/bcCode/BeisChayim/data/out01') as csvfile:
 
 		newline.append("\"Pic01\":\"\"")
 		newline.append("\"Pic02\":\"\"")
-		#newline.append("\"FBook\":\"\"")
+		newline.append("\"PDF01\":\"\"")
+		newline.append("\"PDF02\":\"\"")
 		newline.append("\"PayLevel\":\"\"")
 		newline.append("\"Comments01\":\"\"")
 

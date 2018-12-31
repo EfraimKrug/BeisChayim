@@ -24,6 +24,7 @@ cp $HOME/bcCode/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 mkdir $HOME/bcCode/BeisChayim/data
 mkdir $HOME/bcCode/BeisChayim/data/work
 mkdir $HOME/bcCode/BeisChayim/data/used
+mkdir $HOME/bcCode/BeisChayim/pdf
 chmod 555 $HOME/bin/ShellInstall
 $HOME/bin/ShellInstall
 
