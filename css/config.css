@@ -20,6 +20,7 @@ button {
 		font-size: 14;
 		font-weight: bold;
 		z-index: 30;
+		min-width: 125px;
 }
 
 #keyShow {

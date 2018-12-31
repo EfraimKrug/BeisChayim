@@ -33,7 +33,15 @@ body {
 
 #pdfView {
 		display:hidden;
-		z-index: 9999;
+		width: 100%;
+		z-index: 199;
+}
+
+#pdfImg {
+		display:hidden;
+		width: 100%;
+		opacity: 1.0;
+		z-index: 199;
 }
 
 .bg0,.bg1,.bg2,.bg3,.bg4,.bg5 {

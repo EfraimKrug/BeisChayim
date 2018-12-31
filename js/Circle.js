@@ -17,6 +17,8 @@ function getNextTop(t){
 	return t + 1;
 }
 
+var screenHidden = false;
+
 function positionElts(){
 		var t = BITES_PER_SQUARE;
 		var s = 2;
@@ -88,16 +90,18 @@ function positionElts(){
 		//pic02.style.left = getLeftPic2();
 		//pic02.style.left = getLeftOffset(2,0);
 		//pic02.style.width = getWSquareSize() + "px";
-
-		name.style.display = "inline";
-		hname.style.display = "inline";
-		hdate.style.display = "inline";
-		edate.style.display = "inline";
-		pic01.style.display = "inline";
-		pic02.style.display = "inline";
+		if(!screenHidden){
+			name.style.display = "inline";
+			hname.style.display = "inline";
+			hdate.style.display = "inline";
+			edate.style.display = "inline";
+			pic01.style.display = "inline";
+			pic02.style.display = "inline";
+		}
 }
 
 function hideScreen01(){
+			screenHidden = true;
 			var name = document.getElementById("Name");
 			name.style.display = "none";
 			var hname = document.getElementById("HName");
@@ -148,6 +152,7 @@ function firstLoad(){
 	clearInterval(PlaqueInterval);
 
 	hideScreen01();
+	screenHidden = false;
 	hideSideBarArray();
 	hideScreen02();
 	buildPanel01();
