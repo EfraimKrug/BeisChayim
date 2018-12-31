@@ -62,9 +62,21 @@ function renderSideBarArray(){
 		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
 		sbar.innerHTML = SideBarList[listCounter];
-		sbar.setAttribute("onclick", "getEdit(" + YahrzeitListSpotList[listCounter] + ")" );
+		sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ")" );
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
+	}
+}
+
+function getPDF(num){
+	removeBodyListener();
+	hideSecurity();
+	if(YahrList.Yahrzeits[num].PDF01 !== ""){
+		pdf = document.getElementById("pdfView");
+		pdf.src = "/home/efraiim/bcCode/BeisChayim/pdf/" + YahrList.Yahrzeits[num].PDF01;
+		pdf.style.display = "inline";
+		//var w = window.open(url, '_blank');
+		//w.focus();
 	}
 }
 
