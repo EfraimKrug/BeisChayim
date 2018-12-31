@@ -54,6 +54,7 @@ function buildPanel01(){
       var n = i / COLUMN_COUNT;
       n = Math.floor(n);
       panelArray[n].push({"ID":"","Name":"", "Date":"", "PayLevel":"", "IDX":""});
+      if(n == 64) console.log(YahrList.Yahrzeits[i].ID);
       panelArray[n][j]["ID"] = YahrList.Yahrzeits[i].ID;
       panelArray[n][j]["IDX"] = i;
       panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].HName;
@@ -110,7 +111,7 @@ function hideScreen02(){
       vi++;
       if(vi < 10) vi = "0" + vi;
       if(vi > 12) vi = "01";
-      for(var j=0; j < 5; j++){
+      for(var j=0; j < 8; j++){
         var pbar = document.getElementById(getColID(j) + vi);
         //console.log(getColID(j) + vi);
         pbar.style.display = "none";
@@ -136,16 +137,12 @@ function renderScreen(callback){
           setTimeout(callback, tf);
           return;
         }
-
+        //if(currentPosition > 375) console.log("currentPosition: " + currentPosition + "; col: " + j + "; row_count: " + row_count);
         var pbar = document.getElementById(getColID(j) + vi);
-        //console.log(getColID(j) + ":" + vi);
         pbar.style.position = "absolute";
-        //pbar.style.left = getLeft(j+1);
         pbar.style.left = getColumnOffset(j);
 
-        //pbar.style.top = getTopOffset(calcRow(vi), calcOffset(vi));
         pbar.style.top = getTopOffset(row_count);
-        //console.log(vi + ":" + getTopOffset(calcRow(vi), calcOffset(vi)));
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
         pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
 
@@ -168,15 +165,20 @@ function renderScreen(callback){
           dt = panelArray[currentPosition][j]["Date"].substring(1);
         }
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
+        if(pbar.innerHTML.indexOf("undefined") > -1){
+          pbar.innerHTML = pbar.innerHTML.substring(0,pbar.innerHTML.indexOf("undefined"));
+          console.log(currentPosition + "[" +panelArray[currentPosition][j]["Name"] + "]");
+        }
+        //alert(pbar.innerHTML.indexOf("undefined"));
         pbar.style.border = "1px solid black";
         if(checkToday(dt)){
-          console.log("Name: " + pbar.innerHTML + ": Checking: " + dt);
+          //console.log("Name: " + pbar.innerHTML + ": Checking: " + dt);
           pbar.style.border = "4px solid orange";
           pbar.style.zIndex = 10;
           pbar.style.padding = "5px";
           pbar.style.width = (getPanelBoxWidth() - 8) + "px";
           pbar.style.height = (getPanelBoxHeight() - 8) + "px";
-          pbar.style.top = (getTopOffsetInt(row_count) - 2) + "px";
+          pbar.style.top = (getTopOffsetInt(row_count) - 4) + "px";
           pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
 
           //pbar.style.color = "red";
