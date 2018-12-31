@@ -87,7 +87,7 @@ function getPDF(num){
 		hideSideBarArray();
 		pdfView = document.getElementById("pdfView");
 		pdfImg = document.getElementById("pdfImg");
-		pdfImg.src = "/home/efraiim/code/BeisChayim/pdf/" + YahrList.Yahrzeits[num].PDF01;
+		pdfImg.src = "/home/pi/bcCode/BeisChayim/pdf/" + YahrList.Yahrzeits[num].PDF01;
 		pdfImg.style.display = "inline";
 		pdfView.style.display = "inline";
 		//var w = window.open(url, '_blank');
