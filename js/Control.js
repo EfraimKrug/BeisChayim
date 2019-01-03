@@ -16,7 +16,6 @@ function saveAutoTime(){
 function autoSecClose(){
 	var autoTimeStampComp = new Date();
 	var advancedTimeStamp = new Date(autoTimeStamp.getTime() + (60 * 1000));
-	console.log(autoTimeStampComp + " <? " + advancedTimeStamp);
 	if (autoTimeStampComp < advancedTimeStamp){
 		setTimeout(autoSecClose, 10000);
 		return;
@@ -40,22 +39,23 @@ function hideSecurity(){
 	initKeys();
 }
 
-function showSecurity(){
-	var security = document.getElementById("security");
-	//alert(security.style.zIndex);
-	if(showButtonSec && showButton){
-		security.style.display = 'inline';
-		showButtonSec = false;
-		initKeys();
-		//passkey = '';
-		//pkLetterCount = 0;
-		removeBodyListener();
-		setTimeout(autoSecClose, 10000);
-	} else {
-		initKeys();
-		hideSecurity()
+function checkClick(){
+	if(placeClick == 'side'){
+		placeClick = '';
+		return false;
 	}
-	hideIt();
+	getPDF(currentIDX, 1, 'main');
+	//alert(YahrList.Yahrzeits[currentIDX].HName.trim() == "" ? YahrList.Yahrzeits[currentIDX].Name : YahrList.Yahrzeits[currentIDX].HName);
+	return true;
+}
+
+///////////////////////////////////////////////////////////////
+// rewrite turning off all editing possibility
+// the page stalls in case the side bar was clicked...
+///////////////////////////////////////////////////////////////
+function showSecurity(){
+	setTimeout(checkClick, 10);
+	return;
 }
 
 function showIt(){
