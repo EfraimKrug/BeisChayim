@@ -280,6 +280,76 @@ function kbclick(ky){
 <div id=editPanel>
 <div id=ID></div>
 <table id=editTable>
+<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+
+		<td><button onclick=goBack('editPanel');>Click to return</span></td>
+</tr>
+<tr>
+				<td>Name</td><td><input type=text id=editName></td>
+				<td></td><td></td>
+</tr>
+<tr>
+				<td>Hebrew Name</td><td><input type=text id=editHName></td>
+				<td>PDF #1</td><td><span class=fname id=editPDF01 ></span><input id="editPDFFilename01" type="file" onblur="keepFileName(3);"/></td>
+</tr>
+<tr>
+				<td>Gregorian Date</td><td><input type=text id=editEDate></td>
+				<td>PDF #2</td><td><span class=fname id=editPDF02 ></span><input id="editPDFFilename02" type="file" onblur="keepFileName(4);"/></td>
+</tr>
+<tr>
+				<!-- <td>Relationship</td><td><input type=text id=editRelationship></td> -->
+				<td>Hebrew Date</td><td><input type=text id=editHDate></td>
+				<td>PDF #3</td><td><span class=fname id=editPDF03></span><input id="editPDFFilename03" type="file" onblur="keepFileName(5);"/></td>
+<tr>
+				<td>Picture #1</td><td><span class=fname id=editPic01 ></span><input id="editFilename1" type="file" onblur="keepFileName(1);"/></td>
+				<td>PDF #4</td><td><span class=fname id=editPDF04 ></span><input id="editPDFFilename04" type="file" onblur="keepFileName(6);"/></td>
+</tr>
+<tr>
+        <td>Picture #2</td><td><span class=fname id=editPic02></span><input id="editFilename2" type="file" onblur="keepFileName(2);"/></td>
+				<td>PDF #5</td><td><span class=fname id=editPDF05 ></span><input id="editPDFFilename05" type="file" onblur="keepFileName(7);"/></td>
+</tr>
+<tr>
+  			<td>Mourned by</td><td><input type=text id=editMournby></td>
+</tr>
+<tr>
+  			<td>Relationship</td><td><input type=text id=editRelationship></td>
+				<td></td>
+				<td></td>
+</tr>
+<tr>
+  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
+																											<option value="0">none</option>
+																											<option value="1">copper</option>
+																											<option value="2">bronze</option>
+																											<option value="3">silver</option>
+																											<option value="4">gold</option>
+																										</select>
+	</td>
+	<td></td>
+	<td></td>
+
+</tr>
+<tr>
+        <td>Comments</td><td><textarea rows=5 cols=45 id=editComments01></textarea></td>
+				<td></td>
+				<td></td>
+
+</tr>
+<tr>
+	<td>	</td><td><button id=submit onclick=editAddStuff();>Submit</button></td>
+	<td></td>
+	<td></td>
+
+</tr>
+</table>
+
+<!-- ----------------------------------------------
+<div id=editPanel>
+<div id=ID></div>
+<table id=editTable>
 	<tr>
 		<td>Name</td><td><input type=text id=editName></td><td><button onclick=goBack('editPanel');>Click to return</span></td>
 	</tr>
@@ -323,7 +393,7 @@ function kbclick(ky){
 		</tr>
 		</table>
 </table>
-
+----------------------- -->
 	<script>
 	function setPayLevel(){
 
@@ -342,6 +412,7 @@ function kbclick(ky){
 	}
 
 	function editAddStuff(){
+			//alert(YahrList.Yahrzeits[currentIDX].Name);
 			//alert("B" + document.getElementById("editFilename1").value);
 			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
 	}
@@ -361,20 +432,32 @@ function kbclick(ky){
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
+			console.log(queryDict);
 			hideIt();
 			loadEdit(queryDict);
 	}
 
 	function loadEdit(queryDict){
 			var ID = queryDict["ID"];
+			removeBodyListener();
+			autoProcess = false;
 
 			document.getElementById("ID").innerHTML = ID;
+
 			document.getElementById("editName").value = queryDict["Name"].replace(/%20/g," ");
 			document.getElementById("editHName").value = queryDict["HName"].replace(/%20/g," ");
 			document.getElementById("editEDate").value = queryDict["EDate"].replace(/%20/g," ");
 			document.getElementById("editHDate").value = queryDict["HDate"].replace(/%20/g," ");
+
 			document.getElementById("editPic01").innerHTML = queryDict["Pic01"].replace(/%20/g," ");
 			document.getElementById("editPic02").innerHTML = queryDict["Pic02"].replace(/%20/g," ");
+
+			document.getElementById("editPDF01").innerHTML = queryDict["PDF01"].replace(/%20/g," ");
+			document.getElementById("editPDF02").innerHTML = queryDict["PDF02"].replace(/%20/g," ");
+			document.getElementById("editPDF03").innerHTML = queryDict["PDF03"].replace(/%20/g," ");
+			document.getElementById("editPDF04").innerHTML = queryDict["PDF04"].replace(/%20/g," ");
+			document.getElementById("editPDF05").innerHTML = queryDict["PDF05"].replace(/%20/g," ");
+
 			document.getElementById("editMournby").value = queryDict["MournBy"].replace(/%20/g," ");
 			document.getElementById("editRelationship").value = queryDict["Relationship"].replace(/%20/g," ");
 			document.getElementById("editComments01").value = queryDict["Comments01"].replace(/%20/g," ");

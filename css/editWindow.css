@@ -14,6 +14,7 @@
 
 .editPanel {
 	background-color: black;
+	width:100%;
 }
 
 #ID {
@@ -24,6 +25,7 @@
 	position: absolute;
 	left:0px;
 	top: 0px;
+	width: 90%;
 	background-image: url("../img/sunset003.jpeg");
 	border:2px solid black;
 	margin: 36px;

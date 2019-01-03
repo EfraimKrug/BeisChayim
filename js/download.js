@@ -109,6 +109,11 @@ function addStuff(ID, edit, callback){
 		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("editHDate").value) + "\"";
 		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("editPic01").innerHTML) + "\"";
 		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("editPic02").innerHTML) + "\"";
+		var pdf01 = "\"PDF01\":\"" + escapeHTML(document.getElementById("editPDF01").innerHTML) + "\"";
+		var pdf02 = "\"PDF02\":\"" + escapeHTML(document.getElementById("editPDF02").innerHTML) + "\"";
+		var pdf03 = "\"PDF03\":\"" + escapeHTML(document.getElementById("editPDF03").innerHTML) + "\"";
+		var pdf04 = "\"PDF04\":\"" + escapeHTML(document.getElementById("editPDF04").innerHTML) + "\"";
+		var pdf05 = "\"PDF05\":\"" + escapeHTML(document.getElementById("editPDF05").innerHTML) + "\"";
 
 		//console.log("pic01: " + pic01);
 		if(fileName01.trim() !== ""){
@@ -118,6 +123,23 @@ function addStuff(ID, edit, callback){
 		if(fileName02.trim() !== ""){
 			var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
 		}
+
+		if(newPDFFilename01.trim() !== ""){
+			pdf01 = "\"PDF01\":\"" + escapeHTML(newPDFFilename01) + "\"";
+		}
+		if(newPDFFilename02.trim() !== ""){
+			pdf02 = "\"PDF02\":\"" + escapeHTML(newPDFFilename02) + "\"";
+		}
+		if(newPDFFilename03.trim() !== ""){
+			pdf03 = "\"PDF03\":\"" + escapeHTML(newPDFFilename03) + "\"";
+		}
+		if(newPDFFilename04.trim() !== ""){
+			pdf04 = "\"PDF04\":\"" + escapeHTML(newPDFFilename04) + "\"";
+		}
+		if(newPDFFilename05.trim() !== ""){
+			pdf05 = "\"PDF05\":\"" + escapeHTML(newPDFFilename05) + "\"";
+		}
+
 		var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("editMournby").value) + "\"";
 		var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("editRelationship").value) + "\"";
 		var pl = document.getElementById("editPaylevel").value;
