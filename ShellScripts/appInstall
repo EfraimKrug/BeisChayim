@@ -31,7 +31,7 @@ mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
 chmod 555 $HOME/bin/ShellInstall
-$HOME/bin/ShellInstall
+$HOME/bin/ShellInstall $CODE_DIRECTORY
 #
 echo "**********************************************************************************************************"
 echo "*            For Raspberri Pi, we need to install a screen saver (to turn off)                           *"
