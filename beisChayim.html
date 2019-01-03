@@ -13,7 +13,9 @@
 
 </head>
 <body  id=appBody onload="firstLoad();">
-<div id="pdfView" height="100%" width="100%"><img id="pdfImg" src="" onclick="turnBack();"></div>
+<!-- <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src="" onclick="turnBack();"></div> -->
+<div id="pdfView" height="100%" width="100%"><img id="pdfImg" src=""></div>
+
 <div id=body class=bg0>
 <div id=keyShow></div>
 <div id=security>
@@ -27,22 +29,6 @@
 <div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
 <table id=accessMenu>
 	<tr><td>
-<!--
-<select id=monthSelect onchange="doit();">
-	<option value="Nissan">Nissan</option>
-	<option value="Iyyar">Iyyar</option>
-	<option value="Sivan">Sivan</option>
-	<option value="Tammuz">Tammuz</option>
-	<option value="Av">Av</option>
-	<option value="Elul">Elul</option>
-	<option value="Tishrei">Tishrei</option>
-	<option value="Cheshvan">Cheshvan</option>
-	<option value="Kislev">Kislev</option>
-	<option value="Tevet">Tevet</option>
-	<option value="Shevat">Shevat</option>
-	<option value="Adar">Adar</option>
-</select>
--->
 </td>
 <td>
 <select id=actionSelect onchange="doAction();">
@@ -169,7 +155,7 @@ function kbclick(ky){
 		passkey = "";
 		pkLetterCount = 0;
 		ks.innerHTML = "";
-		ks.style.display = hidden;
+		ks.style.display = "hidden";
 		return;
 	}
 	if (ky == 'clear'){
@@ -339,6 +325,10 @@ function kbclick(ky){
 </table>
 
 	<script>
+	function setPayLevel(){
+
+	}
+
 	function goBack(oldPanel){
 		resetScreen(oldPanel);
 		addBodyListener();
@@ -398,36 +388,43 @@ function kbclick(ky){
 <div id=newPanel>
 <table id=newTable>
 <tr>
-		<td>Name</td><td><input type=text id=newName></td><td><button onclick=goBack('newPanel');>Click to return</span></td>
+		<td></td>
+		<td></td>
+		<td></td>
+
+		<td><button onclick=goBack('newPanel');>Click to return</span></td>
 </tr>
-<!--
 <tr>
 				<td>Name</td><td><input type=text id=newName></td>
+				<td></td><td></td>
 </tr>
--->
 <tr>
 				<td>Hebrew Name</td><td><input type=text id=newHName></td>
+				<td>PDF #1</td><td><span class=fname id=newPDF01 ></span><input id="newPDFFilename01" type="file" onblur="keepFileName(10);"/></td>
 </tr>
 <tr>
 				<td>Gregorian Date</td><td><input type=text id=newEDate></td>
+				<td>PDF #2</td><td><span class=fname id=newPDF02 ></span><input id="newPDFFilename02" type="file" onblur="keepFileName(11);"/></td>
 </tr>
 <tr>
+				<!-- <td>Relationship</td><td><input type=text id=editRelationship></td> -->
 				<td>Hebrew Date</td><td><input type=text id=newHDate></td>
-</tr>
-
-				<td>Relationship</td><td><input type=text id=editRelationship></td>
-
+				<td>PDF #3</td><td><span class=fname id=newPDF03></span><input id="newPDFFilename03" type="file" onblur="keepFileName(12);"/></td>
 <tr>
-				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(1);"/></td>
+				<td>Picture #1</td><td><span class=fname id=newPic01 ></span><input id="newFilename1" type="file" onblur="keepFileName(8);"/></td>
+				<td>PDF #4</td><td><span class=fname id=newPDF04 ></span><input id="newPDFFilename04" type="file" onblur="keepFileName(13);"/></td>
 </tr>
 <tr>
-        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(2);"/></td>
+        <td>Picture #2</td><td><span class=fname id=newPic02></span><input id="newFilename2" type="file" onblur="keepFileName(9);"/></td>
+				<td>PDF #5</td><td><span class=fname id=newPDF05 ></span><input id="newPDFFilename05" type="file" onblur="keepFileName(14);"/></td>
 </tr>
 <tr>
   			<td>Mourned by</td><td><input type=text id=newMournby></td>
 </tr>
 <tr>
   			<td>Relationship</td><td><input type=text id=newRelationship></td>
+				<td></td>
+				<td></td>
 </tr>
 <tr>
   <td>Pay Level</td><td><select id=newPaylevel onchange="setPayLevel();">
@@ -438,12 +435,21 @@ function kbclick(ky){
 																											<option value="4">gold</option>
 																										</select>
 	</td>
+	<td></td>
+	<td></td>
+
 </tr>
 <tr>
-        <td>Comments</td><td><textarea rows=5 cols=75 id=newComments01></textarea></td>
+        <td>Comments</td><td><textarea rows=5 cols=45 id=newComments01></textarea></td>
+				<td></td>
+				<td></td>
+
 </tr>
 <tr>
 	<td>	</td><td><button id=submit onclick=newAddStuff();>Submit</button></td>
+	<td></td>
+	<td></td>
+
 </tr>
 </table>
 <script>
@@ -472,13 +478,20 @@ function doNew(){
 }
 
 function loadNew(){
+		removeBodyListener();
+		autoProcess = false;
 		document.getElementById("ID").innerHTML = "";
 		document.getElementById("newName").value = "";
 		document.getElementById("newHName").value = "";
 		document.getElementById("newEDate").value = "";
 		document.getElementById("newHDate").value = "";
-		document.getElementById("newPic01").innerHTML = "";
-		document.getElementById("newPic02").innerHTML = "";
+		document.getElementById("newFilename1").value = "";
+		document.getElementById("newFilename2").value = "";
+		document.getElementById("newPDFFilename01").value = "";
+		document.getElementById("newPDFFilename02").value = "";
+		document.getElementById("newPDFFilename03").value = "";
+		document.getElementById("newPDFFilename04").value = "";
+		document.getElementById("newPDFFilename05").value = "";
 		document.getElementById("newMournby").value = "";
 		document.getElementById("newRelationship").value = "";
 		document.getElementById("newComments01").value = "";
@@ -493,21 +506,17 @@ function loadNew(){
 
 <div id=selectPanel>
 	<div id=searchBar>&nbsp;</div>
-	<!--
-	<div id=choice>
-		<table>
-			<tr><td onclick="clickEdit();" class=rowColor00>Edit</td></tr>
-			<tr><td onclick="clickEdit();" class=rowColor01>View</td></tr>
-		</table>
-	</div>
--->
 <table>
 	<tr>
+			<td><span><button onclick=reset();>Reset</span></td>
 			<td><span><button onclick=navUp(searchString);>Up</span></td>
 			<td><span><button onclick=navDown(searchString);>Down</span></td>
 			<td><span><button onclick=goBack('selectPanel');>Click to return</span></td>
+			<td>&nbsp;</td><td>&nbsp;</td>
+			<td><span id=searchStrOut>Search</span></td>
 	</tr>
 </table>
+<hr>
 <table>
 	<tr>
 		<td class=ltr onclick="scrollto('a');">a</td>
@@ -523,6 +532,8 @@ function loadNew(){
 		<td class=ltr onclick="scrollto('k');">k</td>
 		<td class=ltr onclick="scrollto('l');">l</td>
 		<td class=ltr onclick="scrollto('m');">m</td>
+	</tr>
+	<tr>
 		<td class=ltr onclick="scrollto('n');">n</td>
 		<td class=ltr onclick="scrollto('o');">o</td>
 		<td class=ltr onclick="scrollto('p');">p</td>
@@ -536,7 +547,7 @@ function loadNew(){
 		<td class=ltr onclick="scrollto('x');">x</td>
 		<td class=ltr onclick="scrollto('y');">y</td>
 		<td class=ltr onclick="scrollto('z');">z</td>
-		<td class=ltr onclick="reset();">reset</td>
+		<!-- <td class=ltr onclick="reset();">reset</td> -->
 	</tr>
 </table>
 
@@ -562,14 +573,19 @@ function doSelect(){
 }
 
 function reset(){
+	var searchStrOut = document.getElementById("searchStrOut");
 	searchString = '';
+	searchStrOut.innerHTML = searchString;
+	cleanUpTable();
 }
 
 function scrollto(let){
 			saveAutoTime();
+			var searchStrOut = document.getElementById("searchStrOut");
 			var sbar = document.getElementById("searchBar");
 			_lastI = 0;
 			searchString += let;
+			searchStrOut.innerHTML = searchString;
 			cleanUpTable();
 			showNames(searchString);
 			if(searchString.length > 3) searchString = '';

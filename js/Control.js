@@ -3,6 +3,7 @@ var currentMonth = "Elul";
 var backgroundTrack = 0;
 var showButtonSec = false;
 var showButton = false;
+var autoProcess = true;
 
 //console.log(config);
 
@@ -14,9 +15,10 @@ function saveAutoTime(){
 }
 
 function autoSecClose(){
+	if(!autoProcess) return;
 	var autoTimeStampComp = new Date();
 	var advancedTimeStamp = new Date(autoTimeStamp.getTime() + (60 * 1000));
-	console.log(autoTimeStampComp + " <? " + advancedTimeStamp);
+	//console.log(autoTimeStampComp + " <? " + advancedTimeStamp);
 	if (autoTimeStampComp < advancedTimeStamp){
 		setTimeout(autoSecClose, 10000);
 		return;
@@ -61,7 +63,7 @@ function showSecurity(){
 function showIt(){
 	//var month = document.getElementById("monthSelect");
 	var action = document.getElementById("actionSelect");
-
+	action.value = "";
 	action.style.display = 'inline';
 	//month.style.display = 'inline';
 
@@ -89,11 +91,17 @@ function doit(){
 // adding and removing listeners - to clean up for touch screen...
 /////////////////////////////////////////////////////////////////////////
 function addBodyListener(){
+	pdfView = document.getElementById("pdfView");
+	pdfView.addEventListener("click",turnBack,true);
+
 	bd = document.getElementById("appBody");
 	appBody.addEventListener("click",showSecurity,true);
 }
 
 function removeBodyListener(){
+	pdfView = document.getElementById("pdfView");
+	pdfView.removeEventListener("click",turnBack,true);
+
 	bd = document.getElementById("appBody");
 	appBody.removeEventListener("click",showSecurity,true);
 }

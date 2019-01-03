@@ -76,6 +76,7 @@ function turnBack(){
 	pdfView.style.display = "none";
 	screenHidden = false;
 	addBodyListener();
+	autoProcess = true;
 }
 
 function getPDF(num){

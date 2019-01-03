@@ -54,7 +54,7 @@ function buildPanel01(){
       var n = i / COLUMN_COUNT;
       n = Math.floor(n);
       panelArray[n].push({"ID":"","Name":"", "Date":"", "PayLevel":"", "IDX":""});
-      if(n == 64) console.log(YahrList.Yahrzeits[i].ID);
+      //if(n == 64) console.log(YahrList.Yahrzeits[i].ID);
       panelArray[n][j]["ID"] = YahrList.Yahrzeits[i].ID;
       panelArray[n][j]["IDX"] = i;
       panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].HName;

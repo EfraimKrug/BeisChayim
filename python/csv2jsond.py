@@ -1,9 +1,9 @@
 import csv
 print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('@@@@@/bcCode/BeisChayim/data/out01') as csvfile:
+with open('/home/efraiim/code/BeisChayim/data/out01') as csvfile:
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
-	l = list(lineread)
 
+	l = list(lineread)
 	linecount = 0
 
 	for a in l:
@@ -61,6 +61,10 @@ with open('@@@@@/bcCode/BeisChayim/data/out01') as csvfile:
 		newline.append("\"Pic02\":\"\"")
 		newline.append("\"PDF01\":\"\"")
 		newline.append("\"PDF02\":\"\"")
+		newline.append("\"PDF03\":\"\"")
+		newline.append("\"PDF04\":\"\"")
+		newline.append("\"PDF05\":\"\"")
+
 		newline.append("\"PayLevel\":\"\"")
 		newline.append("\"Comments01\":\"\"")
 

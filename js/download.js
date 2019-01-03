@@ -2,6 +2,12 @@
 
 var fileName01 = "";
 var fileName02 = "";
+var newPDFFilename01 = "";
+var newPDFFilename02 = "";
+var newPDFFilename03 = "";
+var newPDFFilename04 = "";
+var newPDFFilename05 = "";
+
 var lastNewID = 0;
 
 //localStorage.removeItem("lastNewID");
@@ -21,14 +27,39 @@ function keepFileName(picNum){
 
 	//
 	// newPanel
-	if(picNum == 3){
+	if(picNum == 8){
   	var f = document.getElementById("newFilename1");
 		fileName01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
 	}
 
-	if(picNum == 4){
+	if(picNum == 9){
   	var f = document.getElementById("newFilename2");
 		fileName02 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 10){
+  	var f = document.getElementById("newPDFFilename01");
+		newPDFFilename01 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 11){
+  	var f = document.getElementById("newPDFFilename02");
+		newPDFFilename02 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 12){
+  	var f = document.getElementById("newPDFFilename03");
+		newPDFFilename03 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 13){
+  	var f = document.getElementById("newPDFFilename04");
+		newPDFFilename04 = f.value.substring(f.value.lastIndexOf('\\') + 1);
+	}
+
+	if(picNum == 14){
+  	var f = document.getElementById("newPDFFilename05");
+		newPDFFilename05 = f.value.substring(f.value.lastIndexOf('\\') + 1);
 	}
 
 }
@@ -78,6 +109,7 @@ function addStuff(ID, edit, callback){
 		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("editHDate").value) + "\"";
 		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("editPic01").innerHTML) + "\"";
 		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("editPic02").innerHTML) + "\"";
+
 		//console.log("pic01: " + pic01);
 		if(fileName01.trim() !== ""){
 			pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
@@ -104,13 +136,35 @@ function addStuff(ID, edit, callback){
 		var hdate = "\"HDate\":\"" + escapeHTML(document.getElementById("newHDate").value) + "\"";
 		var pic01 = "\"Pic01\":\"" + escapeHTML(document.getElementById("newPic01").innerHTML) + "\"";
 		var pic02 = "\"Pic02\":\"" + escapeHTML(document.getElementById("newPic02").innerHTML) + "\"";
+		var pdf01 = "\"PDF01\":\"" + escapeHTML(document.getElementById("newPDF01").innerHTML) + "\"";
+		var pdf02 = "\"PDF02\":\"" + escapeHTML(document.getElementById("newPDF02").innerHTML) + "\"";
+		var pdf03 = "\"PDF03\":\"" + escapeHTML(document.getElementById("newPDF03").innerHTML) + "\"";
+		var pdf04 = "\"PDF04\":\"" + escapeHTML(document.getElementById("newPDF04").innerHTML) + "\"";
+		var pdf05 = "\"PDF05\":\"" + escapeHTML(document.getElementById("newPDF05").innerHTML) + "\"";
 
 		if(fileName01.trim() !== ""){
 			pic01 = "\"Pic01\":\"" + escapeHTML(fileName01) + "\"";
 		}
 		if(fileName02.trim() !== ""){
-			var pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
+			pic02 = "\"Pic02\":\"" + escapeHTML(fileName02) + "\"";
 		}
+		if(newPDFFilename01.trim() !== ""){
+			pdf01 = "\"PDF01\":\"" + escapeHTML(newPDFFilename01) + "\"";
+		}
+		if(newPDFFilename02.trim() !== ""){
+			pdf02 = "\"PDF02\":\"" + escapeHTML(newPDFFilename02) + "\"";
+		}
+		if(newPDFFilename03.trim() !== ""){
+			pdf03 = "\"PDF03\":\"" + escapeHTML(newPDFFilename03) + "\"";
+		}
+		if(newPDFFilename04.trim() !== ""){
+			pdf04 = "\"PDF04\":\"" + escapeHTML(newPDFFilename04) + "\"";
+		}
+		if(newPDFFilename05.trim() !== ""){
+			pdf05 = "\"PDF05\":\"" + escapeHTML(newPDFFilename05) + "\"";
+		}
+
+
 		var mournby = "\"MournBy\":\"" + escapeHTML(document.getElementById("newMournby").value) + "\"";
 		var relationship = "\"Relationship\":\"" + escapeHTML(document.getElementById("newRelationship").value) + "\"";
 		var pl = document.getElementById("newPaylevel").value;
@@ -123,7 +177,8 @@ function addStuff(ID, edit, callback){
 }
 	var line = "'{" + id + "," + name + ","  +
 	hname + "," + edate + "," + hdate + "," + mournby + "," + relationship + "," + paylevel + "," +
-	pic01 + "," + pic02 + "," + comments01 + "},' + " ;
+	pic01 + "," + pic02 + ","  + pdf01 + ","  + pdf02 + ","  + pdf03 + ","  + pdf04 + ","  +
+	pdf05 + "," + comments01 + "},' + " ;
 	//console.log("LINE: " + line);
 	if(!edit){
 		download(line, escapeHTML("$$BC$$New00" + ID), "text/plain");

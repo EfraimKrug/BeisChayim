@@ -365,7 +365,13 @@ h1 {
 
 #actionSelect{
 	position:relative;
+	font-size: 34px;
 	z-index:30;
+}
+
+#actionSelect option {
+	font-size: 34px;
+	font-weight: bold;
 }
 
 #kboard{
