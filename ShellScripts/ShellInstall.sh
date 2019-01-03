@@ -1,7 +1,7 @@
 # reinstall shell scripts
 cd $HOME/bin
-cp $HOME/code/BeisChayim/ShellScripts/*.sh $HOME/bin
-cp $HOME/code/BeisChayim/ShellScripts/startUp $HOME/bin
+cp $HOME/$1/BeisChayim/ShellScripts/*.sh $HOME/bin
+cp $HOME/$1/BeisChayim/ShellScripts/startUp $HOME/bin
 mv $HOME/bin/editConfig.sh editConfig
 mv $HOME/bin/BChCycle01.sh $HOME/bin/BChCycle01
 mv $HOME/bin/ConfigInstall.sh $HOME/bin/ConfigInstall
@@ -20,7 +20,10 @@ chmod 555 $HOME/bin/editCrontab
 chmod 555 $HOME/bin/turnOn
 chmod 555 $HOME/bin/cleanUp
 
-cd $HOME/code/BeisChayim/python
+cd $HOME/$1/BeisChayim/python
 sed -i -e 's#@@@@@#'$HOME'#g'  cleanup01.py
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' cleanup01.py
 sed -i -e 's#@@@@@#'$HOME'#g' collect.py
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' collect.py
 sed -i -e 's#@@@@@#'$HOME'#g' csv2jsond.py
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' csv2jsond.py
