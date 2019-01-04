@@ -1,0 +1,2 @@
+var RunPhase = '{ "phase": {"run_type":"security"}}';
+//var RunPhase = '{ "phase": {"run_type":"view"}}';
