@@ -62,13 +62,15 @@ function renderSideBarArray(){
 		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
 		sbar.innerHTML = SideBarList[listCounter];
-		sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ")" );
+		sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ", 1, 'side')" );
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
 	}
 }
 
+var iTBack = 2;
 function turnBack(){
+	if(getPDF(0, iTBack++, 'side')) return;
 	pdfView = document.getElementById("pdfView");
 	pdfImg = document.getElementById("pdfImg");
 	pdfImg.src = "";
@@ -76,24 +78,37 @@ function turnBack(){
 	pdfView.style.display = "none";
 	screenHidden = false;
 	addBodyListener();
-	autoProcess = true;
+	iTBack = 2;
 }
 
-function getPDF(num){
-	//alert(YahrList.Yahrzeits[num].PDF01);
-	if(YahrList.Yahrzeits[num].PDF01 !== ""){
+var placeClick = "";
+var pdfIDNumber = 1;
+
+function getPDF(num, pdfNum, place){
+	if(pdfNum > 5) return false;
+	if(num == 0){
+		num = pdfIDNumber;
+	} else {
+		pdfIDNumber = num;
+	}
+	placeClick = place;
+	var pdfName = eval("YahrList.Yahrzeits[num].PDF0" + pdfNum);
+	if(pdfName !== "" && pdfName){
 		removeBodyListener();
 		hideSecurity();
 		hideScreen01();
 		hideSideBarArray();
 		pdfView = document.getElementById("pdfView");
 		pdfImg = document.getElementById("pdfImg");
-		pdfImg.src = "/home/pi/bcCode/BeisChayim/pdf/" + YahrList.Yahrzeits[num].PDF01;
+		//pdfImg.src = "/home/efraiim/code/BeisChayim/img/" + YahrList.Yahrzeits[num].PDF01;
+		//pdfImg.src = "./img/" + YahrList.Yahrzeits[num].PDF01;
+		pdfImg.src = "./img/" + pdfName;
 		pdfImg.style.display = "inline";
 		pdfView.style.display = "inline";
-		//var w = window.open(url, '_blank');
-		//w.focus();
+		return true;
 	}
+	pdfIDNumber = 1;
+	return false;
 }
 
 function loadSideBarArray(i){

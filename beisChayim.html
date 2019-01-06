@@ -286,7 +286,7 @@ function kbclick(ky){
 		<td></td>
 		<td></td>
 
-		<td><button onclick=goBack('editPanel');>Click to return</span></td>
+		<td><button onclick=goBack('editPanel');>Return</span></td>
 </tr>
 <tr>
 				<td>Name</td><td><input type=text id=editName></td>
@@ -476,7 +476,7 @@ function kbclick(ky){
 		<td></td>
 		<td></td>
 
-		<td><button onclick=goBack('newPanel');>Click to return</span></td>
+		<td><button onclick=goBack('newPanel');>Return</span></td>
 </tr>
 <tr>
 				<td>Name</td><td><input type=text id=newName></td>
@@ -595,7 +595,7 @@ function loadNew(){
 			<td><span><button onclick=reset();>Reset</span></td>
 			<td><span><button onclick=navUp(searchString);>Up</span></td>
 			<td><span><button onclick=navDown(searchString);>Down</span></td>
-			<td><span><button onclick=goBack('selectPanel');>Click to return</span></td>
+			<td><span><button onclick=goBack('selectPanel');>Return</span></td>
 			<td>&nbsp;</td><td>&nbsp;</td>
 			<td><span id=searchStrOut>Search</span></td>
 	</tr>
@@ -672,7 +672,7 @@ function scrollto(let){
 			searchStrOut.innerHTML = searchString;
 			cleanUpTable();
 			showNames(searchString);
-			if(searchString.length > 3) searchString = '';
+			//if(searchString.length > 3) searchString = '';
 }
 
 function cleanUpTable(){
@@ -721,7 +721,8 @@ function showNames(name){
 	clearTable(tbl);
 	var rowFlip = true;
 	for (var i=0; i < YahrList.Yahrzeits.length; i++){
-			if(YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0){
+			if((YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0) ||
+					(YahrList.Yahrzeits[i].Name.trim().toLowerCase().substring(YahrList.Yahrzeits[i].Name.trim().indexOf(' ') + 1).indexOf(name.trim().toLowerCase()) == 0)){
 				if(i < _lastI) continue;
 				if(rowCount >= PAGE_SIZE) continue;
 							var row = tbl.insertRow(0);

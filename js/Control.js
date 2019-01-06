@@ -42,7 +42,21 @@ function hideSecurity(){
 	initKeys();
 }
 
+function checkClick(){
+	if(placeClick == 'side'){
+		placeClick = '';
+		return false;
+	}
+	getPDF(currentIDX, 1, 'main');
+	//alert(YahrList.Yahrzeits[currentIDX].HName.trim() == "" ? YahrList.Yahrzeits[currentIDX].Name : YahrList.Yahrzeits[currentIDX].HName);
+	return true;
+}
 function showSecurity(){
+	if(RunPhase["phase01"]['run_type'] == 'view'){
+		setTimeout(checkClick, 10);
+		return;
+	}
+
 	var security = document.getElementById("security");
 	//alert(security.style.zIndex);
 	if(showButtonSec && showButton){
@@ -91,17 +105,21 @@ function doit(){
 // adding and removing listeners - to clean up for touch screen...
 /////////////////////////////////////////////////////////////////////////
 function addBodyListener(){
-	pdfView = document.getElementById("pdfView");
-	pdfView.addEventListener("click",turnBack,true);
+	if(RunPhase["phase01"]['run_type'] == 'view'){
+		pdfView = document.getElementById("pdfView");
+		pdfView.addEventListener("click",turnBack, true);
+	}
 
 	bd = document.getElementById("appBody");
 	appBody.addEventListener("click",showSecurity,true);
 }
 
 function removeBodyListener(){
-	pdfView = document.getElementById("pdfView");
-	pdfView.removeEventListener("click",turnBack,true);
-
+	if(RunPhase["phase01"]['run_type'] != 'view'){
+		pdfView = document.getElementById("pdfView");
+		pdfView.removeEventListener("click",turnBack,true);
+	}
+	
 	bd = document.getElementById("appBody");
 	appBody.removeEventListener("click",showSecurity,true);
 }
