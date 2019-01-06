@@ -1,6 +1,6 @@
 import csv
 print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('/X@~@~@X/BeisChayim/data/out01') as csvfile:
+with open('X@~@~@X/BeisChayim/data/out01') as csvfile:
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
 
 	l = list(lineread)

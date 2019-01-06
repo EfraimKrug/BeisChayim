@@ -4,22 +4,30 @@ CODE_DIRECTORY=bcCode
 # remember - this is running without getting new data
 # from shulcloud...
 ###############################################################################
-[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && cp $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
-[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && rm $HOME/Downloads/yahrzeits.csv
+if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
+then
+   cp $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
+   mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+   echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   rm $HOME/Downloads/yahrzeits.csv
+fi
 #
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.installed' | head -1)" ] || echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.run
-[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.installed' | head -1)" ] || echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && echo run > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+if [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ]
+then
+   cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+   echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
+   echo run02 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+fi
+
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
-#
+cat $HOME/$CODE_DIRECTORY/BeisChayim/.run > $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
 [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
 #
 # check/install config file
-[ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt HOME/Downloads/BCConfig
-[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig
+[ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
+[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 #
 # move files 5 cycles back...
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-4.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-5.js
