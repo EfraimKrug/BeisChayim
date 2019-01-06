@@ -2,7 +2,7 @@
 # note - install python
 # note - install firefox - configure options->download->always ask
 #
-BRANCH_NAME=Screen10.1Touch1.1
+BRANCH_NAME=$BRANCH_NAME
 BRANCH_NAME_ZIP=$BRANCH_NAME.zip
 CODE_DIRECTORY=bcCode
 #
@@ -22,8 +22,8 @@ cd $HOME/$CODE_DIRECTORY
 unzip $HOME/$CODE_DIRECTORY/BeisChayim.zip
 #
 rm $HOME/$CODE_DIRECTORY/BeisChayim.zip
-mv $HOME/$CODE_DIRECTORY/BeisChayim-Screen10.1Touch1.1/* $HOME/$CODE_DIRECTORY/BeisChayim
-rmdir $HOME/$CODE_DIRECTORY/BeisChayim-Screen10.1Touch1.1
+mv $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME/* $HOME/$CODE_DIRECTORY/BeisChayim
+rmdir $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
 cp ~/$CODE_DIRECTORY/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/$CODE_DIRECTORY/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data
@@ -31,7 +31,25 @@ mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
 chmod 555 $HOME/bin/ShellInstall
+#
+#
+# check/install shell ShellScripts
+#
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || goto SKIP_SHELL
 $HOME/bin/ShellInstall $CODE_DIRECTORY
+echo shell_installed > $HOME/$CODE_DIRECTORY/.shellInstalled
+#
+:SKIP_SHELL
+#
+#
+# check/install crontab
+#
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || goto SKIP_CRONTAB
+$HOME/bin/editCrontab
+echo cron_installed > $HOME/$CODE_DIRECTORY/.cronInstalled
+#
+:SKIP_CRONTAB
+#
 #
 echo "**********************************************************************************************************"
 echo "*            For Raspberri Pi, we need to install a screen saver (to turn off)                           *"
@@ -41,8 +59,6 @@ echo "**************************************************************************
 #sudo apt-get install firefox-esr
 #sudo apt-get install matchbox-keyboard
 #
-#b0st0n
-#y
 #
 echo "**********************************************************************************************************"
 echo "*   You need to create a 'yahrzeits.csv' file and put it in $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv   *"
@@ -55,3 +71,4 @@ echo "*   That was step 1. Now, on to step 2:                                   
 echo "*   Now, make sure you have the yahrzeits.csv file in ~/Downloads, then run startUp                      *"
 echo "**********************************************************************************************************"
 #
+$HOME/bin/BChCycle01
