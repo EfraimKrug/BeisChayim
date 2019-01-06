@@ -26,10 +26,12 @@ mv $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME/* $HOME/$CODE_DIRECTORY/BeisCha
 rmdir $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
 cp ~/$CODE_DIRECTORY/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/$CODE_DIRECTORY/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
+#
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
+#
 chmod 555 $HOME/bin/ShellInstall
 #
 #
