@@ -10,6 +10,9 @@ then
    mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
    echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
    rm $HOME/Downloads/yahrzeits.csv
+   #get the shulcloud file cleaned up... and converted to json
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsond.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 fi
 #
 if [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ]
