@@ -4,14 +4,16 @@ CODE_DIRECTORY=bcCode
 # remember - this is running without getting new data
 # from shulcloud...
 ###############################################################################
-[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || goto SKIPY_FILE
-mv $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
-mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-
-:SKIPY_FILE
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] || exit 0
-cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && cp $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && rm $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
+#
+#
+[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.installed' | head -1)" ] || exit 0
+[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.installed' | head -1)" ] || echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
+#
+#
 # check/install config file
 [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt HOME/Downloads/BCConfig
 [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/bcCode/BeisChayim/config/BCConfig

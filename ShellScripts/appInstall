@@ -35,20 +35,15 @@ chmod 555 $HOME/bin/ShellInstall
 #
 # check/install shell ShellScripts
 #
-[ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || goto SKIP_SHELL
-$HOME/bin/ShellInstall $CODE_DIRECTORY
-echo shell_installed > $HOME/$CODE_DIRECTORY/.shellInstalled
-#
-:SKIP_SHELL
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || $HOME/bin/ShellInstall $CODE_DIRECTORY
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || echo shell_installed > $HOME/$CODE_DIRECTORY/.shellInstalled
 #
 #
 # check/install crontab
 #
-[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || goto SKIP_CRONTAB
-$HOME/bin/editCrontab
-echo cron_installed > $HOME/$CODE_DIRECTORY/.cronInstalled
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || $HOME/bin/editCrontab
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || echo cron_installed > $HOME/$CODE_DIRECTORY/.cronInstalled
 #
-:SKIP_CRONTAB
 #
 #
 echo "**********************************************************************************************************"
