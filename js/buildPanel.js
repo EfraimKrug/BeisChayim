@@ -167,16 +167,17 @@ function renderScreen(callback){
         pbar.innerHTML = panelArray[currentPosition][j]["Name"] + "<br>" + dt;
         if(pbar.innerHTML.indexOf("undefined") > -1){
           pbar.innerHTML = pbar.innerHTML.substring(0,pbar.innerHTML.indexOf("undefined"));
-          console.log(currentPosition + "[" +panelArray[currentPosition][j]["Name"] + "]");
+          //console.log(currentPosition + "[" +panelArray[currentPosition][j]["Name"] + "]");
         }
         //alert(pbar.innerHTML.indexOf("undefined"));
         pbar.style.border = "1px solid black";
         if(checkToday(dt)){
           //console.log("Name: " + pbar.innerHTML + ": Checking: " + dt);
-          pbar.style.border = "4px solid orange";
+            pbar.style.border = "2px solid orange";
+          //pbar.style.border = "2px solid #BAB1A7";
           pbar.style.zIndex = 10;
-          pbar.style.padding = "5px";
-          pbar.style.width = (getPanelBoxWidth() - 8) + "px";
+          pbar.style.padding = "10px";
+          pbar.style.width = (getPanelBoxWidth() - 16) + "px";
           pbar.style.height = (getPanelBoxHeight() - 8) + "px";
           pbar.style.top = (getTopOffsetInt(row_count) - 4) + "px";
           pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
