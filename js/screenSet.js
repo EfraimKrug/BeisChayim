@@ -79,6 +79,18 @@ function getTopPic2(){
   return screenConfig.settings["OneByPic2"] + "px";
 }
 
+function getTopComment01High(){
+  return (screenConfig.settings["OneByComment01"] - 170) + "px";
+}
+
+function getTopComment01(){
+  return screenConfig.settings["OneByComment01"] + "px";
+}
+
+function getLeftComment01(){
+  return screenConfig.settings["LeftComment01"] + "px";
+}
+
 // Panel values
 function getTopOffset(row){
     var offset = parseInt(panelConfig.settings["PanelOffset"]);

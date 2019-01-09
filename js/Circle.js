@@ -6,6 +6,7 @@ var SideBarList = [];
 var PayLevelList = [];
 var YahrzeitListSpotList = [];
 var currentName = 0;
+var TESTING_OFF = false;
 
 function correctHFontSize(val){
 		return val;
@@ -90,6 +91,10 @@ function positionElts(){
 		//pic02.style.left = getLeftPic2();
 		//pic02.style.left = getLeftOffset(2,0);
 		//pic02.style.width = getWSquareSize() + "px";
+		var Comment01  = document.getElementById("Comments01");
+		Comment01.style.top = getTopComment01();
+		Comment01.style.left = getLeftComment01();
+
 		if(!screenHidden){
 			name.style.display = "inline";
 			hname.style.display = "inline";
@@ -189,15 +194,24 @@ function getNum(i){
 		i = 0;
 		resetSideBar();
 	}
-	while(dateHold.indexOf(currentMonth) < 0 && i < last){
-		i++;
+	if(TESTING_OFF)
+		while(dateHold.indexOf(currentMonth) < 0 && i < last){
+			i++;
+			dateHold = YahrList.Yahrzeits[i].HDate;
+			if(dateHold.indexOf('Teves') > -1){
+				var start = dateHold.indexOf('Teves');
+				dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
+				//console.log(dateHold);
+			}
+		}
+	else {
 		dateHold = YahrList.Yahrzeits[i].HDate;
 		if(dateHold.indexOf('Teves') > -1){
 			var start = dateHold.indexOf('Teves');
 			dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
-			//console.log(dateHold);
 		}
 	}
+
 	if(i > last - 1) i = 0;
 	return i;
 }
@@ -279,6 +293,12 @@ function loadElement(i, callback){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
+	if(YahrList.Yahrzeits[i].Comments01.length > 613)
+		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){
+			Comments01.style.top = getTopComment01High();
+		}
+
+
 
 	//currentName = i;
 	currentIDX = i;
