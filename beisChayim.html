@@ -141,6 +141,8 @@ function startSelect(){
 
 function startConfig(){
 	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+	SCREEN_UP = true;
+
 	hideIt();
 }
 
@@ -408,6 +410,8 @@ function kbclick(ky){
 	function resetScreen(oldPanel){
 		screen01 = document.getElementById("body");
 		oldPanel = document.getElementById(oldPanel);
+		SCREEN_UP = false;
+
 		screen01.style.display = "block";
 		oldPanel.style.display = "none";
 	}
@@ -433,7 +437,9 @@ function kbclick(ky){
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
-			console.log(queryDict);
+			//console.log(queryDict);
+			SCREEN_UP = true;
+
 			hideIt();
 			loadEdit(queryDict);
 	}
@@ -558,6 +564,8 @@ function doNew(){
 		newPanel.style.display = "inline";
 		newPanel.className = "newPanel";
 		hideIt();
+		SCREEN_UP = true;
+
 		loadNew();
 }
 
@@ -649,11 +657,14 @@ function doSelect(){
 		//var params = buildParamString(YahrList, currentName);
 		//screen01 = document.getElementById("body");
 		selectPanel = document.getElementById("selectPanel");
+		var sbar = document.getElementById("searchBar");
 		//screen01.style.display = "none";
 		selectPanel.style.display = "block";
 		selectPanel.className = "selectPanel";
 		selectPanel.style.zIndex = 20;
+		reset();
 		hideIt();
+		SCREEN_UP = true;
 }
 
 function reset(){
