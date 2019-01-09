@@ -293,9 +293,13 @@ function loadElement(i, callback){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
+	var top = Comments01.style.top = getTopComment01High() > (getTopDate2() + 25) ? getTopComment01High() : getTopDate2() (getTopDate2() + 25);
 	if(YahrList.Yahrzeits[i].Comments01.length > 613)
 		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){
-			Comments01.style.top = getTopComment01High();
+			Comments01.style.top = top;
+		}
+		if(YahrList.Yahrzeits[i].Pic01.trim() != ""){
+			Comments01.style.left = getLeftOffsetName();
 		}
 
 
