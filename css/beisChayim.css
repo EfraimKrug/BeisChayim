@@ -270,7 +270,7 @@ h1 {
 	top: 410px;
 	left: 228px;
 	width: 313px;
-	max-height: 256px;
+	max-height: 156px;
 }
 
 #Pic01{
@@ -290,7 +290,7 @@ h1 {
 	/*top: 427px;
 	left: 628px;
 	width: 265px; */
-	max-height: 256px;
+	max-height: 156px;
 	height: 100%;
 	z-index: 20;
 }

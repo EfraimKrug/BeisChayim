@@ -63,6 +63,10 @@ function getTopDate2(){
   return screenConfig.settings["OneByDate2"] + "px";
 }
 
+function getBelowDate2(){
+  return (screenConfig.settings["OneByDate2"] + 26) + "px";
+}
+
 function getLeftPic1(){
   return screenConfig.settings["LeftPic1"] + "px";
 }
