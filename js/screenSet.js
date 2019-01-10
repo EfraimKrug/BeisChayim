@@ -64,7 +64,7 @@ function getTopDate2(){
 }
 
 function getBelowDate2(){
-  return (screenConfig.settings["OneByDate2"] + 26) + "px";
+  return (parseInt(screenConfig.settings["OneByDate2"]) + 26) + "px";
 }
 
 function getLeftPic1(){
@@ -84,7 +84,7 @@ function getTopPic2(){
 }
 
 function getTopComment01High(){
-  return (screenConfig.settings["OneByComment01"] - 170) + "px";
+  return (parseInt(screenConfig.settings["OneByComment01"]) - 170) + "px";
 }
 
 function getTopComment01(){
