@@ -23,14 +23,26 @@ then
    echo run02 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 
+# check/install config file
+if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
+then
+    mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
+    echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+fi
+
+if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
+then
+    mv $HOME/Downloads/BCConfig $HOME/Downloads/BCConfig
+    echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+fi
+
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
 cat $HOME/$CODE_DIRECTORY/BeisChayim/.run > $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
 [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
 #
-# check/install config file
-[ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
-[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
+# [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
+# [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 #
 # move files 5 cycles back...
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-4.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-5.js
