@@ -26,13 +26,13 @@ fi
 # check/install config file
 if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
 then
-    mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
+    mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
     echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 
 if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
 then
-    mv $HOME/Downloads/BCConfig $HOME/Downloads/BCConfig
+    mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
     echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 
