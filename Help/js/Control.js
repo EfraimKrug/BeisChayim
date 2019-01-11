@@ -52,7 +52,6 @@ function checkClick(){
 	return true;
 }
 function showSecurity(){
-	if(SCREEN_UP) return;
 	if(RunPhase["phase01"]['run_type'] == 'view'){
 		setTimeout(checkClick, 10);
 		return;
@@ -120,7 +119,7 @@ function removeBodyListener(){
 		pdfView = document.getElementById("pdfView");
 		pdfView.removeEventListener("click",turnBack,true);
 	}
-
+	
 	bd = document.getElementById("appBody");
 	appBody.removeEventListener("click",showSecurity,true);
 }

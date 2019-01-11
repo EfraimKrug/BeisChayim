@@ -63,10 +63,6 @@ function getTopDate2(){
   return screenConfig.settings["OneByDate2"] + "px";
 }
 
-function getBelowDate2(){
-  return (parseInt(screenConfig.settings["OneByDate2"]) + 26) + "px";
-}
-
 function getLeftPic1(){
   return screenConfig.settings["LeftPic1"] + "px";
 }
@@ -81,18 +77,6 @@ function getTopPic1(){
 
 function getTopPic2(){
   return screenConfig.settings["OneByPic2"] + "px";
-}
-
-function getTopComment01High(){
-  return (parseInt(screenConfig.settings["OneByComment01"]) - 170) + "px";
-}
-
-function getTopComment01(){
-  return screenConfig.settings["OneByComment01"] + "px";
-}
-
-function getLeftComment01(){
-  return screenConfig.settings["LeftComment01"] + "px";
 }
 
 // Panel values

@@ -20,6 +20,7 @@ mv $HOME/bcCode/BeisChayim/data/work/db01-0.js $HOME/bcCode/BeisChayim/data/work
 cp $HOME/bcCode/BeisChayim/js/db01.js $HOME/bcCode/BeisChayim/data/work/db01-0.js
 cp $HOME/bcCode/BeisChayim/data/out02 $HOME/bcCode/BeisChayim/js/db01.js
 
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || exit 0
 $HOME/bin/editCrontab
 
 # # now move all the old change files back...
