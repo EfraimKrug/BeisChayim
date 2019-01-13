@@ -144,8 +144,10 @@ function renderScreen(callback){
 
         pbar.style.top = getTopOffset(row_count);
         pbar.className = getBGround(panelArray[currentPosition][j]["PayLevel"]);
-        pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
-
+        if(RunPhaseEdit()){
+          pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
+        }
+        
         pbar.style.width = getPanelBoxWidth() + "px";
         pbar.style.height = getPanelBoxHeight() + "px";
         pbar.style.font = "normal";

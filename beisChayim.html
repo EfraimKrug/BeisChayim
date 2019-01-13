@@ -150,6 +150,9 @@ var pkLetterCount = 0;
 var passkey = "";
 
 function kbclick(ky){
+	if(RunPhaseView()){
+		return;
+	}
 	saveAutoTime();
 	ks = document.getElementById("keyShow");
 	ks.style.display = 'inline';

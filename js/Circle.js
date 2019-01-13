@@ -226,6 +226,7 @@ function loadElement(i, callback){
 	} else {
 		lastI = i;
 	}
+	turnBack();
 	positionElts();
 	var bd = document.getElementById("body");
 	var cName = "";
@@ -288,6 +289,12 @@ function loadElement(i, callback){
 	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
+	}
+
+	if(YahrList.Yahrzeits[i].PDF01.trim() == ""){
+			removeBodyListener();
+	} else {
+			addBodyListener();
 	}
 
 	var Comments01 = document.getElementById("Comments01");
