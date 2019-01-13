@@ -1,4 +1,5 @@
-CODE_DIRECTORY=bcCode
+CODE_DIRECTORY=$1
+unclutter -idle 2 &
 ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)
 if [ $ff -gt 0 ]
 then
@@ -13,4 +14,4 @@ then
         pkill -f chromium-browser
         chromium-browser --start-fullscreen  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
 fi
-~    
+~

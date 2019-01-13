@@ -55,6 +55,7 @@ echo "**************************************************************************
 #sudo apt-get install xscreensaver
 #sudo apt-get install firefox-esr
 #sudo apt-get install matchbox-keyboard
+#sudo apt-get install unclutter
 #
 #
 echo "**********************************************************************************************************"

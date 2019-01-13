@@ -70,18 +70,19 @@ cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/
 #pkill -f sensible-browser
 #sensible-browser --start-fullscreen $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
 # restart browswer
-ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)
-if [ $ff -gt 0 ]
-then
-        pkill -f firefox
-        firefox  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
-        exit 0
-fi
-
-ch=$(update-alternatives --display gnome-www-browser | grep chromium | wc -l)
-if [ $ch -gt 0 ]
-then
-        pkill -f chromium-browser
-        chromium-browser --start-fullscreen  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
-fi
-###############################################################################
+$HOME/bin/turnOn $CODE_DIRECTORY
+# ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)
+# if [ $ff -gt 0 ]
+# then
+#         pkill -f firefox
+#         firefox  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
+#         exit 0
+# fi
+#
+# ch=$(update-alternatives --display gnome-www-browser | grep chromium | wc -l)
+# if [ $ch -gt 0 ]
+# then
+#         pkill -f chromium-browser
+#         chromium-browser --start-fullscreen  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
+# fi
+# ###############################################################################
