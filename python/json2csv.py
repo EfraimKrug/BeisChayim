@@ -14,11 +14,11 @@ def getLine(line):
     newLine += addQuotes(line['MournBy']) + ",,,,"
     newLine += addQuotes(line['Pic01']) + "," + addQuotes(line['Pic02']) + "," + addQuotes(line['PDF01']) + ","
     newLine += addQuotes(line['PDF02']) + ","  + addQuotes(line['PDF03']) + ","  + addQuotes(line['PDF04']) + ","  + addQuotes(line['PDF05']) + ","
-    newLine += addQuotes(line['Comments01']) + "\n"
+    newLine += addQuotes(line['PayLevel']) + ","  + addQuotes(line['Comments01']) + "\n"
     return newLine
 
 
-with open ("../js/db01-demo.js", "r") as JSONfile:
+with open ("X@~@~@X/BeisChayim/js/db01-demo.js", "r") as JSONfile:
     fd = open("nYahrzeits.csv", "w")
     fd.write(getHeaders())
     for line in JSONfile:

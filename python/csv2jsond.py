@@ -1,7 +1,7 @@
 import csv
 
 def recycledLine(line):
-	if(line[2] == "RECYCLED"):
+	if(line[2][0] == "RECYCLED"):
 		return True
 
 	return False
@@ -64,25 +64,53 @@ with open('X@~@~@X/BeisChayim/data/out01') as csvfile:
 			else:
 				newline.append("\"Relationship\":\"\"")
 
-		if recycledLine(l2):
-			newline.append("\"Pic01\":\"\"" + l2[28][0] + "\"")
-			newline.append("\"Pic02\":\"\"" + l2[29][0] + "\"")
-			newline.append("\"PDF01\":\"\"" + l2[30][0] + "\"")
-			newline.append("\"PDF02\":\"\"" + l2[31][0] + "\"")
-			newline.append("\"PDF03\":\"\"" + l2[32][0] + "\"")
-			newline.append("\"PDF04\":\"\"" + l2[33][0] + "\"")
-			newline.append("\"PDF05\":\"\"" + l2[34][0] + "\"")
-		else:
-			newline.append("\"Pic01\":\"\"")
-			newline.append("\"Pic02\":\"\"")
-			newline.append("\"PDF01\":\"\"")
-			newline.append("\"PDF02\":\"\"")
-			newline.append("\"PDF03\":\"\"")
-			newline.append("\"PDF04\":\"\"")
-			newline.append("\"PDF05\":\"\"")
 
-		newline.append("\"PayLevel\":\"\"")
-		newline.append("\"Comments01\":\"\"")
+		if recycledLine(l2):
+			if len(l2[29]) > 0:
+				newline.append("\"Pic01\":\"" + l2[29][0] + "\"")
+			else:
+				newline.append("\"Pic01\":\"\"")
+
+			if len(l2[30]) > 0:
+				newline.append("\"Pic02\":\"" + l2[30][0] + "\"")
+			else:
+				newline.append("\"Pic02\":\"\"")
+
+			if len(l2[31]) > 0:
+				newline.append("\"PDF01\":\"" + l2[31][0] + "\"")
+			else:
+				newline.append("\"PDF01\":\"\"")
+
+			if len(l2[32]) > 0:
+				newline.append("\"PDF02\":\"" + l2[32][0] + "\"")
+			else:
+				newline.append("\"PDF02\":\"\"")
+
+			if len(l2[33]) > 0:
+				newline.append("\"PDF03\":\"" + l2[33][0] + "\"")
+			else:
+				newline.append("\"PDF03\":\"\"")
+
+			if len(l2[34]) > 0:
+				newline.append("\"PDF04\":\"" + l2[34][0] + "\"")
+			else:
+				newline.append("\"PDF04\":\"\"")
+
+			if len(l2[35]) > 0:
+				newline.append("\"PDF05\":\"" + l2[35][0] + "\"")
+			else:
+				newline.append("\"PDF05\":\"\"")
+
+			if len(l2[36]) > 0:
+				newline.append("\"PayLevel\":\"" + l2[36][0] + "\"")
+			else:
+				newline.append("\"PayLevel\":\"\"")
+
+			if len(l2[37]) > 0:
+				newline.append("\"Comments01\":\"" + l2[37][0] + "\"")
+			else:
+				newline.append("\"Comments01\":\"\"")
+
 
 		if linecount > 1:
 			if linecount < len(l):
