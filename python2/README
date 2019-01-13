@@ -1,0 +1,18 @@
+~/bin/BChStep01.sh -
+		Requires downloaded file to be: ~/code/BeisChayim/data/yahrzeits.csv (as downloaded from shulcloud)
+		Creates ~/code/BeisChayim/data/out01 and out02
+		Copies file into ~/code/BeisChayim/js/db01.js
+
+cleanup01.py:
+	Reads ~/code/BeisChayim/data/yahrzeits.csv
+		Created from a download from excel
+		Removes quotes, commas, and special characters
+
+		Notice: after this runs, commas are: &comma;
+					 quotation marks are: &quot;
+					 backslashes are: $bslash;
+
+					 they have to be changed back somewhere
+
+csv2jsond.py:
+	Creats JSON file...

@@ -6,7 +6,7 @@ CODE_DIRECTORY=bcCode
 ###############################################################################
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
 then
-   cp $HOME/Downloads/yahrzeits.csv $HOME/bcCode/BeisChayim/data/yahrzeits.csv
+   cp $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
    mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
    echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
    rm $HOME/Downloads/yahrzeits.csv
