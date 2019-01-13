@@ -1,6 +1,9 @@
 import csv
 
 def recycledLine(line):
+	if len(line[2]) == 0:
+		return False
+
 	if(line[2][0] == "RECYCLED"):
 		return True
 
