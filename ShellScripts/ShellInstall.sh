@@ -8,6 +8,8 @@ mv $HOME/bin/editCrontab.sh editCrontab
 mv $HOME/bin/turnOn.sh turnOn
 mv $HOME/bin/cleanUp.sh cleanUp
 mv $HOME/bin/readEmail.sh readEmail
+mv $HOME/bin/setRun.sh setRun
+mv $HOME/bin/setView.sh setView
 
 rm $HOME/bin/ShellInstall.sh
 
@@ -17,6 +19,8 @@ chmod 555 $HOME/bin/startUp
 chmod 555 $HOME/bin/editCrontab
 chmod 555 $HOME/bin/turnOn
 chmod 555 $HOME/bin/cleanUp
+chmod 555 $HOME/bin/setView
+chmod 555 $HOME/bin/setRun
 
 cd $HOME/$1/BeisChayim/python
 sed -i -e 's#@@@@@#'$HOME'#g'  cleanup01.py

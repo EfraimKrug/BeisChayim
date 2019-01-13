@@ -62,7 +62,9 @@ function renderSideBarArray(){
 		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
 		sbar.style.fontSize = fs + "px";
 		sbar.innerHTML = SideBarList[listCounter];
-		sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ", 1, 'side')" );
+		if(RunPhaseView()){
+			sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ", 1, 'side')" );
+		}
 		listCounter = ListCounterInc(listCounter);
 		slotCounter = SideBarCounterInc(slotCounter);
 	}
@@ -102,7 +104,7 @@ function getPDF(num, pdfNum, place){
 		pdfImg = document.getElementById("pdfImg");
 		//pdfImg.src = "/home/efraiim/code/BeisChayim/img/" + YahrList.Yahrzeits[num].PDF01;
 		//pdfImg.src = "./img/" + YahrList.Yahrzeits[num].PDF01;
-		pdfImg.src = "./img/" + pdfName;
+		pdfImg.src = "./pdf/" + pdfName;
 		pdfImg.style.display = "inline";
 		pdfView.style.display = "inline";
 		return true;

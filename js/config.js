@@ -61,3 +61,17 @@ function kbclick(ky){
 	}
 	document.getElementById("password").value = passkey;
 }
+
+function RunPhaseView(){
+		if(RunPhase["phase01"]['run_type'] == 'view'){
+				return true;
+			}
+return false;
+}
+
+function RunPhaseEdit(){
+		if(RunPhase["phase01"]['run_type'] == 'security'){
+				return true;
+			}
+return false;
+}

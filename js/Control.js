@@ -53,7 +53,7 @@ function checkClick(){
 }
 function showSecurity(){
 	if(SCREEN_UP) return;
-	if(RunPhase["phase01"]['run_type'] == 'view'){
+	if (RunPhaseView()){
 		setTimeout(checkClick, 10);
 		return;
 	}
@@ -77,6 +77,7 @@ function showSecurity(){
 
 function showIt(){
 	//var month = document.getElementById("monthSelect");
+	if(RunPhaseView()) return;
 	var action = document.getElementById("actionSelect");
 	action.value = "";
 	action.style.display = 'inline';
@@ -106,19 +107,24 @@ function doit(){
 // adding and removing listeners - to clean up for touch screen...
 /////////////////////////////////////////////////////////////////////////
 function addBodyListener(){
-	if(RunPhase["phase01"]['run_type'] == 'view'){
+	if(RunPhaseView()){
 		pdfView = document.getElementById("pdfView");
 		pdfView.addEventListener("click",turnBack, true);
+		bd = document.getElementById("appBody");
+		appBody.addEventListener("click",checkClick,true);
+		return;
 	}
-
+	
 	bd = document.getElementById("appBody");
 	appBody.addEventListener("click",showSecurity,true);
 }
 
 function removeBodyListener(){
-	if(RunPhase["phase01"]['run_type'] != 'view'){
+	if(RunPhaseView()){
 		pdfView = document.getElementById("pdfView");
 		pdfView.removeEventListener("click",turnBack,true);
+		appBody.removeEventListener("click",checkClick,true);
+		return;
 	}
 
 	bd = document.getElementById("appBody");
