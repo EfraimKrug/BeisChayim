@@ -23,9 +23,7 @@ chmod 555 $HOME/bin/setView
 chmod 555 $HOME/bin/setRun
 
 cd $HOME/$1/BeisChayim/python
-sed -i -e 's#@@@@@#'$HOME'#g'  cleanup01.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' cleanup01.py
-sed -i -e 's#@@@@@#'$HOME'#g' collect.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' collect.py
-sed -i -e 's#@@@@@#'$HOME'#g' csv2jsond.py
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' csv2jsond.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' csv2jsond.py
