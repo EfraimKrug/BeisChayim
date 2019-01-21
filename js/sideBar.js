@@ -114,6 +114,7 @@ function getPDF(num, pdfNum, place){
 }
 
 function loadSideBarArray(i){
+
 	var spot = SideBarList.length; //first empty spot
 	var outLine;
 
@@ -141,6 +142,7 @@ function setCurrentMonth(){
 
 function loadSideBar(){
 	//setCurrentMonth();
+	console.log("loadSideBar");
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
 	currentMonth = htoday.month;

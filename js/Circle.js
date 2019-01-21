@@ -123,36 +123,36 @@ function hideScreen01(){
 			Comments01.style.display = "none";
 }
 
-function endCycle(){
-	if(DISPLAY_SETTING == 2){
-			switchLoad();
-	} else {
-			firstLoad();
-	}
-}
-
-var processRunning = -1;
-var PlaqueInterval;
-var OneByInterval;
-function switchLoad(){
-	if (processRunning == 0){
-		clearInterval(OneByInterval);
-		processRunning = 1;
-		currentPosition = 0;
-		hideScreen01();
-		hideSideBarArray();
-		buildPanel01();
-		renderingPlaques(endCycle);
-	} else {
-	if (processRunning == 1){
-		clearInterval(PlaqueInterval);
-		processRunning = 0;
-		hideScreen02();
-		renderOnebyOne(endCycle);
-		}
-	}
-
-}
+// function endCycle(){
+// 	if(DISPLAY_SETTING == 2){
+// 			switchLoad();
+// 	} else {
+// 			firstLoad();
+// 	}
+// }
+//
+// var processRunning = -1;
+// var PlaqueInterval;
+// var OneByInterval;
+// function switchLoad(){
+// 	if (processRunning == 0){
+// 		clearInterval(OneByInterval);
+// 		processRunning = 1;
+// 		currentPosition = 0;
+// 		hideScreen01();
+// 		hideSideBarArray();
+// 		buildPanel01();
+// 		renderingPlaques(endCycle);
+// 	} else {
+// 	if (processRunning == 1){
+// 		clearInterval(PlaqueInterval);
+// 		processRunning = 0;
+// 		hideScreen02();
+// 		renderOnebyOne(endCycle);
+// 		}
+// 	}
+//
+// }
 
 function timerLoad(){
 	var i = 0;
@@ -160,41 +160,47 @@ function timerLoad(){
 	buildPanel01();
 	setCurrentMonth();
 	var render = new renderBoth('endCycle');
-	OneByInterval = setInterval( function(){ render.loadAlternate();}, tf);
+	var rendP = new renderingPlaquesX(this.endingCycle);
+	if(DISPLAY_SETTING == 0)
+		OneByInterval = setInterval( function(){ render.loadingPlaques(rendP);}, tf);
+	if(DISPLAY_SETTING == 1)
+		OneByInterval = setInterval( function(){ render.loadingOneBy();}, tf);
+	if(DISPLAY_SETTING == 2)
+		OneByInterval = setInterval( function(){ render.loadAlternate();}, tf);
 }
 
 // plaque display
-function firstLoad(){
-	clearInterval(OneByInterval);
-	hideScreen01();
-	screenHidden = false;
-	hideSideBarArray();
-	hideScreen02();
-	buildPanel01();
-
-	if(DISPLAY_SETTING == 1 || DISPLAY_SETTING == 2){
-			processRunning = 0;
-			renderOnebyOne(endCycle);
-		}
-
-	if(DISPLAY_SETTING == 0){
-		processRunning = 1;
-		currentPosition = 0;
-		renderingPlaques(endCycle);
-	}
-	addBodyListener();
-}
+// function firstLoad(){
+// 	clearInterval(OneByInterval);
+// 	hideScreen01();
+// 	screenHidden = false;
+// 	hideSideBarArray();
+// 	hideScreen02();
+// 	buildPanel01();
+//
+// 	if(DISPLAY_SETTING == 1 || DISPLAY_SETTING == 2){
+// 			processRunning = 0;
+// 			renderOnebyOne(endCycle);
+// 		}
+//
+// 	if(DISPLAY_SETTING == 0){
+// 		processRunning = 1;
+// 		currentPosition = 0;
+// 		renderingPlaques(endCycle);
+// 	}
+// 	addBodyListener();
+// }
 
 // individual name display
-function renderOnebyOne(callback){
-	var i = 0;
-	var tf = TIME_FACTOR * 1000;
-	setCurrentMonth();
-	buildPanel01();
-	loadElement(i = getNum(-1), callback);
-	i = getNum(i);
-	OneByInterval = setInterval( function(){ loadElement(i, callback); 	i = getNum(i);}, tf);
-}
+// function renderOnebyOne(callback){
+// 	var i = 0;
+// 	var tf = TIME_FACTOR * 1000;
+// 	setCurrentMonth();
+// 	buildPanel01();
+// 	loadElement(i = getNum(-1), callback);
+// 	i = getNum(i);
+// 	OneByInterval = setInterval( function(){ loadElement(i, callback); 	i = getNum(i);}, tf);
+// }
 
 
 var renderBoth = function(callback){
@@ -243,9 +249,10 @@ var renderBoth = function(callback){
 			// 		else this.setProcessOneBy();
 			// }
 		},
-		loadingPlaques: function(){
-			currentPosition = 0;
-			renderScreen(this.endingCycle);
+		loadingPlaques: function(rendP){
+			//currentPosition = 0;
+			rendP.renderScreen();
+			//renderScreen(this.endingCycle);
 		},
 		setProcessOneBy: function(){
 			pRun = 1;
