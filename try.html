@@ -1,0 +1,37 @@
+<html>
+<body>
+<div id=01>Division 01</div>
+<div id=02>Division 02</div>
+
+<script>
+
+function show01(){
+  div1 = document.getElementById("01");
+  div2 = document.getElementById("02");
+  div1.style.display = 'inline';
+  div2.style.display = 'none';
+}
+
+function show02(){
+  div1 = document.getElementById("01");
+  div2 = document.getElementById("02");
+  div1.style.display = 'none';
+  div2.style.display = 'inline';
+}
+
+var sw = 0;
+function switchtimed(){
+  if(sw > 0){
+    show02();
+    sw = 0;
+  } else {
+    show01();
+    sw = 1;
+  }
+  console.log("swiched time");
+}
+
+PlaqueInterval = setInterval( function(){ switchtimed();}, 4000);
+</script>
+</body>
+</html>

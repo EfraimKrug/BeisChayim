@@ -119,6 +119,8 @@ function hideScreen01(){
 			pic01.style.display = "none";
 			var pic02  = document.getElementById("Pic02");
 			pic02.style.display = "none";
+			var Comments01  = document.getElementById("Comments01");
+			Comments01.style.display = "none";
 }
 
 function endCycle(){
@@ -134,18 +136,18 @@ var PlaqueInterval;
 var OneByInterval;
 function switchLoad(){
 	if (processRunning == 0){
+		clearInterval(OneByInterval);
 		processRunning = 1;
 		currentPosition = 0;
-		clearInterval(OneByInterval);
 		hideScreen01();
 		hideSideBarArray();
 		buildPanel01();
 		renderingPlaques(endCycle);
 	} else {
 	if (processRunning == 1){
+		clearInterval(PlaqueInterval);
 		processRunning = 0;
 		hideScreen02();
-		clearInterval(PlaqueInterval);
 		renderOnebyOne(endCycle);
 		}
 	}
@@ -180,20 +182,20 @@ function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
 	setCurrentMonth();
-	//console.log(currentMonth);
-	loadElement(i = getNum(0), callback);
-	OneByInterval = setInterval( function(){ loadElement(i = getNum(i), callback); }, tf);
+	loadElement(i = getNum(-1), callback);
+	i = getNum(i);
+	OneByInterval = setInterval( function(){ loadElement(i, callback); 	i = getNum(i);}, tf);
 }
+
 
 function getNum(i){
 	var last = YahrList.Yahrzeits.length - 1;
 	i++;
-	var dateHold = YahrList.Yahrzeits[i].HDate;
-
-	if(i > last - 1){
+	if(i > last){
 		i = 0;
 		resetSideBar();
 	}
+	var dateHold = YahrList.Yahrzeits[i].HDate;
 	if(TESTING_OFF)
 		while(dateHold.indexOf(currentMonth) < 0 && i < last){
 			i++;
@@ -212,7 +214,7 @@ function getNum(i){
 		}
 	}
 
-	if(i > last - 1) i = 0;
+	if(i > last) i = 0;
 	return i;
 }
 

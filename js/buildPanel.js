@@ -124,9 +124,7 @@ function renderScreen(callback){
   hideScreen02();
   var tf = TIME_FACTOR * 1000;
   var vi = 0;
-
   for(var row_count=0; (currentPosition < panelArray.length && row_count < ROW_COUNT); currentPosition++, row_count++){
-      //console.log("top: " + currentPosition + ":" + row_count + ":" + panelArray.length);
       vi = parseInt(vi) + 2;
       if(vi < 10) vi = "0" + vi;
       if(vi > 12) vi = "01";
@@ -147,7 +145,7 @@ function renderScreen(callback){
         if(RunPhaseEdit()){
           pbar.setAttribute("onclick", "getEdit(" + panelArray[currentPosition][j]["IDX"] + ")" );
         }
-        
+
         pbar.style.width = getPanelBoxWidth() + "px";
         pbar.style.height = getPanelBoxHeight() + "px";
         pbar.style.font = "normal";
@@ -174,22 +172,16 @@ function renderScreen(callback){
         //alert(pbar.innerHTML.indexOf("undefined"));
         pbar.style.border = "1px solid black";
         if(checkToday(dt)){
-          //console.log("Name: " + pbar.innerHTML + ": Checking: " + dt);
-            pbar.style.border = "2px solid orange";
-          //pbar.style.border = "2px solid #BAB1A7";
+          pbar.style.border = "2px solid orange";
           pbar.style.zIndex = 10;
           pbar.style.padding = "10px";
           pbar.style.width = (getPanelBoxWidth() - 16) + "px";
           pbar.style.height = (getPanelBoxHeight() - 8) + "px";
           pbar.style.top = (getTopOffsetInt(row_count) - 4) + "px";
           pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
-
-          //pbar.style.color = "red";
-          //pbar.style.borderLeft = "2px solid red";
         }
         tempID = panelArray[currentPosition][j]["IDX"];
-
-        if(currentPosition > panelArray.length - 2 ){
+        if(currentPosition > panelArray.length ){
           currentPosition = 0;
           setTimeout(callback, tf);
           return;
