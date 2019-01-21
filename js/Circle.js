@@ -153,11 +153,19 @@ function switchLoad(){
 	}
 
 }
+
+function timerLoad(){
+	var i = 0;
+	var tf = TIME_FACTOR * 1000;
+	buildPanel01();
+	setCurrentMonth();
+	var render = new renderBoth('endCycle');
+	OneByInterval = setInterval( function(){ render.loadAlternate();}, tf);
+}
+
 // plaque display
 function firstLoad(){
 	clearInterval(OneByInterval);
-	clearInterval(PlaqueInterval);
-
 	hideScreen01();
 	screenHidden = false;
 	hideSideBarArray();
@@ -182,9 +190,78 @@ function renderOnebyOne(callback){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
 	setCurrentMonth();
+	buildPanel01();
 	loadElement(i = getNum(-1), callback);
 	i = getNum(i);
 	OneByInterval = setInterval( function(){ loadElement(i, callback); 	i = getNum(i);}, tf);
+}
+
+
+var renderBoth = function(callback){
+	var i = -1;
+	var pRun = 1;
+	var actions = {
+		loadAlternate: function(){
+			if(this.isOneBy()){
+				hideScreen02();
+				this.loadingOneBy();
+			} else {
+				hideScreen01();
+				this.loadingPlaques();
+			}
+		},
+		loadAlternateEvery: function(){
+			if(this.isOneBy()){
+				hideScreen02();
+				this.loadingOneBy();
+				this.setProcessPlaque();
+			} else {
+				hideScreen01();
+				this.loadingPlaques();
+				this.setProcessOneBy();
+			}
+		},
+		loadingOneBy: function(){
+			i = getNum(i);
+			loadElement(i, this.endingCycle);
+		},
+		endingCycle: function(){
+			i = -1;
+			if(DISPLAY_SETTING == 2){
+				if(pRun == 2) pRun = 1;
+				else pRun = 2;
+			}
+			//console.log("ending now");
+			//this.setProcessPlaque();
+			// if(DISPLAY_SETTING == 0){
+			// 	this.loadingOneBy();
+			// }
+			// if(DISPLAY_SETTING == 1){
+			// 	this.loadingPlaques();
+			// }
+			// 		if(pRun == 1) this.setProcessPlaque();
+			// 		else this.setProcessOneBy();
+			// }
+		},
+		loadingPlaques: function(){
+			currentPosition = 0;
+			renderScreen(this.endingCycle);
+		},
+		setProcessOneBy: function(){
+			pRun = 1;
+		},
+		setProcessPlaque: function(){
+			pRun = 2;
+		},
+		isOneBy: function(){
+			return pRun == 1;
+		},
+		isPlaque: function(){
+			return pRun == 2;
+		},
+
+	};
+	return actions;
 }
 
 
@@ -214,14 +291,15 @@ function getNum(i){
 		}
 	}
 
-	if(i > last) i = 0;
+	if(i > last) i = -1;
 	return i;
 }
 
 var lastI = -1;
 function loadElement(i, callback){
+	console.log("loadElement" + i);
 	if(i < lastI){
-		var tf = TIME_FACTOR * 1000;
+		//var tf = TIME_FACTOR * 1000;
 		setTimeout(callback, 1500);
 		lastI = -1;
 		return;

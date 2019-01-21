@@ -39,6 +39,7 @@ function checkToday(checkDate){
 }
 
 function buildPanel01(){
+  console.log("Building panel");
   var outLine;
   var lag = -1;
   var j = 0;
@@ -122,19 +123,22 @@ function hideScreen02(){
 var currentPosition = 0;
 function renderScreen(callback){
   hideScreen02();
-  var tf = TIME_FACTOR * 1000;
+  //var tf = TIME_FACTOR * 1000;
   var vi = 0;
+  console.log("up here: " + panelArray.length + ":" + currentPosition );
   for(var row_count=0; (currentPosition < panelArray.length && row_count < ROW_COUNT); currentPosition++, row_count++){
+
       vi = parseInt(vi) + 2;
       if(vi < 10) vi = "0" + vi;
       if(vi > 12) vi = "01";
-      //console.log(vi);
+      console.log("here");
       for(var j=0; j < COLUMN_COUNT; j++){
         if(!(panelArray[currentPosition][j])){
           currentPosition = 0;
-          setTimeout(callback, tf);
+          setTimeout(callback, 1500);
           return;
         }
+        console.log("rendering");
         //if(currentPosition > 375) console.log("currentPosition: " + currentPosition + "; col: " + j + "; row_count: " + row_count);
         var pbar = document.getElementById(getColID(j) + vi);
         pbar.style.position = "absolute";
