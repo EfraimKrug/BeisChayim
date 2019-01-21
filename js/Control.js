@@ -109,21 +109,23 @@ function doit(){
 function addBodyListener(){
 	if(RunPhaseView()){
 		pdfView = document.getElementById("pdfView");
+		console.log("adding click");
 		pdfView.addEventListener("click",turnBack, true);
 		bd = document.getElementById("appBody");
 		appBody.addEventListener("click",checkClick,true);
 		return;
 	}
-	
+
 	bd = document.getElementById("appBody");
 	appBody.addEventListener("click",showSecurity,true);
 }
 
 function removeBodyListener(){
+	console.log("removing listener");
 	if(RunPhaseView()){
 		pdfView = document.getElementById("pdfView");
-		pdfView.removeEventListener("click",turnBack,true);
-		appBody.removeEventListener("click",checkClick,true);
+		//pdfView.removeEventListener("click",turnBack,true);
+		//appBody.removeEventListener("click",checkClick,true);
 		return;
 	}
 

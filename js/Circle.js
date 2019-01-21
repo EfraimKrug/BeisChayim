@@ -10,7 +10,6 @@ var TESTING_OFF = false;
 
 function correctHFontSize(val){
 		return val;
-		//return val/2;
 }
 
 function getNextTop(t){
@@ -34,11 +33,7 @@ function positionElts(){
 		dpic01.style.left = getLeftPic1();
 
 		var pic01  = document.getElementById("Pic01");
-		//pic01.style.top = getTopPic1();
-		//pic01.style.left = getLeftOffset(1,0);
 		pic01.style.left = "0px";
-		//pic01.style.width =  "145px";
-		//pic01.style.height = "175px";
 
 		t = getNextTop(t);
 		if(t == 0) s++;
@@ -46,7 +41,6 @@ function positionElts(){
 		var hname = document.getElementById("HName");
 		hname.style.top = getTopName2();
 		hname.style.left = getLeftOffsetName();
-		//hname.style.left = getLeftOffset(2,0);
 		hname.style.width = getOneByWidth();
 		hname.style.fontSize = getName2Font();
 
@@ -58,7 +52,6 @@ function positionElts(){
 
 		var hdate = document.getElementById("HDate");
 		hdate.style.top = getTopDate1();
-		//hdate.style.left = getLeftOffset(2,0);
 		hdate.style.left = getLeftOffsetName();
 		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
@@ -72,10 +65,7 @@ function positionElts(){
 		var edate = document.getElementById("EDate");
 		edate.style.top = getTopDate2();
 		edate.style.left = getLeftOffsetName();
-		//edate.style.left = getLeftOffset(2,0);
-		//edate.style.width = getWSquareSize() + "px";
 		edate.style.width = getOneByWidth();
-		//edate.style.fontSize = correctHFontSize(getHBiteSize()) + "px";
 		edate.style.fontSize = getName2Font();
 
 		t = getNextTop(t);
@@ -87,10 +77,6 @@ function positionElts(){
 
 		var pic02  = document.getElementById("Pic02");
 		pic02.style.left = getLeftPic2();
-		//pic02.style.top = getTopPic2();
-		//pic02.style.left = getLeftPic2();
-		//pic02.style.left = getLeftOffset(2,0);
-		//pic02.style.width = getWSquareSize() + "px";
 		var Comment01  = document.getElementById("Comments01");
 		Comment01.style.top = getTopComment01();
 		Comment01.style.left = getLeftComment01();
@@ -123,87 +109,24 @@ function hideScreen01(){
 			Comments01.style.display = "none";
 }
 
-// function endCycle(){
-// 	if(DISPLAY_SETTING == 2){
-// 			switchLoad();
-// 	} else {
-// 			firstLoad();
-// 	}
-// }
-//
-// var processRunning = -1;
-// var PlaqueInterval;
-// var OneByInterval;
-// function switchLoad(){
-// 	if (processRunning == 0){
-// 		clearInterval(OneByInterval);
-// 		processRunning = 1;
-// 		currentPosition = 0;
-// 		hideScreen01();
-// 		hideSideBarArray();
-// 		buildPanel01();
-// 		renderingPlaques(endCycle);
-// 	} else {
-// 	if (processRunning == 1){
-// 		clearInterval(PlaqueInterval);
-// 		processRunning = 0;
-// 		hideScreen02();
-// 		renderOnebyOne(endCycle);
-// 		}
-// 	}
-//
-// }
 
 function timerLoad(){
 	var i = 0;
 	var tf = TIME_FACTOR * 1000;
 	buildPanel01();
 	setCurrentMonth();
-	var render = new renderBoth('endCycle');
-	var rendP = new renderingPlaquesX(this.endingCycle);
+	var renderAll = new renderBoth();
+	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
 	if(DISPLAY_SETTING == 0)
-		OneByInterval = setInterval( function(){ render.loadingPlaques(rendP);}, tf);
+		OneByInterval = setInterval( function(){ renderAll.loadingPlaques(rendPlaques);}, tf);
 	if(DISPLAY_SETTING == 1)
-		OneByInterval = setInterval( function(){ render.loadingOneBy();}, tf);
+		OneByInterval = setInterval( function(){ renderAll.loadingOneBy();}, tf);
 	if(DISPLAY_SETTING == 2)
-		OneByInterval = setInterval( function(){ render.loadAlternate();}, tf);
+		OneByInterval = setInterval( function(){ renderAll.loadAlternate();}, tf);
 }
 
-// plaque display
-// function firstLoad(){
-// 	clearInterval(OneByInterval);
-// 	hideScreen01();
-// 	screenHidden = false;
-// 	hideSideBarArray();
-// 	hideScreen02();
-// 	buildPanel01();
-//
-// 	if(DISPLAY_SETTING == 1 || DISPLAY_SETTING == 2){
-// 			processRunning = 0;
-// 			renderOnebyOne(endCycle);
-// 		}
-//
-// 	if(DISPLAY_SETTING == 0){
-// 		processRunning = 1;
-// 		currentPosition = 0;
-// 		renderingPlaques(endCycle);
-// 	}
-// 	addBodyListener();
-// }
 
-// individual name display
-// function renderOnebyOne(callback){
-// 	var i = 0;
-// 	var tf = TIME_FACTOR * 1000;
-// 	setCurrentMonth();
-// 	buildPanel01();
-// 	loadElement(i = getNum(-1), callback);
-// 	i = getNum(i);
-// 	OneByInterval = setInterval( function(){ loadElement(i, callback); 	i = getNum(i);}, tf);
-// }
-
-
-var renderBoth = function(callback){
+var renderBoth = function(){
 	var i = -1;
 	var pRun = 1;
 	var actions = {
@@ -237,22 +160,9 @@ var renderBoth = function(callback){
 				if(pRun == 2) pRun = 1;
 				else pRun = 2;
 			}
-			//console.log("ending now");
-			//this.setProcessPlaque();
-			// if(DISPLAY_SETTING == 0){
-			// 	this.loadingOneBy();
-			// }
-			// if(DISPLAY_SETTING == 1){
-			// 	this.loadingPlaques();
-			// }
-			// 		if(pRun == 1) this.setProcessPlaque();
-			// 		else this.setProcessOneBy();
-			// }
 		},
 		loadingPlaques: function(rendP){
-			//currentPosition = 0;
 			rendP.renderScreen();
-			//renderScreen(this.endingCycle);
 		},
 		setProcessOneBy: function(){
 			pRun = 1;
@@ -304,16 +214,14 @@ function getNum(i){
 
 var lastI = -1;
 function loadElement(i, callback){
-	console.log("loadElement" + i);
 	if(i < lastI){
-		//var tf = TIME_FACTOR * 1000;
 		setTimeout(callback, 1500);
 		lastI = -1;
 		return;
 	} else {
 		lastI = i;
 	}
-	turnBack();
+	//turnBack();
 	positionElts();
 	var bd = document.getElementById("body");
 	var cName = "";
@@ -379,15 +287,17 @@ function loadElement(i, callback){
 	}
 
 	if(YahrList.Yahrzeits[i].PDF01.trim() == ""){
+			//console.log("Now removing: " + i);
 			removeBodyListener();
 	} else {
-			addBodyListener();
+			//console.log("Now adding: " + i);
+			pdfP.addEvent();
+			//addBodyListener();
 	}
 
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
-	//var top = getTopComment01High() > getBelowDate2() ? getTopComment01High() : getBelowDate2();
 	if(YahrList.Yahrzeits[i].Comments01.length > 411){
 		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){
 			Comments01.style.top = getBelowDate2();
@@ -397,7 +307,6 @@ function loadElement(i, callback){
 		}
 	}
 
-	//currentName = i;
 	currentIDX = i;
 	setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
 }
