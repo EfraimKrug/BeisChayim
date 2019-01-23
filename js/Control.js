@@ -29,7 +29,7 @@ function autoSecClose(){
 	var ks = document.getElementById("keyShow");
 	ks.style.display = 'none';
 	showButtonSec = true;
-	addBodyListener();
+	//addBodyListener();
 	hideIt();
 }
 
@@ -66,7 +66,7 @@ function showSecurity(){
 		initKeys();
 		//passkey = '';
 		//pkLetterCount = 0;
-		removeBodyListener();
+		//removeBodyListener();
 		setTimeout(autoSecClose, 10000);
 	} else {
 		initKeys();
@@ -104,31 +104,61 @@ function doit(){
 }
 
 /////////////////////////////////////////////////////////////////////////
-// adding and removing listeners - to clean up for touch screen...
+// adding and removing listeners
+// Phase View:
+//		add body listener for main screen and side bar
+//		both are capable of bringing up PDF series
+//
+// Security View:
+//		add body listener for main screen only
+//		goes into update mode...
 /////////////////////////////////////////////////////////////////////////
-function addBodyListener(){
-	if(RunPhaseView()){
-		pdfView = document.getElementById("pdfView");
-		console.log("adding click");
-		pdfView.addEventListener("click",turnBack, true);
-		bd = document.getElementById("appBody");
-		appBody.addEventListener("click",checkClick,true);
-		return;
-	}
+var BodyListener = (function(){
+	var pdfView = document.getElementById("pdfView");
+	var appBody = document.getElementById("appBody");
+	var functn = "";
+	var actions = {
+			addPDFListener: function(type){
+				if(type == 'pdf'){
+					pdfView.addEventListener("click",this.getClickPDF, true);
+					}
+			//appBody.addEventListener("click",showSecurity,true);
+			},
+			addBodyListener: function(type){
+				if(type == 'pdf'){
+					appBody.addEventListener("click",this.getClickPDF, true);
+				}
+				//appBody.addEventListener("click",showSecurity,true);
+			},
+			removeBodyListener: function(type){
+				if(type == 'pdf'){
+					appBody.removeEventListener("click",this.getClickPDF,true);
+				}
+			},
+			setFirstFunction: function(func){
+					functn = func;
+			},
+			getClick: function(div){
+				//alert("getClick");
+				console.log(div.target.id);
+				//alert('getting click' + div);
+			},
+			getClickPDF: function(div){
+				//alert("getClickPDF");
+				console.log("HERE" + div.target.id);
+				functn();
+				//pdfP.getFirstPDF();
+				//alert('getting click' + div);
+			},
+			isRunPhaseView: function(){
+				return RunPhaseView();
+			},
+			isRunPhaseEdit: function(){
+				return RunPhaseEdit();
+			},
+			addSideListener: function(type, div_id){
 
-	bd = document.getElementById("appBody");
-	appBody.addEventListener("click",showSecurity,true);
-}
-
-function removeBodyListener(){
-	console.log("removing listener");
-	if(RunPhaseView()){
-		pdfView = document.getElementById("pdfView");
-		//pdfView.removeEventListener("click",turnBack,true);
-		//appBody.removeEventListener("click",checkClick,true);
-		return;
-	}
-
-	bd = document.getElementById("appBody");
-	appBody.removeEventListener("click",showSecurity,true);
-}
+			}
+	};
+	return actions;
+})();

@@ -85,7 +85,9 @@ function turnBack(){
 	// iTBack = 2;
 }
 
-var pdfPix = function(){
+var pdfPix = function(idx){
+	var currentIDX = idx;
+	//console.log(currentIDX);
 	var pdfView = document.getElementById("pdfView");
 	var pdfImg = document.getElementById("pdfImg");
 	var appBody = document.getElementById("appBody");
@@ -94,11 +96,13 @@ var pdfPix = function(){
 	var pdfName = "";
 
 	var actions = {
-			getFirstPDF: function(num){
-				console.log(YahrList.Yahrzeits[num]);
-				eval("YahrList.Yahrzeits[num].PDF01");
+			getFirstPDF: function(){
+				//console.log(YahrList.Yahrzeits[num]);
+				//eval("YahrList.Yahrzeits[num].PDF01");
+				//console.log("firing getFirstPDF: " + currentIDX);
 				pdfCurrency = 1;
-				this.setName(num);
+				actions.setName();
+				timeControl.clearTimer();
 			},
 			incCurrency: function(){
 				if(pdfCurrency < 5) pdfCurrency++;
@@ -106,16 +110,21 @@ var pdfPix = function(){
 			decCurrency: function(){
 				if(pdfCurrency > 1) pdfCurrency--;
 			},
-			getNextPDF: function(num){
-				console.log(YahrList.Yahrzeits[num]);
-				this.incCurrency();
-				this.makeVisible();
-				this.setName(num);
+			getNextPDF: function(){
+				//console.log("getNextPDF");
+				actions.incCurrency();
+				actions.setName();
+				actions.makeVisible();
+				if(!actions.isNext()){
+					//console.log("no next");
+					//timeControl.setTimer();
+					timerLoad(currentIDX + 1);
+				}
 			},
-			getPrevPDF: function(num){
+			getPrevPDF: function(){
 				this.decCurrency();
 				this.makeVisible();
-				this.setName(num);
+				this.setName();
 			},
 			makeVisible: function(){
 				pdfImg.style.display = "inline";
@@ -125,30 +134,52 @@ var pdfPix = function(){
 				pdfImg.style.display = "none";
 				pdfView.style.display = "none";
 			},
-			setName: function(num){
-				if(this.noPicture(num)){
-					console.log("clearing");
+			isNext: function(){
+				var pdfCurrencyNext = pdfCurrency + 1;
+				if(pdfCurrencyNext > 5) return false;
+				var pdfNameTemp = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrencyNext);
+				//console.log("isNext: [" + pdfNameTemp + "]");
+				if(pdfNameTemp.trim() == "") return false;
+				return true;
+			},
+			setName: function(){
+				if(this.noPicture()){
 					this.clearName();
 				} else {
-					pdfName = eval("YahrList.Yahrzeits[num].PDF0" + pdfCurrency);
+					pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
 					pdfImg.src = "./pdf/" + pdfName;
-					console.log(pdfName + "::" + pdfImg.src);
+					this.makeVisible();
+					BodyListener.setFirstFunction(this.getNextPDF);
+					//BodyListener.addPDFListener("pdf");
+					//console.log(pdfName + "::" + pdfImg.src);
 				}
 			},
 			clearName: function(){
 				pdfImg.src = "";
 				this.makeNotVisible();
 			},
-			addEvent: function(){
-				console.log("adding event");
-				appBody.addEventListener("click", turnBack, true);
+			addEvent: function(type, div_id){
+				//console.log("adding event: " + currentIDX);
+				if(type == "pdf"){
+						BodyListener.addBodyListener(type);
+				//BodyListener.setFirstFunction(junk);
+						BodyListener.setFirstFunction(this.getFirstPDF);
+					}
+				if(type == "side"){
+					BodyListener.addSideListener(type, div_id);
+					BodyListener.setFirstFunction(this.getFirstPDF);
+				}
 			},
-			removeEvent: function(){
-				appBody.removeEventListener("click",turnBack, true);
+			removeEvent: function(type){
+				BodyListener.removeBodyListener(type);
+				//appBody.removeEventListener("click",turnBack, true);
 			},
-			noPicture: function(num){
-				pdfName = eval("YahrList.Yahrzeits[num].PDF0" + pdfCurrency);
-				console.log(pdfName + ":" + pdfCurrency);
+			noPicture: function(){
+				//console.log(num);
+				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
+				//console.log(pdfName);
+				//console.log(eval("YahrList.Yahrzeits[" + currentIDX + "].ID"));
+				//console.log(pdfName + ":" + pdfCurrency);
 				if(pdfName.trim() == ""){
 					return true;
 				}
@@ -159,7 +190,8 @@ var pdfPix = function(){
 	return actions;
 }
 
-var pdfP = new pdfPix();
+//var pdfPx = new pdfPix();
+//pdfPx.getFirstPDF(1);
 
 
 var placeClick = "";
@@ -176,7 +208,7 @@ function getPDF(num, pdfNum, place){
 	var pdfName = eval("YahrList.Yahrzeits[num-1].PDF0" + pdfNum);
 	//console.log(YahrList.Yahrzeits[num]);
 	if(pdfName !== "" && pdfName){
-		removeBodyListener();
+		//removeBodyListener();
 		hideSecurity();
 		hideScreen01();
 		hideSideBarArray();
@@ -222,6 +254,7 @@ function setCurrentMonth(){
 
 function loadSideBar(){
 	//setCurrentMonth();
+	//console.log("in loadSideBar");
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
 	currentMonth = htoday.month;
@@ -235,6 +268,7 @@ function loadSideBar(){
 		}
 		if(dateHold.indexOf(htoday.month) > -1){
 			dateHold = dateHold.trim();
+			//console.log(dateHold + "::" + htoday.month + "-" + htoday.day);
 			if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
 				loadSideBarArray(i);
 			}

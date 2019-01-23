@@ -12,7 +12,7 @@
 <title>Beis Chayim</title>
 
 </head>
-<body  id=appBody onload="timerLoad();">
+<body  id=appBody onload="setupTimerLoad();">
  <!-- <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src="" onclick="turnBack();"></div> -->
  <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src=""></div>
 
@@ -407,7 +407,7 @@ function kbclick(ky){
 
 	function goBack(oldPanel){
 		resetScreen(oldPanel);
-		addBodyListener();
+		//addBodyListener();
 	}
 
 	function resetScreen(oldPanel){
@@ -449,7 +449,7 @@ function kbclick(ky){
 
 	function loadEdit(queryDict){
 			var ID = queryDict["ID"];
-			removeBodyListener();
+			//removeBodyListener();
 			autoProcess = false;
 
 			document.getElementById("ID").innerHTML = ID;
@@ -573,7 +573,7 @@ function doNew(){
 }
 
 function loadNew(){
-		removeBodyListener();
+		//removeBodyListener();
 		autoProcess = false;
 		document.getElementById("ID").innerHTML = "";
 		document.getElementById("newName").value = "";
