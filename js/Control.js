@@ -116,40 +116,65 @@ function doit(){
 var BodyListener = (function(){
 	var pdfView = document.getElementById("pdfView");
 	var appBody = document.getElementById("appBody");
-	var functn = "";
+
+	// these functions will usually be 'getNext()'
+	var Bodyfunctn = "";
+	var SideFunctn = "";
+	var PDFFunctn = "";
 	var actions = {
+			clearAllListeners: function(){
+				actions.removePDFListener();
+				actions.removeBodyListener();
+				actions.removeSideListener();
+			},
 			addPDFListener: function(type){
 				if(type == 'pdf'){
-					pdfView.addEventListener("click",this.getClickPDF, true);
+					pdfView.addEventListener("click", PDFFunctn, true);
 					}
-			//appBody.addEventListener("click",showSecurity,true);
+			},
+			removePDFListener: function(type){
+				if(type == 'pdf'){
+					pdfView.removeEventListener("click", PDFFunctn, true);
+					}
 			},
 			addBodyListener: function(type){
 				if(type == 'pdf'){
-					appBody.addEventListener("click",this.getClickPDF, true);
+					appBody.addEventListener("click", Bodyfunctn, true);
 				}
-				//appBody.addEventListener("click",showSecurity,true);
 			},
 			removeBodyListener: function(type){
 				if(type == 'pdf'){
-					appBody.removeEventListener("click",this.getClickPDF,true);
+					appBody.removeEventListener("click", Bodyfunctn, true);
 				}
 			},
+			setSideFunction: function(func){
+					SideFunctn = func;
+			},
 			setFirstFunction: function(func){
-					functn = func;
+					Bodyfunctn = func;
 			},
-			getClick: function(div){
-				//alert("getClick");
-				console.log(div.target.id);
-				//alert('getting click' + div);
-			},
-			getClickPDF: function(div){
-				//alert("getClickPDF");
-				console.log("HERE" + div.target.id);
-				functn();
+			// getClick: function(div){
+			// 	//alert("getClick");
+			// 	console.log(div.target.id);
+			// 	//alert('getting click' + div);
+			// },
+			// getClickPDF: function(div){
+			// 	//alert("getClickPDF");
+			// 	if(div.target.id.indexOf("sbar") != 0){
+			// 		console.log("Body: " + div.target.id);
+			// 		functn();
+			// 		}
+			// },
+			// getSideClickPDF: function(div){
+			// 	//alert("getClickPDF");
+			// 	if(div.target.id.indexOf("sbar") > -1){
+			// 		console.log("Side" + div.target.id);
+			// 		SideFunctn();
+			// 	}
+
 				//pdfP.getFirstPDF();
 				//alert('getting click' + div);
-			},
+			//},
 			isRunPhaseView: function(){
 				return RunPhaseView();
 			},
@@ -157,8 +182,16 @@ var BodyListener = (function(){
 				return RunPhaseEdit();
 			},
 			addSideListener: function(type, div_id){
-
+				if(type == "side"){
+					div_id.addEventListener("click", SideFunctn, true);
+				}
+			},
+			removeSideListener: function(type, div_id){
+				if(type == "side"){
+					div_id.removeEventListener("click", SideFunctn, true);
+				}
 			}
+
 	};
 	return actions;
 })();

@@ -95,7 +95,7 @@ function calcOffset(i){
 }
 
 function renderingPlaques(callback){
-    //console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
+    console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
   	var tf = TIME_FACTOR * 1000;
   	PlaqueInterval = setInterval( function(){ if(currentPosition > panelArray.length){ currentPosition = 0; return 0;}; renderScreen(callback); }, tf);
 }
@@ -122,6 +122,7 @@ function hideScreen02(){
 
 
 var renderingPlaquesX = function (cb){
+    console.log("renderingPlaquesX");
     var currPos = 0;
     var callback = cb;
     var actions = {

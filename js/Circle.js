@@ -119,7 +119,8 @@ var timeControl = (function(){
 				OneByInterval = setInterval(func, tf);
 		},
 		setSideTimer: function(func){
-				//console.log("setting timer");
+				//alert("Setting Side Timer");
+				console.log("setting side timer");
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
@@ -127,7 +128,7 @@ var timeControl = (function(){
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
-				//console.log("clearing timer");
+				console.log("clearing side timer");
 				clearInterval(SideInterval);
 		}
 	};
@@ -148,6 +149,7 @@ function timerLoad(lastNum){
  	if(lastNum) lastN = lastNum;
 	//console.log("timerLoad2: " + lastN);
 	if(DISPLAY_SETTING == 0) timeControl.setTimer(function(){ renderAll.loadingPlaques(rendPlaques);});
+	timeControl.setSideTimer(loadSideBar);
 	if(DISPLAY_SETTING == 1) timeControl.setTimer(function(){ lastN = renderAll.loadingOneBy(lastN);});
 	if(DISPLAY_SETTING == 2) timeControl.setTimer(function(){ renderAll.loadAlternate();});
 
@@ -335,11 +337,14 @@ function loadElement(i, callback){
 	pdfP = new pdfPix(i);
 	if(YahrList.Yahrzeits[i].PDF01.trim() != ""){
 		//console.log("adding event to: " + YahrList.Yahrzeits[i].Name);
-		pdfP.addEvent("pdf");
+		//pdfP.addEvent("pdf");
+		BodyListener.setFirstFunction(pdfP.getNextPDF);
+		BodyListener.addBodyListener("pdf");
 	}
 	else {
+		BodyListener.removeBodyListener("pdf");
 		//console.log("else");
-		pdfP.removeEvent("pdf");
+		//pdfP.removeEvent("pdf");
 	}
 
 	var Comments01 = document.getElementById("Comments01");
@@ -355,5 +360,6 @@ function loadElement(i, callback){
 	}
 
 	currentIDX = i;
-	setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
+	//setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
+	//timeControl.setSideTimer(loadSideBar);
 }
