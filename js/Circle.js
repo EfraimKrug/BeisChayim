@@ -349,6 +349,10 @@ function loadElement(i, callback){
 
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
+	Comments01.style.display = 'none';
+	if(YahrList.Yahrzeits[i].Pic01.trim() != ""){
+		Comments01.style.display = 'inline';
+	}
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
 	if(YahrList.Yahrzeits[i].Comments01.length > 411){
 		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){
