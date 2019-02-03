@@ -285,7 +285,9 @@ function loadElement(i, callback){
 		if(HDate.innerHTML.substring(0,1) == '0'){
 			 HDate.innerHTML = YahrList.Yahrzeits[i].HDate.substring(1);
 		}
+
 		HDate.innerHTML = fixDate(HDate.innerHTML);
+		if(DATES_IN_HEBREW) HDate.innerHTML = translateDate(fixDate(HDate.innerHTML));
 		HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 	}
 

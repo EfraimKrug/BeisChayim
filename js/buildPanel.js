@@ -10,6 +10,7 @@ var panelArray = [];
 function fixDate(dt){
   var year = "";
   var d = dt.trim();
+  d = d.replace(/Adar II/g, "AdarII");
   d = d.replace(/\s+/g, "?");
   d = d.replace(/\,+/g, "?");
   d = d.replace(/&comma;/g, "?");

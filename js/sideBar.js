@@ -265,13 +265,17 @@ function loadSideBarArray(i){
 
 	var spot = SideBarList.length; //first empty spot
 	var outLine;
+	var dt;
 
-	outLine = YahrList.Yahrzeits[i].HName + "<br>" +
-											fixDate(YahrList.Yahrzeits[i].HDate);
+
+	dt = fixDate(YahrList.Yahrzeits[i].HDate);
+	if(DATES_IN_HEBREW)
+		dt = translateDate(fixDate(YahrList.Yahrzeits[i].HDate));
+
+	outLine = YahrList.Yahrzeits[i].HName + "<br>" + dt;
 
   if(!YahrList.Yahrzeits[i].HName)
-		outLine = YahrList.Yahrzeits[i].Name + "<br>" +
-											fixDate(YahrList.Yahrzeits[i].HDate);
+		outLine = YahrList.Yahrzeits[i].Name + "<br>" + dt;
 
 	for(var j=0; j < spot; j++){
 		if(SideBarList[j] == outLine) return;

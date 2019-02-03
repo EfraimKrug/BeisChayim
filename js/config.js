@@ -11,6 +11,7 @@ var PASSWORD = config.settings["password"];
 var GRID_SIZE = config.settings["grid_size"];
 var PAGE_SIZE = config.settings["select_page_size"];
 var SCREEN_UP = false;
+var DATES_IN_HEBREW = config.settings["dates_in_hebrew"]  == 1 ? true:false;
 
 var passkey = "";
 var pkLetterCount = 0;
