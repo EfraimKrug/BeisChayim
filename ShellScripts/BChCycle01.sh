@@ -1,4 +1,4 @@
-CODE_DIRECTORY=bcCode
+CODE_DIRECTORY=Ccode
 ###############################################################################
 # this runs every night.
 # remember - this is running without getting new data

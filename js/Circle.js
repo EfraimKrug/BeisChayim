@@ -325,14 +325,17 @@ function loadElement(i, callback){
 	Pic01.style.visibility = "hidden";
 	Pic02.style.visibility = "hidden";
 
+	console.log(YahrList.Yahrzeits[i].Pic01);
 	if((YahrList.Yahrzeits[i].PayLevel > 1) && YahrList.Yahrzeits[i].Pic01){
 		Pic01.style.visibility = "visible";
 		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
+		Pic01.style.border = "4px outset black";
 	}
 
 	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
+		Pic02.style.border = "16px inset black";
 	}
 
 	var pdfP = null;
@@ -344,6 +347,7 @@ function loadElement(i, callback){
 		BodyListener.addBodyListener("pdf");
 	}
 	else {
+		BodyListener.setFirstFunction(pdfP.getNextPDF);
 		BodyListener.removeBodyListener("pdf");
 		//console.log("else");
 		//pdfP.removeEvent("pdf");
