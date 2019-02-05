@@ -335,7 +335,7 @@ function loadElement(i, callback){
 	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
-		Pic02.style.border = "16px inset black";
+		Pic02.style.border = "6px inset black";
 	}
 
 	var pdfP = null;
