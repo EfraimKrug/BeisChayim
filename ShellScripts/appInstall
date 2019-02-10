@@ -2,8 +2,8 @@
 # note - install python
 # note - install firefox - configure options->download->always ask
 #
-BRANCH_NAME=Pats
-BRANCH_NAME_ZIP=Pats.zip
+BRANCH_NAME=pats
+BRANCH_NAME_ZIP=pats.zip
 CODE_DIRECTORY=bcCode
 #
 cd $HOME/Downloads
