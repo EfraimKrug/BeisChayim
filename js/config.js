@@ -1,5 +1,8 @@
 // configuration files...
 var config = JSON.parse(ConfigList);
+var screenConfig = JSON.parse(ScreenConfigList);
+var panelConfig = JSON.parse(PanelConfigList);
+
 var TIME_FACTOR = config.settings["time_factor"];
 var COLUMN_COUNT = config.settings["column_count"];
 var ROW_COUNT = config.settings["row_count"];
@@ -20,6 +23,7 @@ var config = JSON.parse(ConfigList);
 
 //console.log(config);
 
+//
 function initConfigScreen(){
 	document.getElementById("display_type").value = config.settings["display_type"].replace(/%20/g,"");
 	document.getElementById("time_factor").value = config.settings["time_factor"].replace(/%20/g,"");
@@ -32,6 +36,7 @@ function initConfigScreen(){
 	document.getElementById("select_page_size").value = config.settings["select_page_size"].replace(/%20/g,"");
 }
 
+//build the config file for download...
 function addStuffConfig(){
 	var display_type = "\"display_type\":\"" + escapeHTML(document.getElementById("display_type").value) + "\"";
 	var time_factor = "\"time_factor\":\"" + escapeHTML(document.getElementById("time_factor").value) + "\"";

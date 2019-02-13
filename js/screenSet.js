@@ -1,7 +1,4 @@
 // screen placement...
-var screenConfig = JSON.parse(ScreenConfigList);
-var panelConfig = JSON.parse(PanelConfigList);
-
 // Straight configuration values
 function getSideBarHeight(){
   return screenConfig.settings["SideBarHeight"];
