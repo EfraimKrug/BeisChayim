@@ -72,8 +72,11 @@ function timerLoad(lastNum){
 			if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) renderAll.endingCycle();
 			});
 	}
-	if(DISPLAY_SETTING == 2) timeControl.setTimer(function(){
-		renderAll.loadAlternate(rendPlaques);});
+	if(DISPLAY_SETTING == 2) {
+		timeControl.setTimer(function(){
+			renderAll.loadAlternate(rendPlaques);
+		});
+	}
 }
 
 function sideTimerLoad(lastNum){
@@ -91,12 +94,15 @@ var renderBoth = function(){
 	var actions = {
 		loadAlternate: function(rendP){
 			if(this.isOneBy()){
-				console.log('oneBy');
+				//console.log('oneBy');
 				hideScreen02();
-				this.loadingOneBy(manipulateIDX.getCurrentIDX());
-				manipulateIDX.getNextIDX(this.endingCycle);
+				this.loadingOneBy(manipulateIDX.getNextIDX());
+				manipulateIDX.incrementIDX();
+				if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) this.endingCycle();
+				//this.loadingOneBy(manipulateIDX.getCurrentIDX());
+				//manipulateIDX.getNextIDX(this.endingCycle);
 			} else {
-				console.log('plaques');
+				//console.log('plaques');
 				hideScreen01();
 				this.loadingPlaques(rendP);
 			}
