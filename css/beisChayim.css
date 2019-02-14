@@ -261,8 +261,8 @@ h1 {
 	position: absolute;
 	top: 197px;
 	left: 8px;
-	max-width: 213px;
-	height: 213px;
+	max-width: 413px;
+	height: 413px;
 }
 
 #DPic02{
@@ -277,7 +277,7 @@ h1 {
 	position: relative;
 	visibility: hidden;
 	left: 0px;
-	max-width: 213px;
+	max-width: 413px;
 	height: 356px;
 	height: 100%;
 	z-index: 20;

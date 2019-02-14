@@ -6,7 +6,7 @@ var SideBarList = [];
 var PayLevelList = [];
 var YahrzeitListSpotList = [];
 var currentName = 0;
-var TESTING_OFF = true;
+var TESTING_OFF = false;
 
 
 var timeControl = (function(){
@@ -66,9 +66,14 @@ function timerLoad(lastNum){
 //	}
 
 	if(DISPLAY_SETTING == 1){
-		timeControl.setTimer(function(){ renderAll.loadingOneBy(manipulateIDX.getNextIDX(function(){}))});
+		timeControl.setTimer(function(){
+			renderAll.loadingOneBy(manipulateIDX.getNextIDX());
+			manipulateIDX.incrementIDX();
+			if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) renderAll.endingCycle();
+			});
 	}
-	if(DISPLAY_SETTING == 2) timeControl.setTimer(function(){ renderAll.loadAlternate(rendPlaques);});
+	if(DISPLAY_SETTING == 2) timeControl.setTimer(function(){
+		renderAll.loadAlternate(rendPlaques);});
 }
 
 function sideTimerLoad(lastNum){
@@ -109,18 +114,11 @@ var renderBoth = function(){
 			}
 		},
 		loadingOneBy: function(lastNum){
-			//console.log("loadingOneBy: " + lastNum);
 			showScreen01();
-			//i = lastNum ? lastNum : i;
-			//i = getNum(i);
-			//console.log("Loading: " + i);
-			//manipulateIDX.getCurrentIDX(lastNum);
-			//var i = manipulateIDX.getNextIDX(this.endingCycle);
-			if(!manipulateIDX.isOutOfRange(lastNum)){
-				console.log("HERE: " + lastNum);
-				loadElement(lastNum, this.endingCycle);
+			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
+			else {
+				loadElement(lastNum);
 			}
-			//return i;
 		},
 		endingCycle: function(){
 			manipulateIDX.initIDX();
@@ -129,10 +127,10 @@ var renderBoth = function(){
 				if(pRun == 2) pRun = 1;
 				else pRun = 2;
 			}
-			console.log("endingCycle: " + pRun);
+			//console.log("endingCycle: " + pRun);
 		},
 		loadingPlaques: function(rendP){
-			console.log('loadingPlaques');
+			//console.log('loadingPlaques');
 			rendP.renderScreen();
 		},
 		setProcessOneBy: function(){
@@ -162,32 +160,26 @@ var renderBoth = function(){
 var manipulateIDX = function(){
 	var idx = 0;
 	var last = YahrList.Yahrzeits.length - 1;
+	var overTheTop = last + 3;
+
 	var actions = {
 		setCurrentIDX: function(i){
 			idx = i;
 		},
+		incrementIDX: function(){
+			idx++;
+		},
 		getCurrentIDX: function(){
 			return idx;
 		},
-		getNextIDX: function(callback){
-			if(this.isOutOfRange(this.getNextInRange())){
-				//console.log("getNextIDX: " + this.getCurrentIDX());
-				this.initIDX();
-				callback();
-				if(TESTING_OFF)
+		// note: this can set idx out of range...
+		getNextIDX: function(){
 				this.setCurrentIDX(this.getNextInRange());
 				return this.getCurrentIDX();
-			} else {
-				//console.log("getNextIDX: (else)" + this.getCurrentIDX());
-				this.setCurrentIDX(this.getNextInRange());
-				return this.getCurrentIDX();
-			}
 		},
 		isOutOfRange: function(i){
-			//console.log("isOutOfRange: " + i + ">?" + last);
-			if(i < 0) return true;
 			if(i) return i > last;
-			return this.getCurrentIDX() > last;
+			return idx > last;
 		},
 		initIDX: function(){
 			idx = 0;
@@ -197,36 +189,26 @@ var manipulateIDX = function(){
 				return YahrList.Yahrzeits[this.getCurrentIDX()].HDate;
 		},
 		getNextInRange: function(){
-			dateHold = this.getCurrentDate();
 			var idxHold = this.getCurrentIDX();
+
+			dateHold = this.getCurrentDate();
 			var i = this.getCurrentIDX();
 			//console.log('getNextInRange: ' + i);
-			if(TESTING_OFF)
+			if(TESTING_OFF){
 					while(dateHold.indexOf(currentMonth) < 0 && !this.isOutOfRange(i)){
-						//console.log(dateHold + " :" + currentMonth);
 						i++;
-						if(this.isOutOfRange(i)) return -1;
+						if(this.isOutOfRange(i)) return i;
 						dateHold = YahrList.Yahrzeits[i].HDate;
-						//console.log("After: " + i);
 						if(dateHold.indexOf('Teves') > -1){
 							var start = dateHold.indexOf('Teves');
 							dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
 						}
 					}
-			else {
-			 		i++;
-			// 		this.initIDX();
-			// 		return this.getCurrentIDX();
-			// 	}
-			// }
-			//console.log("before returning: " + i);
-					if(this.isOutOfRange(i)) return -1;
-					if(i == idxHold) return -1;
-					console.log("returning: " + i);
-					//this.setCurrentIDX(i);
-					return i;
-				}
+			//if(i == idxHold) return i+1;
+			return i;
 		}
+		return i;
+		},
 	};
 	return actions;
 }();

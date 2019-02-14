@@ -119,8 +119,8 @@ function correctHFontSize(val){
 
 
 var lastI = -1;
-function loadElement(i, callback){
-	console.log(i + "::" + lastI);
+function loadElement(i){
+	//console.log("loading: " + i);
 	// if(i < lastI || i == -1){
 	// 	setTimeout(callback, 1500);
 	// 	lastI = -1;
