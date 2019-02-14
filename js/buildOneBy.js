@@ -11,6 +11,7 @@ function positionElts(){
 		name.style.left = getLeftOffsetName();
 		name.style.width = getOneByWidth();
 		name.style.fontSize = getName1Font();
+		//name.style.display = 'inline';
 
 		var dpic01  = document.getElementById("DPic01");
 		dpic01.style.top = getTopPic1();
@@ -18,6 +19,7 @@ function positionElts(){
 
 		var pic01  = document.getElementById("Pic01");
 		pic01.style.left = "0px";
+		//pic01.style.display = 'inline';
 
 		t = getNextTop(t);
 		if(t == 0) s++;
@@ -27,6 +29,7 @@ function positionElts(){
 		hname.style.left = getLeftOffsetName();
 		hname.style.width = getOneByWidth();
 		hname.style.fontSize = getName2Font();
+		//hname.style.display = 'inline';
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -39,6 +42,7 @@ function positionElts(){
 		hdate.style.left = getLeftOffsetName();
 		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
+		//hdate.style.display = 'inline';
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -51,6 +55,7 @@ function positionElts(){
 		edate.style.left = getLeftOffsetName();
 		edate.style.width = getOneByWidth();
 		edate.style.fontSize = getName2Font();
+		//edate.style.display = 'inline';
 
 		t = getNextTop(t);
 		if(t == 0) s++;
@@ -61,9 +66,12 @@ function positionElts(){
 
 		var pic02  = document.getElementById("Pic02");
 		pic02.style.left = getLeftPic2();
+		//pic02.style.display = 'inline';
+
 		var Comment01  = document.getElementById("Comments01");
 		Comment01.style.top = getTopComment01();
 		Comment01.style.left = getLeftComment01();
+		//Comment01.style.display = 'inline';
 
 		if(!screenHidden){
 			name.style.display = "inline";
@@ -72,6 +80,7 @@ function positionElts(){
 			edate.style.display = "inline";
 			pic01.style.display = "inline";
 			pic02.style.display = "inline";
+			Comment01.style.display = 'inline';
 		}
 }
 
@@ -94,6 +103,10 @@ function hideScreen01(){
 			Comments01.style.display = "none";
 }
 
+function showScreen01(){
+	screenHidden = false;
+}
+
 function getNextTop(t){
 	if(t >= BITES_PER_SQUARE - 1) return 0;
 	return t + 1;
@@ -107,14 +120,21 @@ function correctHFontSize(val){
 
 var lastI = -1;
 function loadElement(i, callback){
-	if(i < lastI){
-		setTimeout(callback, 1500);
-		lastI = -1;
-		return;
-	} else {
-		lastI = i;
-	}
+	console.log(i + "::" + lastI);
+	// if(i < lastI || i == -1){
+	// 	setTimeout(callback, 1500);
+	// 	lastI = -1;
+	// 	return;
+	// } else {
+	// 	lastI = i;
+	// }
 	//turnBack();
+	//dateHold = manipulateIDX.getCurrentDate();
+	//if(dateHold.indexOf(currentMonth) < 0){
+	//	currentIDX = i;
+	//	return;
+	//}
+
 	positionElts();
 	var bd = document.getElementById("body");
 	var cName = "";
@@ -207,7 +227,7 @@ function loadElement(i, callback){
 		}
 	}
 
-	currentIDX = i;
 	//setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
+	currentIDX = i;
 	//timeControl.setSideTimer(loadSideBar);
 }

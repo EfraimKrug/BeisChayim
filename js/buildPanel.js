@@ -28,7 +28,8 @@ function fixDate(dt){
 function checkToday(checkDate){
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
-	currentMonth = htoday.month;
+	//currentMonth = htoday.month;
+  setCurrentMonth();
 	var dateHold = fixDate(checkDate);
 		if(dateHold.indexOf(htoday.month) > -1){
 			dateHold = dateHold.trim();
@@ -40,7 +41,6 @@ function checkToday(checkDate){
 }
 
 function buildPanel01(){
-  //console.log("Building panel");
   var outLine;
   var lag = -1;
   var j = 0;
@@ -123,8 +123,8 @@ function hideScreen02(){
 
 
 var renderingPlaquesX = function (cb){
-    console.log("renderingPlaquesX");
-    var currPos = 0;
+    //console.log("renderingPlaquesX");
+    var currPos = -1;
     var callback = cb;
     var actions = {
         renderScreen: function (){
@@ -132,15 +132,21 @@ var renderingPlaquesX = function (cb){
             //var tf = TIME_FACTOR * 1000;
             var vi = 0;
             //console.log("up here: " + panelArray.length + ":" + currPos );
-            for(var row_count=0; (currPos < panelArray.length && row_count < ROW_COUNT); currPos++, row_count++){
-                console.log("rendering: " + currPos);
+            for(var row_count=0; row_count < ROW_COUNT; row_count++){
+                //console.log("rendering: " + currPos);
+                currPos++;
+                if(currPos >= panelArray.length){
+                  currPos=-1;
+                  setTimeout(callback, 1500);
+                  break;
+                }
                 vi = parseInt(vi) + 2;
                 if(vi < 10) vi = "0" + vi;
                 if(vi > 12) vi = "01";
                 for(var j=0; j < COLUMN_COUNT; j++){
                   if(!(panelArray[currPos][j])){
                     currPos = 0;
-                    console.log("here");
+                    console.log("ending here");
                     setTimeout(callback, 1500);
                     return;
                   }
@@ -191,7 +197,7 @@ var renderingPlaquesX = function (cb){
                     pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
                   }
                   tempID = panelArray[currPos][j]["IDX"];
-                  if(currPos > panelArray.length ){
+                  if(currPos >= panelArray.length ){
                     console.log("ANd Here: " + currPos);
                     currPos = 0;
                     setTimeout(callback, 1500);

@@ -289,15 +289,23 @@ function loadSideBarArray(i){
 function setCurrentMonth(){
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
-	currentMonth = htoday.month;
+	//console.log("Setting currentMonth: " + typeof(htoday.month));
+	//var m = toString(htoday.month);
+	if(htoday.month.indexOf("Adar A") > -1){
+		currentMonth = "Adar";
+	} else {
+		currentMonth = htoday.month;
+	}
+	//console.log("Current Month: " + currentMonth);
 }
 
 function loadSideBar(){
 	//setCurrentMonth();
 	//console.log("in loadSideBar");
-	var today = new Date();
-	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
-	currentMonth = htoday.month;
+	//var today = new Date();
+	//var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
+	//currentMonth = htoday.month;
+	setCurrentMonth();
 	resetSideBar();
 	for(var i = 0; i < YahrList.Yahrzeits.length; i++){
 		var dateHold = fixDate(YahrList.Yahrzeits[i].HDate);

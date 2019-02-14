@@ -156,7 +156,7 @@ function buildYear(y){
 /*****************************************************/
 function translateDate(dt){
   dt = dt.replace("Adar II", "AdarII");
-  console.log(dt);
+  //console.log(dt);
   if(dt.match(/\d+\s+\w+(,|\s+)\s*\d\d\d\d/i)){
     day = dt.substring(0,dt.indexOf(" "));
     month = dt.trim().substring(dt.indexOf(" ")+1, dt.indexOf(","));

@@ -118,9 +118,9 @@ var BodyListener = (function(){
 	var appBody = document.getElementById("appBody");
 
 	// these functions will usually be 'getNext()'
-	var Bodyfunctn = "";
-	var SideFunctn = "";
-	var PDFFunctn = "";
+	var Bodyfunctn = function(){};
+	var SideFunctn = function(){};
+	var PDFFunctn = function(){};
 	var actions = {
 			clearAllListeners: function(){
 				actions.removePDFListener();
