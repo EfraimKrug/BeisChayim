@@ -128,7 +128,7 @@ var BodyListener = (function(){
 				actions.removeSideListener();
 			},
 			addPDFListener: function(type){
-				if(type == 'pdf'){
+				if(type == 'pdf' && RunPhaseView()){
 					pdfView.addEventListener("click", PDFFunctn, true);
 					}
 			},
@@ -138,7 +138,7 @@ var BodyListener = (function(){
 					}
 			},
 			addBodyListener: function(type){
-				if(type == 'pdf'){
+				if(type == 'pdf' && RunPhaseView()){
 					appBody.addEventListener("click", Bodyfunctn, true);
 				}
 			},
