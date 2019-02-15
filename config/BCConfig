@@ -1,1 +1,1 @@
-var ConfigList = '{ "settings": {"display_type":"2","time_factor":"5","password":"6","slots":"3","column_count":"4","row_count":"2","screen_title":"Kadimah Toras-Moshe","dates_in_hebrew":"1","grid_size":"6","select_page_size":"15"}}';
+var ConfigList = '{ "settings": {"display_type":"0","time_factor":"3","password":"6","slots":"2","column_count":"2","row_count":"3","screen_title":"New &amp; Different","select_page_size":"10"}}';

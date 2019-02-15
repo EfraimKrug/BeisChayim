@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="./css/editWindow.css">
 <link rel="stylesheet" href="./css/newWindow.css">
 <link rel="stylesheet" href="./css/selectWindow.css">
+<link rel="stylesheet" href="./css/configWindow.css">
 
 <title>Beis Chayim</title>
 
@@ -26,7 +27,7 @@
 									<tr><td class=kb onclick="kbclick('clear');"><=</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('Enter');">Enter</td></tr>
 								</table>
 </div>
-<div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
+<div id=spanTitle><h1 id=sTitle onclick="showSecurity();">Beis Chayim</h1></span>
 <table id=accessMenu>
 	<tr><td>
 </td>
@@ -141,12 +142,12 @@ function startSelect(){
 	//hideIt();
 //}
 
-function startConfig(){
-	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
-	SCREEN_UP = true;
-
-	hideIt();
-}
+// function startConfig(){
+// 	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
+// 	SCREEN_UP = true;
+//
+// 	hideIt();
+// }
 
 var pkLetterCount = 0;
 var passkey = "";
@@ -354,54 +355,7 @@ function kbclick(ky){
 </tr>
 </table>
 
-<!-- ----------------------------------------------
-<div id=editPanel>
-<div id=ID></div>
-<table id=editTable>
-	<tr>
-		<td>Name</td><td><input type=text id=editName></td><td><button onclick=goBack('editPanel');>Click to return</span></td>
-	</tr>
-	<tr>
-		<td>Hebrew Name</td><td><input type=text id=editHName></td>
-	</tr>
-		<tr>
-			<td>English Date</td><td><input type=text id=editEDate></td>
-		</tr>
-		<tr>
-			<td>Hebrew Date</td><td><input type=text id=editHDate></td>
-		</tr>
-		<tr>
-				<td>Picture #1</td><td><span class=fname id=editPic01 ></span><input id="editFilename1" type="file" onblur="keepFileName(1);"/></td>
-		</tr>
-		<tr>
-		    <td>Picture #2</td><td><span class=fname id=editPic02></span><input id="editFilename2" type="file" onblur="keepFileName(2);"/></td>
-		</tr>
-		<tr>
-		  <td>Mourned by</td><td><input type=text id=editMournby></td>
-		</tr>
-		<tr>
-		  <td>Relationship</td><td><input type=text id=editRelationship></td>
-		</tr>
-		<tr>
-		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
-																													<option value="0">none</option>
-																													<option value="1">copper</option>
-																													<option value="2">bronze</option>
-																													<option value="3">silver</option>
-																													<option value="4">gold</option>
-																												</select>
-			</td>
-		</tr>
-
-		<tr>
-		    <td>Comments</td><td><textarea rows=5 cols=75 id=editComments01></textarea></td>
-		</tr>
-		<tr>
-			<td></td><td><button id=submit onclick=editAddStuff();>Submit</button></td>
-		</tr>
-		</table>
-</table>
------------------------ -->
+<!-- --------------------------------------------------------------------- -->
 	<script>
 	function setPayLevel(){
 
@@ -838,5 +792,140 @@ function setPanel(){
 
 
 <!-- select panel ends here -->
+<!-- CONFIG PANEL STARTS HERE -->
+<div id=configPanel>
+  <table id=configTable>
+  <tr>
+  		<td></td>
+  		<td></td>
+  		<td></td>
+
+  		<td><button onclick=goBack('configPanel');>Return</span></td>
+  </tr>
+  	<tr><td>
+  <table>
+  <tr>
+  	<td class=configLabel>Display</td><td><select id=display_type>
+  														<option value="0">Plaques</option>
+  														<option value="1">One by One</option>
+  														<option value="2">Alternate</option>
+  													</select>
+  	</td>
+  </tr>
+  <tr>
+  	<td class=configLabel>Screen Title</td><td><input type=text id=screen_title></td>
+  </tr>
+
+  <tr>
+  	<td class=configLabel>Time (1-15)</td><td><select id=time_factor>
+  														<option value="2">2</option>
+  														<option value="3">3</option>
+  														<option value="4">4</option>
+  														<option value="5">5</option>
+  														<option value="10">10</option>
+  														<option value="15">15</option>
+  														<option value="20">20</option>
+  														<option value="60">60</option>
+  													</select>
+  		</td>
+
+  </tr>
+  <tr>
+  	<td class=configLabel>Password</td><td><input type=text id=password></td>
+  </tr>
+  <tr>
+  	<td></td><td>
+  							<table id=kboard>
+  								<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
+  								<tr><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
+  								<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
+  								<tr><td class=kb onclick="kbclick('*');">*</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('#');">#</td></tr>
+  							</table>
+
+  					 <td>
+  </tr>
+  <tr>
+  	<td class=configLabel>Side Bar Slots (2-12)</td><td><select id=slots>
+
+  														<option value="2">2</option>
+  														<option value="3">3</option>
+  														<option value="4">4</option>
+  														<option value="5">5</option>
+  														<option value="6">6</option>
+  														<option value="7">7</option>
+  														<option value="8">8</option>
+  														<option value="9">9</option>
+  														<option value="10">10</option>
+  														<option value="11">11</option>
+  														<option value="12">12</option>
+  		</td>
+  </tr>
+  <tr>
+  	<td class=configLabel>Select Page Size</td><td><select id=select_page_size>
+  														<option value="5">5</option>
+  														<option value="10">10</option>
+  														<option value="15">15</option>
+  														<option value="20">20</option>
+  		</td>
+  </tr>
+
+  </table>
+  </td>
+  <td>
+  	<table>
+  		<tr>
+  			<td class=configLabel>Rows (2-4)</td><td><select id=row_count>
+  																<option value="2">2</option>
+  																<option value="3">3</option>
+  																<option value="4">4</option>
+  																<option value="5">5</option>
+  																<option value="6">6</option>
+  																<option value="7">7</option>
+  																<option value="8">8</option>
+  																<option value="9">9</option>
+  																<option value="10">10</option>
+  																<option value="11">11</option>
+
+  				</td>
+
+  		</tr>
+
+  		<tr>
+  			<td class=configLabel>Columns (2-4)</td><td><select id=column_count>
+  																<option value="2">2</option>
+  																<option value="3">3</option>
+  																<option value="4">4</option>
+  																<option value="5">5</option>
+  																<option value="6">6</option>
+  																<option value="7">7</option>
+
+  				</td>
+
+  		</tr>
+  		<tr>
+  			<td></td><td><button id=submit onclick=addStuffConfig();>Submit</button></td>
+  		</tr>
+  	</table>
+  </td>
+  </tr>
+  </table>
+</div>
+<script>
+function startConfig(){
+		//var params = buildParamString(YahrList, currentName);
+		//screen01 = document.getElementById("body");
+		configPanel = document.getElementById("configPanel");
+		configPanel.style.display = "block";
+		configPanel.className = "selectPanel";
+		configPanel.style.zIndex = 20;
+    initConfigScreen();
+
+    hideIt();
+		SCREEN_UP = true;
+}
+
+</script>
+<!-- CONFIG PANEL ENDS HERE -->
+
 </body>
 </html>

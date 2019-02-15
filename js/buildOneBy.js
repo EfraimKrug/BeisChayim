@@ -120,21 +120,6 @@ function correctHFontSize(val){
 
 var lastI = -1;
 function loadElement(i){
-	//console.log("loading: " + i);
-	// if(i < lastI || i == -1){
-	// 	setTimeout(callback, 1500);
-	// 	lastI = -1;
-	// 	return;
-	// } else {
-	// 	lastI = i;
-	// }
-	//turnBack();
-	//dateHold = manipulateIDX.getCurrentDate();
-	//if(dateHold.indexOf(currentMonth) < 0){
-	//	currentIDX = i;
-	//	return;
-	//}
-
 	positionElts();
 	var bd = document.getElementById("body");
 	var cName = "";
@@ -203,18 +188,15 @@ function loadElement(i){
 
 	var pdfP = null;
 	pdfP = new pdfPix(i);
-	if(YahrList.Yahrzeits[i].PDF01.trim() != ""){
-		//console.log("adding event to: " + YahrList.Yahrzeits[i].Name);
-		//pdfP.addEvent("pdf");
-		BodyListener.setFirstFunction(pdfP.getNextPDF);
-		BodyListener.addBodyListener("pdf");
+	if(RunPhaseView()){
+		if(YahrList.Yahrzeits[i].PDF01.trim() != ""){
+			BodyListener.setFirstFunction(pdfP.getNextPDF);
+			BodyListener.addBodyListener("pdf");
+		}
+		else {
+			BodyListener.removeBodyListener("pdf");
+		}
 	}
-	else {
-		BodyListener.removeBodyListener("pdf");
-		//console.log("else");
-		//pdfP.removeEvent("pdf");
-	}
-
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
