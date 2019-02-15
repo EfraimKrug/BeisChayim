@@ -66,6 +66,7 @@ function timerLoad(lastNum){
 //	}
 
 	if(DISPLAY_SETTING == 1){
+		timeControl.setSideTimer(loadSideBar);
 		timeControl.setTimer(function(){
 			renderAll.loadingOneBy(manipulateIDX.getNextIDX());
 			manipulateIDX.incrementIDX();

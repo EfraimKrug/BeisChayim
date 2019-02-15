@@ -296,6 +296,7 @@ function setCurrentMonth(){
 	} else {
 		currentMonth = htoday.month;
 	}
+	return htoday;
 	//console.log("Current Month: " + currentMonth);
 }
 
@@ -305,7 +306,7 @@ function loadSideBar(){
 	//var today = new Date();
 	//var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
 	//currentMonth = htoday.month;
-	setCurrentMonth();
+	var htoday = setCurrentMonth();
 	resetSideBar();
 	for(var i = 0; i < YahrList.Yahrzeits.length; i++){
 		var dateHold = fixDate(YahrList.Yahrzeits[i].HDate);
