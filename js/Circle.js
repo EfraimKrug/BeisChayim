@@ -51,13 +51,16 @@ function setupTimerLoad(){
 
 function timerLoad(lastNum){
 	//console.log("timerLoad: " + lastNum);
-	var lastN = -1;
+//	var lastN = -1;
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
- 	if(lastNum) lastN = lastNum;
+ //	if(lastNum) lastN = lastNum;
 
 	if(DISPLAY_SETTING == 0){
-		timeControl.setTimer(function(){ renderAll.loadingPlaques(rendPlaques);});
+		timeControl.setTimer(function(){
+			hideScreen02();
+			renderAll.loadingPlaques(rendPlaques);
+		});
 	}
 	//timeControl.setSideTimer(loadSideBar);
 	manipulateIDX.initIDX();
@@ -73,6 +76,7 @@ function timerLoad(lastNum){
 			if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) renderAll.endingCycle();
 			});
 	}
+
 	if(DISPLAY_SETTING == 2) {
 		timeControl.setTimer(function(){
 			renderAll.loadAlternate(rendPlaques);
@@ -81,10 +85,10 @@ function timerLoad(lastNum){
 }
 
 function sideTimerLoad(lastNum){
-	var lastN = -1;
+	//var lastN = -1;
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
- 	if(lastNum) lastN = lastNum;
+ 	//if(lastNum) lastN = lastNum;
 
 	timeControl.setTimer(function(){ renderAll.loadingPlaques(rendPlaques);});
 }
@@ -95,7 +99,7 @@ var renderBoth = function(){
 	var actions = {
 		loadAlternate: function(rendP){
 			if(this.isOneBy()){
-				//console.log('oneBy');
+				timeControl.setSideTimer(loadSideBar);
 				hideScreen02();
 				this.loadingOneBy(manipulateIDX.getNextIDX());
 				manipulateIDX.incrementIDX();
@@ -104,7 +108,10 @@ var renderBoth = function(){
 				//manipulateIDX.getNextIDX(this.endingCycle);
 			} else {
 				//console.log('plaques');
+				timeControl.clearSideTimer(loadSideBar);
+				hideSideBarArray();
 				hideScreen01();
+				hideScreen02();
 				this.loadingPlaques(rendP);
 			}
 		},
@@ -128,6 +135,7 @@ var renderBoth = function(){
 			}
 		},
 		endingCycle: function(){
+			console.log("endingCycle: ");
 			manipulateIDX.initIDX();
 			i = -1;
 			if(DISPLAY_SETTING == 2){
@@ -137,8 +145,7 @@ var renderBoth = function(){
 			//console.log("endingCycle: " + pRun);
 		},
 		loadingPlaques: function(rendP){
-			//console.log('loadingPlaques');
-			rendP.renderScreen();
+			rendP.renderScreen(this.endingCycle);
 		},
 		setProcessOneBy: function(){
 			pRun = 1;
@@ -219,41 +226,3 @@ var manipulateIDX = function(){
 	};
 	return actions;
 }();
-
-function _getNum(i){
-	console.log('entering getNum: ' + i);
-	var last = YahrList.Yahrzeits.length - 1;
-	if(i > last){
-		return -1;
-	}
-	if(i == -1) i = 0;
-	var dateHold = YahrList.Yahrzeits[i].HDate;
-	if(TESTING_OFF){
-		// find next date relevant entry..
-		console.log('starting while');
-		while(dateHold.indexOf(currentMonth) < 0 && i < last){
-
-			console.log(dateHold);
-			i++;
-			dateHold = YahrList.Yahrzeits[i].HDate;
-			if(dateHold.indexOf('Teves') > -1){
-				var start = dateHold.indexOf('Teves');
-				dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
-			}
-		}
-		console.log("end while: " + i);
-		if(i >= last) return -1;
-		return i;
-	}
-//	else {
-		//dateHold = YahrList.Yahrzeits[i].HDate;
-//		if(dateHold.indexOf('Teves') > -1){
-//			var start = dateHold.indexOf('Teves');
-//			dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
-//		}
-//	}
-
-	if(i > last)
-		i = -1;
-	return i+1;
-}

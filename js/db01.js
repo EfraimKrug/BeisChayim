@@ -12,8 +12,3 @@ var YahrzeitList = '{ "Yahrzeits": [' +
 '{"ID":"100021","Name":"Avraml Ben Yossi (demo)","HName":"Avramlo ben Tanchuma","EDate":"1810-03-21","HDate":"17 Shevat, 5570","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PDF01":"BaalShemMatzeivoh.JPG","PDF02":"","PDF03":"","PDF04":"","PDF05":"","PayLevel":"1","Comments01":""},' +
 '{"ID":"100022","Name":"Avraml Ben Yossi (demo)","HName":"Avramlu ben Tanchuma","EDate":"1810-03-21","HDate":"17 Shevat, 5570","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PDF01":"LeviYitzchak.jpg","PDF02":"Besht_Siddur.jpg","PDF03":"","PDF04":"","PDF05":"","PayLevel":"4","Comments01":""},' +
 '{"ID":"100003","Name":"Rabbi Levi Yitzchak of Berditzhov","HName":"רבי לוי יצחק מברדיטשוב","EDate":"1809-10-05","HDate":"25 Tishrei&comma; 5570","MournBy":"","Relationship":"","Pic01":"LeviYitzchak.jpg","Pic02":"","PDF01":"LeviYitzchakMatzevah.jpg","PDF02":"LeviYitzchakMatzevah2.jpg","PDF03":"","PDF04":"","PDF05":"","PayLevel":"4","Comments01":""}]}';
-
-
-
-//'{"ID":"100008","Name":"Rav Ben Shimon Mantzur","HName":"Rav Ben Shimon Mantzur","EDate":"1998-01-01","HDate":"2 Shevat&comma; 5758","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PDF01":"","PDF02":"","PDF03":"","PDF04":"","PDF05":"","PayLevel":"4","Comments01":"One of the Elder Kabbalists of Jerusalem."},' +
-//'{"ID":"100009","Name":"Rav Yosef Mashash","HName":"Rav Yosef Mashash","EDate":"1998-01-01","HDate":"2 Shevat&comma; 5758","MournBy":"","Relationship":"","Pic01":"","Pic02":"","PDF01":"","PDF02":"","PDF03":"","PDF04":"","PDF05":"","PayLevel":"4","Comments01":"One of the Elder Kabbalists of Jerusalem."},' +

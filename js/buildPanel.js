@@ -95,12 +95,6 @@ function calcOffset(i){
     return i % 4;
 }
 
-function renderingPlaques(callback){
-    console.log("In renderingPlaques: " + currentPosition + ":" + panelArray.length);
-  	var tf = TIME_FACTOR * 1000;
-  	PlaqueInterval = setInterval( function(){ if(currentPosition > panelArray.length){ currentPosition = 0; return 0;}; renderScreen(callback); }, tf);
-}
-
 function getEdit(idx){
   currentName = idx;
   currentIDX = idx;
@@ -123,35 +117,28 @@ function hideScreen02(){
 
 
 var renderingPlaquesX = function (cb){
-    //console.log("renderingPlaquesX");
     var currPos = -1;
     var callback = cb;
     var actions = {
         renderScreen: function (){
-            hideScreen02();
-            //var tf = TIME_FACTOR * 1000;
             var vi = 0;
-            //console.log("up here: " + panelArray.length + ":" + currPos );
             for(var row_count=0; row_count < ROW_COUNT; row_count++){
-                //console.log("rendering: " + currPos);
                 currPos++;
-                if(currPos >= panelArray.length){
-                  currPos=-1;
-                  setTimeout(callback, 1500);
-                  break;
-                }
                 vi = parseInt(vi) + 2;
                 if(vi < 10) vi = "0" + vi;
                 if(vi > 12) vi = "01";
                 for(var j=0; j < COLUMN_COUNT; j++){
                   if(!(panelArray[currPos][j])){
-                    currPos = 0;
-                    console.log("ending here");
-                    setTimeout(callback, 1500);
+                    currPos = -1;
+                    callback();
                     return;
                   }
-                  //console.log("rendering");
-                  //if(currPos > 375) console.log("currPos: " + currPos + "; col: " + j + "; row_count: " + row_count);
+                  this.renderBox(currPos, j, vi, row_count);
+                }
+              }
+            },
+            // panelArray position; screen column, element name, screen row...
+            renderBox: function(currPos, j, vi, row_count){
                   var pbar = document.getElementById(getColID(j) + vi);
                   pbar.style.position = "absolute";
                   pbar.style.left = getColumnOffset(j);
@@ -175,7 +162,7 @@ var renderingPlaquesX = function (cb){
                   pbar.style.margin = "0px";
                   pbar.style.display = "inline";
                   pbar.style.zIndex = 5;
-                  //console.log(pbar.style.width + ":" + pbar.style.left);
+
                   var dt = panelArray[currPos][j]["Date"];
                   if(panelArray[currPos][j]["Date"].substring(0,1) == "0"){
                     dt = panelArray[currPos][j]["Date"].substring(1);
@@ -183,9 +170,7 @@ var renderingPlaquesX = function (cb){
                   pbar.innerHTML = panelArray[currPos][j]["Name"] + "<br>" + dt;
                   if(pbar.innerHTML.indexOf("undefined") > -1){
                     pbar.innerHTML = pbar.innerHTML.substring(0,pbar.innerHTML.indexOf("undefined"));
-                    //console.log(currPos + "[" +panelArray[currPos][j]["Name"] + "]");
                   }
-                  //alert(pbar.innerHTML.indexOf("undefined"));
                   pbar.style.border = "1px solid black";
                   if(checkToday(dt)){
                     pbar.style.border = "2px solid orange";
@@ -196,16 +181,7 @@ var renderingPlaquesX = function (cb){
                     pbar.style.top = (getTopOffsetInt(row_count) - 4) + "px";
                     pbar.style.left = (getColumnOffsetInt(j) - 1) + "px";
                   }
-                  tempID = panelArray[currPos][j]["IDX"];
-                  if(currPos >= panelArray.length ){
-                    console.log("ANd Here: " + currPos);
-                    currPos = 0;
-                    setTimeout(callback, 1500);
-                    return;
-                  }
-                }
-              }
-            },
+                },
           };
           return actions;
         }

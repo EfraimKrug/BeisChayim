@@ -27,18 +27,22 @@ fi
 if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+    echo config1 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 
 if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo config > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+    echo config2 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
-cat $HOME/$CODE_DIRECTORY/BeisChayim/.run > $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+#
+echo =============================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+cat $HOME/$CODE_DIRECTORY/BeisChayim/.run >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
+#
 [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
 #
 # [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
