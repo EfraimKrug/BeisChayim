@@ -2,8 +2,8 @@
 # note - install python
 # note - install firefox - configure options->download->always ask
 #
-BRANCH_NAME=Screen10.1Touch1.1
-BRANCH_NAME_ZIP=Screen10.1Touch1.1.zip
+BRANCH_NAME=master
+BRANCH_NAME_ZIP=master.zip
 CODE_DIRECTORY=bcCode
 #
 cd $HOME/Downloads
