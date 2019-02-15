@@ -29,7 +29,6 @@ function autoSecClose(){
 	var ks = document.getElementById("keyShow");
 	ks.style.display = 'none';
 	showButtonSec = true;
-	//addBodyListener();
 	hideIt();
 }
 
