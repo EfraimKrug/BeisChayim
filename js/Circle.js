@@ -20,7 +20,7 @@ var timeControl = (function(){
 		},
 		setSideTimer: function(func){
 				//alert("Setting Side Timer");
-				console.log("setting side timer");
+				//console.log("setting side timer");
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
@@ -69,7 +69,7 @@ function timerLoad(lastNum){
 //	}
 
 	if(DISPLAY_SETTING == 1){
-		timeControl.setSideTimer(loadSideBar);
+		timeControl.setSideTimer(sideBarManip.loadSideBar);
 		timeControl.setTimer(function(){
 			renderAll.loadingOneBy(manipulateIDX.getNextIDX());
 			manipulateIDX.incrementIDX();
@@ -78,6 +78,7 @@ function timerLoad(lastNum){
 	}
 
 	if(DISPLAY_SETTING == 2) {
+		timeControl.setSideTimer(sideBarManip.loadSideBar);
 		timeControl.setTimer(function(){
 			renderAll.loadAlternate(rendPlaques);
 		});
@@ -99,7 +100,7 @@ var renderBoth = function(){
 	var actions = {
 		loadAlternate: function(rendP){
 			if(this.isOneBy()){
-				timeControl.setSideTimer(loadSideBar);
+				//timeControl.setSideTimer(sideBarManip.loadSideBar);
 				hideScreen02();
 				this.loadingOneBy(manipulateIDX.getNextIDX());
 				manipulateIDX.incrementIDX();
@@ -108,8 +109,8 @@ var renderBoth = function(){
 				//manipulateIDX.getNextIDX(this.endingCycle);
 			} else {
 				//console.log('plaques');
-				timeControl.clearSideTimer(loadSideBar);
 				hideSideBarArray();
+				console.log("Should not be running side bar!");
 				hideScreen01();
 				hideScreen02();
 				this.loadingPlaques(rendP);
@@ -139,8 +140,14 @@ var renderBoth = function(){
 			manipulateIDX.initIDX();
 			i = -1;
 			if(DISPLAY_SETTING == 2){
-				if(pRun == 2) pRun = 1;
-				else pRun = 2;
+				if(pRun == 2){
+					timeControl.setSideTimer(sideBarManip.loadSideBar);
+					pRun = 1;
+				}
+				else{
+					timeControl.clearSideTimer(sideBarManip.loadSideBar);
+					pRun = 2;
+				}
 			}
 			//console.log("endingCycle: " + pRun);
 		},

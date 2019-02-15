@@ -43,49 +43,10 @@ function getGridColumn(){
 	return col;
 }
 
-var listCounter = 0;
-var slotCounter = 1;
-
-function renderSideBarArray(){
-	MAX_SLOTS = SideBarList.length < MAX_SLOTS ? SideBarList.length : MAX_SLOTS;
-	for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
-		var sbar = document.getElementById("sbar0" + slotCounter);
-		var sect;
-		sbar.className = "sbar";
-		if( !screenHidden ) sbar.style.display = "inline";
-		sbar.style.left = getSideBarLeft() + "px";
-		//sbar.style.left = "1199px";
-		sbar.style.top = getSideBarTop(slotCounter);
-		sbar.className = getBGround(PayLevelList[listCounter]);
-		sbar.style.height = getSideBarHeight();
-		sbar.style.width = getPanelSideBoxWidth() + "px";
-		fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
-		sbar.style.fontSize = fs + "px";
-		sbar.innerHTML = SideBarList[listCounter];
-
-		var pdfSide = null;
-		pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
-
-		if(RunPhaseView()){
-			var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
-			//console.log("========>>>>>>>>>>" + pdfName);
-			if (pdfName.trim() != ""){
-				//console.log("========>>>>>>>>>>" + "adding side bar action");
-				BodyListener.setSideFunction(pdfSide.getNextPDF);
-				BodyListener.addSideListener("side",sbar);
-				//pdfSide.addEvent("side", sbar);
-			}
-			//sbar.setAttribute("onclick", "getPDF(" + YahrzeitListSpotList[listCounter] + ", 1, 'side')" );
-		}
-		listCounter = ListCounterInc(listCounter);
-		slotCounter = SideBarCounterInc(slotCounter);
-	}
-}
-
 //var iTBack = 2;
-function turnBack(){
-	console.log("turning back" + currentIDX);
-	pdfP.getFirstPDF(currentIDX);
+// function __turnBack(){
+// 	console.log("turning back" + currentIDX);
+// 	pdfP.getFirstPDF(currentIDX);
 	// if(getPDF(0, iTBack++, 'side')) return;
 	// pdfView = document.getElementById("pdfView");
 	// pdfImg = document.getElementById("pdfImg");
@@ -95,7 +56,7 @@ function turnBack(){
 	// screenHidden = false;
 	// addBodyListener();
 	// iTBack = 2;
-}
+//}
 
 //****************************************************
 //*	pdfPix is accessed when the element in clicked...
@@ -230,61 +191,37 @@ var pdfPix = function(idx){
 //pdfPx.getFirstPDF(1);
 
 
-var placeClick = "";
-var pdfIDNumber = 1;
+// var placeClick = "";
+// var pdfIDNumber = 1;
 
-function getPDF(num, pdfNum, place){
-	if(pdfNum > 5) return false;
-	if(num == 0){
-		num = pdfIDNumber;
-	} else {
-		pdfIDNumber = num;
-	}
-	placeClick = place;
-	var pdfName = eval("YahrList.Yahrzeits[num-1].PDF0" + pdfNum);
-	//console.log(YahrList.Yahrzeits[num]);
-	if(pdfName !== "" && pdfName){
-		//removeBodyListener();
-		hideSecurity();
-		hideScreen01();
-		hideSideBarArray();
-		pdfView = document.getElementById("pdfView");
-		pdfImg = document.getElementById("pdfImg");
-		//pdfImg.src = "/home/efraiim/code/BeisChayim/img/" + YahrList.Yahrzeits[num].PDF01;
-		//pdfImg.src = "./img/" + YahrList.Yahrzeits[num].PDF01;
-		pdfImg.src = "./pdf/" + pdfName;
-		pdfImg.style.display = "inline";
-		pdfView.style.display = "inline";
-		return true;
-	}
-	pdfIDNumber = 1;
-	return false;
-}
+// function __getPDF(num, pdfNum, place){
+// 	if(pdfNum > 5) return false;
+// 	if(num == 0){
+// 		num = pdfIDNumber;
+// 	} else {
+// 		pdfIDNumber = num;
+// 	}
+// 	placeClick = place;
+// 	var pdfName = eval("YahrList.Yahrzeits[num-1].PDF0" + pdfNum);
+// 	//console.log(YahrList.Yahrzeits[num]);
+// 	if(pdfName !== "" && pdfName){
+// 		//removeBodyListener();
+// 		hideSecurity();
+// 		hideScreen01();
+// 		hideSideBarArray();
+// 		pdfView = document.getElementById("pdfView");
+// 		pdfImg = document.getElementById("pdfImg");
+// 		//pdfImg.src = "/home/efraiim/code/BeisChayim/img/" + YahrList.Yahrzeits[num].PDF01;
+// 		//pdfImg.src = "./img/" + YahrList.Yahrzeits[num].PDF01;
+// 		pdfImg.src = "./pdf/" + pdfName;
+// 		pdfImg.style.display = "inline";
+// 		pdfView.style.display = "inline";
+// 		return true;
+// 	}
+// 	pdfIDNumber = 1;
+// 	return false;
+// }
 
-function loadSideBarArray(i){
-
-	var spot = SideBarList.length; //first empty spot
-	var outLine;
-	var dt;
-
-
-	dt = fixDate(YahrList.Yahrzeits[i].HDate);
-	if(DATES_IN_HEBREW)
-		dt = translateDate(fixDate(YahrList.Yahrzeits[i].HDate));
-
-	outLine = YahrList.Yahrzeits[i].HName + "<br>" + dt;
-
-  if(!YahrList.Yahrzeits[i].HName)
-		outLine = YahrList.Yahrzeits[i].Name + "<br>" + dt;
-
-	for(var j=0; j < spot; j++){
-		if(SideBarList[j] == outLine) return;
-	}
-
-	PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel ? YahrList.Yahrzeits[i].PayLevel : 0;
-	SideBarList[spot] = outLine;
-	YahrzeitListSpotList[spot] = i;
-}
 
 function setCurrentMonth(){
 	var today = new Date();
@@ -300,32 +237,95 @@ function setCurrentMonth(){
 	//console.log("Current Month: " + currentMonth);
 }
 
-function loadSideBar(){
-	//setCurrentMonth();
-	//console.log("in loadSideBar");
-	//var today = new Date();
-	//var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
-	//currentMonth = htoday.month;
-	var htoday = setCurrentMonth();
-	resetSideBar();
-	for(var i = 0; i < YahrList.Yahrzeits.length; i++){
-		var dateHold = fixDate(YahrList.Yahrzeits[i].HDate);
-		if(dateHold.indexOf('Teves') > -1){
-			var start = dateHold.indexOf('Teves');
-			dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
-			//console.log(dateHold);
-		}
+var sideBarManip = function(){
+	var listCounter = 0;
+	var slotCounter = 1;
 
-		if(YahrList.Yahrzeits[i].Name.indexOf("(demo)") > 0){
-			loadSideBarArray(i);
-		} else
-		if(dateHold.indexOf(htoday.month) > -1){
-			dateHold = dateHold.trim();
-			//console.log(dateHold + "::" + htoday.month + "-" + htoday.day);
-			if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
-				loadSideBarArray(i);
-			}
-		}
-	}
-	renderSideBarArray();
-}
+	var actions = {
+							loadSideBar: function(){
+									//console.log("loadSideBar");
+									var htoday = setCurrentMonth();
+									resetSideBar();
+									for(var i = 0; i < YahrList.Yahrzeits.length; i++){
+										var dateHold = fixDate(YahrList.Yahrzeits[i].HDate);
+										if(dateHold.indexOf('Teves') > -1){
+											var start = dateHold.indexOf('Teves');
+											dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
+										}
+
+										if(YahrList.Yahrzeits[i].Name.indexOf("(demo)") > 0){
+											actions.loadSideBarArray(i);
+										} else
+										if(dateHold.indexOf(htoday.month) > -1){
+											dateHold = dateHold.trim();
+											if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
+												actions.loadSideBarArray(i);
+											}
+										}
+									}
+									actions.renderSideBarArray();
+								},
+
+							loadSideBarArray: function(i){
+									//console.log("loadSideBarArray");
+									var spot = SideBarList.length; //first empty spot
+									var outLine;
+									var dt;
+
+
+									dt = fixDate(YahrList.Yahrzeits[i].HDate);
+									if(DATES_IN_HEBREW)
+										dt = translateDate(fixDate(YahrList.Yahrzeits[i].HDate));
+
+									outLine = YahrList.Yahrzeits[i].HName + "<br>" + dt;
+
+								  if(!YahrList.Yahrzeits[i].HName)
+										outLine = YahrList.Yahrzeits[i].Name + "<br>" + dt;
+
+									for(var j=0; j < spot; j++){
+										if(SideBarList[j] == outLine) return;
+									}
+
+									PayLevelList[spot] = YahrList.Yahrzeits[i].PayLevel ? YahrList.Yahrzeits[i].PayLevel : 0;
+									SideBarList[spot] = outLine;
+									YahrzeitListSpotList[spot] = i;
+								},
+
+							renderSideBarArray: function(){
+										//console.log("renderSideBarArray");
+										MAX_SLOTS = SideBarList.length < MAX_SLOTS ? SideBarList.length : MAX_SLOTS;
+										for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
+											var sbar = document.getElementById("sbar0" + slotCounter);
+											this.renderBox(sbar);
+											}
+											listCounter = ListCounterInc(listCounter);
+											slotCounter = SideBarCounterInc(slotCounter);
+									},
+							renderBox: function(sbar){
+										//console.log("renderBox");
+										//var sect;
+										sbar.className = "sbar";
+										//if( !screenHidden ) sbar.style.display = "inline";
+										sbar.style.left = getSideBarLeft() + "px";
+										sbar.style.top = getSideBarTop(slotCounter);
+										sbar.className = getBGround(PayLevelList[listCounter]);
+										sbar.style.height = getSideBarHeight();
+										sbar.style.width = getPanelSideBoxWidth() + "px";
+										var fs = parseInt(getSideBarFont()) + parseInt(PayLevelList[listCounter]);
+										sbar.style.fontSize = fs + "px";
+										sbar.innerHTML = SideBarList[listCounter];
+										sbar.style.display = 'inline';
+										var pdfSide = null;
+										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
+
+										if(RunPhaseView()){
+											var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
+											if (pdfName.trim() != ""){
+												BodyListener.setSideFunction(pdfSide.getNextPDF);
+												BodyListener.addSideListener("side",sbar);
+											}
+										}
+									},
+		};
+		return actions;
+	}();
