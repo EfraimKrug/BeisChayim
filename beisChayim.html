@@ -658,7 +658,7 @@ var _lastI = 0;
 function navUp(name){
 	saveAutoTime();
 	//console.log("navUp: " + _lastI);
-	var ps = 2 * PAGE_SIZE;
+	//var ps = 2 * PAGE_SIZE;
 	_lastI-=ps;
 	if(_lastI < 0) _lastI = 0;
 	//console.log("navUp: (" + name + ")" + _lastI);
@@ -694,7 +694,7 @@ function showNames(name){
 			if((YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0) ||
 					(YahrList.Yahrzeits[i].Name.trim().toLowerCase().substring(YahrList.Yahrzeits[i].Name.trim().indexOf(' ') + 1).indexOf(name.trim().toLowerCase()) == 0)){
 				if(i < _lastI) continue;
-				if(rowCount >= PAGE_SIZE) continue;
+				//if(rowCount >= PAGE_SIZE) continue;
 							var row = tbl.insertRow(0);
 							if(rowFlip){
 								row.className = "rowColor00";
@@ -794,9 +794,21 @@ function setPanel(){
 <!-- select panel ends here -->
 <!-- CONFIG PANEL STARTS HERE -->
 <div id=configPanel>
+  <style>
+    #descr {
+      position: absolute;
+      width: 30%;
+      height: 7%;
+      top: 10px;
+      left: 120px;
+      border: 2px solid red;
+      display: none;
+      color: white;
+    }
+  </style>
   <table id=configTable>
   <tr>
-  		<td></td>
+  		<td id=descr></td>
   		<td></td>
   		<td></td>
 
@@ -805,7 +817,7 @@ function setPanel(){
   	<tr><td>
   <table>
   <tr>
-  	<td class=configLabel>Display</td><td><select id=display_type>
+  	<td class=configLabel onmouseover="getDescr(1);">Display</td><td><select id=display_type>
   														<option value="0">Plaques</option>
   														<option value="1">One by One</option>
   														<option value="2">Alternate</option>
@@ -813,11 +825,11 @@ function setPanel(){
   	</td>
   </tr>
   <tr>
-  	<td class=configLabel>Screen Title</td><td><input type=text id=screen_title></td>
+  	<td class=configLabel  onmouseover="getDescr(2);">Screen Title</td><td><input type=text id=screen_title></td>
   </tr>
 
   <tr>
-  	<td class=configLabel>Time (1-15)</td><td><select id=time_factor>
+  	<td class=configLabel  onmouseover="getDescr(3);">Time (1-15)</td><td><select id=time_factor>
   														<option value="2">2</option>
   														<option value="3">3</option>
   														<option value="4">4</option>
@@ -831,7 +843,7 @@ function setPanel(){
 
   </tr>
   <tr>
-  	<td class=configLabel>Password</td><td><input type=text id=password></td>
+  	<td class=configLabel  onmouseover="getDescr(4);">Password</td><td><input type=text id=password></td>
   </tr>
   <tr>
   	<td></td><td>
@@ -845,7 +857,7 @@ function setPanel(){
   					 <td>
   </tr>
   <tr>
-  	<td class=configLabel>Side Bar Slots (2-12)</td><td><select id=slots>
+  	<td class=configLabel  onmouseover="getDescr(5);">Side Bar Slots (2-12)</td><td><select id=slots>
 
   														<option value="2">2</option>
   														<option value="3">3</option>
@@ -874,7 +886,7 @@ function setPanel(){
   <td>
   	<table>
   		<tr>
-  			<td class=configLabel>Rows (2-4)</td><td><select id=row_count>
+  			<td class=configLabel  onmouseover="getDescr(6);">Rows (2-4)</td><td><select id=row_count>
   																<option value="2">2</option>
   																<option value="3">3</option>
   																<option value="4">4</option>
@@ -891,7 +903,7 @@ function setPanel(){
   		</tr>
 
   		<tr>
-  			<td class=configLabel>Columns (2-4)</td><td><select id=column_count>
+  			<td class=configLabel  onmouseover="getDescr(7);">Columns (2-4)</td><td><select id=column_count>
   																<option value="2">2</option>
   																<option value="3">3</option>
   																<option value="4">4</option>
@@ -911,9 +923,30 @@ function setPanel(){
   </table>
 </div>
 <script>
+function getDescr(num){
+  var descr = document.getElementById("descr");
+  descr.style.display = 'inline';
+    switch(num){
+      case 1: descr.innerHTML = "Choose one of three types of display"; return;
+      case 2: descr.innerHTML = "This title is on the  top left of the display"; return;
+      case 3: descr.innerHTML = "How fast the display pages - in seconds"; return;
+      case 4: descr.innerHTML = "Choose a short security code"; return;
+      case 5: descr.innerHTML = "How many plaques on the right side - reflecting current day"; return;
+      case 6: descr.innerHTML = "How many rows on the plaque display"; return;
+      case 7: descr.innerHTML = "How many columns on the plaque display"; return;
+
+      default: descr.innerHTML = "";
+    }
+}
+
+function resetScreenFromConfig(){
+	screen01 = document.getElementById("body");
+	configPanel = document.getElementById("configPanel");
+	screen01.style.display = "block";
+	configPanel.style.display = "none";
+}
+
 function startConfig(){
-		//var params = buildParamString(YahrList, currentName);
-		//screen01 = document.getElementById("body");
 		configPanel = document.getElementById("configPanel");
 		configPanel.style.display = "block";
 		configPanel.className = "selectPanel";

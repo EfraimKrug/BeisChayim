@@ -52,6 +52,7 @@ function addStuffConfig(){
 	var line = "{" + display_type + "," + time_factor + "," + password + "," + slots + "," + column_count + "," + row_count + "," + screen_title + "," + select_page_size + "}}';";
 
 	download(fline + line, "BCConfig", "text/plain");
+	resetScreenFromConfig();
 }
 
 
