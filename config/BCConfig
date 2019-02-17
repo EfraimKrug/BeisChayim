@@ -1,1 +1,1 @@
-var ConfigList = '{ "settings": {"display_type":"0","time_factor":"3","password":"6","slots":"2","column_count":"2","row_count":"3","screen_title":"New &amp; Different","select_page_size":"10"}}';
+var ConfigList = '{ "settings": {"display_type":"1","time_factor":"4","password":"6","slots":"5","column_count":"5","row_count":"4","screen_title":"New &amp; Very Different"}}';

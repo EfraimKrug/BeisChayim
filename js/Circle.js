@@ -28,7 +28,7 @@ var timeControl = (function(){
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
-				console.log("clearing side timer");
+				//console.log("clearing side timer");
 				clearInterval(SideInterval);
 		}
 	};
@@ -110,7 +110,7 @@ var renderBoth = function(){
 			} else {
 				//console.log('plaques');
 				hideSideBarArray();
-				console.log("Should not be running side bar!");
+				//console.log("Should not be running side bar!");
 				hideScreen01();
 				hideScreen02();
 				this.loadingPlaques(rendP);
@@ -132,6 +132,8 @@ var renderBoth = function(){
 			showScreen01();
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
+				BodyListener.setFirstFunction(SecurityEntry.showSecurity);
+				BodyListener.addBodyListener();
 				loadElement(lastNum);
 			}
 		},

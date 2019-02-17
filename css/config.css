@@ -4,16 +4,27 @@ button {
 	display: inline;
 }
 
-#kboard {
-		width: 375px;
-		height: 375px;
+#security {
+		position: absolute;
+		min-width: 375px;
+		min-height: 40%;
 		background-color: beige;
 		text-align: center;
 		border: 8px solid black;
 		z-index: 30;
 }
 
+#kboard {
+		width: 100%;
+		height: 100%;
+		background-color: beige;
+		text-align: center;
+		z-index: 30;
+}
+
 .kb {
+		width: 33%;
+		height: 25%;
 		padding: 15px;
 		margin: 15px;
 		border: 1px dashed blue;

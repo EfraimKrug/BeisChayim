@@ -4,11 +4,22 @@ CODE_DIRECTORY=bcCode
 # remember - this is running without getting new data
 # from shulcloud...
 ###############################################################################
+# make sure an appropriate time has passed since changes were made
+# if time has passed - we create a .runTime file
+if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name 'runCheck.py' | head -1)" ]
+then
+  python $HOME/$CODE_DIRECTORY/BeisChayim/python/readRunCheck.py
+fi
+#
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
 then
    cp $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
-   mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+   if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/used -name '\$\$BC\$\$*' | head -1)" ]
+   then
+      mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
+   fi
    echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   echo run01 yahrzeits file > $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
    rm $HOME/Downloads/yahrzeits.csv
    #get the shulcloud file cleaned up... and converted to json
    python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
@@ -22,26 +33,32 @@ then
    echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
    echo run02 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
-
+#
 # check/install config file
 if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
     echo config1 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
-
+#
 if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
     echo config2 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
-
+#
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
+[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ] || exit 0
+rm $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
 #
 echo =============================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 cat $HOME/$CODE_DIRECTORY/BeisChayim/.run >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
+#
+cat $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck $HOME/$CODE_DIRECTORY/BeisChayim/runCheck > $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+rm $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 #
 [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
 #

@@ -19,15 +19,15 @@
 
 <div id=body class=bg0>
 <div id=keyShow></div>
-<div id=security>
-								<table id=kboard>
+<div id="security">
+								<table id="kboard">
 									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
 									<tr><link rel="stylesheet" href="./css/panel.css"><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
 									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
 									<tr><td class=kb onclick="kbclick('clear');"><=</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('Enter');">Enter</td></tr>
 								</table>
 </div>
-<div id=spanTitle><h1 id=sTitle onclick="showSecurity();">Beis Chayim</h1></span>
+<div id=spanTitle><h1 id=sTitle>Beis Chayim</h1></span>
 <table id=accessMenu>
 	<tr><td>
 </td>
@@ -91,26 +91,29 @@
 
 
 <script>
-hideIt();
-hideSecurity();
+//hideIt();
+//hideSecurity();
+SecurityEntry.hideAll();
+
 var sTitle = document.getElementById("sTitle");
 sTitle.innerHTML = SCREEN_TITLE;
 
-function initKeys(){
-	passkey = "";
-	pkLetterCount = 0;
-}
+// function initKeys(){
+// 	passkey = "";
+// 	pkLetterCount = 0;
+// }
 
-function checkIt(){
-	//console.log("checkIt: " + passkey);
-		if(passkey == PASSWORD){
-			showIt();
-			passkey = "";
-			pkLetterCount = 0;
-		} else {
-			hideIt();
-		}
-}
+// function checkIt(){
+//     console.log("NONONONONO");
+// 		if(SecurityEntry.getPasskey() == PASSWORD){
+//       console.log("checkIt: " + SecurityEntry.getPasskey());
+// 			SecurityEntry.showAll();
+//       SecurityEntry.hideSecurity();
+//       SecurityEntry.initKeys();
+// 		} else {
+// 			SecurityEntry.hideAll();
+// 		}
+// }
 
 function doAction(){
 	saveAutoTime();
@@ -149,32 +152,33 @@ function startSelect(){
 // 	hideIt();
 // }
 
-var pkLetterCount = 0;
-var passkey = "";
+// var pkLetterCount = 0;
+// var passkey = "";
 
 function kbclick(ky){
-	if(RunPhaseView()){
-		return;
-	}
-	saveAutoTime();
-	ks = document.getElementById("keyShow");
-	ks.style.display = 'inline';
-	if (ky == 'Enter'){
-		checkIt();
-		passkey = "";
-		pkLetterCount = 0;
-		ks.innerHTML = "";
-		ks.style.display = "hidden";
-		return;
-	}
-	if (ky == 'clear'){
-		pkLetterCount--;
-		passkey = passkey.substring(0,pkLetterCount);
-	} else {
-		pkLetterCount++;
-		passkey += ky;
-	}
-	ks.innerHTML = passkey;
+  SecurityEntry.kbclick(ky);
+	// if(RunPhaseView()){
+	// 	return;
+	// }
+	// saveAutoTime();
+	// ks = document.getElementById("keyShow");
+	// ks.style.display = 'inline';
+	// if (ky == 'Enter'){
+	// 	checkIt();
+	// 	passkey = "";
+	// 	pkLetterCount = 0;
+	// 	ks.innerHTML = "";
+	// 	ks.style.display = "hidden";
+	// 	return;
+	// }
+	// if (ky == 'clear'){
+	// 	pkLetterCount--;
+	// 	passkey = passkey.substring(0,pkLetterCount);
+	// } else {
+	// 	pkLetterCount++;
+	// 	passkey += ky;
+	// }
+	// ks.innerHTML = passkey;
 }
 
 </script>
@@ -872,6 +876,7 @@ function setPanel(){
   														<option value="12">12</option>
   		</td>
   </tr>
+  <!--
   <tr>
   	<td class=configLabel>Select Page Size</td><td><select id=select_page_size>
   														<option value="5">5</option>
@@ -880,7 +885,7 @@ function setPanel(){
   														<option value="20">20</option>
   		</td>
   </tr>
-
+-->
   </table>
   </td>
   <td>
@@ -934,7 +939,6 @@ function getDescr(num){
       case 5: descr.innerHTML = "How many plaques on the right side - reflecting current day"; return;
       case 6: descr.innerHTML = "How many rows on the plaque display"; return;
       case 7: descr.innerHTML = "How many columns on the plaque display"; return;
-
       default: descr.innerHTML = "";
     }
 }
