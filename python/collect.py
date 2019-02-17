@@ -7,8 +7,8 @@ newidxs = []
 countNew = 0
 countOld = 0
 
-masterfile = 'X@~@~@X/BeisChayim/data/out02'
-path = 'X@~@~@X/BeisChayim/data/'
+masterfile = '/home/efraiim/code/BeisChayim/data/out02'
+path = '/home/efraiim/code/BeisChayim/data/'
 
 for filename in os.listdir(path):
     # new files - numbers start with 'New'

@@ -4,23 +4,80 @@ button {
 	display: inline;
 }
 
-#kboard {
-		width: 375px;
-		height: 375px;
+#security {
+		position: absolute;
+		left: 120px;
+		top: 120px;
+		height: 522px;
+		width: 522px;
 		background-color: beige;
 		text-align: center;
-		border: 8px solid black;
+		border: 8px outset black;
 		z-index: 30;
 }
 
+#kboard {
+		position:absolute;
+		left: 0px;
+		top: 0px;
+		height: 522px;
+		width: 522px;
+		background-color: green;
+		text-align: center;
+		border: 4px solid red;
+		z-index: 30;
+}
+
+#kboard2 {
+		position:relative;
+		height: 222px;
+		width: 222px;
+		background-color: green;
+		text-align: center;
+		border: 4px solid red;
+		z-index: 30;
+}
+
+/* #security #kboard tr {
+}
+
+.kbtr {
+	position: relative;
+	min-height: 50%;
+	border: 2px solid red;
+} */
+
 .kb {
+		position: absolute;
+		left: 1px;
+		top: 1px;
+		height: 83px;
+		width: 129px;
 		padding: 15px;
-		margin: 15px;
-		border: 1px dashed blue;
 		font-size: 14;
 		font-weight: bold;
+		border: 2px outset black;
 		z-index: 30;
-		min-width: 125px;
+}
+
+.kb2,.kb5,.kb8,.kb0 {
+		left: 174px;
+}
+
+.kb3,.kb6,.kb9,.kbE {
+		left: 348px;
+}
+
+.kb4,.kb5,.kb6 {
+		top: 133px;
+}
+
+.kb7,.kb8,.kb9 {
+		top: 266px;
+}
+
+.kbC,.kb0,.kbE {
+		top: 399px;
 }
 
 #keyShow {
@@ -33,4 +90,16 @@ button {
 	height: 39px;
 	border: 2px solid black;
 	background-color: blue;
+}
+
+#descr {
+	position: absolute;
+	width: 30%;
+	height: 18%;
+	padding: 3px;
+	top: 10px;
+	left: 120px;
+	border: 2px solid red;
+	display: none;
+	color: white;
 }

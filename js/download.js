@@ -95,6 +95,7 @@ function createNewID(){
 
 
 function addStuff(ID, edit, callback){
+	console.log("addStuff");
 	var id = "\"ID\":\"" + ID + "\"";
 	if(!edit){
 		ID = createNewID();
@@ -207,6 +208,7 @@ function addStuff(ID, edit, callback){
 	} else {
 		download(line, escapeHTML("$$BC$$" + ID), "text/plain");
 	}
+	console.log("Callback next");
 	callback();
 }
 // Function to download data to a file

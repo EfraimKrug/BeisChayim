@@ -8,25 +8,41 @@
 <link rel="stylesheet" href="./css/editWindow.css">
 <link rel="stylesheet" href="./css/newWindow.css">
 <link rel="stylesheet" href="./css/selectWindow.css">
+<link rel="stylesheet" href="./css/configWindow.css">
 
 <title>Beis Chayim</title>
 
 </head>
 <body  id=appBody onload="setupTimerLoad();">
- <!-- <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src="" onclick="turnBack();"></div> -->
- <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src=""></div>
+<div id="pdfView" height="100%" width="100%"><img id="pdfImg" src=""></div>
 
 <div id=body class=bg0>
 <div id=keyShow></div>
-<div id=security>
-								<table id=kboard>
-									<tr><td class=kb onclick="kbclick('1');">1</td><td class=kb onclick="kbclick('2');">2</td><td class=kb onclick="kbclick('3');">3</td></tr>
-									<tr><link rel="stylesheet" href="./css/panel.css"><td class=kb onclick="kbclick('4');">4</td><td class=kb onclick="kbclick('5');">5</td><td class=kb onclick="kbclick('6');">6</td></tr>
-									<tr><td class=kb onclick="kbclick('8');">7</td><td class=kb onclick="kbclick('8');">8</td><td class=kb onclick="kbclick('9');">9</td></tr>
-									<tr><td class=kb onclick="kbclick('clear');"><=</td><td class=kb onclick="kbclick('0');">0</td><td class=kb onclick="kbclick('Enter');">Enter</td></tr>
-								</table>
+<div id="security">
+								<table id="kboard">
+									<tr class=kbtr>
+                    <td class="kb1 kb" onclick="kbclick('1');">1</td>
+                    <td class="kb2 kb" onclick="kbclick('2');">2</td>
+                    <td class="kb3 kb" onclick="kbclick('3');">3</td>
+                  </tr>
+									<tr class=kbtr>
+                    <td class="kb4 kb" onclick="kbclick('4');">4</td>
+                    <td class="kb5 kb" onclick="kbclick('5');">5</td>
+                    <td class="kb6 kb" onclick="kbclick('6');">6</td>
+                  </tr>
+									<tr class=kbtr>
+                    <td class="kb7 kb" onclick="kbclick('8');">7</td>
+                    <td class="kb8 kb" onclick="kbclick('8');">8</td>
+                    <td class="kb9 kb" onclick="kbclick('9');">9</td>
+                  </tr>
+									<tr class=kbtr>
+                    <td class="kbC kb" onclick="kbclick('clear');"><=</td>
+                    <td class="kb0 kb" onclick="kbclick('0');">0</td>
+                    <td class="kbE kb" onclick="kbclick('Enter');">Enter</td>
+                  </tr>
+              </table>
 </div>
-<div id=spanTitle><h1 id=sTitle onclick="showSecurity();" _onclick="doSelect();">Beis Chayim</h1></span>
+<div id=spanTitle><h1 id=sTitle>Beis Chayim</h1></div>
 <table id=accessMenu>
 	<tr><td>
 </td>
@@ -49,7 +65,6 @@
 	<div id=DPic01><img id=Pic01 src="./img/soldiers00x1.jpeg" alt=""></div>
 	<div id=DPic02><img id=Pic02 src="./img/elderly00x1.jpeg" alt=""></div>
 	<div id=Comments01></div>
-	<!-- <div id=fbook><img id=gotofbook onclick="gotoFBook();" src="./img/facebook2.png" alt=""></div> -->
 	<div id=sbar01></div>
 	<div id=sbar02></div>
 	<div id=sbar03></div>
@@ -67,7 +82,6 @@
 	<div id=sbar015></div>
 	<div id=sbar016></div>
 
-<!-- <div id=test onclick="check();">click here</div> -->
 
 </div>
 <script src="config/RunPhase"></script>
@@ -90,26 +104,10 @@
 
 
 <script>
-hideIt();
-hideSecurity();
+SecurityEntry.hideAll();
+
 var sTitle = document.getElementById("sTitle");
 sTitle.innerHTML = SCREEN_TITLE;
-
-function initKeys(){
-	passkey = "";
-	pkLetterCount = 0;
-}
-
-function checkIt(){
-	//console.log("checkIt: " + passkey);
-		if(passkey == PASSWORD){
-			showIt();
-			passkey = "";
-			pkLetterCount = 0;
-		} else {
-			hideIt();
-		}
-}
 
 function doAction(){
 	saveAutoTime();
@@ -120,60 +118,11 @@ function doAction(){
 	if(action.value == "config") startConfig();
 
 	action.value = "";
-
-	//action.style.display = 'none';
 }
 
-function startNew(){
-	window.open("NewPerson.html",'_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
-	hideIt();
-}
-
-function startSelect(){
-	window.open("Select.html",'_blank','scrollbars=1,toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
-	hideIt();
-}
-
-//note: currentName is actually the index
-//function startEdit(){
-	//var params = buildParamString(YahrList, currentName);
-	//window.open("EditPerson.html?" + params, '_blank','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0,directories=0, width=750px,height=750px');
-	//hideIt();
-//}
-
-function startConfig(){
-	window.open("EditConfig.html", '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
-	SCREEN_UP = true;
-
-	hideIt();
-}
-
-var pkLetterCount = 0;
-var passkey = "";
 
 function kbclick(ky){
-	if(RunPhaseView()){
-		return;
-	}
-	saveAutoTime();
-	ks = document.getElementById("keyShow");
-	ks.style.display = 'inline';
-	if (ky == 'Enter'){
-		checkIt();
-		passkey = "";
-		pkLetterCount = 0;
-		ks.innerHTML = "";
-		ks.style.display = "hidden";
-		return;
-	}
-	if (ky == 'clear'){
-		pkLetterCount--;
-		passkey = passkey.substring(0,pkLetterCount);
-	} else {
-		pkLetterCount++;
-		passkey += ky;
-	}
-	ks.innerHTML = passkey;
+  SecurityEntry.kbclick(ky);
 }
 
 </script>
@@ -354,85 +303,34 @@ function kbclick(ky){
 </tr>
 </table>
 
-<!-- ----------------------------------------------
-<div id=editPanel>
-<div id=ID></div>
-<table id=editTable>
-	<tr>
-		<td>Name</td><td><input type=text id=editName></td><td><button onclick=goBack('editPanel');>Click to return</span></td>
-	</tr>
-	<tr>
-		<td>Hebrew Name</td><td><input type=text id=editHName></td>
-	</tr>
-		<tr>
-			<td>English Date</td><td><input type=text id=editEDate></td>
-		</tr>
-		<tr>
-			<td>Hebrew Date</td><td><input type=text id=editHDate></td>
-		</tr>
-		<tr>
-				<td>Picture #1</td><td><span class=fname id=editPic01 ></span><input id="editFilename1" type="file" onblur="keepFileName(1);"/></td>
-		</tr>
-		<tr>
-		    <td>Picture #2</td><td><span class=fname id=editPic02></span><input id="editFilename2" type="file" onblur="keepFileName(2);"/></td>
-		</tr>
-		<tr>
-		  <td>Mourned by</td><td><input type=text id=editMournby></td>
-		</tr>
-		<tr>
-		  <td>Relationship</td><td><input type=text id=editRelationship></td>
-		</tr>
-		<tr>
-		  <td>Pay Level</td><td><select id=editPaylevel onchange="setPayLevel();">
-																													<option value="0">none</option>
-																													<option value="1">copper</option>
-																													<option value="2">bronze</option>
-																													<option value="3">silver</option>
-																													<option value="4">gold</option>
-																												</select>
-			</td>
-		</tr>
-
-		<tr>
-		    <td>Comments</td><td><textarea rows=5 cols=75 id=editComments01></textarea></td>
-		</tr>
-		<tr>
-			<td></td><td><button id=submit onclick=editAddStuff();>Submit</button></td>
-		</tr>
-		</table>
-</table>
------------------------ -->
+<!-- --------------------------------------------------------------------- -->
 	<script>
 	function setPayLevel(){
 
 	}
 
 	function goBack(oldPanel){
-		resetScreen(oldPanel);
-		//addBodyListener();
+    ScreenWeaver.goBack(oldPanel);
 	}
 
-	function resetScreen(oldPanel){
-		screen01 = document.getElementById("body");
-		oldPanel = document.getElementById(oldPanel);
-		SCREEN_UP = false;
-
-		screen01.style.display = "block";
-		oldPanel.style.display = "none";
-	}
+  function addStuffFromEdit(){
+    ScreenWeaver.resetScreen("editPanel");
+  }
 
 	function editAddStuff(){
-			//alert(YahrList.Yahrzeits[currentIDX].Name);
-			//alert("B" + document.getElementById("editFilename1").value);
-			addStuff(document.getElementById("ID").innerHTML, 1, resetScreen);
+      console.log("editAddStuff");
+      ScreenWeaver.setOther("editPanel");
+			addStuff(document.getElementById("ID").innerHTML, 1, addStuffFromEdit);
 	}
 
 	function doEdit(id){
-			//var params = buildParamString(YahrList, currentName);
+      console.log("doEdit");
 			if(id !== undefined) currentIDX = id;
-			//console.log(YahrList.Yahrzeits[currentIDX].Name);
+      console.log("again...");
 			var params = buildParamString(YahrList, currentIDX);
 			screen01 = document.getElementById("body");
+      screen01.style.display = 'none';
+
 			editPanel = document.getElementById("editPanel");
 			editPanel.style.zIndex = 20;
 			editPanel.style.display = "block";
@@ -442,14 +340,15 @@ function kbclick(ky){
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
-			//console.log(queryDict);
-			SCREEN_UP = true;
+      SecurityEntry.hideAll();
+      SecurityEntry.setSelectScreen(false);
+      SecurityEntry.setEditScreen(true);
 
-			hideIt();
 			loadEdit(queryDict);
 	}
 
 	function loadEdit(queryDict){
+      console.log("loadEdit");
 			var ID = queryDict["ID"];
 			//removeBodyListener();
 			autoProcess = false;
@@ -550,32 +449,35 @@ function kbclick(ky){
 <script>
 
 function resetScreenFromNew(){
-	screen01 = document.getElementById("body");
-	newPanel = document.getElementById("newPanel");
-	screen01.style.display = "block";
-	newPanel.style.display = "none";
+  ScreenWeaver.resetScreen("newPanel");
 }
 
 function newAddStuff(){
+    console.log("newAddStuff");
+    ScreenWeaver.setOther("newPanel");
+    //ScreenWeaver.resetScreen();
+
 		addStuff(0, 0, resetScreenFromNew);
 }
 
 function doNew(){
-		//var params = buildParamString(YahrList, currentName);
-		//screen01 = document.getElementById("body");
+    screen01 = document.getElementById("body");
+  	screen01.style.display = "none";
+
 		newPanel = document.getElementById("newPanel");
-		//screen01.style.display = "none";
 		newPanel.style.zIndex = 20;
 		newPanel.style.display = "inline";
 		newPanel.className = "newPanel";
-		hideIt();
-		SCREEN_UP = true;
+
+		SecurityEntry.hideAll();
+    SecurityEntry.setNewScreen(true);
 
 		loadNew();
 }
 
 function loadNew(){
 		//removeBodyListener();
+    console.log("loading new panel");
 		autoProcess = false;
 		document.getElementById("ID").innerHTML = "";
 		document.getElementById("newName").value = "";
@@ -659,17 +561,20 @@ var searchString = '';
 var currentIDX;
 //YahrList.Yahrzeits.reverse();
 function doSelect(){
-		//var params = buildParamString(YahrList, currentName);
-		//screen01 = document.getElementById("body");
+    screen01 = document.getElementById("body");
+    screen01.style.display = "none";
+
 		selectPanel = document.getElementById("selectPanel");
 		var sbar = document.getElementById("searchBar");
 		//screen01.style.display = "none";
 		selectPanel.style.display = "block";
 		selectPanel.className = "selectPanel";
 		selectPanel.style.zIndex = 20;
+
+    SecurityEntry.hideAll();
+    SecurityEntry.setSelectScreen(true);
+
 		reset();
-		hideIt();
-		SCREEN_UP = true;
 }
 
 function reset(){
@@ -703,27 +608,18 @@ var _lastI = 0;
 
 function navUp(name){
 	saveAutoTime();
-	//console.log("navUp: " + _lastI);
-	var ps = 2 * PAGE_SIZE;
 	_lastI-=ps;
 	if(_lastI < 0) _lastI = 0;
-	//console.log("navUp: (" + name + ")" + _lastI);
 	showNames(name);
-	//alert("Up");
 }
 
 function navDown(name){
 	saveAutoTime();
-	//console.log("navDown: " + _lastI);
-	//_lastI+=PAGE_SIZE;
 	if(_lastI < 0) _lastI = 0;
-	//console.log("navDown: (" + name + ")" + _lastI);
 	showNames(name);
-	//alert("Down");
 }
 
 function clearTable(tbl){
-		//console.log("clearTable: " + _lastI);
 		var rCount = tbl.rows.length;
 		for (i=0; i < rCount; i++){
 			tbl.deleteRow(0);
@@ -740,7 +636,7 @@ function showNames(name){
 			if((YahrList.Yahrzeits[i].Name.trim().toLowerCase().indexOf(name.trim().toLowerCase()) == 0) ||
 					(YahrList.Yahrzeits[i].Name.trim().toLowerCase().substring(YahrList.Yahrzeits[i].Name.trim().indexOf(' ') + 1).indexOf(name.trim().toLowerCase()) == 0)){
 				if(i < _lastI) continue;
-				if(rowCount >= PAGE_SIZE) continue;
+				//if(rowCount >= PAGE_SIZE) continue;
 							var row = tbl.insertRow(0);
 							if(rowFlip){
 								row.className = "rowColor00";
@@ -764,7 +660,6 @@ function showNames(name){
 							cell1.innerHTML = "<span onclick='choose(" + i + ")'>" + nm + "</span>";
 							cell1.className = "cell";
 							_lastI = i;
-							//console.log("Updated _lastI: " + _lastI);
 							rowCount++;
 				}
 			}
@@ -772,9 +667,6 @@ function showNames(name){
 
 function clickEdit(){
 	doEdit();
-	// var params = buildParamString(YahrList, currentIDX);
-	// window.open("EditPerson.html?" + params, '_blank','toolbar=no,location=no,status=no,menubar=no,width=750px,height=750px');
-	//
 	var choice = document.getElementById("choice");
 	choice.style.display = "none";
 	selectPanel = document.getElementById("selectPanel");
@@ -783,13 +675,8 @@ function clickEdit(){
 }
 
 function choose(id){
-	//var choice = document.getElementById("choice");
-	//choice.style.display = "inline";
-	//console.log(YahrList.Yahrzeits[id].Name);
-	//var editChoice = document.getElementById("editChoice");
 	currentIDX = id;
-	//var choice = document.getElementById("choice");
-	//choice.style.display = "none";
+
 	selectPanel = document.getElementById("selectPanel");
 	selectPanel.style.display = "none";
 	doEdit(currentIDX);
@@ -807,36 +694,167 @@ function setPanel(){
 	pbarH08.style.border = "2px solid black";
 	pbarH08.innerHTML = "this is the town and these are the people";
 	pbarH08.style.fontSize = getLargeFont();
-	//for(var i=1; i < 8; i++){
-		pbarH08.style.top = getTopOffset(3,1);
-		pbarH08.style.left = getLeft(5);
-	//	alert("left=1");
-	//}
+	pbarH08.style.top = getTopOffset(3,1);
+	pbarH08.style.left = getLeft(5);
 	var pbarH07 = document.getElementById("pbarH07");
   pbarH07.style.display = "inline";
   pbarH07.className = "pbarpl3";
 	pbarH07.style.position = "absolute";
-	//pbarH08.style.height = getTwoRowHeight();
+
 	pbarH07.style.height = getHBiteSize() + "px";
 	pbarH07.style.zIndex = 99;
 	pbarH07.style.width = getWSquareSize() + "px";
 	pbarH07.style.border = "2px solid black";
 	pbarH07.innerHTML = "this is the town and these are the people this is the town and these are the people";
 	pbarH07.style.fontSize = getLargeFont() + "px";
-	//for(var i=1; i < 8; i++){
-		pbarH07.style.top = getTopOffset(3,0);
-		pbarH07.style.left = getLeft(5);
-		//alert(pbarH07.style.fontSize);
-	//	alert("left=1");
-	//}
 
+	pbarH07.style.top = getTopOffset(3,0);
+	pbarH07.style.left = getLeft(5);
 }
-//setPanel();
 
 </script>
 </div>
 
 
 <!-- select panel ends here -->
+<!-- CONFIG PANEL STARTS HERE -->
+<div id=configPanel>
+  <table id=configTable>
+  <tr>
+  		<td id=descr></td>
+  		<td></td>
+  		<td></td>
+
+  		<td><button onclick=goBack('configPanel');>Return</span></td>
+  </tr>
+  	<tr><td>
+  <table>
+  <tr>
+  	<td class=configLabel onmouseover="getDescr(1);">Display</td><td><select id=display_type>
+  														<option value="0">Plaques</option>
+  														<option value="1">One by One</option>
+  														<option value="2">Alternate</option>
+  													</select>
+  	</td>
+  </tr>
+  <tr>
+  	<td class=configLabel  onmouseover="getDescr(2);">Screen Title</td><td><input type=text id=screen_title></td>
+  </tr>
+
+  <tr>
+  	<td class=configLabel  onmouseover="getDescr(3);">Time (1-15)</td><td><select id=time_factor>
+  														<option value="2">2</option>
+  														<option value="3">3</option>
+  														<option value="4">4</option>
+  														<option value="5">5</option>
+  														<option value="10">10</option>
+  														<option value="15">15</option>
+  														<option value="20">20</option>
+  														<option value="60">60</option>
+  													</select>
+  		</td>
+
+  </tr>
+  <tr>
+  	<td class=configLabel  onmouseover="getDescr(4);">Password</td><td><input type=text id=password></td>
+  </tr>
+  <tr>
+  	<td>
+    </td>
+  </tr>
+  <tr>
+  	<td class=configLabel  onmouseover="getDescr(5);">Side Bar Slots (2-12)</td><td><select id=slots>
+
+  														<option value="2">2</option>
+  														<option value="3">3</option>
+  														<option value="4">4</option>
+  														<option value="5">5</option>
+  														<option value="6">6</option>
+  														<option value="7">7</option>
+  														<option value="8">8</option>
+  														<option value="9">9</option>
+  														<option value="10">10</option>
+  														<option value="11">11</option>
+  														<option value="12">12</option>
+  		</td>
+  </tr>
+  </table>
+  </td>
+  <td>
+  	<table>
+  		<tr>
+  			<td class=configLabel  onmouseover="getDescr(6);">Rows (2-4)</td><td><select id=row_count>
+  																<option value="2">2</option>
+  																<option value="3">3</option>
+  																<option value="4">4</option>
+  																<option value="5">5</option>
+  																<option value="6">6</option>
+  																<option value="7">7</option>
+  																<option value="8">8</option>
+  																<option value="9">9</option>
+  																<option value="10">10</option>
+  																<option value="11">11</option>
+
+  				</td>
+
+  		</tr>
+
+  		<tr>
+  			<td class=configLabel  onmouseover="getDescr(7);">Columns (2-4)</td><td><select id=column_count>
+  																<option value="2">2</option>
+  																<option value="3">3</option>
+  																<option value="4">4</option>
+  																<option value="5">5</option>
+  																<option value="6">6</option>
+  																<option value="7">7</option>
+
+  				</td>
+
+  		</tr>
+  		<tr>
+  			<td></td><td><button id=submit onclick=addStuffConfig();>Submit</button></td>
+  		</tr>
+  	</table>
+  </td>
+  </tr>
+  </table>
+</div>
+<script>
+function getDescr(num){
+  var descr = document.getElementById("descr");
+  descr.style.display = 'inline';
+    switch(num){
+      case 1: descr.innerHTML = "Choose one of three types of display"; return;
+      case 2: descr.innerHTML = "This title is on the  top left of the display"; return;
+      case 3: descr.innerHTML = "How fast the display pages - in seconds"; return;
+      case 4: descr.innerHTML = "Choose a short security code"; return;
+      case 5: descr.innerHTML = "How many plaques on the right side - reflecting current day"; return;
+      case 6: descr.innerHTML = "How many rows on the plaque display"; return;
+      case 7: descr.innerHTML = "How many columns on the plaque display"; return;
+      default: descr.innerHTML = "";
+    }
+}
+
+function resetScreenFromConfig(){
+  ScreenWeaver.resetScreen("configPanel");
+}
+
+function startConfig(){
+    screen01 = document.getElementById("body");
+    screen01.style.display = 'none';
+
+		configPanel = document.getElementById("configPanel");
+		configPanel.style.display = "block";
+		configPanel.className = "configPanel";
+		configPanel.style.zIndex = 20;
+    initConfigScreen();
+
+    SecurityEntry.hideAll();
+    SecurityEntry.setConfigScreen(true);
+}
+
+</script>
+<!-- CONFIG PANEL ENDS HERE -->
+
 </body>
 </html>

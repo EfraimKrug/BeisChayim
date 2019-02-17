@@ -376,17 +376,3 @@ h1 {
 	font-size: 34px;
 	font-weight: bold;
 }
-
-#kboard{
-	z-index:30;
-}
-
-#test {
-	position: absolute;
-	left: 550px;
-	top: 700px;
-	z-index:30;
-	width: 15px;
-	height: 15px;
-	background-color: red;
-}
