@@ -20,7 +20,6 @@ then
    fi
    echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
    echo run01 yahrzeits file > $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
-   rm $HOME/Downloads/yahrzeits.csv
    #get the shulcloud file cleaned up... and converted to json
    python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
    python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsond.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
@@ -29,38 +28,43 @@ fi
 if [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ]
 then
    cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-   echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   #echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.run
    echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
-   echo run02 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   echo $$BC$$ file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 #
 # check/install config file
 if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo config1 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+    echo BCConfig.txt file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 #
 if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
 then
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo config2 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+    echo BCConfig file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 #
+if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ]
+then
+    echo =============================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+    echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+    cat $HOME/$CODE_DIRECTORY/BeisChayim/.run >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
+fi
+
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ] || exit 0
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
 #
-echo =============================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-cat $HOME/$CODE_DIRECTORY/BeisChayim/.run >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
 #
 cat $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck $HOME/$CODE_DIRECTORY/BeisChayim/runCheck > $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
 rm $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 #
 [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && rm $HOME/Downloads/yahrzeits.csv
 #
 # [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
 # [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig

@@ -7,13 +7,13 @@ import time
 # meanwhile, if 30 minutes has passed, BChCycle01 moves the
 # runCheck to .runCheck
 ####################################################################
-runCheckFile = '/home/efraiim/code/BeisChayim/runCheck'
-outCheckFile = '/home/efraiim/code/BeisChayim/.runTime'
+runCheckFile = 'X@~@~@X/BeisChayim/runCheck'
+outCheckFile = 'X@~@~@X/BeisChayim/.runTime'
 
 #runCheckFile = '../runCheck'
 #outCheckFile = '../.runTime'
 
-WAIT_TIME = 3 * 60
+WAIT_TIME = 2 * 60
 
 tm = str(time.time())
 tm = tm[0:tm.find('.')]
@@ -23,7 +23,7 @@ with open(runCheckFile) as fl:
         if "TIME:" in line:
             tm2 = line[line.find(':')+2:]
             tmdiff = int(tm) - int(tm2)
-
+print ("Waited for: " + str(tmdiff))
 if tmdiff > WAIT_TIME:
     f = open(outCheckFile, "w")
     f.write(str(WAIT_TIME/60) + " minutes have passed.")

@@ -18,7 +18,7 @@ def getLine(line):
     return newLine
 
 
-with open ("/home/efraiim/code/BeisChayim/js/db01.js", "r") as JSONfile:
+with open ("X@~@~@X/BeisChayim/js/db01.js", "r") as JSONfile:
     fd = open("nYahrzeits.csv", "w")
     fd.write(getHeaders())
     for line in JSONfile:
