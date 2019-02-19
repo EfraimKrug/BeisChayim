@@ -1,4 +1,4 @@
-CODE_DIRECTORY=Ccode
+CODE_DIRECTORY=bcCode
 CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CycleLog
 ###########################################################################################
 ## process the yahrzeits.csv file if it is there...
