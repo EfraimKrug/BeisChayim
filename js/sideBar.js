@@ -1,5 +1,6 @@
 var offset = 0;
 var FONT_SIZE = "14";
+var HIDE_SIDE_BAR = false;
 
 function resetSideBar(){
 		SideBarList = [];
@@ -28,13 +29,19 @@ function getBGround(pl){
 	return "sbarpl" + pl;
 }
 
+
 function hideSideBarArray(){
+	HIDE_SIDE_BAR = true;
 	var slotCounter = 1;
 
 	for (var i=1; i < 17 ; i++){
 		var sbar = document.getElementById("sbar0" + i);
 		sbar.style.display = "none";
 	}
+}
+
+function showSideBarArray(){
+	HIDE_SIDE_BAR = false;
 }
 
 function getGridColumn(){
@@ -112,7 +119,6 @@ var pdfPix = function(idx){
 			},
 			setName: function(){
 				if(this.noPicture()){
-					console.log("clearing");
 					this.clearName();
 				} else {
 					pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
@@ -127,8 +133,6 @@ var pdfPix = function(idx){
 			noPicture: function(){
 				if(currentIDX > YahrList.Yahrzeits.length - 1) return true;
 				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
-				//console.log(eval("YahrList.Yahrzeits[" + currentIDX + "].ID"));
-				//console.log(pdfName + ":" + pdfCurrency);
 				if(pdfName.trim() == ""){
 					return true;
 				}
@@ -143,25 +147,23 @@ var pdfPix = function(idx){
 function setCurrentMonth(){
 	var today = new Date();
 	var htoday = G2H(today.getFullYear(), today.getMonth() + 1, today.getDate(), false);
-	//console.log("Setting currentMonth: " + typeof(htoday.month));
-	//var m = toString(htoday.month);
 	if(htoday.month.indexOf("Adar A") > -1){
 		currentMonth = "Adar";
 	} else {
 		currentMonth = htoday.month;
 	}
 	return htoday;
-	//console.log("Current Month: " + currentMonth);
 }
 
 var sideBarManip = function(){
 	var listCounter = 0;
 	var slotCounter = 1;
+	var rb = new renderBoth();
 
 	var actions = {
 							loadSideBar: function(){
-									//console.log("loadSideBar");
 									var htoday = setCurrentMonth();
+
 									resetSideBar();
 									for(var i = 0; i < YahrList.Yahrzeits.length; i++){
 										var dateHold = fixDate(YahrList.Yahrzeits[i].HDate);
@@ -169,22 +171,30 @@ var sideBarManip = function(){
 											var start = dateHold.indexOf('Teves');
 											dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
 										}
+										if(dateHold.indexOf('Adar') > -1){
+											if(currentMonth == 'Adar'){
+												if(dateHold.indexOf('II') < 0){
+													if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
+														sideBarManip.loadSideBarArray(i);
+													}
+												}
+											}
+										}
 
 										if(YahrList.Yahrzeits[i].Name.indexOf("(demo)") > 0){
-											actions.loadSideBarArray(i);
+											sideBarManip.loadSideBarArray(i);
 										} else
 										if(dateHold.indexOf(htoday.month) > -1){
 											dateHold = dateHold.trim();
 											if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
-												actions.loadSideBarArray(i);
+												sideBarManip.loadSideBarArray(i);
 											}
 										}
 									}
-									actions.renderSideBarArray();
+									sideBarManip.renderSideBarArray();
 								},
 
 							loadSideBarArray: function(i){
-									//console.log("loadSideBarArray");
 									var spot = SideBarList.length; //first empty spot
 									var outLine;
 									var dt;
@@ -209,7 +219,6 @@ var sideBarManip = function(){
 								},
 
 							renderSideBarArray: function(){
-										//console.log("renderSideBarArray");
 										MAX_SLOTS = SideBarList.length < MAX_SLOTS ? SideBarList.length : MAX_SLOTS;
 										for (var i=0; (i < MAX_SLOTS) && (i < SideBarList.length); i++){
 											var sbar = document.getElementById("sbar0" + slotCounter);
@@ -219,10 +228,10 @@ var sideBarManip = function(){
 											slotCounter = SideBarCounterInc(slotCounter);
 									},
 							renderBox: function(sbar){
-										//console.log("renderBox");
-										//var sect;
+										if(HIDE_SIDE_BAR){
+											return;
+										}
 										sbar.className = "sbar";
-										//if( !screenHidden ) sbar.style.display = "inline";
 										sbar.style.left = getSideBarLeft() + "px";
 										sbar.style.top = getSideBarTop(slotCounter);
 										sbar.className = getBGround(PayLevelList[listCounter]);
@@ -232,6 +241,9 @@ var sideBarManip = function(){
 										sbar.style.fontSize = fs + "px";
 										sbar.innerHTML = SideBarList[listCounter];
 										sbar.style.display = 'inline';
+										if(DATES_IN_HEBREW){
+											sbar.style.textAlign = "right";
+										}
 										var pdfSide = null;
 										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
 

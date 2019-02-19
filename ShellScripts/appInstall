@@ -21,6 +21,11 @@ mv $HOME/Downloads/$BRANCH_NAME_ZIP $HOME/$CODE_DIRECTORY/BeisChayim.zip
 cd $HOME/$CODE_DIRECTORY
 unzip $HOME/$CODE_DIRECTORY/BeisChayim.zip
 #
+echo ======================================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/CYCLE_LOG
+echo == INSTALLING APPLICATION FROM ZIP FILE: $BRANCH_NAME == >> $HOME/$CODE_DIRECTORY/BeisChayim/CYCLE_LOG
+echo == `date`            ==================== >> $HOME/$CODE_DIRECTORY/BeisChayim/CYCLE_LOG
+echo ======================================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/CYCLE_LOG
+#
 rm $HOME/$CODE_DIRECTORY/BeisChayim.zip
 mv $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME/* $HOME/$CODE_DIRECTORY/BeisChayim
 rmdir $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
@@ -31,6 +36,7 @@ mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
+mkdir $HOME/$CODE_DIRECTORY/BeisChayim/log
 #
 chmod 555 $HOME/bin/ShellInstall
 #
@@ -43,7 +49,7 @@ chmod 555 $HOME/bin/ShellInstall
 #
 # check/install crontab
 #
-[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || $HOME/bin/editCrontab
+[ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || $HOME/bin/editCrontab $CODE_DIRECTORY
 [ -n "$(find $HOME/$CODE_DIRECTORY -name '.cronInstalled' | head -1)" ] || echo cron_installed > $HOME/$CODE_DIRECTORY/.cronInstalled
 #
 #

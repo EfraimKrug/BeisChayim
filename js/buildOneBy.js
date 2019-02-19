@@ -42,6 +42,9 @@ function positionElts(){
 		hdate.style.left = getLeftOffsetName();
 		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
+		if(DATES_IN_HEBREW){
+			hdate.style.textAlign = "right";
+		}
 		//hdate.style.display = 'inline';
 
 		t += 1;
@@ -200,11 +203,9 @@ function loadElement(i){
 	var Comments01 = document.getElementById("Comments01");
 	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
-	//console.log("here");
 	if(YahrList.Yahrzeits[i].Comments01.length > 411){
 		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){
 			Comments01.style.top = getBelowDate2();
-			//console.log(getBelowDate2());
 		}
 		if(YahrList.Yahrzeits[i].Pic01.trim() != ""){
 			Comments01.style.left = getLeftOffsetName();

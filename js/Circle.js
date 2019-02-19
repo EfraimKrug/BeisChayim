@@ -15,20 +15,15 @@ var timeControl = (function(){
 	SideInterval = 0;
 	var actions = {
 		setTimer: function(func){
-				//console.log("setting timer");
 				OneByInterval = setInterval(func, tf);
 		},
 		setSideTimer: function(func){
-				//alert("Setting Side Timer");
-				//console.log("setting side timer");
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
-				//console.log("clearing timer");
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
-				//console.log("clearing side timer");
 				clearInterval(SideInterval);
 		}
 	};
@@ -50,11 +45,8 @@ function setupTimerLoad(){
 }
 
 function timerLoad(lastNum){
-	//console.log("timerLoad: " + lastNum);
-//	var lastN = -1;
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
- //	if(lastNum) lastN = lastNum;
 
 	if(DISPLAY_SETTING == 0){
 		timeControl.setTimer(function(){
@@ -62,11 +54,7 @@ function timerLoad(lastNum){
 			renderAll.loadingPlaques(rendPlaques);
 		});
 	}
-	//timeControl.setSideTimer(loadSideBar);
 	manipulateIDX.initIDX();
-//	for(var i=0; i<10; i++){/
-//		console.log("IDX: " + manipulateIDX.getNextIDX(function(){}));
-//	}
 
 	if(DISPLAY_SETTING == 1){
 		timeControl.setSideTimer(sideBarManip.loadSideBar);
@@ -100,17 +88,11 @@ var renderBoth = function(){
 	var actions = {
 		loadAlternate: function(rendP){
 			if(this.isOneBy()){
-				//timeControl.setSideTimer(sideBarManip.loadSideBar);
 				hideScreen02();
 				this.loadingOneBy(manipulateIDX.getNextIDX());
 				manipulateIDX.incrementIDX();
 				if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) this.endingCycle();
-				//this.loadingOneBy(manipulateIDX.getCurrentIDX());
-				//manipulateIDX.getNextIDX(this.endingCycle);
 			} else {
-				//console.log('plaques');
-				hideSideBarArray();
-				//console.log("Should not be running side bar!");
 				hideScreen01();
 				hideScreen02();
 				this.loadingPlaques(rendP);
@@ -130,6 +112,8 @@ var renderBoth = function(){
 		},
 		loadingOneBy: function(lastNum){
 			showScreen01();
+			showSideBarArray();
+			timeControl.setSideTimer(sideBarManip.loadSideBar);
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
 				BodyListener.setFirstFunction(SecurityEntry.showSecurity);
@@ -138,7 +122,6 @@ var renderBoth = function(){
 			}
 		},
 		endingCycle: function(){
-			console.log("endingCycle: ");
 			manipulateIDX.initIDX();
 			i = -1;
 			if(DISPLAY_SETTING == 2){
@@ -151,9 +134,10 @@ var renderBoth = function(){
 					pRun = 2;
 				}
 			}
-			//console.log("endingCycle: " + pRun);
 		},
 		loadingPlaques: function(rendP){
+			timeControl.clearSideTimer(sideBarManip.loadSideBar);
+			hideSideBarArray();
 			rendP.renderScreen(this.endingCycle);
 		},
 		setProcessOneBy: function(){
@@ -208,7 +192,6 @@ var manipulateIDX = function(){
 			idx = 0;
 		},
 		getCurrentDate: function(){
-				//console.log(this.getCurrentIDX());
 				return YahrList.Yahrzeits[this.getCurrentIDX()].HDate;
 		},
 		getNextInRange: function(){
@@ -216,7 +199,6 @@ var manipulateIDX = function(){
 
 			dateHold = this.getCurrentDate();
 			var i = this.getCurrentIDX();
-			//console.log('getNextInRange: ' + i);
 			if(TESTING_OFF){
 					while(dateHold.indexOf(currentMonth) < 0 && !this.isOutOfRange(i)){
 						i++;
