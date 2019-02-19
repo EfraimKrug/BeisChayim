@@ -1,5 +1,14 @@
 CODE_DIRECTORY=bcCode
-CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CycleLog
+CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/
+###########################################################################################
+## set parameters to check for first run
+###########################################################################################
+if [ $# -ne 1 ];
+then
+  START_UP="NOPE"
+else
+  START_UP=$1
+fi
 ###########################################################################################
 ## process the yahrzeits.csv file if it is there...
 ###########################################################################################
@@ -52,7 +61,10 @@ then
   #echo wrote to: $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
 else
   #echo there is nothing to run! && exit 0
-  exit 0
+  if [ $START_UP != "START_UP" ];
+  then
+    exit 0
+  fi
 fi
 #
 if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ]
@@ -64,7 +76,10 @@ then
   #echo Run the whole shebang - but only once!
 else
   #echo not time yet... && exit 0
-  exit 0
+  if [ $START_UP != "START_UP" ];
+  then
+    exit 0
+  fi
 fi
 ########### end the clock service #########################################################
 ###########################################################################################
