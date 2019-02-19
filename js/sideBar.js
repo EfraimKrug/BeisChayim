@@ -1,5 +1,6 @@
 var offset = 0;
 var FONT_SIZE = "14";
+var HIDE_SIDE_BAR = false;
 
 function resetSideBar(){
 		SideBarList = [];
@@ -28,13 +29,19 @@ function getBGround(pl){
 	return "sbarpl" + pl;
 }
 
+
 function hideSideBarArray(){
+	HIDE_SIDE_BAR = true;
 	var slotCounter = 1;
 
 	for (var i=1; i < 17 ; i++){
 		var sbar = document.getElementById("sbar0" + i);
 		sbar.style.display = "none";
 	}
+}
+
+function showSideBarArray(){
+	HIDE_SIDE_BAR = false;
 }
 
 function getGridColumn(){
@@ -151,6 +158,7 @@ function setCurrentMonth(){
 var sideBarManip = function(){
 	var listCounter = 0;
 	var slotCounter = 1;
+	var rb = new renderBoth();
 
 	var actions = {
 							loadSideBar: function(){
@@ -220,6 +228,9 @@ var sideBarManip = function(){
 											slotCounter = SideBarCounterInc(slotCounter);
 									},
 							renderBox: function(sbar){
+										if(HIDE_SIDE_BAR){
+											return;
+										}
 										sbar.className = "sbar";
 										sbar.style.left = getSideBarLeft() + "px";
 										sbar.style.top = getSideBarTop(slotCounter);
@@ -230,6 +241,9 @@ var sideBarManip = function(){
 										sbar.style.fontSize = fs + "px";
 										sbar.innerHTML = SideBarList[listCounter];
 										sbar.style.display = 'inline';
+										if(DATES_IN_HEBREW){
+											sbar.style.textAlign = "right";
+										}
 										var pdfSide = null;
 										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
 

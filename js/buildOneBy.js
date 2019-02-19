@@ -42,6 +42,9 @@ function positionElts(){
 		hdate.style.left = getLeftOffsetName();
 		hdate.style.width = getOneByWidth();
 		hdate.style.fontSize = getName1Font();
+		if(DATES_IN_HEBREW){
+			hdate.style.textAlign = "right";
+		}
 		//hdate.style.display = 'inline';
 
 		t += 1;

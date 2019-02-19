@@ -93,7 +93,6 @@ var renderBoth = function(){
 				manipulateIDX.incrementIDX();
 				if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) this.endingCycle();
 			} else {
-				hideSideBarArray();
 				hideScreen01();
 				hideScreen02();
 				this.loadingPlaques(rendP);
@@ -113,6 +112,7 @@ var renderBoth = function(){
 		},
 		loadingOneBy: function(lastNum){
 			showScreen01();
+			showSideBarArray();
 			timeControl.setSideTimer(sideBarManip.loadSideBar);
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
@@ -137,6 +137,7 @@ var renderBoth = function(){
 		},
 		loadingPlaques: function(rendP){
 			timeControl.clearSideTimer(sideBarManip.loadSideBar);
+			hideSideBarArray();
 			rendP.renderScreen(this.endingCycle);
 		},
 		setProcessOneBy: function(){

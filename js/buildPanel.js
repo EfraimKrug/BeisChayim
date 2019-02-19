@@ -56,7 +56,6 @@ function buildPanel01(){
       var n = i / COLUMN_COUNT;
       n = Math.floor(n);
       panelArray[n].push({"ID":"","Name":"", "Date":"", "PayLevel":"", "IDX":""});
-      //if(n == 64) console.log(YahrList.Yahrzeits[i].ID);
       panelArray[n][j]["ID"] = YahrList.Yahrzeits[i].ID;
       panelArray[n][j]["IDX"] = i;
       panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].HName;
@@ -66,11 +65,9 @@ function buildPanel01(){
   	     panelArray[n][j]["Name"] = YahrList.Yahrzeits[i].Name;
       j++;
   }
-  //console.log(panelArray);
 }
 
 function getColID(idx){
-  //console.log("n" + idx);
   switch(idx){
     case 0: return "pbarA";
     case 1: return "pbarB";
@@ -109,7 +106,6 @@ function hideScreen02(){
       if(vi > 12) vi = "01";
       for(var j=0; j < 8; j++){
         var pbar = document.getElementById(getColID(j) + vi);
-        //console.log(getColID(j) + vi);
         pbar.style.display = "none";
       }
     }
@@ -121,7 +117,6 @@ var renderingPlaquesX = function (cb){
     var callback = cb;
     var actions = {
         renderScreen: function (){
-            //console.log("renderScreen: " + panelArray.length);
             var vi = 0;
             for(var row_count=0; row_count < ROW_COUNT; row_count++){
                 currPos++;
@@ -130,7 +125,6 @@ var renderingPlaquesX = function (cb){
                 if(vi > 12) vi = "01";
                 for(var j=0; j < COLUMN_COUNT; j++){
                   if(panelArray.length <= currPos){
-                    console.log(currPos);
                     this.renderBox(currPos-1, panelArray[currPos-1].length, vi, row_count);
                     currPos = -1;
                     callback();
