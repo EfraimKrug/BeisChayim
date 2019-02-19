@@ -1,75 +1,82 @@
-CODE_DIRECTORY=bcCode
-###############################################################################
-# this runs every night.
-# remember - this is running without getting new data
-# from shulcloud...
-###############################################################################
-# make sure an appropriate time has passed since changes were made
-# if time has passed - we create a .runTime file
-if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name 'runCheck.py' | head -1)" ]
-then
-  python $HOME/$CODE_DIRECTORY/BeisChayim/python/readRunCheck.py
-fi
-#
+CODE_DIRECTORY=Ccode
+CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CycleLog
+###########################################################################################
+## process the yahrzeits.csv file if it is there...
+###########################################################################################
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
 then
-   cp $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
-   if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/used -name '\$\$BC\$\$*' | head -1)" ]
-   then
-      mv $HOME/$CODE_DIRECTORY/BeisChayim/data/used/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-   fi
-   echo run01 > $HOME/$CODE_DIRECTORY/BeisChayim/.run
-   echo run01 yahrzeits file > $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
-   #get the shulcloud file cleaned up... and converted to json
-   python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
-   python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsond.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
+   echo =================== NEW YAHRZEIT FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   mv $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
+   echo `date` Installing new yahrzeit file >> CYCLE_LOG
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01Test.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsondTest.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 fi
-#
+###########################################################################################
+## process the $$BC$$ files if it is there...
+###########################################################################################
 if [ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ]
 then
-   cp $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
-   #echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.run
-   echo installed > $HOME/$CODE_DIRECTORY/BeisChayim/.installed
-   echo $$BC$$ file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
+   echo =================== NEW \$\$BC\$\$ FILES ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+   mv $HOME/Downloads/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data
 fi
-#
-# check/install config file
+
+###########################################################################################
+## process the config files if it is there...
+###########################################################################################
 if [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ]
 then
+    echo =================== NEW CONFIG FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo `date` Installing new config file >> CYCLE_LOG
     mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo BCConfig.txt file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
 fi
 #
 if [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ]
 then
+    echo =================== NEW CONFIG FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo `date` Installing new config file >> CYCLE_LOG
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-    echo BCConfig file > $HOME/$CODE_DIRECTORY/BeisChayim/.run
-fi
-#
-if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ]
-then
-    echo =============================================== >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-    echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-    cat $HOME/$CODE_DIRECTORY/BeisChayim/.run >> $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
 fi
 
-[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.run' | head -1)" ] || exit 0
-[ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ] || exit 0
+########### begin the clock service #########################################################
+if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runCheck' | head -1)" ]
+then
+  python $HOME/$CODE_DIRECTORY/BeisChayim/python/readRunCheckTest.py
+  #echo wrote to: $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
+else
+  #echo there is nothing to run! && exit 0
+  exit 0
+fi
+#
+if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ]
+then
+  echo =============================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runTimeLog
+  echo `date` >>  $HOME/$CODE_DIRECTORY/BeisChayim/.runTimeLog
+  cat  $HOME/$CODE_DIRECTORY/BeisChayim/.runTime >>  $HOME/$CODE_DIRECTORY/BeisChayim/.runTimeLog
+  cat  $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheckLog
+  #echo Run the whole shebang - but only once!
+else
+  #echo not time yet... && exit 0
+  exit 0
+fi
+########### end the clock service #########################################################
+###########################################################################################
+## process everything - start by cleaning up the timing files...
+###########################################################################################
 rm $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
-#
-rm $HOME/$CODE_DIRECTORY/BeisChayim/.run
-#
-cat $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck $HOME/$CODE_DIRECTORY/BeisChayim/runCheck > $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
-rm $HOME/$CODE_DIRECTORY/BeisChayim/runCheck
-#
-[ -n "$(find $HOME/Downloads -name '\$\$BC\$\$*' | head -1)" ] && rm $HOME/Downloads/\$\$BC\$\$*
-[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] && rm $HOME/Downloads/yahrzeits.csv
-#
-# [ -n "$(find $HOME/Downloads -name 'BCConfig.txt' | head -1)" ] && mv $HOME/Downloads/BCConfig.txt $HOME/Downloads/BCConfig
-# [ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-#
-# move files 5 cycles back...
+rm $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+#echo it was time to run... and we are running!
+
+###########################################################################################
+## process everything - back up files...
+###########################################################################################
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-4.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-5.js
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-3.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-4.js
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-2.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-3.js
@@ -77,37 +84,21 @@ mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-1.js $HOME/$CODE_DIRECTORY/Be
 mv $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-0.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-1.js
 
 cp $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/work/db01-0.js
-
-# create the new db01.js
-#cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out02 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+###########################################################################################
+## process everything - collect all the $$BC$$ files into db01.js
+###########################################################################################
 cd $HOME/$CODE_DIRECTORY/BeisChayim
-python $HOME/$CODE_DIRECTORY/BeisChayim/python/collect.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
-mv $HOME/$CODE_DIRECTORY/BeisChayim/data/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data/used
-# store all the update files
+python $HOME/$CODE_DIRECTORY/BeisChayim/python/collectTest.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/work -name '\$\$BC\$\$*' | head -1)" ] && mv $HOME/$CODE_DIRECTORY/BeisChayim/data/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data/used
+
+###########################################################################################
+## process everything - copy output from collect.py to db01.js and back it up
+###########################################################################################
 cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
 cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 
-# check and install config files
-#[ -n "$(find $HOME/Downloads -name 'BCConfig' | head -1)" ] && mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
-
-# restart browswer
-#pkill -f sensible-browser
-#sensible-browser --start-fullscreen $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
-# restart browswer
+###########################################################################################
+## restart the application
+###########################################################################################
+echo `date` Restarting Application >> CYCLE_LOG
 $HOME/bin/turnOn $CODE_DIRECTORY
-# ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)
-# if [ $ff -gt 0 ]
-# then
-#         pkill -f firefox
-#         firefox  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
-#         exit 0
-# fi
-#
-# ch=$(update-alternatives --display gnome-www-browser | grep chromium | wc -l)
-# if [ $ch -gt 0 ]
-# then
-#         pkill -f chromium-browser
-#         chromium-browser --start-fullscreen  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
-# fi
-# ###############################################################################
