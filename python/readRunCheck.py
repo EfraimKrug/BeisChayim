@@ -7,7 +7,7 @@ import time
 # meanwhile, if 30 minutes has passed, BChCycle01 moves the
 # runCheck to .runCheck
 ####################################################################
-runCheckFile = 'X@~@~@X/BeisChayim/runCheck'
+runCheckFile = 'X@~@~@X/BeisChayim/.runCheck'
 outCheckFile = 'X@~@~@X/BeisChayim/.runTime'
 
 #runCheckFile = '../runCheck'
