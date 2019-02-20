@@ -72,8 +72,7 @@ echo "**************************************************************************
 echo ""
 echo "**********************************************************************************************************"
 echo "*   That was step 1. Now, on to step 2:                                                                  *"
-echo "*   Now, make sure you have the yahrzeits.csv file in ~/Downloads                                        *"
+echo "*   Now, make sure you have the yahrzeits.csv file in ~/Downloads, then run startUp                      *"
 echo "**********************************************************************************************************"
 #
-
 $HOME/bin/BChCycle01 START_UP
