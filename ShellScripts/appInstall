@@ -28,7 +28,7 @@ echo ======================================================== >> $HOME/$CODE_DIR
 #
 rm $HOME/$CODE_DIRECTORY/BeisChayim.zip
 mv $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME/* $HOME/$CODE_DIRECTORY/BeisChayim
-rmdir $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
+rm -r $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
 cp ~/$CODE_DIRECTORY/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/$CODE_DIRECTORY/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 #
