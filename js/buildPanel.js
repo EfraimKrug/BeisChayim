@@ -8,6 +8,9 @@ var YahrList = JSON.parse(YahrzeitList);
 var panelArray = [];
 
 function fixDate(dt){
+  if(dt.trim() == ""){
+    return "NONE";
+  }
   var year = "";
   var d = dt.trim();
   d = d.replace(/Adar II/g, "AdarII");

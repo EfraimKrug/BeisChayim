@@ -113,7 +113,7 @@ var renderBoth = function(){
 		loadingOneBy: function(lastNum){
 			showScreen01();
 			showSideBarArray();
-			timeControl.setSideTimer(sideBarManip.loadSideBar);
+			//timeControl.setSideTimer(sideBarManip.loadSideBar);
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
 				BodyListener.setFirstFunction(SecurityEntry.showSecurity);
@@ -136,7 +136,7 @@ var renderBoth = function(){
 			}
 		},
 		loadingPlaques: function(rendP){
-			timeControl.clearSideTimer(sideBarManip.loadSideBar);
+			//timeControl.clearSideTimer(sideBarManip.loadSideBar);
 			hideSideBarArray();
 			rendP.renderScreen(this.endingCycle);
 		},
