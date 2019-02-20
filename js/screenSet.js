@@ -20,6 +20,10 @@ function getOneByWidth(){
   return screenConfig.settings["OneByWidth"] + "px";
 }
 
+function getOneByHalfWidth(){
+  return (screenConfig.settings["OneByWidth"]/2) + "px";
+}
+
 function getTopName1(){
   return screenConfig.settings["OneByName1"] + "px";
 }
