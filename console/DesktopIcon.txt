@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Beis Chayim
+Comment=Remembering...
+Exec=/bin/sh "/home/efraim/Ccode/BeisChayim/console/mainBox.py"
+Icon=/home/efraim/Ccode/BeisChayim/console/icon001.gif
+Categories=Application;Development;python;javascript
+Version=1.0
+Type=Application
+Terminal=0

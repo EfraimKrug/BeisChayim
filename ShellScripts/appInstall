@@ -58,11 +58,14 @@ echo "**************************************************************************
 echo "*            For Raspberri Pi, we need to install a screen saver (to turn off)                           *"
 echo "**********************************************************************************************************"
 #
+#sudo apt-get update
+#sudo apt-get upgrade
 #sudo apt-get install xscreensaver
 #sudo apt-get install firefox-esr
 #sudo apt-get install matchbox-keyboard
 #sudo apt-get install unclutter
 #sudo apt-get install python3-tk
+#sudo apt-get install python3-pil.imagetk
 #
 #
 echo "**********************************************************************************************************"
