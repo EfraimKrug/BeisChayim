@@ -54,9 +54,9 @@ def writeNewRunPhase():
 def getDisplayType():
     global varList
     #print("====>>>" + varList[1].get())
-    if varList[1].get() == "List Entries One by One":
-        return "0"
     if varList[1].get() == "List Memorial Plaques":
+        return "0"
+    if varList[1].get() == "List Entries One by One":
         return "1"
     if varList[1].get() == "Alternate":
         return "2"
@@ -114,8 +114,8 @@ def configure_var():
     l2.grid(sticky=W, row=5, padx=17)
 
     views = [
-    'List Entries One by One',
     'List Memorial Plaques',
+    'List Entries One by One',
     'Alternate'
     ]
     variable = StringVar(window)
