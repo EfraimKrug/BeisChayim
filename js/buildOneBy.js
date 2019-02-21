@@ -44,6 +44,8 @@ function positionElts(){
 		hdate.style.fontSize = getName1Font();
 		if(DATES_IN_HEBREW){
 			hdate.style.textAlign = "right";
+			hdate.style.width = getOneByHalfWidth();
+			hdate.style.fontSize = getDate2Font();
 		}
 		//hdate.style.display = 'inline';
 
@@ -141,7 +143,11 @@ function loadElement(i){
 		}
 
 		HDate.innerHTML = fixDate(HDate.innerHTML);
+		//alert("here");
 		if(DATES_IN_HEBREW) HDate.innerHTML = translateDate(fixDate(HDate.innerHTML));
+		if(YahrList.Yahrzeits[i].HDate.trim() == ""){
+			HDate.innerHTML = "";
+		}
 		HDate.className = "hdate" + YahrList.Yahrzeits[i].PayLevel;
 	}
 

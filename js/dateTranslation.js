@@ -26,22 +26,25 @@ var koof='ק';
 var resh='ר';
 var shin='ש';
 var tof='ת';
-var chuk="'";
+var chuk="`";
 var alefBet = [alef,bet,gimel,dalet,heh,vov,zion,chet,tet,yod,kof,lamed,mem,nun,samech,ayin,pay,tzadi,koof,resh,shin,tof];
 
 function getMonth(m){
   switch(m){
     case "Nissan": return nun + yod + samech + nunsofit;
     case "Iyar": return alef + yod + yod + resh;
+    case "Iyyar": return alef + yod + yod + resh;
     case "Sivan": return samech + yod + vov + nunsofit;
     case "Tamuz": return tof + mem + vov + zion;
+    case "Tammuz": return tof + mem + vov + zion;
     case "Av": return alef + bet;
     case "Elul": return alef + lamed + vov + lamed;
     case "Tishrei": return tof + shin + resh + yod;
-    case "Cheshvan": return mem + resh + chet + shin + vov + nunsofit;
+    case "Cheshvan": return mem + resh + ' ' + chet + shin + vov + nunsofit;
     case "Kislev": return kof + samech + lamed + vov;
     case "Tevet": return tet + bet + tof;
     case "Shevat": return shin + bet + tet;
+    case "Shvat": return shin + bet + tet;
     case "AdarII": return alef + dalet + resh + " " + shin + nun + yod;
     case "Adar": return alef + dalet + resh;
   }
@@ -55,54 +58,45 @@ function display(y){
 }
 //alert(x);
 function buildDay(d){
+    //console.log(d);
     var day = d;
     var bld = "";
     var count = 0;
 
     if(!d) return "";
-    if(day == 1){
-      bld = resh + alef + shin + " " + chet + vov + dalet + shin;
-      return bld;
-    }
-    if(day  == 15){
-      bld = tet + chuk + vov;
-      return bld;
-    }
 
-    if(day  == 16){
-      bld = tet + chuk + zion;
-      return bld;
-    }
-
-    if(day  == 20){
-      bld = chuk + kof;
-      return bld;
-    }
-
-    if(day  == 30){
-      bld = chuk + lamed;
-      return bld;
-    }
-
-    if(day > 10){
-      while (day > 10){
-        day -= 10;
-        count++;
-      }
-      bld += alefBet[8+count];
-    }
-    count=0;
-    while (day > 0){
-      day -= 1;
-      count++;
-    }
-    if (day < 10){
-      bld += alefBet[count-1] + chuk;
-    } else {
-      bld += chuk + alefBet[count-1];
-    }
-    return (bld);
-
+      bld =  "";
+      if(day == "1") bld = resh + alef + shin + " " + chet + vov + dalet + shin;
+      if(day == "2") bld =  alefBet[1] + chuk;
+      if(day == "3") bld =  alefBet[2] + chuk;
+      if(day == "4") bld =  alefBet[3] + chuk;
+      if(day == "5") bld =  alefBet[4] + chuk;
+      if(day == "6") bld =  alefBet[5] + chuk;
+      if(day == "7") bld =  alefBet[6] + chuk;
+      if(day == "8") bld =  alefBet[7] + chuk;
+      if(day == "9")  bld =  alefBet[8] + chuk;
+      if(day == "10") bld =  yod + chuk;
+      if(day == "11") bld =  yod + chuk + alef;
+      if(day == "12") bld =  yod + chuk + bet;
+      if(day == "13") bld =  yod + chuk + gimel;
+      if(day == "14") bld =  yod + chuk + dalet;
+      if(day == "15") bld =  tet + chuk + vov;
+      if(day == "16") bld =  tet + chuk + zion;
+      if(day == "17") bld =  yod + chuk + zion;
+      if(day == "18") bld =  yod + chuk + chet;
+      if(day == "19") bld =  yod + chuk + tet;
+      if(day == "20") bld =  kof + chuk;
+      if(day == "21") bld =  kof + chuk + alef;
+      if(day == "22") bld =  kof + chuk + bet;
+      if(day == "23") bld =  kof + chuk + gimel;
+      if(day == "24") bld =  kof + chuk + dalet;
+      if(day == "25") bld =  kof + chuk + vov;
+      if(day == "26") bld =  kof + chuk + zion;
+      if(day == "27") bld =  kof + chuk + zion;
+      if(day == "28") bld =  kof + chuk + chet;
+      if(day == "29") bld =  kof + chuk + tet;
+      if(day == "30") bld =  lamed + chuk;
+    return bld;
 }
 
 function getTens(y){

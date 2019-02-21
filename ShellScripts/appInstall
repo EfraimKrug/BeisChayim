@@ -28,7 +28,7 @@ echo ======================================================== >> $HOME/$CODE_DIR
 #
 rm $HOME/$CODE_DIRECTORY/BeisChayim.zip
 mv $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME/* $HOME/$CODE_DIRECTORY/BeisChayim
-rmdir $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
+rm -r $HOME/$CODE_DIRECTORY/BeisChayim-$BRANCH_NAME
 cp ~/$CODE_DIRECTORY/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/$CODE_DIRECTORY/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 #
@@ -62,6 +62,7 @@ echo "**************************************************************************
 #sudo apt-get install firefox-esr
 #sudo apt-get install matchbox-keyboard
 #sudo apt-get install unclutter
+#sudo apt-get install python3-tk
 #
 #
 echo "**********************************************************************************************************"
@@ -71,4 +72,5 @@ echo "*   otherwise, you will have to build it - (in excel)                     
 echo "**********************************************************************************************************"
 echo ""
 #
-$HOME/bin/BChCycle01
+$HOME/bin/BChCycle01 START_UP
+#

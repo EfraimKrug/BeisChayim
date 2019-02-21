@@ -1,5 +1,14 @@
-CODE_DIRECTORY=Ccode
-CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CycleLog
+CODE_DIRECTORY=bcCode
+CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/
+###########################################################################################
+## set parameters to check for first run
+###########################################################################################
+if [ $# -ne 1 ];
+then
+  START_UP="NOPE"
+else
+  START_UP=$1
+fi
 ###########################################################################################
 ## process the yahrzeits.csv file if it is there...
 ###########################################################################################
@@ -10,8 +19,8 @@ then
    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
    mv $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
    echo `date` Installing new yahrzeit file >> CYCLE_LOG
-   python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01Test.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
-   python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsondTest.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
+   python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsond.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 fi
 ###########################################################################################
 ## process the $$BC$$ files if it is there...
@@ -48,11 +57,14 @@ fi
 ########### begin the clock service #########################################################
 if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runCheck' | head -1)" ]
 then
-  python $HOME/$CODE_DIRECTORY/BeisChayim/python/readRunCheckTest.py
+  python $HOME/$CODE_DIRECTORY/BeisChayim/python/readRunCheck.py
   #echo wrote to: $HOME/$CODE_DIRECTORY/BeisChayim/.runTime
 else
   #echo there is nothing to run! && exit 0
-  exit 0
+  if [ $START_UP != "START_UP" ];
+  then
+    exit 0
+  fi
 fi
 #
 if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim -name '.runTime' | head -1)" ]
@@ -64,7 +76,10 @@ then
   #echo Run the whole shebang - but only once!
 else
   #echo not time yet... && exit 0
-  exit 0
+  if [ $START_UP != "START_UP" ];
+  then
+    exit 0
+  fi
 fi
 ########### end the clock service #########################################################
 ###########################################################################################
@@ -88,7 +103,7 @@ cp $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/
 ## process everything - collect all the $$BC$$ files into db01.js
 ###########################################################################################
 cd $HOME/$CODE_DIRECTORY/BeisChayim
-python $HOME/$CODE_DIRECTORY/BeisChayim/python/collectTest.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
+python $HOME/$CODE_DIRECTORY/BeisChayim/python/collect.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
 [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/work -name '\$\$BC\$\$*' | head -1)" ] && mv $HOME/$CODE_DIRECTORY/BeisChayim/data/\$\$BC\$\$* $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 
 ###########################################################################################
