@@ -62,6 +62,7 @@ echo "**************************************************************************
 #sudo apt-get install firefox-esr
 #sudo apt-get install matchbox-keyboard
 #sudo apt-get install unclutter
+#sudo apt-get install python3-tk
 #
 #
 echo "**********************************************************************************************************"

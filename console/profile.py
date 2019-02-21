@@ -1,0 +1,8 @@
+bindir = r'/home/efraiim/bin'
+pythonDir = r'/home/efraiim/code/BeisChayim/python'
+consoleDir = r'/home/efraiim/code/BeisChayim/console'
+configDir = r'/home/efraiim/code/BeisChayim/config'
+# bindir = r'X@-@X/bin'
+# pythonDir = r'X@~@~@X/BeisChayim/python'
+# consoleDir = r'X@~@~@X/BeisChayim/console'
+# configDir = r'X@~@~@X/BeisChayim/config'
