@@ -88,7 +88,6 @@ def clicked():
     global windowHold
     writeNewConfig(createConfig())
     writeNewRunPhase()
-    windowHold.destroy()
 
 def configure_var():
     global labelList
@@ -228,7 +227,6 @@ def configure_var():
 
     btn = ttk.Button(window, text="Click Me", style="C.TButton", command=clicked)
     btn.grid(sticky=SE, column=9, row=25, pady=7)
-    windowHold = window
     window.mainloop()
 
 

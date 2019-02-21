@@ -15,15 +15,12 @@ root.title('Beis Chayim')
 
 def re_install():
     subprocess.call([bindir + '/CONreinstall'], shell=False)
-    root.destroy()
 
 def re_install_current():
     subprocess.call([bindir + '/CONreinstallCurrent'], shell=False)
-    root.destroy()
 
 def reconfigure():
     subprocess.call([bindir + '/CONCollect'], shell=False)
-    root.destroy()
 
     #buildConfigure()
     #farm = buildDrop(farm)
