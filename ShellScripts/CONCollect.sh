@@ -16,4 +16,4 @@ cp $HOME/$CODE_DIRECTORY/BeisChayim/config/RunPhase $HOME/$TEMP_DIRECTORY/RunPha
 cp $HOME/$CODE_DIRECTORY/BeisChayim/console/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 cp $HOME/$CODE_DIRECTORY/BeisChayim/console/RunPhase $HOME/$CODE_DIRECTORY/BeisChayim/config/RunPhase
 
-$HOME/bin/turnOn
+$HOME/bin/turnOn $CODE_DIRECTORY
