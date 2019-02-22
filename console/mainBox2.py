@@ -49,7 +49,7 @@ def writeNewConfig(s):
 def writeNewRunPhase():
     sec = "var RunPhase = { \"phase01\": {\"run_type\":\"security\"}};"
     view = "var RunPhase = { \"phase01\": {\"run_type\":\"view\"}};"
-    fd = open(outDir + runPhaseFile, "w+")
+    fd = open(configDir + runPhaseFile, "w+")
 
     if varList[8].get() == "edit":
         fd.write(sec)
