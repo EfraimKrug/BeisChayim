@@ -1,4 +1,6 @@
-//10.1" screen:
-var PanelConfigList = '{ "settings": {"PanelOffset":"80","PanelLeftOffset":"80", "BoxHeight":"62", "RowHeight":"71", "BoxWidth":"239", "ColumnWidth":"259", "PanelFont":"12", "SideBoxWidth":"239"}}';
+//10.1" rasp pi
+var PanelConfigList = '{ "settings": {"PanelOffset":"80","PanelLeftOffset":"80", "BoxHeight":"59", "RowHeight":"68", "BoxWidth":"179", "ColumnWidth":"199", "PanelFont":"12", "SideBoxWidth":"239"}}';
+//10.1" screen: dell laptop
+//var PanelConfigList = '{ "settings": {"PanelOffset":"80","PanelLeftOffset":"80", "BoxHeight":"62", "RowHeight":"71", "BoxWidth":"239", "ColumnWidth":"259", "PanelFont":"12", "SideBoxWidth":"239"}}';
 //17" screen
 //var PanelConfigList = '{ "settings": {"PanelOffset":"120","PanelLeftOffset":"120", "BoxHeight":"50", "RowHeight":"71", "BoxWidth":"259", "ColumnWidth":"279", "PanelFont":"12", "SideBoxWidth":"259"}}';
