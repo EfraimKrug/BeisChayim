@@ -1,7 +1,10 @@
 
 from tkinter import *
+from tkinter import ttk
 from tkinter import filedialog
 import tkinter.messagebox
+
+from PIL import ImageTk, Image
 import subprocess
 import os
 from os import walk
@@ -10,8 +13,21 @@ import shutil
 from profile import *
 
 root = Tk()
+root.configure(bg="teal", pady=34, padx=17)
+################################################################################
+# Playing with styles...
+#
+s = ttk.Style()
+#s.configure('Ef.TButton', foreground='maroon', sticky=EW)
+s.configure('.', background='lightblue', foreground='maroon', border='4', sticky=EW)
+s.theme_use('default')
+################################################################################
 root.geometry('500x400')
-root.title('Beis Chayim')
+root.title('Install/Re-install Your Display')
+img = tkinter.PhotoImage(file='/home/efraim/Ccode/BeisChayim/console/icon001.gif')
+root.tk.call('wm', 'iconphoto', root._w, img)
+root.wm_iconbitmap(bitmap = "@/home/efraim/Ccode/BeisChayim/console/icon001.xbm")
+#root.iconbitmap('@/home/efraim/Ccode/BeisChayim/console/icon002.xbm')
 
 def re_install():
     subprocess.call([bindir + '/CONreinstall'], shell=False)
@@ -25,77 +41,24 @@ def reconfigure():
     #buildConfigure()
     #farm = buildDrop(farm)
 
-def buildDrop(farm):
-    global variable
-
-    options = [
-    'List Entries One by One',
-    'List Memorial Plaques',
-    'Alternate'
-    ]
-
-    variable = StringVar(farm)
-    variable.set(options[2]) # default value
-
-    w = OptionMenu(farm, variable, *options)
-    w.pack()
-    return farm
-
-def debugging():
-    print (variable.get())
-
-# def buildConfigure():
-# window = Tk()
-# window.title("Welcome to LikeGeeks app")
-# window.geometry('350x200')
-# lbl = Label(window, text="Hello")
-# lbl.grid(column=0, row=0)
-# txt = Entry(window,width=10)
-# txt.grid(column=1, row=0)
-#
-# def clicked():
-#      lbl.configure(text="Button was clicked !!")
-#
-# btn = Button(window, text="Click Me", command=clicked)
-# btn.grid(column=2, row=0)
-#
-# window.mainloop()
-# def moreJunk():
-#     root2 = Tk()
-#     root2.geometry('500x400')
-#     root2.title('Configuration')
-#
-#     frame = Frame(root2, width=400, height=400)
-#
-#     button0 = Button(frame, text="try it!", command = debugging)
-#     # button1 = Button(frame, text='Rebuild from current file', command=re_install_current)
-#     # button2 = Buttonf(frame, text='Reconfigure', command=reconfigure)
-#     button0.pack(side=RIGHT)
-#     # button1.pack(side=RIGHT)
-#     # button2.pack(side=RIGHT)
-#     #
-#     button0.place(x=50, y=250, bordermode=OUTSIDE, height=30, width=300)
-#     # button1.place(x=50, y=100, bordermode=OUTSIDE, height=30, width=300)
-#     # button2.place(x=50, y=150, bordermode=OUTSIDE, height=30, width=300)
-#     #frame = buildDrop(frame)
+# def buildDrop(farm):
 #     global variable
 #
-#     optns = [
+#     options = [
 #     'List Entries One by One',
 #     'List Memorial Plaques',
 #     'Alternate'
 #     ]
 #
-#     variable = StringVar(frame)
-#     variable.set(optns[2]) # default value
+#     variable = StringVar(farm)
+#     variable.set(options[2]) # default value
 #
-#     w = OptionMenu(frame, variable, *optns)
+#     w = OptionMenu(farm, variable, *options)
 #     w.pack()
+#     return farm
 #
-#     frame.pack()
-#
-#     root2.mainloop()
-#     return frame
+# def debugging():
+#     print (variable.get())
 
 def getFilenames():
     f = []
@@ -109,15 +72,24 @@ def getFilenames():
             fname = mypath + r'\\shulCloud\\yahrzeits.xlsx'
             checkOldFile(fname)
 
-def junk():
-            fout = open(basedir + "\\shulCloud\\.filestat", "w")
-            fout.write(str(os.path.getmtime(fname)))
-            fout.close()
+# def junk():
+#             fout = open(basedir + "\\shulCloud\\.filestat", "w")
+#             fout.write(str(os.path.getmtime(fname)))
+#             fout.close()
 
-frame = Frame(root, width=400, height=400)
-button0 = Button(frame, text="Reinstall from original file", command = re_install)
-button1 = Button(frame, text='Rebuild from current file', command=re_install_current)
-button2 = Button(frame, text='Reconfigure', command=reconfigure)
+frame = Frame(root, width=450, height=430)
+frame.configure(bg="teal", pady=3, padx=3)
+#button0 = ttk.Button(frame, text="Reinstall from original file", command = re_install, style='Ef.TButton')
+#button1 = ttk.Button(frame, text='Rebuild from current file', command=re_install_current, style='Ef.TButton')
+#button2 = ttk.Button(frame, text='Reconfigure', command=reconfigure, style='Ef.TButton')
+img = ImageTk.PhotoImage(Image.open("images/clock01.gif"))
+pic01 = ttk.Label(root, image = img)
+pic01.pack(side = "bottom", fill = "both", expand = "yes")
+#pic01.place(x=0, y=0, bordermode=OUTSIDE, height=400, width=400)
+button0 = ttk.Button(pic01, text="Reinstall from original file", command = re_install)
+button1 = ttk.Button(pic01, text='Rebuild from current file', command=re_install_current)
+button2 = ttk.Button(pic01, text='Reconfigure', command=reconfigure)
+
 button0.pack(side=RIGHT)
 button1.pack(side=RIGHT)
 button2.pack(side=RIGHT)
