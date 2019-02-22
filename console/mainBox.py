@@ -24,9 +24,9 @@ s.theme_use('default')
 ################################################################################
 root.geometry('500x400')
 root.title('Install/Re-install Your Display')
-img = tkinter.PhotoImage(file='/home/efraim/Ccode/BeisChayim/console/icon001.gif')
-root.tk.call('wm', 'iconphoto', root._w, img)
-root.wm_iconbitmap(bitmap = "@/home/efraim/Ccode/BeisChayim/console/icon001.xbm")
+# img = tkinter.PhotoImage(file='/home/efraim/Ccode/BeisChayim/console/icon001.gif')
+# root.tk.call('wm', 'iconphoto', root._w, img)
+# root.wm_iconbitmap(bitmap = "@/home/efraim/Ccode/BeisChayim/console/icon001.xbm")
 #root.iconbitmap('@/home/efraim/Ccode/BeisChayim/console/icon002.xbm')
 
 def re_install():
