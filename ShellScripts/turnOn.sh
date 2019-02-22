@@ -13,5 +13,6 @@ if [ $ch -gt 0 ]
 then
         pkill -f chromium-browser
         chromium-browser --start-fullscreen  $HOME/$CODE_DIRECTORY/BeisChayim/beisChayim.html &
+        exit 0
 fi
 ~

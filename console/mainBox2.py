@@ -9,7 +9,7 @@ varList = []
 
 oldData = dict()
 runData = dict()
-outDir = "."
+#outDir = "."
 
 filename = "/BCConfig"
 runPhaseFile =  "/RunPhase"
@@ -34,9 +34,14 @@ def readOldRunPhase():
                 x = x.replace('\"','')
                 y = x.split(":")
                 runData[y[0]] = y[1]
-
+#
+# write in the install directory (~/Downloads)
 def writeNewConfig(s):
-    fd = open(outDir + filename, "w+")
+    # fd = open(outDir + filename, "w+")
+    # fd.write(s)
+    # fd.close()
+    #
+    fd = open(installDir + filename, "w+")
     fd.write(s)
     fd.close()
 
