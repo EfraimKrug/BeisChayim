@@ -7,6 +7,7 @@
 pythonDir = r'/home/efraiim/code/BeisChayim/python'
 consoleDir = r'/home/efraiim/code/BeisChayim/console'
 configDir = r'/home/efraiim/code/BeisChayim/config'
+jsDir = r'/home/efraiim/code/BeisChayim/js/'
 installDir = r'/home/efraiim/Downloads'
 bindir = r'/home/efraiim/bin'
 # -*- coding: utf-8 -*-
