@@ -4,6 +4,7 @@ cp $HOME/$1/BeisChayim/ShellScripts/*.sh $HOME/bin
 mv $HOME/bin/BChCycle01.sh $HOME/bin/BChCycle01
 mv $HOME/bin/editCrontab.sh editCrontab
 mv $HOME/bin/turnOn.sh turnOn
+mv $HOME/bin/turnOn2.sh turnOn2
 mv $HOME/bin/cleanUp.sh cleanUp
 mv $HOME/bin/readEmail.sh readEmail
 mv $HOME/bin/setRun.sh setRun
@@ -18,6 +19,7 @@ rm $HOME/bin/ShellInstall.sh
 chmod 555 $HOME/bin/BChCycle01
 chmod 555 $HOME/bin/editCrontab
 chmod 555 $HOME/bin/turnOn
+chmod 555 $HOME/bin/turnOn2
 chmod 555 $HOME/bin/cleanUp
 chmod 555 $HOME/bin/setView
 chmod 555 $HOME/bin/setRun

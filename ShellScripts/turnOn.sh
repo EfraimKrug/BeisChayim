@@ -1,3 +1,4 @@
+#!/bin/sh
 CODE_DIRECTORY=$1
 unclutter -idle 2 &
 ff=$(update-alternatives --display gnome-www-browser | grep firefox | wc -l)

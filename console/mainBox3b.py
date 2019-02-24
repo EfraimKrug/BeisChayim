@@ -1,17 +1,24 @@
+
 from tkinter import *
 from tkinter import ttk
-from PIL import ImageTk, Image
+from tkinter import filedialog
+import tkinter.messagebox
 
-from profile import *
+from PIL import ImageTk, Image
+import subprocess
+import os
+from os import walk
+import shutil
 import json
 
+from profile import *
+from mainBox3a import *
 
 labelList = []
 varList = []
 
 oldData = dict()
 runData = dict()
-#outDir = "."
 
 filename = "/BCConfig"
 runPhaseFile =  "/RunPhase"
@@ -38,32 +45,14 @@ def readOldRunPhase():
                 x = x.replace('\"','')
                 y = x.split(":")
                 runData[y[0]] = y[1]
-#
-# write in the install directory (~/Downloads)
+
 def writeNewConfig(s):
-    # fd = open(outDir + filename, "w+")
-    # fd.write(s)
-    # fd.close()
-    #
     fd = open(installDir + filename, "w+")
     fd.write(s)
     fd.close()
 
-# def writeNewRunPhase():
-#     sec = "var RunPhase = { \"phase01\": {\"run_type\":\"security\"}};"
-#     view = "var RunPhase = { \"phase01\": {\"run_type\":\"view\"}};"
-#     fd = open(configDir + runPhaseFile, "w+")
-#
-#     if varList[8].get() == "edit":
-#         fd.write(sec)
-#     else:
-#         fd.write(view)
-#
-#     fd.close()
-
 def getDisplayType():
     global varList
-    #print("====>>>" + varList[1].get())
     if varList[1].get() == "List Memorial Plaques":
         return "0"
     if varList[1].get() == "List Entries One by One":
@@ -96,8 +85,6 @@ def createConfig():
 def clicked():
     global window
     writeNewConfig(createConfig())
-    #writeNewRunPhase()
-    # -*- coding: utf-8 -*-
     exit()
 
 def configure_var():
@@ -113,7 +100,7 @@ def configure_var():
     window.geometry('750x500')
 
 #set up background
-    img = ImageTk.PhotoImage(Image.open("images/clock02.gif"))
+    img = ImageTk.PhotoImage(Image.open("/home/efraiim/code/BeisChayim/console/images/clock02.gif"))
     pic01 = ttk.Label(window, image = img)
     pic01.pack(side = "bottom", fill = "both", expand = "yes")
 
@@ -218,24 +205,6 @@ def configure_var():
     w2.grid(sticky=E, row=17, column=9, pady=7)
     varList.append(variable)
 
-#run phase
-    # l9 = Label(pic01, text="Run Phase: ", bg="blue", fg="yellow")
-    # l9.grid(sticky=W, row=19, padx=17)
-    #
-    #
-    # phases = ["Edit", "View"]
-    # variable = StringVar(pic01)
-    #
-    # if runData['run_type'] == "view":
-    #     variable.set(phases[1]) # default value
-    # if runData['run_type'] == "security":
-    #     variable.set(phases[0]) # default value
-    #
-    # varList.append(variable)
-    # w2 = OptionMenu(pic01, variable, *phases)
-    # w2.config(bg = "blue", relief="raised")
-    # w2.grid(sticky=E, row=19, column=9, pady=7)
-
     style.map("C.TButton",
         foreground=[('pressed', 'red'), ('active', 'blue')],
         background=[('pressed', '!disabled', 'black'), ('active', 'yellow')]
@@ -245,7 +214,7 @@ def configure_var():
     btn.grid(sticky=SE, column=9, row=25, pady=7)
     window.mainloop()
 
-
-readOldConfig()
-readOldRunPhase()
-configure_var()
+def runApp2():
+    readOldConfig()
+    readOldRunPhase()
+    configure_var()

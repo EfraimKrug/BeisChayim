@@ -31,13 +31,23 @@ root.title('Install/Re-install Your Display')
 
 def re_install():
     subprocess.call([bindir + '/CONreinstall'], shell=False)
+    root = ""
+    exit()
 
 def re_install_current():
     subprocess.call([bindir + '/CONreinstallCurrent'], shell=False)
+    root = ""
+    exit()
 
 def reconfigure():
     subprocess.call([bindir + '/CONCollect'], shell=False)
+    root = ""
+    exit()
 
+def turnOn():
+    subprocess.call([bindir + '/turnOn2'], shell=False)
+    root = ""
+    exit()
     #buildConfigure()
     #farm = buildDrop(farm)
 
@@ -89,14 +99,18 @@ pic01.pack(side = "bottom", fill = "both", expand = "yes")
 button0 = ttk.Button(pic01, text="Reinstall from original file", command = re_install)
 button1 = ttk.Button(pic01, text='Rebuild from current file', command=re_install_current)
 button2 = ttk.Button(pic01, text='Reconfigure', command=reconfigure)
+button3 = ttk.Button(pic01, text='Turn On The System', command=turnOn)
 
 button0.pack(side=RIGHT)
 button1.pack(side=RIGHT)
 button2.pack(side=RIGHT)
+button3.pack(side=RIGHT)
 
 button0.place(x=50, y=50, bordermode=OUTSIDE, height=30, width=300)
 button1.place(x=50, y=100, bordermode=OUTSIDE, height=30, width=300)
 button2.place(x=50, y=150, bordermode=OUTSIDE, height=30, width=300)
+button3.place(x=100, y=10, bordermode=OUTSIDE, height=30, width=80)
+
 frame.pack()
 
 root.mainloop()
