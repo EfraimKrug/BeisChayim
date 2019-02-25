@@ -122,7 +122,7 @@ var renderBoth = function(){
 			}
 		},
 		endingCycle: function(){
-			manipulateIDX.initIDX();
+			manipulateIDX.initIDX(true);
 			i = -1;
 			if(DISPLAY_SETTING == 2){
 				if(pRun == 2){
@@ -188,8 +188,8 @@ var manipulateIDX = function(){
 			if(i) return i > last;
 			return idx > last;
 		},
-		initIDX: function(){
-			idx = 0;
+		initIDX: function(reset){
+			if(reset) idx = 0;
 		},
 		getCurrentDate: function(){
 				return YahrList.Yahrzeits[this.getCurrentIDX()].HDate;

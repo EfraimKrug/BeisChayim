@@ -146,6 +146,7 @@ var SecurityEntry = (function(){
 var BodyListener = (function(){
 	var pdfView = document.getElementById("pdfView");
 	var appBody = document.getElementById("appBody");
+	var pic01  = document.getElementById("Pic01");
 
 	// these functions will usually be 'getNext()'
 	var Bodyfunctn = function(){};
@@ -175,12 +176,14 @@ var BodyListener = (function(){
 				} else {
 					if(BodyListener.isRunPhaseEdit()){
 						appBody.addEventListener("click", Bodyfunctn, true);
+						pic01.addEventListener("click", Bodyfunctn, true);
 					}
 				}
 			},
 			removeBodyListener: function(type){
 				if(type == 'pdf'){
 					appBody.removeEventListener("click", Bodyfunctn, true);
+					pic01.removeEventListener("click", Bodyfunctn, true);
 				}
 			},
 			setSideFunction: function(func){
