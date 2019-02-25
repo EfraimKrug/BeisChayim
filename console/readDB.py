@@ -140,6 +140,7 @@ class dataScreen:
         self.root = Tk()
         self.root.configure(bg="teal", pady=34, padx=17)
         self.root.geometry('500x400')
+        self.frame = ""
 
         if var == 1:
             self.initOne()
@@ -157,51 +158,49 @@ class dataScreen:
         self.root.title('Edit The Entry')
 
     def setStyle(self):
-        s = ttk.Style()
-        s.configure('.', background='lightblue', foreground='maroon', border='4', sticky=EW)
-        s.theme_use('default')
+        self.s = ttk.Style()
+        self.s.configure('.', background='lightblue', foreground='maroon', border='4', sticky=EW)
+        self.s.theme_use('default')
 
     def clickResponse(self):
         self.responseLabel['text'] = self.searchObj.getTargetName()
         entry = self.searchObj.getTargetEntry()
-        #print(entry['ID'])
-        ds = dataScreen(2, entry)
-        ds.runScreen()
+        print(entry['ID'])
 
     def buildFrame(self, root):
-        frame = Frame(root, width=450, height=430)
-        frame.configure(bg="teal", pady=3, padx=3)
+        self.frame = Frame(self.root, width=450, height=430)
+        self.frame.configure(bg="teal", pady=3, padx=3)
 
-        l1 = Label(frame, text="Search: ", bg="blue", fg="yellow", padx=4, pady=4)
+        l1 = Label(self.frame, text="Search: ", bg="blue", fg="yellow", padx=4, pady=4)
         l1.place(x=0, y=0, bordermode=OUTSIDE, height=30, width=150)
-        frame.pack()
+        self.frame.pack()
 
     def getEachKeyStroke(self, key):
         self.searchObj.getEachStroke(key)
         self.setOutlabel()
 
     def placeTextBox(self, frame):
-        txt = Entry(frame, width=45,  borderwidth=2, relief="sunken")
-        txt.place(x=210, y=33, bordermode=OUTSIDE, height=30, width=150)
-        txt.bind("<Key>", self.getEachKeyStroke)
-        txt.bind("<Up>", self.searchObj.upArrow)
-        txt.bind("<Down>", self.searchObj.downArrow)
-        txt.focus()
-        return txt
+        self.txt = Entry(frame, width=45,  borderwidth=2, relief="sunken")
+        self.txt.place(x=210, y=33, bordermode=OUTSIDE, height=30, width=150)
+        self.txt.bind("<Key>", self.getEachKeyStroke)
+        self.txt.bind("<Up>", self.searchObj.upArrow)
+        self.txt.bind("<Down>", self.searchObj.downArrow)
+        self.txt.focus()
+        return self.txt
 
     def placeButton(self, frame):
-        button0 = ttk.Button(frame, text="Click It", command =self.clickResponse)
-        button0.pack(side=RIGHT)
-        button0.place(x=310, y=350, bordermode=OUTSIDE, height=30, width=150)
-        return button0
+        self.button0 = ttk.Button(self.frame, text="Click It", command =self.clickResponse)
+        self.button0.pack(side=RIGHT)
+        self.button0.place(x=310, y=350, bordermode=OUTSIDE, height=30, width=150)
+        #return self.button0
 
     def placeResponseLabel(self, frame):
-        self.responseLabel = Label(frame, text="Response Label", bg="blue", fg="yellow", padx=4, pady=4)
+        self.responseLabel = Label(self.frame, text="Response Label", bg="blue", fg="yellow", padx=4, pady=4)
         self.responseLabel.place(x=30, y=120, bordermode=OUTSIDE, height=30, width=150)
         return self.responseLabel
 
     def placeOutLabel(self, frame):
-        OutLabel = Label(frame, text="Result Label", bg="blue", fg="yellow", padx=4, pady=4)
+        OutLabel = Label(self.frame, text="Result Label", bg="blue", fg="yellow", padx=4, pady=4)
         OutLabel.place(x=30, y=170, bordermode=OUTSIDE, height=30, width=450)
         return OutLabel
 
@@ -210,8 +209,9 @@ class dataScreen:
 
     def runScreen(self):
         frame = self.buildFrame(self.root)
-        enterButton = self.placeButton(frame)
-        self.responseLabel = self.placeResponseLabel(frame)
+        self.placeButton(frame)
+        print(self.button0['text'])
+        responseLabel = self.placeResponseLabel(frame)
         self.outLabel = self.placeOutLabel(frame)
         textBox = self.placeTextBox(frame)
         self.root.mainloop()
