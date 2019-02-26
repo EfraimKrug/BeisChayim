@@ -15,28 +15,33 @@ class Demo1:
         self.master.geometry('500x400')
         self.master.title('Install/Re-install Your Display')
 
-        self.frame = tk.Frame(self.master, width=450, height=430)
+        self.frame = tk.Frame(self.master, width=460, height=360)
         self.frame.configure(bg="teal", pady=3, padx=3)
         self.frame.grid(row=1, column=1)
 
         self.l1 = tk.Label(self.frame, text="Search: ", bg="teal", fg="yellow")
         self.l1.grid(row=1, column=2, padx=4, pady=4, sticky=tk.W)
 
-        self.button0 = tk.Button(self.frame, text="Click It", command =self.new_window)
+        self.button0 = tk.Button(self.frame, text="Edit", command =self.new_window)
         self.button0.grid(row=1, column=12, columnspan=4, padx=4, pady=4, sticky=tk.E)
 
+        self.button1 = tk.Button(self.frame, text="New", command =self.new_empty_window)
+        self.button1.grid(row=2, column=12, columnspan=4, padx=4, pady=4, sticky=tk.E)
+
         self.txt = tk.Entry(self.frame, width=45,  borderwidth=2, relief="sunken")
-        self.txt.place(x=210, y=210, bordermode=tk.OUTSIDE, height=30, width=150)
+        #self.txt.place(x=210, y=210, bordermode=tk.OUTSIDE, height=30, width=150)
         self.txt.bind("<Key>", self.getEachKeyStroke)
         self.txt.bind("<Up>", self.upArrow)
         self.txt.bind("<Down>", self.downArrow)
+        self.txt.bind("<Return>", self.pre_new_window)
+
         self.txt.focus()
         self.txt.grid(row=4, column=2, columnspan=4, padx=4, pady=4, sticky=tk.E)
 
-        self.responseLabel = tk.Label(self.frame, text="Response Label", bg="teal", fg="yellow")
+        self.responseLabel = tk.Label(self.frame, text="", bg="teal", fg="yellow")
         self.responseLabel.grid(row=7, rowspan=2, column=1, columnspan=4, padx=4, pady=4, sticky=tk.W)
 
-        self.OutLabel = tk.Label(self.frame, text="Result Label", bg="teal", fg="yellow")
+        self.OutLabel = tk.Label(self.frame, text="", bg="teal", fg="yellow")
         self.OutLabel.grid(row=9, rowspan=2, column=1, columnspan=4, padx=4, pady=4, sticky=tk.W)
 
 
@@ -57,7 +62,16 @@ class Demo1:
         #print("downArrow")
         self.searchObj.downArrow(key, self.setOutlabel)
 
+    def pre_new_window(self, key):
+        #print("in pre")
+        self.new_window()
+
+    def new_empty_window(self):
+        self.newWindow = tk.Toplevel(self.master)
+        self.app = Demo2(self.newWindow, self.searchObj.getNewEntry())
+
     def new_window(self):
+        #print("in new")
         self.newWindow = tk.Toplevel(self.master)
         #print(self.searchObj.getTargetEntry())
         self.app = Demo2(self.newWindow, self.searchObj.getTargetEntry())

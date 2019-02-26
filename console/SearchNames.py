@@ -26,12 +26,25 @@ class SearchNames:
         return self.targetEntry
 
     def getTargetName(self):
-        print(self.targetPointer)
         if len(self.targetArray) < 1 or len(self.targetArray[self.targetPointer]) < 1:
             return ""
 
         self.targetName = self.targetArray[self.targetPointer][0]
         return self.targetName
+
+    def getNewEntry(self):
+        print(len(self.data))
+
+        self.emptyEntry = self.data['ENTRIES'][0]
+        for e in self.emptyEntry:
+            self.emptyEntry[e] = ""
+        self.emptyEntry["PayLevel"] = "1"
+        return self.emptyEntry
+
+    def saveNewEntry(self, newEntry):
+        self.data.append(newEntry)
+        print(len(self.data))
+        print(self.data)
 
     def searchName(self, str):
         self.initialize()
@@ -39,7 +52,6 @@ class SearchNames:
             nArray = entry["Name"].split()
             for eName in nArray:
                 if eName.lower().find(str.lower()) == 0:
-                    print(eName)
                     self.targetArray.append([entry["Name"], entry])
 
         #print(self.targetArray[0][0])
