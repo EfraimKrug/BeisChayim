@@ -22,16 +22,16 @@ class Demo1:
         self.l1 = tk.Label(self.frame, text="Search: ", bg="teal", fg="yellow")
         self.l1.grid(row=1, column=2, padx=4, pady=4, sticky=tk.W)
 
-        self.button0 = tk.Button(self.frame, text="Click It", command =self.new_window)
+        self.button0 = tk.Button(self.frame, text="Look Up", command =self.new_window)
         self.button0.grid(row=1, column=12, columnspan=4, padx=4, pady=4, sticky=tk.E)
-
         self.txt = tk.Entry(self.frame, width=45,  borderwidth=2, relief="sunken")
-        self.txt.place(x=210, y=210, bordermode=tk.OUTSIDE, height=30, width=150)
+        #self.txt.place(x=210, y=210, bordermode=tk.OUTSIDE, height=30, width=150)
         self.txt.bind("<Key>", self.getEachKeyStroke)
         self.txt.bind("<Up>", self.upArrow)
         self.txt.bind("<Down>", self.downArrow)
         self.txt.focus()
         self.txt.grid(row=4, column=2, columnspan=4, padx=4, pady=4, sticky=tk.E)
+        self.txt.bind ('<Return>', self.new_window_entry)
 
         self.responseLabel = tk.Label(self.frame, text="Response Label", bg="teal", fg="yellow")
         self.responseLabel.grid(row=7, rowspan=2, column=1, columnspan=4, padx=4, pady=4, sticky=tk.W)
@@ -56,6 +56,9 @@ class Demo1:
     def downArrow(self, key):
         #print("downArrow")
         self.searchObj.downArrow(key, self.setOutlabel)
+
+    def new_window_entry(self, key):
+        self.new_window()
 
     def new_window(self):
         self.newWindow = tk.Toplevel(self.master)
