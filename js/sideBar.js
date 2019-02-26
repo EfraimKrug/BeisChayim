@@ -53,7 +53,7 @@ function getGridColumn(){
 //****************************************************
 //*	pdfPix is accessed when the element in clicked...
 //*
-//*		getFirstPDF -returns the first pdf image name
+//*		getFirstp -returns the first pdf image name
 //*		getNextPDF - returns next pdf image name
 //*		getPrevPDF - returns previous image name
 //*
