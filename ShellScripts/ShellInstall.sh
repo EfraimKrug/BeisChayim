@@ -13,6 +13,7 @@ mv $HOME/bin/CONreinstall.sh CONreinstall
 mv $HOME/bin/CONreinstallCurrent.sh CONreinstallCurrent
 mv $HOME/bin/CONCollect.sh CONCollect
 mv $HOME/bin/Reconfigure.sh Reconfigure
+mv $HOME/bin/fix.sh fix
 
 rm $HOME/bin/ShellInstall.sh
 
@@ -27,6 +28,7 @@ chmod 555 $HOME/bin/CONreinstall
 chmod 555 $HOME/bin/CONreinstallCurrent
 chmod 555 $HOME/bin/CONCollect
 chmod 555 $HOME/bin/Reconfigure
+chmod 555 $HOME/bin/fix
 
 cd $HOME/$1/BeisChayim/python
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' cleanup01.py

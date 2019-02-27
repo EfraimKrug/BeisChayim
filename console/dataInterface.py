@@ -37,8 +37,20 @@ class dataInterface:
                 ID = entry['ID']
         return ID
 
+    def entryExists(self, entry):
+        for DEntry in self.data['ENTRIES']:
+            if DEntry['ID'] == entry['ID']:
+                return True
+        return False
+
     def addToData(self, entry):
         self.data['ENTRIES'].append(entry)
+
+    def replaceData(self, entry):
+        for DEntry in self.data['ENTRIES']:
+            if DEntry['ID'] == entry['ID']:
+                for e in DEntry:
+                    DEntry[e] = entry[e]
 
     def encodeData(self):
         fileString = "var YahrzeitList = '{ \"Yahrzeits\": [' + \n"
@@ -48,7 +60,12 @@ class dataInterface:
         fileString += " ']}';"
         #print(fileString)
         fileString = fileString[0:fileString.rfind(",")] + fileString[fileString.rfind(",")+1:]
-        print(fileString)
+        return fileString
+
+    def writeStagingData(self, fileString):
+        fd = open(dataStaging + "db01.js", "w+")
+        fd.write(fileString)
+        fd.close()
 
     def showData(self):
         if self.var == 2:

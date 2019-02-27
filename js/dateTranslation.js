@@ -149,6 +149,7 @@ function buildYear(y){
 // dt must be: day<space>month-name<comma>year
 /*****************************************************/
 function translateDate(dt){
+  dt = dt.replace("&amp;comma,",",");
   dt = dt.replace("Adar II", "AdarII");
   //console.log(dt);
   if(dt.match(/\d+\s+\w+(,|\s+)\s*\d\d\d\d/i)){

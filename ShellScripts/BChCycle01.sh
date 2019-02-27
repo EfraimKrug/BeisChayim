@@ -12,6 +12,24 @@ fi
 ###########################################################################################
 ## process the yahrzeits.csv file if it is there...
 ###########################################################################################
+if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/staging -name 'db01.js' | head -1)" ]
+then
+  echo `date` Restarting Application >> CYCLE_LOG
+  echo Found a staged db01.js file >> CYCLE_LOG
+
+  cp $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
+  mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
+  cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+  cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
+
+  ###########################################################################################
+  ## restart the application
+  ###########################################################################################
+  echo `date` Restarting Application >> CYCLE_LOG
+  $HOME/bin/turnOn $CODE_DIRECTORY
+  exit 0
+fi
+#
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
 then
    echo =================== NEW YAHRZEIT FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck

@@ -207,7 +207,10 @@ function loadElement(i){
 		}
 	}
 	var Comments01 = document.getElementById("Comments01");
-	Comments01.innerHTML = YahrList.Yahrzeits[i].Comments01;
+	var s = YahrList.Yahrzeits[i].Comments01;
+	s = s.replace(/&amp;comma/g,',');
+	s = s.replace(/&comma/g,',');
+	Comments01.innerHTML = s;
 	Comments01.className = "Comments01" + YahrList.Yahrzeits[i].PayLevel;
 	if(YahrList.Yahrzeits[i].Comments01.length > 411){
 		if(YahrList.Yahrzeits[i].Pic02.trim() == ""){

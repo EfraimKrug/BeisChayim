@@ -151,7 +151,7 @@ class Demo2:
         self.l5.grid(row=7, column=1, padx=4, pady=4, sticky=tk.W)
         self.textfield5 = tkst.Text(self.frame, wrap=tk.WORD, height=6, width=40 )
         self.textfield5.grid(row=7, rowspan=2, column=2, columnspan=2, padx=4, pady=4, sticky=tk.NSEW)
-        self.textfield5.insert(tk.INSERT, self.data['Comments01'].strip())
+        self.textfield5.insert(tk.INSERT, self.data['Comments01'].strip().replace("&comma",""))
 
         self.scrollbar = tkst.Scrollbar(self.frame, command=self.textfield5.yview)
         self.textfield5.configure(yscrollcommand=self.scrollbar.set)
@@ -281,30 +281,33 @@ class Demo2:
         self.data['PDF04'] = self.l11.cget('text').strip()[self.l11.cget('text').rfind('/')+1:]
         self.data['PDF05'] = self.l12.cget('text').strip()[self.l12.cget('text').rfind('/')+1:]
 
+        if self.data['Pic01'].find("Nothing...") > -1:
+            self.data['Pic01'] = ""
+        if self.data['Pic02'].find("Nothing...") > -1:
+            self.data['Pic02'] = ""
+        if self.data['PDF01'].find("Nothing...") > -1:
+            self.data['PDF01'] = ""
+        if self.data['PDF02'].find("Nothing...") > -1:
+            self.data['PDF02'] = ""
+        if self.data['PDF03'].find("Nothing...") > -1:
+            self.data['PDF03'] = ""
+        if self.data['PDF04'].find("Nothing...") > -1:
+            self.data['PDF04'] = ""
+        if self.data['PDF05'].find("Nothing...") > -1:
+            self.data['PDF05'] = ""
+            
         if(self.data['ID'].strip() == ""):
             self.data['ID'] = str(self.getNewID())
 
-        self.dataI.addToData(self.data)
-        self.dataI.encodeData()
-        #print(len(self.data))
-        #for k in self.data:
-        #    print(k + " ==> " + self.data[k])
-        # self.printl(self.txt0.get())
-        # self.printl(self.txt1.get())
-        # self.printl(self.txt2.get())
-        # self.printl(self.txt3.get())
-        # self.printl(self.textfield5.get("1.0", tk.END))
-        #
-        # self.printl(self.l6.cget('text'))
-        # self.printl(self.l7.cget('text'))
-        # self.printl(self.l8.cget('text'))
-        # self.printl(self.l9.cget('text'))
-        # self.printl(self.l10.cget('text'))
-        # self.printl(self.l11.cget('text'))
-        # self.printl(self.l12.cget('text'))
-        #
-    #def printl(self, text):
-    #    print("[" + text + "]")
+        if self.dataI.entryExists(self.data):
+            print("replacing")
+            self.dataI.replaceData(self.data)
+        else:
+            print("adding")
+            self.dataI.addToData(self.data)
+
+        self.dataI.writeStagingData(self.dataI.encodeData())
+        exit()
 
     def getEachKeyStroke(self, key):
         #print("getEachKeyStroke")
