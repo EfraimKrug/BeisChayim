@@ -2,8 +2,8 @@
 Encoding=UTF-8
 Name=Beis Chayim
 Comment=Remembering...
-Exec=/bin/sh "/home/efraiim/bin/turnOn2"
-Icon=/home/efraiim/code/BeisChayim/console/images/clock02.gif
+Exec=/bin/sh "/home/efraiim/bin/turnOn"
+Icon=/home/efraiim/code/BeisChayim/console/images/clock01.gif
 Categories=Application;Development;python;javascript
 Version=1.0
 Type=Application

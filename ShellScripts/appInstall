@@ -37,6 +37,9 @@ mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/log
+cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim1.desktop
+cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon2.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim2.desktop
+
 #
 chmod 555 $HOME/bin/ShellInstall
 #

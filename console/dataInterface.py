@@ -26,6 +26,13 @@ class dataInterface:
 
         self.data = json.loads(JString)
 
+    def getLastID(self):
+        ID = 0
+        for entry in self.data['ENTRIES']:
+            if int(ID) < int(entry['ID']):
+                ID = entry['ID']
+        return ID
+
     def showData(self):
         if self.var == 2:
             return
