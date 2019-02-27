@@ -257,7 +257,7 @@ class Demo2:
         print(self.variable.get())
 
     def getNewID(self):
-        print("getting new ID")
+        #print("getting new ID")
         lastID = str(self.dataI.getLastID())
         lastID = "99" + lastID[2:]
         lastID = int(lastID) + 1
@@ -269,7 +269,7 @@ class Demo2:
         self.data['HName'] = self.txt1.get()
         self.data['EDate'] = self.txt2.get()
         self.data['HDate'] = self.txt3.get()
-        self.data['Comments01'] = self.textfield5.get('1.0', tk.END)
+        self.data['Comments01'] = self.textfield5.get('1.0', tk.END).replace("\n","")
         self.data['PayLevel'] = str(self.variable.get())
 
         self.data['Pic01'] = self.l6.cget('text').strip()[self.l6.cget('text').rfind('/')+1:]
@@ -284,9 +284,11 @@ class Demo2:
         if(self.data['ID'].strip() == ""):
             self.data['ID'] = str(self.getNewID())
 
-        print(len(self.data))
-        for k in self.data:
-            print(k + " ==> " + self.data[k])
+        self.dataI.addToData(self.data)
+        self.dataI.encodeData()
+        #print(len(self.data))
+        #for k in self.data:
+        #    print(k + " ==> " + self.data[k])
         # self.printl(self.txt0.get())
         # self.printl(self.txt1.get())
         # self.printl(self.txt2.get())
@@ -301,8 +303,8 @@ class Demo2:
         # self.printl(self.l11.cget('text'))
         # self.printl(self.l12.cget('text'))
         #
-    def printl(self, text):
-        print("[" + text + "]")
+    #def printl(self, text):
+    #    print("[" + text + "]")
 
     def getEachKeyStroke(self, key):
         #print("getEachKeyStroke")

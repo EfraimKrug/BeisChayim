@@ -3,7 +3,11 @@ from profile import *
 import json
 import pprint
 
-
+###############################################################
+# data conversion -
+# buildData - converts json file to dict
+# encodeData - converts dict back to json
+###############################################################
 class dataInterface:
     def __init__(self, var, data):
         self.var = var
@@ -33,6 +37,19 @@ class dataInterface:
                 ID = entry['ID']
         return ID
 
+    def addToData(self, entry):
+        self.data['ENTRIES'].append(entry)
+
+    def encodeData(self):
+        fileString = "var YahrzeitList = '{ \"Yahrzeits\": [' + \n"
+        for entry in self.data['ENTRIES']:
+            line = json.dumps(entry)
+            fileString += "'" + line + ",' + \n"
+        fileString += " ']}';"
+        #print(fileString)
+        fileString = fileString[0:fileString.rfind(",")] + fileString[fileString.rfind(",")+1:]
+        print(fileString)
+
     def showData(self):
         if self.var == 2:
             return
@@ -42,3 +59,7 @@ class dataInterface:
 
         pp = pprint.PrettyPrinter(indent=2)
         pp.pprint(self.data)
+
+#dataI = dataInterface(1, [])
+#data = dataI.getData()
+#dataI.encodeData()
