@@ -1,7 +1,7 @@
 CODE_DIRECTORY=bcCode
 TEMP_DIRECTORY=bcTemp
 cd $HOME
-echo Making new directories 
+echo Making new directories
 mkdir $TEMP_DIRECTORY
 mkdir $TEMP_DIRECTORY/config
 echo copying files: config, db, and csv
@@ -18,6 +18,7 @@ cp $HOME/bin/appInstall $HOME/$TEMP_DIRECTORY/appInstall
 cd $HOME
 echo removing old directories
 rm -f -r $CODE_DIRECTORY
+rm -f $HOME/Desktop/Desktopicon*.txt
 echo removing zip files in Downloads
 rm -f Downloads/*.zip
 echo removing bin files
