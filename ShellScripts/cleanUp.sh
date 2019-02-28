@@ -10,6 +10,7 @@ cd $HOME/$CODE_DIRECTORY/BeisChayim/python
 python3 json2csv.py
 mv nYahrzeits.csv $HOME/$TEMP_DIRECTORY/nYahrzeits.csv
 cp $HOME/bin/appInstall $HOME/$TEMP_DIRECTORY/appInstall
+cd $HOME
 rm -f -r $CODE_DIRECTORY
 rm -f Downloads/*.zip
 rm -f bin/*
