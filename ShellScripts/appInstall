@@ -5,6 +5,7 @@
 BRANCH_NAME=master
 BRANCH_NAME_ZIP=master.zip
 CODE_DIRECTORY=bcCode
+TEMP_DIRECTORY=bcTemp
 #
 cd $HOME/Downloads
 #
@@ -33,13 +34,16 @@ cp ~/$CODE_DIRECTORY/BeisChayim/ShellScripts/BChCycle01.sh ~/bin/BChCycle01
 cp $HOME/$CODE_DIRECTORY/BeisChayim/ShellScripts/ShellInstall.sh $HOME/bin/ShellInstall
 #
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data
+mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/staging
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/work
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/log
 cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim1.desktop
 cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon2.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim2.desktop
-
+#
+[ -n "$(find $HOME/bcTemp/config -name '*' | head -1)" ] && mv $HOME/bcTemp/config/* $HOME/$CODE_DIRECTORY/BeisChayim/config
+[ -n "$(find $HOME/bcTemp -name 'nYahrzeits.csv' | head -1)" ] && mv $HOME/bcTemp/nYahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/config
 #
 chmod 555 $HOME/bin/ShellInstall
 #
