@@ -28,8 +28,8 @@ with open ("/home/efraiim/code/BeisChayim/js/db01.js", "r") as JSONfile:
         line = line.replace("},","}")
         line = line.replace("]}", "")
         l = eval(line)
-    if len(l) > 0:
-        l2 = eval(l)
-        fd.write(getLine(l2))
+        if len(l) > 0:
+            l2 = eval(l)
+            fd.write(getLine(l2))
 
 fd.close()
