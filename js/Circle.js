@@ -15,12 +15,14 @@ var timeControl = (function(){
 	SideInterval = 0;
 	var actions = {
 		setTimer: function(func){
+				console.log("setTimer");
 				OneByInterval = setInterval(func, tf);
 		},
 		setSideTimer: function(func){
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
+				console.log('clearTimer');
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
@@ -45,6 +47,7 @@ function setupTimerLoad(){
 }
 
 function timerLoad(lastNum){
+	console.log("timerLoad");
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
 
