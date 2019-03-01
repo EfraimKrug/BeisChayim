@@ -185,12 +185,12 @@ function loadElement(i){
 	Pic01.style.visibility = "hidden";
 	Pic02.style.visibility = "hidden";
 
-	if((YahrList.Yahrzeits[i].PayLevel > 1) && YahrList.Yahrzeits[i].Pic01){
+	if((YahrList.Yahrzeits[i].PayLevel > 1) && YahrList.Yahrzeits[i].Pic01  && YahrList.Yahrzeits[i].Pic01.indexOf("Nothing") < 0){
 		Pic01.style.visibility = "visible";
 		Pic01.src = "./img/" + YahrList.Yahrzeits[i].Pic01;
 	}
 
-	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02){
+	if(YahrList.Yahrzeits[i].PayLevel > 2 && YahrList.Yahrzeits[i].Pic02 && YahrList.Yahrzeits[i].Pic02.indexOf("Nothing") < 0){
 		Pic02.style.visibility = "visible";
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}
