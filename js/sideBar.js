@@ -89,20 +89,12 @@ var pdfPix = function(idx){
 			},
 			getNextPDF: function(div){
 				actions.setCurrentIDX();
-				// console.log("Entering getNextPDF" + currentIDX);
-				//if((div.target.id.indexOf("sbar") == 0)&&(RunPhaseView() )){
-				//	BodyListener.removeBodyListener("pdf");
-				//}
 				timeControl.clearTimer();
 				timeControl.clearSideTimer();
 				actions.setName();
 				actions.makeVisible();
 				if(actions.noPicture()){
-					// console.log("HERE");
-					//timerLoad(currentIDX + 1);
-					//manipulateIDX.incrementIDX();
 					TLoad.setCorrectTimer();
-					//timeControl.setTimer();
 					actions.setCurrency(1);
 					return;
 				}
@@ -264,14 +256,6 @@ var sideBarManip = function(){
 										}
 										var pdfSide = null;
 										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
-
-										// if(RunPhaseView()){
-										// 	var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
-										// 	if (pdfName.trim() != ""){
-										// 		BodyListener.setSideFunction(pdfSide.getNextPDF);
-										// 		BodyListener.addSideListener("side",sbar);
-										// 	}
-										// }
 									},
 		};
 		return actions;

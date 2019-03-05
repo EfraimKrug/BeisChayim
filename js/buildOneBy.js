@@ -11,7 +11,6 @@ function positionElts(){
 		name.style.left = getLeftOffsetName();
 		name.style.width = getOneByWidth();
 		name.style.fontSize = getName1Font();
-		//name.style.display = 'inline';
 
 		var dpic01  = document.getElementById("DPic01");
 		dpic01.style.top = getTopPic1();
@@ -19,7 +18,6 @@ function positionElts(){
 
 		var pic01  = document.getElementById("Pic01");
 		pic01.style.left = "0px";
-		//pic01.style.display = 'inline';
 
 		t = getNextTop(t);
 		if(t == 0) s++;
@@ -29,7 +27,6 @@ function positionElts(){
 		hname.style.left = getLeftOffsetName();
 		hname.style.width = getOneByWidth();
 		hname.style.fontSize = getName2Font();
-		//hname.style.display = 'inline';
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -47,7 +44,6 @@ function positionElts(){
 			hdate.style.width = getOneByHalfWidth();
 			hdate.style.fontSize = getDate2Font();
 		}
-		//hdate.style.display = 'inline';
 
 		t += 1;
 		if(t > BITES_PER_SQUARE){
@@ -60,7 +56,6 @@ function positionElts(){
 		edate.style.left = getLeftOffsetName();
 		edate.style.width = getOneByWidth();
 		edate.style.fontSize = getName2Font();
-		//edate.style.display = 'inline';
 
 		t = getNextTop(t);
 		if(t == 0) s++;
@@ -71,12 +66,10 @@ function positionElts(){
 
 		var pic02  = document.getElementById("Pic02");
 		pic02.style.left = getLeftPic2();
-		//pic02.style.display = 'inline';
 
 		var Comment01  = document.getElementById("Comments01");
 		Comment01.style.top = getTopComment01();
 		Comment01.style.left = getLeftComment01();
-		//Comment01.style.display = 'inline';
 
 		if(!screenHidden){
 			name.style.display = "inline";
@@ -143,7 +136,6 @@ function loadElement(i){
 		}
 
 		HDate.innerHTML = fixDate(HDate.innerHTML);
-		//alert("here");
 		if(DATES_IN_HEBREW) HDate.innerHTML = translateDate(fixDate(HDate.innerHTML));
 		if(YahrList.Yahrzeits[i].HDate.trim() == ""){
 			HDate.innerHTML = "";
@@ -195,18 +187,11 @@ function loadElement(i){
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}
 
-	//var pdfP = null;
-	//pdfP = new pdfPix(i);
-	//if(RunPhaseView()){
 		BodyListener.removeBodyListener();
 		if(YahrList.Yahrzeits[i].PDF01.trim() != "" && YahrList.Yahrzeits[i].PDF01.trim().indexOf("Nothing") < 0){
-			// console.log("setting body listener: " + i + " and idx: " + manipulateIDX.getCurrentIDX());
 			BodyListener.setFirstFunction(pdfPix.getNextPDF);
 			BodyListener.addBodyListener();
 		}
-		//else {
-		//}
-	//}
 	var Comments01 = document.getElementById("Comments01");
 	var s = YahrList.Yahrzeits[i].Comments01;
 	s = s.replace(/&amp;comma/g,',');
@@ -222,7 +207,5 @@ function loadElement(i){
 		}
 	}
 
-	//setTimeout(loadSideBar, (TIME_FACTOR  * 1000) / 2);
 	currentIDX = i;
-	//timeControl.setSideTimer(loadSideBar);
 }
