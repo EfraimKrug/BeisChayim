@@ -133,7 +133,7 @@ var pdfPix = function(idx){
 			noPicture: function(){
 				if(currentIDX > YahrList.Yahrzeits.length - 1) return true;
 				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
-				if(pdfName.trim() == ""){
+				if(pdfName.trim() == "" || pdfName.trim().indexOf("Nothing") > -1){
 					return true;
 				}
 				return false;

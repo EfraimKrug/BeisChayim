@@ -71,6 +71,9 @@ function timerLoad(lastNum){
 	if(DISPLAY_SETTING == 2) {
 		timeControl.setSideTimer(sideBarManip.loadSideBar);
 		timeControl.setTimer(function(){
+			if(renderAll.isPlaque()){
+				BodyListener.removeBodyListener();
+			}
 			renderAll.loadAlternate(rendPlaques);
 		});
 	}
