@@ -195,17 +195,18 @@ function loadElement(i){
 		Pic02.src = "./img/" + YahrList.Yahrzeits[i].Pic02;
 	}
 
-	var pdfP = null;
-	pdfP = new pdfPix(i);
-	if(RunPhaseView()){
-		if(YahrList.Yahrzeits[i].PDF01.trim() != ""){
-			BodyListener.setFirstFunction(pdfP.getNextPDF);
-			BodyListener.addBodyListener("pdf");
+	//var pdfP = null;
+	//pdfP = new pdfPix(i);
+	//if(RunPhaseView()){
+		BodyListener.removeBodyListener();
+		if(YahrList.Yahrzeits[i].PDF01.trim() != "" && YahrList.Yahrzeits[i].PDF01.trim().indexOf("Nothing") < 0){
+			console.log("setting body listener: " + i + " and idx: " + manipulateIDX.getCurrentIDX());
+			BodyListener.setFirstFunction(pdfPix.getNextPDF);
+			BodyListener.addBodyListener();
 		}
-		else {
-			BodyListener.removeBodyListener("pdf");
-		}
-	}
+		//else {
+		//}
+	//}
 	var Comments01 = document.getElementById("Comments01");
 	var s = YahrList.Yahrzeits[i].Comments01;
 	s = s.replace(/&amp;comma/g,',');

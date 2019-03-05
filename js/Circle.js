@@ -43,40 +43,60 @@ function setupTimerLoad(){
 	setCurrentMonth();
 	//start the application...
 	manipulateIDX.initIDX();
-	timerLoad();
+	TLoad = timerLoad();
+	TLoad.setCorrectTimer();
 }
 
-function timerLoad(lastNum){
-	console.log("timerLoad");
+function setTimerWithFunction(){
+
+}
+
+var timerLoad = function(){
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
 
-	if(DISPLAY_SETTING == 0){
-		timeControl.setTimer(function(){
-			hideScreen02();
-			renderAll.loadingPlaques(rendPlaques);
-		});
-	}
-	manipulateIDX.initIDX();
-
-	if(DISPLAY_SETTING == 1){
-		timeControl.setSideTimer(sideBarManip.loadSideBar);
-		timeControl.setTimer(function(){
-			renderAll.loadingOneBy(manipulateIDX.getNextIDX());
-			manipulateIDX.incrementIDX();
-			if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) renderAll.endingCycle();
-			});
-	}
-
-	if(DISPLAY_SETTING == 2) {
-		timeControl.setSideTimer(sideBarManip.loadSideBar);
-		timeControl.setTimer(function(){
-			if(renderAll.isPlaque()){
-				BodyListener.removeBodyListener();
-			}
-			renderAll.loadAlternate(rendPlaques);
-		});
-	}
+	var actions = {
+			runPlaques: function(){
+				  timeControl.setTimer(function(){
+					hideScreen02();
+					renderAll.loadingPlaques(rendPlaques);
+					});
+					manipulateIDX.initIDX();
+			},
+			runOneBy: function(){
+				  timeControl.setSideTimer(sideBarManip.loadSideBar);
+				  timeControl.setTimer(function(){
+					renderAll.loadingOneBy(manipulateIDX.getNextIDX());
+					manipulateIDX.incrementIDX();
+					if(manipulateIDX.isOutOfRange(manipulateIDX.getCurrentIDX())) renderAll.endingCycle();
+					});
+				},
+			runAlternate: function(){
+				  timeControl.setSideTimer(sideBarManip.loadSideBar);
+				  timeControl.setTimer(function(){
+					if(renderAll.isPlaque()){
+						BodyListener.removeBodyListener();
+					}
+					renderAll.loadAlternate(rendPlaques);
+				});
+			},
+			setCorrectTimer: function(){
+					if(DISPLAY_SETTING == 0){
+						TLoad.runPlaques();
+						return;
+					}
+					if(DISPLAY_SETTING == 1){
+						TLoad.runOneBy();
+						return;
+					}
+					if(DISPLAY_SETTING == 2){
+						TLoad.runAlternate();
+						return;
+					}
+				TLoad.runAlternate();
+			},
+		};
+		return actions;
 }
 
 function sideTimerLoad(lastNum){
@@ -122,8 +142,8 @@ var renderBoth = function(){
 			//timeControl.setSideTimer(sideBarManip.loadSideBar);
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
-				BodyListener.setFirstFunction(SecurityEntry.showSecurity);
-				BodyListener.addBodyListener();
+				//BodyListener.setFirstFunction(SecurityEntry.showSecurity);
+				//BodyListener.addBodyListener();
 				loadElement(lastNum);
 			}
 		},
@@ -172,10 +192,17 @@ var renderBoth = function(){
 
 var manipulateIDX = function(){
 	var idx = 0;
+	var lastIDX = 0;
 	var last = YahrList.Yahrzeits.length - 1;
 	var overTheTop = last + 3;
 
 	var actions = {
+		getLastIDX: function(){
+			return lastIDX;
+		},
+		setLastIDX: function(val){
+			lastIDX = val;
+		},
 		setCurrentIDX: function(i){
 			idx = i;
 		},
@@ -187,6 +214,7 @@ var manipulateIDX = function(){
 		},
 		// note: this can set idx out of range...
 		getNextIDX: function(){
+				this.setLastIDX(this.getCurrentIDX());
 				this.setCurrentIDX(this.getNextInRange());
 				return this.getCurrentIDX();
 		},

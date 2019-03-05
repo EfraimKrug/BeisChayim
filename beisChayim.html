@@ -17,6 +17,7 @@
 <div id="pdfView" height="100%" width="100%"><img id="pdfImg" src=""></div>
 
 <div id=body class=bg0>
+<!--
 <div id=keyShow></div>
 <div id="security">
 								<table id="kboard">
@@ -42,7 +43,9 @@
                   </tr>
               </table>
 </div>
+-->
 <div id=spanTitle><h1 id=sTitle>Beis Chayim</h1></div>
+<!--
 <table id=accessMenu>
 	<tr><td>
 </td>
@@ -57,6 +60,7 @@
 </td>
 </tr>
 </table>
+-->
 <div id="wholeThing">
 	<div id=Name></div>
 	<div id=HName></div>
@@ -104,7 +108,7 @@
 
 
 <script>
-SecurityEntry.hideAll();
+//SecurityEntry.hideAll();
 
 var sTitle = document.getElementById("sTitle");
 sTitle.innerHTML = SCREEN_TITLE;
@@ -122,7 +126,7 @@ function doAction(){
 
 
 function kbclick(ky){
-  SecurityEntry.kbclick(ky);
+  //SecurityEntry.kbclick(ky);
 }
 
 </script>
@@ -310,16 +314,16 @@ function kbclick(ky){
 	}
 
 	function goBack(oldPanel){
-    ScreenWeaver.goBack(oldPanel);
+    //ScreenWeaver.goBack(oldPanel);
 	}
 
   function addStuffFromEdit(){
-    ScreenWeaver.resetScreen("editPanel");
+    //ScreenWeaver.resetScreen("editPanel");
   }
 
 	function editAddStuff(){
       console.log("editAddStuff");
-      ScreenWeaver.setOther("editPanel");
+      ///ScreenWeaver.setOther("editPanel");
 			addStuff(document.getElementById("ID").innerHTML, 1, addStuffFromEdit);
 	}
 
@@ -340,9 +344,9 @@ function kbclick(ky){
 			params.substr(1).split("&").forEach(function(item) {
 			    queryDict[item.split("=")[0]] = item.split("=")[1]
 			})
-      SecurityEntry.hideAll();
-      SecurityEntry.setSelectScreen(false);
-      SecurityEntry.setEditScreen(true);
+      //SecurityEntry.hideAll();
+      //SecurityEntry.setSelectScreen(false);
+      //SecurityEntry.setEditScreen(true);
 
 			loadEdit(queryDict);
 	}
@@ -449,12 +453,12 @@ function kbclick(ky){
 <script>
 
 function resetScreenFromNew(){
-  ScreenWeaver.resetScreen("newPanel");
+  //ScreenWeaver.resetScreen("newPanel");
 }
 
 function newAddStuff(){
     console.log("newAddStuff");
-    ScreenWeaver.setOther("newPanel");
+    //ScreenWeaver.setOther("newPanel");
     //ScreenWeaver.resetScreen();
 
 		addStuff(0, 0, resetScreenFromNew);
@@ -469,8 +473,8 @@ function doNew(){
 		newPanel.style.display = "inline";
 		newPanel.className = "newPanel";
 
-		SecurityEntry.hideAll();
-    SecurityEntry.setNewScreen(true);
+		//SecurityEntry.hideAll();
+    //SecurityEntry.setNewScreen(true);
 
 		loadNew();
 }
@@ -571,8 +575,8 @@ function doSelect(){
 		selectPanel.className = "selectPanel";
 		selectPanel.style.zIndex = 20;
 
-    SecurityEntry.hideAll();
-    SecurityEntry.setSelectScreen(true);
+    //SecurityEntry.hideAll();
+    //SecurityEntry.setSelectScreen(true);
 
 		reset();
 }
@@ -836,7 +840,7 @@ function getDescr(num){
 }
 
 function resetScreenFromConfig(){
-  ScreenWeaver.resetScreen("configPanel");
+  //ScreenWeaver.resetScreen("configPanel");
 }
 
 function startConfig(){
@@ -849,8 +853,8 @@ function startConfig(){
 		configPanel.style.zIndex = 20;
     initConfigScreen();
 
-    SecurityEntry.hideAll();
-    SecurityEntry.setConfigScreen(true);
+    //SecurityEntry.hideAll();
+    //SecurityEntry.setConfigScreen(true);
 }
 
 </script>

@@ -75,6 +75,9 @@ var pdfPix = function(idx){
 	var pdfName = "";
 
 	var actions = {
+			setCurrentIDX: function(){
+				currentIDX = manipulateIDX.getLastIDX();
+			},
 			setCurrency: function(val){
 				pdfCurrency = val;
 			},
@@ -85,19 +88,28 @@ var pdfPix = function(idx){
 				if(pdfCurrency > 1) pdfCurrency--;
 			},
 			getNextPDF: function(div){
-				if((div.target.id.indexOf("sbar") == 0)&&(RunPhaseView() )){
-					BodyListener.removeBodyListener("pdf");
-				}
+				actions.setCurrentIDX();
+				console.log("Entering getNextPDF" + currentIDX);
+				//if((div.target.id.indexOf("sbar") == 0)&&(RunPhaseView() )){
+				//	BodyListener.removeBodyListener("pdf");
+				//}
 				timeControl.clearTimer();
 				timeControl.clearSideTimer();
 				actions.setName();
 				actions.makeVisible();
 				if(actions.noPicture()){
-					timerLoad(currentIDX + 1);
+					console.log("HERE");
+					//timerLoad(currentIDX + 1);
+					manipulateIDX.incrementIDX();
+					TLoad.setCorrectTimer();
+					//timeControl.setTimer();
+					actions.setCurrency(1);
+					return;
 				}
 				actions.incCurrency();
 			},
 			getPrevPDF: function(){
+				actions.setCurrentIDX();
 				this.decCurrency();
 				this.makeVisible();
 				this.setName();
@@ -111,6 +123,7 @@ var pdfPix = function(idx){
 				pdfView.style.display = "none";
 			},
 			isNext: function(){
+				actions.setCurrentIDX();
 				var pdfCurrencyNext = pdfCurrency + 1;
 				if(pdfCurrencyNext > 5) return false;
 				var pdfNameTemp = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrencyNext);
@@ -118,9 +131,11 @@ var pdfPix = function(idx){
 				return true;
 			},
 			setName: function(){
+				actions.setCurrentIDX();
 				if(this.noPicture()){
 					this.clearName();
 				} else {
+					console.log("Setting name");
 					pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
 					pdfImg.src = "./pdf/" + pdfName;
 					this.makeVisible();
@@ -131,8 +146,11 @@ var pdfPix = function(idx){
 				this.makeNotVisible();
 			},
 			noPicture: function(){
+				actions.setCurrentIDX();
+				console.log("idx: " + currentIDX);
 				if(currentIDX > YahrList.Yahrzeits.length - 1) return true;
 				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
+				console.log(pdfName);
 				if(pdfName.trim() == "" || pdfName.trim().indexOf("Nothing") > -1){
 					return true;
 				}
@@ -141,7 +159,7 @@ var pdfPix = function(idx){
 	};
 
 	return actions;
-}
+}();
 
 
 function setCurrentMonth(){
@@ -247,13 +265,13 @@ var sideBarManip = function(){
 										var pdfSide = null;
 										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
 
-										if(RunPhaseView()){
-											var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
-											if (pdfName.trim() != ""){
-												BodyListener.setSideFunction(pdfSide.getNextPDF);
-												BodyListener.addSideListener("side",sbar);
-											}
-										}
+										// if(RunPhaseView()){
+										// 	var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
+										// 	if (pdfName.trim() != ""){
+										// 		BodyListener.setSideFunction(pdfSide.getNextPDF);
+										// 		BodyListener.addSideListener("side",sbar);
+										// 	}
+										// }
 									},
 		};
 		return actions;
