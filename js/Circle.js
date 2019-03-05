@@ -15,14 +15,14 @@ var timeControl = (function(){
 	SideInterval = 0;
 	var actions = {
 		setTimer: function(func){
-				console.log("setTimer");
+				// console.log("setTimer");
 				OneByInterval = setInterval(func, tf);
 		},
 		setSideTimer: function(func){
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
-				console.log('clearTimer');
+				// console.log('clearTimer');
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
@@ -47,9 +47,6 @@ function setupTimerLoad(){
 	TLoad.setCorrectTimer();
 }
 
-function setTimerWithFunction(){
-
-}
 
 var timerLoad = function(){
 	var renderAll = new renderBoth();
@@ -207,6 +204,7 @@ var manipulateIDX = function(){
 			idx = i;
 		},
 		incrementIDX: function(){
+			// console.log("Index set... add 1 to: " + idx);
 			idx++;
 		},
 		getCurrentIDX: function(){
@@ -226,6 +224,7 @@ var manipulateIDX = function(){
 			if(reset) idx = 0;
 		},
 		getCurrentDate: function(){
+				// console.log(this.getCurrentIDX());
 				return YahrList.Yahrzeits[this.getCurrentIDX()].HDate;
 		},
 		getNextInRange: function(){

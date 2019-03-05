@@ -200,7 +200,7 @@ function loadElement(i){
 	//if(RunPhaseView()){
 		BodyListener.removeBodyListener();
 		if(YahrList.Yahrzeits[i].PDF01.trim() != "" && YahrList.Yahrzeits[i].PDF01.trim().indexOf("Nothing") < 0){
-			console.log("setting body listener: " + i + " and idx: " + manipulateIDX.getCurrentIDX());
+			// console.log("setting body listener: " + i + " and idx: " + manipulateIDX.getCurrentIDX());
 			BodyListener.setFirstFunction(pdfPix.getNextPDF);
 			BodyListener.addBodyListener();
 		}

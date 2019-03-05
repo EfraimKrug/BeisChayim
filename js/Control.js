@@ -62,7 +62,7 @@ var BodyListener = (function(){
 					}
 			},
 			addBodyListener: function(){
-				console.log("addBodyListener");
+				// console.log("addBodyListener");
 				//if(!SecurityEntry.isScreenClear()) return;
 				//if(type == 'pdf' && BodyListener.isRunPhaseView()){
 					appBody.addEventListener("click", Bodyfunctn, true);
@@ -74,7 +74,7 @@ var BodyListener = (function(){
 				//}
 			},
 			removeBodyListener: function(type){
-				console.log("removeBodyListener");
+				// console.log("removeBodyListener");
 				//if(type == 'pdf'){
 					appBody.removeEventListener("click", Bodyfunctn, true);
 				//	pic01.removeEventListener("click", Bodyfunctn, true);

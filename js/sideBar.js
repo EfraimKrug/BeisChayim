@@ -89,7 +89,7 @@ var pdfPix = function(idx){
 			},
 			getNextPDF: function(div){
 				actions.setCurrentIDX();
-				console.log("Entering getNextPDF" + currentIDX);
+				// console.log("Entering getNextPDF" + currentIDX);
 				//if((div.target.id.indexOf("sbar") == 0)&&(RunPhaseView() )){
 				//	BodyListener.removeBodyListener("pdf");
 				//}
@@ -98,9 +98,9 @@ var pdfPix = function(idx){
 				actions.setName();
 				actions.makeVisible();
 				if(actions.noPicture()){
-					console.log("HERE");
+					// console.log("HERE");
 					//timerLoad(currentIDX + 1);
-					manipulateIDX.incrementIDX();
+					//manipulateIDX.incrementIDX();
 					TLoad.setCorrectTimer();
 					//timeControl.setTimer();
 					actions.setCurrency(1);
@@ -135,7 +135,7 @@ var pdfPix = function(idx){
 				if(this.noPicture()){
 					this.clearName();
 				} else {
-					console.log("Setting name");
+					// console.log("Setting name");
 					pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
 					pdfImg.src = "./pdf/" + pdfName;
 					this.makeVisible();
@@ -147,10 +147,10 @@ var pdfPix = function(idx){
 			},
 			noPicture: function(){
 				actions.setCurrentIDX();
-				console.log("idx: " + currentIDX);
+				// console.log("idx: " + currentIDX);
 				if(currentIDX > YahrList.Yahrzeits.length - 1) return true;
 				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
-				console.log(pdfName);
+				// console.log(pdfName);
 				if(pdfName.trim() == "" || pdfName.trim().indexOf("Nothing") > -1){
 					return true;
 				}
