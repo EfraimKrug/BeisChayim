@@ -19,6 +19,25 @@ class dataInterface:
     def getData(self):
         return self.data
 
+    def getConfig(self):
+        filename = "/BCConfig"
+        configData = dict()
+
+        with open(configDir + filename) as fl:
+            for line in fl:
+                varString = line[line.rfind("{")+1:line.find("}")]
+                varData = varString.split(",")
+                for x in varData:
+                    x = x.replace('\"','')
+                    y = x.split(":")
+                    configData[y[0]] = y[1]
+        return configData
+
+    def writeNewConfig(self, s):
+        fd = open(installDir + filename, "w+")
+        fd.write(s)
+        fd.close()
+
     def buildData(self):
         lineCount = 0
         JString = '{ "ENTRIES": ['

@@ -254,8 +254,7 @@ var sideBarManip = function(){
 										if(DATES_IN_HEBREW){
 											sbar.style.textAlign = "right";
 										}
-										var pdfSide = null;
-										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
+										//pdfPix.setCurrentIDX(YahrzeitListSpotList[listCounter]);
 									},
 		};
 		return actions;
