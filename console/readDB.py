@@ -456,7 +456,7 @@ class Demo3:
         #self.btn = tk.Button(self.frame, text="Save", command=self.saveConfig)
         self.btn.grid(sticky=tk.SE, column=9, row=25, pady=7)
 
-    def getDisplayType():
+    def getDisplayType(self):
         if self.varList[1].get() == "List Memorial Plaques":
             return "0"
         if self.varList[1].get() == "List Entries One by One":
@@ -465,13 +465,13 @@ class Demo3:
             return "2"
         return "2"
 
-    def getDateType(val):
+    def getDateType(self, val):
         if val == "Hebrew":
             return str(0)
         else:
             return str(1)
 
-    def createConfig():
+    def createConfig(self):
         displayType = "2"
         stng = "var ConfigList = '{ \"settings\": {\"display_type\":"
         displayType = self.getDisplayType()
@@ -483,13 +483,16 @@ class Demo3:
         stng += "\"" + self.varList[6].get() + "\",\"screen_title\":"
         stng += "\"" + self.varList[0].get() + "\",\"dates_in_hebrew\":"
         stng += "\"" + self.getDateType(self.varList[7].get()) + "\"}}';"
+        #print(stng)
         return stng
 
     def saveConfig(self):
+        #print ("saveConfig")
         self.dataI.writeNewConfig(self.createConfig())
-        exit()
+        self.master.destroy()
 
     def quitConfig(self):
+        #print("quit - not saving")
         self.master.destroy()
 
 

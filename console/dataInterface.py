@@ -34,6 +34,7 @@ class dataInterface:
         return configData
 
     def writeNewConfig(self, s):
+        print("writing config to: " + installDir + self.filename)
         fd = open(installDir + self.filename, "w+")
         fd.write(s)
         fd.close()
@@ -41,7 +42,7 @@ class dataInterface:
     def buildData(self):
         lineCount = 0
         JString = '{ "ENTRIES": ['
-        with open (jsDir + "db01.js", "r") as JSONfile:
+        with open (jsDir + "/db01.js", "r") as JSONfile:
             for line in JSONfile:
                 if lineCount > 0:
                     JString += line.replace("'","").replace("+","").replace(";","")
@@ -82,7 +83,7 @@ class dataInterface:
         return fileString
 
     def writeStagingData(self, fileString):
-        fd = open(dataStaging + "db01.js", "w+")
+        fd = open(dataStaging + "/db01.js", "w+")
         fd.write(fileString)
         fd.close()
 
