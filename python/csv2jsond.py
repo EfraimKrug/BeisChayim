@@ -10,7 +10,7 @@ def recycledLine(line):
 	return False
 
 print ("var YahrzeitList = '{ \"Yahrzeits\": [' +")
-with open('X@~@~@X/BeisChayim/data/out01') as csvfile:
+with open('/home/efraiim/bcCode/BeisChayim/data/out01') as csvfile:
 	lineread = csv.reader(csvfile, delimiter=',', quotechar='"')
 
 	l = list(lineread)
@@ -127,7 +127,7 @@ with open('X@~@~@X/BeisChayim/data/out01') as csvfile:
 			newline.append("\"Comments01\":\"\"")
 
 
-		if linecount > 1:
+		if linecount > 0:
 			if linecount < len(l):
 				print(','.join(newline) + "},' + ")
 			else:
