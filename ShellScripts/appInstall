@@ -81,8 +81,11 @@ echo "**************************************************************************
 echo "*   You need to create a 'yahrzeits.csv' file and put it in $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv   *"
 echo "*   If you are using ShulCloud, you can download your yahrzeits file from there                          *"
 echo "*   otherwise, you will have to build it - (in excel)                                                    *"
+echo "*                                                                                                        *"
+echo "*   Just to make sure *something works* we copy a test file in...                                        *"
 echo "**********************************************************************************************************"
 echo ""
 #
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || cp $HOME/$CODE_DIRECTORY/BeisChayim/data/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
 $HOME/bin/BChCycle01 START_UP
 #
