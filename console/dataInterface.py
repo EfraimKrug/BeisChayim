@@ -15,15 +15,15 @@ class dataInterface:
             self.buildData()
         if self.var == 2:
             self.data = data
+        self.filename = "/BCConfig"
 
     def getData(self):
         return self.data
 
     def getConfig(self):
-        filename = "/BCConfig"
         configData = dict()
 
-        with open(configDir + filename) as fl:
+        with open(configDir + self.filename) as fl:
             for line in fl:
                 varString = line[line.rfind("{")+1:line.find("}")]
                 varData = varString.split(",")
@@ -34,7 +34,7 @@ class dataInterface:
         return configData
 
     def writeNewConfig(self, s):
-        fd = open(installDir + filename, "w+")
+        fd = open(installDir + self.filename, "w+")
         fd.write(s)
         fd.close()
 

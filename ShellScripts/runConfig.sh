@@ -1,2 +1,2 @@
 #!/bin/sh
-X@~@~@X/BeisChayim/console/dist/readDB/readDB
+python3 X@~@~@X/BeisChayim/console/readDB.py
