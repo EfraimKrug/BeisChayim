@@ -33,6 +33,10 @@ chmod 555 $HOME/bin/fix
 chmod 555 $HOME/bin/runConfig
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' runConfig
 
+cd $HOME/$1/BeisChayim/console
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' profile.py
+sed -i -e 's#X@~@X#'$HOME'#g' profile.py
+
 cd $HOME/$1/BeisChayim/python
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' cleanup01.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' collect.py
