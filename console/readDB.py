@@ -146,11 +146,11 @@ class Demo2:
 
         self.l5 = tk.Label(self.frame, text="Comment Text: ", bg="teal", fg="yellow")
         self.l5.grid(row=7, column=1, padx=4, pady=4, sticky=tk.W)
-        self.textfield5 = tkst.Text(self.frame, wrap=tk.WORD, height=6, width=40 )
+        self.textfield5 = tk.Text(self.frame, wrap=tk.WORD, height=6, width=40 )
         self.textfield5.grid(row=7, rowspan=2, column=2, columnspan=2, padx=4, pady=4, sticky=tk.NSEW)
         self.textfield5.insert(tk.INSERT, self.data['Comments01'].strip().replace("&comma",""))
 
-        self.scrollbar = tkst.Scrollbar(self.frame, command=self.textfield5.yview)
+        self.scrollbar = tk.Scrollbar(self.frame, command=self.textfield5.yview)
         self.textfield5.configure(yscrollcommand=self.scrollbar.set)
         #self.scrollbar.config(self.textfield5.yview)
         #self.grid()
@@ -304,7 +304,7 @@ class Demo2:
             self.dataI.addToData(self.data)
 
         self.dataI.writeStagingData(self.dataI.encodeData())
-        exit()
+        self.master.destroy()
 
     def getEachKeyStroke(self, key):
         #print("getEachKeyStroke")

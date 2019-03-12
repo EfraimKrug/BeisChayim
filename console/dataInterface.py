@@ -34,7 +34,7 @@ class dataInterface:
         return configData
 
     def writeNewConfig(self, s):
-        print("writing config to: " + installDir + self.filename)
+        #print("writing config to: " + installDir + self.filename)
         fd = open(installDir + self.filename, "w+")
         fd.write(s)
         fd.close()
