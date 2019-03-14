@@ -15,14 +15,34 @@ class dataInterface:
             self.buildData()
         if self.var == 2:
             self.data = data
+        self.filename = "/BCConfig"
 
     def getData(self):
         return self.data
 
+    def getConfig(self):
+        configData = dict()
+
+        with open(configDir + self.filename) as fl:
+            for line in fl:
+                varString = line[line.rfind("{")+1:line.find("}")]
+                varData = varString.split(",")
+                for x in varData:
+                    x = x.replace('\"','')
+                    y = x.split(":")
+                    configData[y[0]] = y[1]
+        return configData
+
+    def writeNewConfig(self, s):
+        print("writing config to: " + installDir + self.filename)
+        fd = open(installDir + self.filename, "w+")
+        fd.write(s)
+        fd.close()
+
     def buildData(self):
         lineCount = 0
         JString = '{ "ENTRIES": ['
-        with open (jsDir + "db01.js", "r") as JSONfile:
+        with open (jsDir + "/db01.js", "r") as JSONfile:
             for line in JSONfile:
                 if lineCount > 0:
                     JString += line.replace("'","").replace("+","").replace(";","")
@@ -63,7 +83,7 @@ class dataInterface:
         return fileString
 
     def writeStagingData(self, fileString):
-        fd = open(dataStaging + "db01.js", "w+")
+        fd = open(dataStaging + "/db01.js", "w+")
         fd.write(fileString)
         fd.close()
 

@@ -18,7 +18,7 @@ cp $HOME/bin/appInstall $HOME/$TEMP_DIRECTORY/appInstall
 cd $HOME
 echo removing old directories
 rm -f -r $CODE_DIRECTORY
-rm -f $HOME/Desktop/DesktopIcon*.txt
+rm -f $HOME/Desktop/BeisChayim*
 echo removing zip files in Downloads
 rm -f Downloads/*.zip
 echo removing bin files

@@ -89,20 +89,12 @@ var pdfPix = function(idx){
 			},
 			getNextPDF: function(div){
 				actions.setCurrentIDX();
-				console.log("Entering getNextPDF" + currentIDX);
-				//if((div.target.id.indexOf("sbar") == 0)&&(RunPhaseView() )){
-				//	BodyListener.removeBodyListener("pdf");
-				//}
 				timeControl.clearTimer();
 				timeControl.clearSideTimer();
 				actions.setName();
 				actions.makeVisible();
 				if(actions.noPicture()){
-					console.log("HERE");
-					//timerLoad(currentIDX + 1);
-					manipulateIDX.incrementIDX();
 					TLoad.setCorrectTimer();
-					//timeControl.setTimer();
 					actions.setCurrency(1);
 					return;
 				}
@@ -135,7 +127,7 @@ var pdfPix = function(idx){
 				if(this.noPicture()){
 					this.clearName();
 				} else {
-					console.log("Setting name");
+					// console.log("Setting name");
 					pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
 					pdfImg.src = "./pdf/" + pdfName;
 					this.makeVisible();
@@ -147,10 +139,10 @@ var pdfPix = function(idx){
 			},
 			noPicture: function(){
 				actions.setCurrentIDX();
-				console.log("idx: " + currentIDX);
+				// console.log("idx: " + currentIDX);
 				if(currentIDX > YahrList.Yahrzeits.length - 1) return true;
 				pdfName = eval("YahrList.Yahrzeits[" + currentIDX + "].PDF0" + pdfCurrency);
-				console.log(pdfName);
+				// console.log(pdfName);
 				if(pdfName.trim() == "" || pdfName.trim().indexOf("Nothing") > -1){
 					return true;
 				}
@@ -262,16 +254,7 @@ var sideBarManip = function(){
 										if(DATES_IN_HEBREW){
 											sbar.style.textAlign = "right";
 										}
-										var pdfSide = null;
-										pdfSide = new pdfPix(YahrzeitListSpotList[listCounter]);
-
-										// if(RunPhaseView()){
-										// 	var pdfName = eval("YahrList.Yahrzeits[" + YahrzeitListSpotList[listCounter] + "].PDF01");
-										// 	if (pdfName.trim() != ""){
-										// 		BodyListener.setSideFunction(pdfSide.getNextPDF);
-										// 		BodyListener.addSideListener("side",sbar);
-										// 	}
-										// }
+										//pdfPix.setCurrentIDX(YahrzeitListSpotList[listCounter]);
 									},
 		};
 		return actions;

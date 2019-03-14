@@ -20,8 +20,6 @@ function autoSecClose(){
 		setTimeout(autoSecClose, 10000);
 		return;
 	}
-//SecurityEntry.hideAll();
-//SecurityEntry.hideSecurity();
 }
 
 
@@ -62,23 +60,10 @@ var BodyListener = (function(){
 					}
 			},
 			addBodyListener: function(){
-				console.log("addBodyListener");
-				//if(!SecurityEntry.isScreenClear()) return;
-				//if(type == 'pdf' && BodyListener.isRunPhaseView()){
 					appBody.addEventListener("click", Bodyfunctn, true);
-				//} else {
-				//	if(BodyListener.isRunPhaseEdit()){
-				//		appBody.addEventListener("click", Bodyfunctn, true);
-				//		pic01.addEventListener("click", Bodyfunctn, true);
-				//	}
-				//}
 			},
 			removeBodyListener: function(type){
-				console.log("removeBodyListener");
-				//if(type == 'pdf'){
 					appBody.removeEventListener("click", Bodyfunctn, true);
-				//	pic01.removeEventListener("click", Bodyfunctn, true);
-				//}
 			},
 			setSideFunction: function(func){
 					SideFunctn = func;

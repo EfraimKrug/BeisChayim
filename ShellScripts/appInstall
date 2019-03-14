@@ -40,9 +40,7 @@ mkdir $HOME/$CODE_DIRECTORY/BeisChayim/data/used
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/pdf
 mkdir $HOME/$CODE_DIRECTORY/BeisChayim/log
 #
-cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim1.desktop
-cp $HOME/$CODE_DIRECTORY/BeisChayim/console/Desktopicon2.txt $HOME/$CODE_DIRECTORY/Desktop/BeisChayim2.desktop
-#
+# bcTemp was created in cleanUp - in case this is not the first install...
 [ -n "$(find $HOME/bcTemp/config -name '*' | head -1)" ] && mv $HOME/bcTemp/config/* $HOME/$CODE_DIRECTORY/BeisChayim/config
 [ -n "$(find $HOME/bcTemp -name 'nYahrzeits.csv' | head -1)" ] && mv $HOME/bcTemp/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
 #
@@ -54,6 +52,9 @@ chmod 555 $HOME/bin/ShellInstall
 [ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || $HOME/bin/ShellInstall $CODE_DIRECTORY
 [ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || echo shell_installed > $HOME/$CODE_DIRECTORY/.shellInstalled
 #
+#
+cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon.txt $HOME/Desktop/BeisChayim1.desktop
+cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon2.txt $HOME/Desktop/BeisChayim2.desktop
 #
 # check/install crontab
 #
@@ -80,8 +81,11 @@ echo "**************************************************************************
 echo "*   You need to create a 'yahrzeits.csv' file and put it in $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv   *"
 echo "*   If you are using ShulCloud, you can download your yahrzeits file from there                          *"
 echo "*   otherwise, you will have to build it - (in excel)                                                    *"
+echo "*                                                                                                        *"
+echo "*   Just to make sure *something works* we copy a test file in...                                        *"
 echo "**********************************************************************************************************"
 echo ""
 #
+[ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || cp $HOME/$CODE_DIRECTORY/BeisChayim/data/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
 $HOME/bin/BChCycle01 START_UP
 #

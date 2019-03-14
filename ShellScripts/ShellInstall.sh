@@ -13,6 +13,7 @@ mv $HOME/bin/CONreinstall.sh CONreinstall
 mv $HOME/bin/CONreinstallCurrent.sh CONreinstallCurrent
 mv $HOME/bin/CONCollect.sh CONCollect
 mv $HOME/bin/Reconfigure.sh Reconfigure
+mv $HOME/bin/runConfig.sh runConfig
 mv $HOME/bin/fix.sh fix
 
 rm $HOME/bin/ShellInstall.sh
@@ -29,6 +30,12 @@ chmod 555 $HOME/bin/CONreinstallCurrent
 chmod 555 $HOME/bin/CONCollect
 chmod 555 $HOME/bin/Reconfigure
 chmod 555 $HOME/bin/fix
+chmod 555 $HOME/bin/runConfig
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' runConfig
+
+cd $HOME/$1/BeisChayim/console
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' profile.py
+sed -i -e 's#X@~@X#'$HOME'#g' profile.py
 
 cd $HOME/$1/BeisChayim/python
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' cleanup01.py
@@ -40,3 +47,7 @@ sed -i -e 's#X@~@~@X#'$HOME/$1'#g' readRunCheck.py
 cd $HOME/$1/BeisChayim/console
 sed -i -e 's#X@-@X#'$HOME'#g' profile.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' profile.py
+sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon.txt
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' DesktopIcon.txt
+sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon2.txt
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' DesktopIcon2.txt

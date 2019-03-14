@@ -15,14 +15,12 @@ var timeControl = (function(){
 	SideInterval = 0;
 	var actions = {
 		setTimer: function(func){
-				console.log("setTimer");
 				OneByInterval = setInterval(func, tf);
 		},
 		setSideTimer: function(func){
 				SideInterval = setInterval(func, tf);
 		},
 		clearTimer: function(){
-				console.log('clearTimer');
 				clearInterval(OneByInterval);
 		},
 		clearSideTimer: function(){
@@ -47,9 +45,6 @@ function setupTimerLoad(){
 	TLoad.setCorrectTimer();
 }
 
-function setTimerWithFunction(){
-
-}
 
 var timerLoad = function(){
 	var renderAll = new renderBoth();
@@ -100,10 +95,8 @@ var timerLoad = function(){
 }
 
 function sideTimerLoad(lastNum){
-	//var lastN = -1;
 	var renderAll = new renderBoth();
 	var rendPlaques = new renderingPlaquesX(renderAll.endingCycle);
- 	//if(lastNum) lastN = lastNum;
 
 	timeControl.setTimer(function(){ renderAll.loadingPlaques(rendPlaques);});
 }
@@ -139,11 +132,8 @@ var renderBoth = function(){
 		loadingOneBy: function(lastNum){
 			showScreen01();
 			showSideBarArray();
-			//timeControl.setSideTimer(sideBarManip.loadSideBar);
 			if(manipulateIDX.isOutOfRange(lastNum)) this.endingCycle();
 			else {
-				//BodyListener.setFirstFunction(SecurityEntry.showSecurity);
-				//BodyListener.addBodyListener();
 				loadElement(lastNum);
 			}
 		},
@@ -162,7 +152,6 @@ var renderBoth = function(){
 			}
 		},
 		loadingPlaques: function(rendP){
-			//timeControl.clearSideTimer(sideBarManip.loadSideBar);
 			hideSideBarArray();
 			rendP.renderScreen(this.endingCycle);
 		},
@@ -243,7 +232,6 @@ var manipulateIDX = function(){
 							dateHold = dateHold.substring(0, start+4) + 't' + dateHold.substring(start+6, dateHold.length);
 						}
 					}
-			//if(i == idxHold) return i+1;
 			return i;
 		}
 		return i;
