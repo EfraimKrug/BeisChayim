@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+  <style>
+  .target {
+    float: left;
+    width: 31px;
+    height: 31px;
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid black;
+  }
+  #drag1 {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+  }
+  </style>
+</head>
+<body>
+
+  <h2>Setting up Seating Chart</h2>
+  <DIV>
+    <img src="CandleLight.png" draggable="true" ondragstart="drag(event)" id="drag1">
+  </DIV>
+  <!--
+  <div class="target" id="1.2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div class="target" id="1.1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+-->
+  <script>
+  function createDiv(divID){
+    var div = document.createElement("div");
+    div.className = "target";
+    div.id = divID;
+    div.addEventListener("drop", function(event){
+      drop(event);
+    });
+    div.addEventListener("dragover", function(event){
+      allowDrop(event);
+    });
+
+    document.body.appendChild(div);
+  }
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("txt", ev.target.id);
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("txt");
+    var d = document.getElementById(data);
+    ev.target.appendChild(document.getElementById(data));
+    console.log(d.parentNode.id);
+  }
+
+  for(var i=1; i<10; i++){
+    createDiv("1." + i);
+  }
+  </script>
+
+  </body>
+  </html>
