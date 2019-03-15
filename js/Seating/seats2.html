@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+  <style>
+  .target {
+    float: left;
+    width: 31px;
+    height: 31px;
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid black;
+  }
+  #drag1 {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+  }
+
+  #targetArea {
+    width: 75%;
+    height: 150px;
+    border: 2px solid green;
+  }
+
+  #sectionName{
+    width: 130px;
+    color: green;
+  }
+
+  </style>
+</head>
+<body>
+
+  <h2>Setting up Seating Chart</h2>
+  <input type=text id=sectionName onchange="loadSection();"/>
+  <DIV>
+    <img src="CandleLight.png" draggable="true" ondragstart="drag(event)" onclick="wholeMove()" id="drag1">
+  </DIV>
+
+  <div class="target" id=targetArea  ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div id=targetSectionName></div>
+    <div id=targetSeats></div>
+  </div>
+  <!--
+  <div class="target" id="1.2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div class="target" id="1.1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+-->
+  <script>
+  function loadSection(){
+    var targetSectionName = document.getElementById("targetSectionName");
+    var sectionName = document.getElementById("sectionName");
+    targetSectionName.innerHTML = sectionName.value + "<br>";
+  }
+
+  function createDiv(divID){
+    var div = document.createElement("div");
+    div.className = "target";
+    div.id = divID;
+    div.addEventListener("drop", function(event){
+      drop(event);
+    });
+    div.addEventListener("dragover", function(event){
+      allowDrop(event);
+    });
+
+    document.body.appendChild(div);
+  }
+
+
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+
+  seatNumber = 1;
+  seatRow = "A";
+  function drag(ev) {
+    ev.dataTransfer.setData("txt", ev.target.id);
+    ev.dataTransfer.setData("seat", seatNumber++);
+  }
+
+  function wholeMove(){
+    var targetArea = document.getElementById("targetArea");
+    targetArea.innerHTML += seatNumber + ";";
+    seatNumber++;
+  }
+
+  function nextChar(c) {
+      var res = c == 'z' ? 'a' : c == 'Z' ? 'A' : String.fromCharCode(c.charCodeAt(0) + 1);
+      //console.log(res);
+      return res;
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("txt");
+    var seat = ev.dataTransfer.getData("seat");
+    var targetArea = document.getElementById("targetArea");
+    targetArea.innerHTML += (seatRow + "-" + seatNumber + ";");
+    console.log(seatRow + ":" + seatNumber);
+    if(seatNumber > 10){
+      seatNumber = 1;
+      seatRow = nextChar(seatRow);
+    }
+    //ev.target.appendChild(document.getElementById(data));
+  }
+
+  //for(var i=1; i<10; i++){
+  //  createDiv("1." + i);
+  //}
+  </script>
+
+  </body>
+  </html>
