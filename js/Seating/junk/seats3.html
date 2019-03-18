@@ -2,78 +2,28 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style>
-
-  .target {
-    float: left;
-    width: 2.5%;
-    height: 35%;
-    margin: .1%;
-    padding: .2%;
-    border: 1px dashed red;
-  }
-  #drag1 {
-    width: 29px;
-    height: 29px;
-    border-radius: 50%;
-  }
-
-  #targetArea {
-    width: 80%;
-    height: 150px;
-    border: 2px solid green;
-  }
-
-  .spot {
-    width:35px;
-    height: 35px;
-    border: 1px dashed yellow;
-  }
-  .perpName {
-    width:70%;
-    height: 35px;
-    border: 1px dashed yellow;
-  }
-
-  #sectionName{
-    width: 130px;
-    color: green;
-  }
-
-  #LEFT {
-    float: left;
-    width: 75%;
-  }
-
-  #RIGHT {
-    float: left;
-    width: 25%;
-  }
-
-  </style>
+<link rel="stylesheet" href="./css/seats01.css" />
 </head>
 <body>
 
   <h2>Setting up Seating Chart</h2>
-  <input type=text id=sectionName onchange="loadSection();"/>
+  <!-- <input type=text id=sectionName onchange="loadSection();"/> -->
 
   <div id=LEFT>
+<!--
   <DIV>
-    <img src="CandleLight.png" draggable="true" ondragstart="drag(event)" onclick="wholeMove()" id="drag1">
+   <img src="CandleLight.png" draggable="true" ondragstart="drag(event)" onclick="wholeMove()" id="drag1">
   </DIV>
-
-  <div class="target" id=targetArea  ondrop="drop(event)" ondragover="allowDrop(event)">
-    <div id=targetSectionName></div>
+-->
+<!--  <div class="target" id=targetArea  ondrop="drop(event)" ondragover="allowDrop(event)"> -->
+<div class="target" id=targetArea>
+    <div id=targetSectionName>Section</div>
     <div id=targetSeats></div>
   </div>
 </div>
 <div id=RIGHT></div>
-  <!--
-  <div class="target" id="1.2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <div class="target" id="1.1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
--->
-  <script>
 
+<script>
   var assignmentStack = [];
   var clickStack =[];
   var people = [{
@@ -97,11 +47,11 @@
                   "email":"DovBerDershowitz@gmail.com"
     }];
 
-  function loadSection(){
-    var targetSectionName = document.getElementById("targetSectionName");
-    var sectionName = document.getElementById("sectionName");
-    targetSectionName.innerHTML = sectionName.value + "<br>";
-  }
+  // function loadSection(){
+  //   var targetSectionName = document.getElementById("targetSectionName");
+  //   var sectionName = document.getElementById("sectionName");
+  //   targetSectionName.innerHTML = sectionName.value + "**<br>";
+  // }
 
   function createPeopleDiv(perp){
     var div = document.createElement("div");
@@ -113,10 +63,10 @@
       processPerp(event);
     });
 
-    div.addEventListener("dragstart", function(event) {
-      event.dataTransfer.setData("Text", event.target.id);
-      event.target.style.opacity = "0.4";
-    });
+    // div.addEventListener("dragstart", function(event) {
+    //   event.dataTransfer.setData("Text", event.target.id);
+    //   event.target.style.opacity = "0.4";
+    // });
 
     div.innerHTML = perp.name + "<br>" + perp.email;
     div.style.fontSize = "12px";
@@ -127,45 +77,24 @@
       createPeopleDiv(people[i]);
   }
 
-  function createDiv(divID){
-    var div = document.createElement("div");
-    var targetSeats = document.getElementById("targetSeats");
 
-    div.className = "target";
-    div.id = divID;
-    div.addEventListener("drop", function(event){
-      drop(event);
-    });
-    div.addEventListener("dragover", function(event){
-      allowDrop(event);
-    });
-    div.addEventListener("click", function(event){
-      processClick(event);
-    });
-
-    div.innerHTML = divID;
-    div.style.fontSize = "12px";
-    targetSeats.appendChild(div);
-  }
-
-
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-
-
-  seatNumber = 1;
-  seatRow = "A";
-  function drag(ev) {
-    ev.dataTransfer.setData("txt", ev.target.id);
-    ev.dataTransfer.setData("seat", seatNumber++);
-  }
-
-  function wholeMove(){
-    var targetArea = document.getElementById("targetArea");
-    targetArea.innerHTML += seatNumber + ";";
-    seatNumber++;
-  }
+  // function allowDrop(ev) {
+  //   ev.preventDefault();
+  // }
+  //
+  //
+  //seatNumber = 1;
+  //seatRow = "A";
+  // function drag(ev) {
+  //   ev.dataTransfer.setData("txt", ev.target.id);
+  //   ev.dataTransfer.setData("seat", seatNumber++);
+  // }
+  //
+  // function wholeMove(){
+  //   var targetArea = document.getElementById("targetArea");
+  //   targetArea.innerHTML += seatNumber + ";";
+  //   seatNumber++;
+  // }
 
   function nextChar(c) {
       var res = c == 'z' ? 'A' : c == 'Z' ? 'A' : String.fromCharCode(c.charCodeAt(0) + 1);
@@ -173,19 +102,19 @@
       return res;
   }
 
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("txt");
-    var seat = ev.dataTransfer.getData("seat");
-    var targetArea = document.getElementById("targetArea");
-    targetArea.innerHTML += (seatRow + "-" + seatNumber + ";");
-    //console.log(seatRow + ":" + seatNumber);
-    if(seatNumber > 10){
-      seatNumber = 1;
-      seatRow = nextChar(seatRow);
-    }
-    //ev.target.appendChild(document.getElementById(data));
-  }
+  // function drop(ev) {
+  //   ev.preventDefault();
+  //   var data = ev.dataTransfer.getData("txt");
+  //   var seat = ev.dataTransfer.getData("seat");
+  //   var targetArea = document.getElementById("targetArea");
+  //   targetArea.innerHTML += (seatRow + "-" + seatNumber + ";");
+  //   //console.log(seatRow + ":" + seatNumber);
+  //   if(seatNumber > 10){
+  //     seatNumber = 1;
+  //     seatRow = nextChar(seatRow);
+  //   }
+  //   //ev.target.appendChild(document.getElementById(data));
+  // }
 
   function getPerp(id){
       for(var i=0; i < people.length; i++){
@@ -198,15 +127,15 @@
 
   function processPerp(event){
       var spot = document.getElementById(event.target.id);
-      spot.innerHTML = "";
       clickStack.push(people[getPerp(event.target.id)]);
+      spot.innerHTML = getInitials(people[getPerp(event.target.id)].name);
       StackPointer++;
       spot.style.background = "cyan";
       //howStack(clickStack);
   }
 
   function showStack(stack){
-    console.log("Showing Stack");
+    //console.log("Showing Stack");
     for (var i=0; i < stack.length; i++){
       console.log(stack[i]);
     }
@@ -230,47 +159,92 @@ function getInitials(name){
 var firstWithControl = true;
 function processClick(event){
     var isCtrlPressed = event.ctrlKey;
+    var assignment = {};
+    //console.log("processClick - CNTL: " + isCtrlPressed);
     var spot = document.getElementById(event.target.id);
   // if the seat is full
-    var row = event.target.id[0];
-    var col = event.target.id[1] + event.target.id[2];
-    console.log("[" + event.target.innerHTML.toLowerCase() == event.target.id.toLowerCase() + "]");
-  // if the seat is empty
-    if(StackPointer < 1) return;
+    var row = event.target.id[0] + event.target.id[1];
+    var col = event.target.id[2] + event.target.id[3];
+    var seat = row + "-" + col;
+    // first entry...
+    //if(prevStackPointer < 0) isCtrlPressed = false;
+    if(StackPointer < 1){
+      if(isCtrlPressed) StackPointer = 0;
+      else return;
+    }
     if(isCtrlPressed){
+       //console.log("control is pressed");
        if(firstWithControl){
-          console.log("CTRL KEY: " + isCtrlPressed);
           firstWithControl = false;
           StackPointer--;
+          //StackPointer = StackPointer == 1 ? StackPointer : StackPointer--;
+          //console.log("First click with CTRL KEY - stack: " + StackPointer);
         }
     }
     else {
+         //console.log("control is not pressed");
          StackPointer--;
          firstWithControl = true;
     }
+    //console.log("StackPointer" + StackPointer);
     spot.innerHTML = getInitials(clickStack[StackPointer].name);
     spot.style.color = "blue";
     spot.style.fontSize = "10px";
     spot.style.border = "1px solid blue";
-    assignmentStack.push(people[getPerp(clickStack[StackPointer].id)]);
-    assignmentStack[assignmentStack.length-1].seat = event.target.id;
+    assignment.id = clickStack[StackPointer].id;
+    assignment.name = people[getPerp(clickStack[StackPointer].id)].name;
+    assignment.seat = seat;
+    assignmentStack.push(assignment);
     if(!isCtrlPressed) clickStack.pop();
     showStack(assignmentStack);
 }
 
+function createDiv(divID){
+  var div = document.createElement("div");
+  var targetSeats = document.getElementById("targetSeats");
 
-var Row = "A";
-for(var k=1; k < 5; k++){
-      for(var i=1; i<31; i++){
-        var j = i;
-        if(i < 10){
-          j = "0" + i;
+  div.className = "target";
+  div.id = divID;
+  div.addEventListener("click", function(event){
+    processClick(event);
+  });
+
+  div.innerHTML = divID;
+  targetSeats.appendChild(div);
+}
+
+
+function createSection(r, c){
+    var RowEx = "A";
+    var Row = "A";
+    var checkWidth = 0;
+    var checkHeight = 0;
+    var numRows = r;
+    var numCols = c;
+    for(var k=1; k <= numRows; k++){
+          for(var i=1; i<=numCols; i++){
+            if(k == 1) checkWidth += 28;
+            var j = i;
+            if(i < 10){
+              j = "0" + i;
+            }
+            createDiv(RowEx + Row + j);
+          }
+          Row = nextChar(Row);
+          checkHeight += 38;
+          if(numRows > 3) checkHeight -= 10;
+          if(numRows > 6) checkHeight -= 3;
+          if(numRows > 8) checkHeight -= 2;
+          if(numRows > 15) checkHeight -= 1;
+          if(k > 25) RowEx = "B";
         }
-        createDiv(Row + j);
-      }
-      Row = nextChar(Row);
-    }
 
+    targetArea = document.getElementById("targetArea");
+    targetArea.style.width = checkWidth + "px";
+    targetArea.style.height = checkHeight + "px";
+}
+
+createSection(10, 28);
 // // control key
 //
 // var targetArea = document.getElementById("targetArea");
