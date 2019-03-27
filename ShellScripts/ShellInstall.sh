@@ -47,6 +47,10 @@ sed -i -e 's#X@~@~@X#'$HOME/$1'#g' readRunCheck.py
 cd $HOME/$1/BeisChayim/console
 sed -i -e 's#X@-@X#'$HOME'#g' profile.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' profile.py
+
+cp $HOME/$1/BeisChayim/console/DesktopIcon.txt $HOME/Desktop/BeisChayim1.desktop
+cp $HOME/$1/BeisChayim/console/DesktopIcon2.txt $HOME/Desktop/BeisChayim2.desktop
+cd $HOME/Desktop
 sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon.txt
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' DesktopIcon.txt
 sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon2.txt
