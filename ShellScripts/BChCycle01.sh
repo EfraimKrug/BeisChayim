@@ -10,7 +10,7 @@ else
   START_UP=$1
 fi
 ###########################################################################################
-## process the yahrzeits.csv file if it is there...
+## process the db01.js file if it is in staging...
 ###########################################################################################
 if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/staging -name 'db01.js' | head -1)" ]
 then
@@ -18,16 +18,20 @@ then
   echo Found a staged db01.js file >> CYCLE_LOG
 
   cp $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
-  mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
-  cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
-  cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
+  mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+  cd $HOME/$CODE_DIRECTORY/BeisChayim/python
+  python $HOME/$CODE_DIRECTORY/BeisChayim/python/json2csv.py
+  mv $HOME/$CODE_DIRECTORY/BeisChayim/python/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
+  #mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
+  #cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+  #cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 
   ###########################################################################################
   ## restart the application
   ###########################################################################################
-  echo `date` Restarting Application >> CYCLE_LOG
-  $HOME/bin/turnOn $CODE_DIRECTORY
-  exit 0
+  #echo `date` Restarting Application >> CYCLE_LOG
+  #$HOME/bin/turnOn $CODE_DIRECTORY
+  #exit 0
 fi
 #
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
