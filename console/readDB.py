@@ -437,7 +437,7 @@ class Demo3:
         self.l8 = tk.Label(self.frame, text="Dates in Hebrew: ", bg="blue", fg="yellow")
         self.l8.grid(sticky=tk.W, row=17, padx=17)
 
-        dType = ["Hebrew", "Gregorian"]
+        dType = ["Gregorian", "Hebrew"]
         self.variable = tk.StringVar(self.frame)
         self.variable.set(dType[int(self.data["dates_in_hebrew"])]) # default value
 
