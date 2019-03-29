@@ -229,11 +229,13 @@ class Demo2:
 
 
     def fileSelect(self, choice):
+        self.pic01 = ""
         if choice < 8:
             self.pic01 =  filedialog.askopenfilename(initialdir = picDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
         else:
             self.pic01 =  filedialog.askopenfilename(initialdir = pdfDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
-
+        self.pic01 = self.pic01[self.pic01.rfind('/')+1:]
+        
         if choice == 6:
             self.l6.configure(text=self.pic01)
         if choice == 7:
