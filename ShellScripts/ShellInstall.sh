@@ -31,6 +31,7 @@ chmod 555 $HOME/bin/CONCollect
 chmod 555 $HOME/bin/Reconfigure
 chmod 555 $HOME/bin/fix
 chmod 555 $HOME/bin/runConfig
+sed -i -e 's#X@~@X#'$1'#g' turnOn2
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' runConfig
 
 cd $HOME/$1/BeisChayim/console
