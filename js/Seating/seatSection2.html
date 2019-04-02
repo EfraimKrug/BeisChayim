@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./css/seats03.css" />
+</head>
+<body>
+  <button value=what onclick="seatSection.displayAssignments();"></button>
+  <h2>Setting up Seating Chart</h2>
+  <div id=areaContainer>
+</div>
+<div id=RIGHT></div>
+<script src="js/seatSection.js"></script>
+
+<script>
+
+var arr = [['Name #1', 5, 5, 120, 20], ['Name #2', 7, 7, 320, 20], ['Name #3', 7, 7, 120, 320]];
+function createAll(){
+  for (var i = 0; i < arr.length; i++){
+    var id = seatSection.createHTML(arr[i][0]);
+    seatSection.createSection(arr[i][1], arr[i][2]);
+    seatSection.setPosition(id, arr[i][3], arr[i][4]);
+  }
+
+  seatSection.renderPeople();
+}
+
+createAll();
+  </script>
+
+  </body>
+  </html>

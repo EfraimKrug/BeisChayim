@@ -1,4 +1,4 @@
 #!/bin/sh
-CODE_DIRECTORY=code
+CODE_DIRECTORY=X@~@X
 turnOn $CODE_DIRECTORY
 ~

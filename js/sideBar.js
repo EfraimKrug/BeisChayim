@@ -189,6 +189,15 @@ var sideBarManip = function(){
 													}
 												}
 											}
+											if(currentMonth == 'Adar B'){
+												if(dateHold.indexOf('II') > -1){
+													if(parseInt(dateHold.substring(0, (dateHold.trim()).indexOf(' '))) == parseInt(htoday.day)){
+														sideBarManip.loadSideBarArray(i);
+													}
+												}
+											}
+
+
 										}
 
 										if(YahrList.Yahrzeits[i].Name.indexOf("(demo)") > 0){

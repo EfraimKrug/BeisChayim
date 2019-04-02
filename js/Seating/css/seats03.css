@@ -1,0 +1,62 @@
+.target {
+  float: left;
+  margin: .2px;
+  padding: 2px;
+  font-size: 10px;
+  display: table-cell;
+  border: 1px dashed red;
+  font-family: monospace;
+}
+
+#drag1 {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+}
+
+.targetArea {
+  /*max-width: 90%; */
+  width: 90%;
+  padding: 5px;
+  border: 2px solid green;
+  display: table;
+}
+
+.targetSeats {
+  display: table-row;
+}
+
+#targetSeatTable {
+  display: table;
+  width: 100%;
+  /*border: 2px solid purple;*/
+}
+
+.perpName {
+  width:70%;
+  height: 35px;
+  border: 1px dashed yellow;
+}
+
+
+.targetSectionName {
+  font-size: 24px;
+  display: table-row;
+}
+
+#areaContainer {
+  float: left;
+  width: 75%;
+  /*border: 2px solid red;*/
+}
+
+.LEFT {
+  float: left;
+  width: 75%;
+  /*border: 2px solid red;*/
+}
+
+#RIGHT {
+  float: left;
+  width: 23%;
+}

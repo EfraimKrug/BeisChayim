@@ -53,8 +53,8 @@ chmod 555 $HOME/bin/ShellInstall
 [ -n "$(find $HOME/$CODE_DIRECTORY -name '.shellInstalled' | head -1)" ] || echo shell_installed > $HOME/$CODE_DIRECTORY/.shellInstalled
 #
 #
-cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon.txt $HOME/Desktop/BeisChayim1.desktop
-cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon2.txt $HOME/Desktop/BeisChayim2.desktop
+#cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon.txt $HOME/Desktop/BeisChayim1.desktop
+#cp $HOME/$CODE_DIRECTORY/BeisChayim/console/DesktopIcon2.txt $HOME/Desktop/BeisChayim2.desktop
 #
 # check/install crontab
 #

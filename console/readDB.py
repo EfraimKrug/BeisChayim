@@ -146,11 +146,11 @@ class Demo2:
 
         self.l5 = tk.Label(self.frame, text="Comment Text: ", bg="teal", fg="yellow")
         self.l5.grid(row=7, column=1, padx=4, pady=4, sticky=tk.W)
-        self.textfield5 = tkst.Text(self.frame, wrap=tk.WORD, height=6, width=40 )
+        self.textfield5 = tk.Text(self.frame, wrap=tk.WORD, height=6, width=40 )
         self.textfield5.grid(row=7, rowspan=2, column=2, columnspan=2, padx=4, pady=4, sticky=tk.NSEW)
         self.textfield5.insert(tk.INSERT, self.data['Comments01'].strip().replace("&comma",""))
 
-        self.scrollbar = tkst.Scrollbar(self.frame, command=self.textfield5.yview)
+        self.scrollbar = tk.Scrollbar(self.frame, command=self.textfield5.yview)
         self.textfield5.configure(yscrollcommand=self.scrollbar.set)
         #self.scrollbar.config(self.textfield5.yview)
         #self.grid()
@@ -229,11 +229,13 @@ class Demo2:
 
 
     def fileSelect(self, choice):
+        self.pic01 = ""
         if choice < 8:
             self.pic01 =  filedialog.askopenfilename(initialdir = picDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
         else:
             self.pic01 =  filedialog.askopenfilename(initialdir = pdfDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
-
+        self.pic01 = self.pic01[self.pic01.rfind('/')+1:]
+        
         if choice == 6:
             self.l6.configure(text=self.pic01)
         if choice == 7:
@@ -304,7 +306,7 @@ class Demo2:
             self.dataI.addToData(self.data)
 
         self.dataI.writeStagingData(self.dataI.encodeData())
-        exit()
+        self.master.destroy()
 
     def getEachKeyStroke(self, key):
         #print("getEachKeyStroke")
@@ -435,7 +437,7 @@ class Demo3:
         self.l8 = tk.Label(self.frame, text="Dates in Hebrew: ", bg="blue", fg="yellow")
         self.l8.grid(sticky=tk.W, row=17, padx=17)
 
-        dType = ["Hebrew", "Gregorian"]
+        dType = ["Gregorian", "Hebrew"]
         self.variable = tk.StringVar(self.frame)
         self.variable.set(dType[int(self.data["dates_in_hebrew"])]) # default value
 

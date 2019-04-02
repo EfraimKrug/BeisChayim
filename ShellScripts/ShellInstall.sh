@@ -31,6 +31,7 @@ chmod 555 $HOME/bin/CONCollect
 chmod 555 $HOME/bin/Reconfigure
 chmod 555 $HOME/bin/fix
 chmod 555 $HOME/bin/runConfig
+sed -i -e 's#X@~@X#'$1'#g' turnOn2
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' runConfig
 
 cd $HOME/$1/BeisChayim/console
@@ -47,7 +48,11 @@ sed -i -e 's#X@~@~@X#'$HOME/$1'#g' readRunCheck.py
 cd $HOME/$1/BeisChayim/console
 sed -i -e 's#X@-@X#'$HOME'#g' profile.py
 sed -i -e 's#X@~@~@X#'$HOME/$1'#g' profile.py
-sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon.txt
-sed -i -e 's#X@~@~@X#'$HOME/$1'#g' DesktopIcon.txt
-sed -i -e 's#X@-@X#'$HOME'#g' DesktopIcon2.txt
-sed -i -e 's#X@~@~@X#'$HOME/$1'#g' DesktopIcon2.txt
+
+cp $HOME/$1/BeisChayim/console/DesktopIcon.txt $HOME/Desktop/BeisChayim1.desktop
+cp $HOME/$1/BeisChayim/console/DesktopIcon2.txt $HOME/Desktop/BeisChayim2.desktop
+cd $HOME/Desktop
+sed -i -e 's#X@-@X#'$HOME'#g' BeisChayim1.desktop
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' BeisChayim1.desktop
+sed -i -e 's#X@-@X#'$HOME'#g' BeisChayim2.desktop
+sed -i -e 's#X@~@~@X#'$HOME/$1'#g' BeisChayim2.desktop
