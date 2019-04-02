@@ -1,5 +1,9 @@
 CODE_DIRECTORY=bcCode
-CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/
+CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CYCLE_LOG
+PIC_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/img
+PDF_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/pdf
+jsFile=$HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+
 ###########################################################################################
 ## set parameters to check for first run
 ###########################################################################################
@@ -9,6 +13,28 @@ then
 else
   START_UP=$1
 fi
+###########################################################################################
+## process the thumbdrive...
+###########################################################################################
+cd ~/bin
+rm -f a
+lsblk > .lsblk2
+diff .lsblk1 .lsblk2 | grep media > TEMP
+DIR=$(awk '{print $8}' TEMP)
+cd $DIR
+Q=$(cat .BeisChayim/.LABEL)
+if [[ "$Q" = "INSTALLED" ]] ;
+then
+	cp BeisChayim/img/* $PIC_DIR
+	cp BeisChayim/pdf/* $PDF_DIR
+	[ -n "$(find BeisChayim/data/staging -name 'db01.js' | head -1)" ] && cp BeisChayim/data/staging/db01.js $jsFile
+	mv BeisChayim/data/staging/db01.js BeisChayim/data/db01-old.js
+  cp $jsFile BeisChayim/js/db01.js
+  echo `date` Processed Thumbdrive File: restart >> CYCLE_LOG
+  $HOME/bin/turnOn $CODE_DIRECTORY
+  exit 0
+fi
+
 ###########################################################################################
 ## process the db01.js file if it is in staging...
 ###########################################################################################
