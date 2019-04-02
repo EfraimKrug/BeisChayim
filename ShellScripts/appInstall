@@ -86,6 +86,11 @@ echo "*   Just to make sure *something works* we copy a test file in...         
 echo "**********************************************************************************************************"
 echo ""
 #
+# set up USB drive detection
+#
+cd ~/bin
+lsblk > .lsblk1
+cd $HOME/$CODE_DIRECTORY
 [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ] || cp $HOME/$CODE_DIRECTORY/BeisChayim/data/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
 $HOME/bin/BChCycle01 START_UP
 #
