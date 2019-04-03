@@ -3,7 +3,14 @@ CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CYCLE_LOG
 PIC_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/img
 PDF_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/pdf
 jsFile=$HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
-
+#
+###########################################################################################
+## keep log file in check...
+###########################################################################################
+cd $HOME/$CODE_DIRECTORY/BeisChayim/log
+FILE_SIZE=$(ls -l | awk '{print $5}')
+if [ $FILE_SIZE > 99999 ] ; then echo -n "" > $CYCLE_LOG ; fi
+#
 ###########################################################################################
 ## set parameters to check for first run
 ###########################################################################################
@@ -17,7 +24,7 @@ fi
 ## process the thumbdrive...CYCLE_LOG
 ###########################################################################################
 cd ~/bin
-rm -f a
+#rm -f a
 lsblk > .lsblk2
 diff .lsblk1 .lsblk2 | grep media > TEMP
 DIR=$(awk '{print $8}' TEMP)
@@ -30,7 +37,8 @@ then
 	[ -n "$(find BeisChayim/data/staging -name 'db01.js' | head -1)" ] && cp BeisChayim/data/staging/db01.js $jsFile
 	mv BeisChayim/data/staging/db01.js BeisChayim/data/db01-old.js
   cp $jsFile BeisChayim/js/db01.js
-  echo `date` Processed Thumbdrive File: restart >> $CYCLE_LOG
+  echo Processed Thumbdrive File  >> $CYCLE_LOG
+  echo `date` Restarting Application >> $CYCLE_LOG
   $HOME/bin/turnOn $CODE_DIRECTORY
   exit 0
 fi
@@ -48,16 +56,6 @@ then
   cd $HOME/$CODE_DIRECTORY/BeisChayim/python
   python $HOME/$CODE_DIRECTORY/BeisChayim/python/json2csv.py
   mv $HOME/$CODE_DIRECTORY/BeisChayim/python/nYahrzeits.csv $HOME/Downloads/yahrzeits.csv
-  #mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
-  #cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
-  #cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
-
-  ###########################################################################################
-  ## restart the application
-  ###########################################################################################
-  #echo `date` Restarting Application >> $CYCLE_LOG
-  #$HOME/bin/turnOn $CODE_DIRECTORY
-  #exit 0
 fi
 #
 if [ -n "$(find $HOME/Downloads -name 'yahrzeits.csv' | head -1)" ]
@@ -98,6 +96,7 @@ then
     echo =================== NEW CONFIG FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
+    echo =================== NEW CONFIG FILE ===================== >> $CYCLE_LOG
     echo `date` Installing new config file >> $CYCLE_LOG
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 fi
@@ -124,6 +123,7 @@ then
   #echo Run the whole shebang - but only once!
 else
   #echo not time yet... && exit 0
+  echo =================== Not time to restart... ===================== >> $CYCLE_LOG
   if [ $START_UP != "START_UP" ];
   then
     exit 0
