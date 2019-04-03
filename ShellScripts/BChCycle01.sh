@@ -1,5 +1,9 @@
 CODE_DIRECTORY=bcCode
-CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/
+CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CYCLE_LOG
+PIC_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/img
+PDF_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/pdf
+jsFile=$HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+
 ###########################################################################################
 ## set parameters to check for first run
 ###########################################################################################
@@ -10,12 +14,34 @@ else
   START_UP=$1
 fi
 ###########################################################################################
+## process the thumbdrive...CYCLE_LOG
+###########################################################################################
+cd ~/bin
+rm -f a
+lsblk > .lsblk2
+diff .lsblk1 .lsblk2 | grep media > TEMP
+DIR=$(awk '{print $8}' TEMP)
+cd $DIR
+Q=$(cat .BeisChayim/.LABEL)
+if [[ "$Q" = "INSTALLED" ]] ;
+then
+	cp BeisChayim/img/* $PIC_DIR
+	cp BeisChayim/pdf/* $PDF_DIR
+	[ -n "$(find BeisChayim/data/staging -name 'db01.js' | head -1)" ] && cp BeisChayim/data/staging/db01.js $jsFile
+	mv BeisChayim/data/staging/db01.js BeisChayim/data/db01-old.js
+  cp $jsFile BeisChayim/js/db01.js
+  echo `date` Processed Thumbdrive File: restart >> $CYCLE_LOG
+  $HOME/bin/turnOn $CODE_DIRECTORY
+  exit 0
+fi
+
+###########################################################################################
 ## process the db01.js file if it is in staging...
 ###########################################################################################
 if [ -n "$(find $HOME/$CODE_DIRECTORY/BeisChayim/data/staging -name 'db01.js' | head -1)" ]
 then
-  echo `date` Restarting Application >> CYCLE_LOG
-  echo Found a staged db01.js file >> CYCLE_LOG
+  echo `date` Restarting Application >> $CYCLE_LOG
+  echo Found a staged db01.js file >> $CYCLE_LOG
 
   cp $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/data/out03
   mv $HOME/$CODE_DIRECTORY/BeisChayim/data/staging/db01.js $HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
@@ -29,7 +55,7 @@ then
   ###########################################################################################
   ## restart the application
   ###########################################################################################
-  #echo `date` Restarting Application >> CYCLE_LOG
+  #echo `date` Restarting Application >> $CYCLE_LOG
   #$HOME/bin/turnOn $CODE_DIRECTORY
   #exit 0
 fi
@@ -40,7 +66,7 @@ then
    echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
    echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
    mv $HOME/Downloads/yahrzeits.csv $HOME/$CODE_DIRECTORY/BeisChayim/data/yahrzeits.csv
-   echo `date` Installing new yahrzeit file >> CYCLE_LOG
+   echo `date` Installing new yahrzeit file >> $CYCLE_LOG
    python $HOME/$CODE_DIRECTORY/BeisChayim/python/cleanup01.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out01
    python $HOME/$CODE_DIRECTORY/BeisChayim/python/csv2jsond.py > $HOME/$CODE_DIRECTORY/BeisChayim/data/out02
 fi
@@ -63,7 +89,7 @@ then
     echo =================== NEW CONFIG FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
-    echo `date` Installing new config file >> CYCLE_LOG
+    echo `date` Installing new config file >> $CYCLE_LOG
     mv $HOME/Downloads/BCConfig.txt $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 fi
 #
@@ -72,7 +98,7 @@ then
     echo =================== NEW CONFIG FILE ===================== >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo `date` >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
     echo TIME: `date +%s`  >> $HOME/$CODE_DIRECTORY/BeisChayim/.runCheck
-    echo `date` Installing new config file >> CYCLE_LOG
+    echo `date` Installing new config file >> $CYCLE_LOG
     mv $HOME/Downloads/BCConfig $HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 fi
 
@@ -137,5 +163,5 @@ cp $HOME/$CODE_DIRECTORY/BeisChayim/data/out03 $HOME/$CODE_DIRECTORY/BeisChayim/
 ###########################################################################################
 ## restart the application
 ###########################################################################################
-echo `date` Restarting Application >> CYCLE_LOG
+echo `date` Restarting Application >> $CYCLE_LOG
 $HOME/bin/turnOn $CODE_DIRECTORY
