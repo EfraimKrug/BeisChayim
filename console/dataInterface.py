@@ -3,6 +3,8 @@ from profile import *
 import json
 import pprint
 
+import os
+import shutil
 ###############################################################
 # data conversion -
 # buildData - converts json file to dict
@@ -96,6 +98,18 @@ class dataInterface:
 
         pp = pprint.PrettyPrinter(indent=2)
         pp.pprint(self.data)
+
+    def copyPIC(self, pic):
+        # print(pic)
+        #target = picDir + pic[pic.rfind('/'):pic.index('.')]
+        target = picDir + pic[pic.rfind('/'):]
+        dest = shutil.copyfile(pic, target)
+
+    def copyPDF(self, pdf):
+        # print(pdf)
+        #target = picDir + pic[pic.rfind('/'):pic.index('.')]
+        target = pdfDir + pdf[pdf.rfind('/'):]
+        dest = shutil.copyfile(pdf, target)
 
 #dataI = dataInterface(1, [])
 #data = dataI.getData()

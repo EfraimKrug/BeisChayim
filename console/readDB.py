@@ -4,7 +4,6 @@ from tkinter import filedialog
 from dataInterface import *
 from SearchNames import *
 import tkinter.scrolledtext as tkst
-
 from profile import *
 
 class Demo1:
@@ -230,25 +229,34 @@ class Demo2:
 
     def fileSelect(self, choice):
         self.pic01 = ""
+        self.picPath = ""
         if choice < 8:
             self.pic01 =  filedialog.askopenfilename(initialdir = picDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
         else:
             self.pic01 =  filedialog.askopenfilename(initialdir = pdfDir,title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png"),("all files","*.*")))
+        self.picPath = self.pic01
         self.pic01 = self.pic01[self.pic01.rfind('/')+1:]
-        
+
         if choice == 6:
+            self.dataI.copyPIC(self.picPath)
             self.l6.configure(text=self.pic01)
         if choice == 7:
+            self.dataI.copyPIC(self.picPath)
             self.l7.configure(text=self.pic01)
         if choice == 8:
+            self.dataI.copyPDF(self.picPath)
             self.l8.configure(text=self.pic01)
         if choice == 9:
+            self.dataI.copyPDF(self.picPath)
             self.l9.configure(text=self.pic01)
         if choice == 10:
+            self.dataI.copyPDF(self.picPath)
             self.l10.configure(text=self.pic01)
         if choice == 11:
+            self.dataI.copyPDF(self.picPath)
             self.l11.configure(text=self.pic01)
         if choice == 12:
+            self.dataI.copyPDF(self.picPath)
             self.l12.configure(text=self.pic01)
 
         #print (self.pic01)

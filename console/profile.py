@@ -1,11 +1,11 @@
 # #bindir = r'X@-@X/bin'
-# pythonDir = r'X@~@~@X/BeisChayim/python'
-# consoleDir = r'X@~@~@X/BeisChayim/console'
-# jsDir = r'X@~@~@X/BeisChayim/js'
-# imgDir = r'X@~@~@X/BeisChayim/console/img'
-# configDir = r'X@~@~@X/BeisChayim/config'
+# pythonDir = r'bcCode/BeisChayim/python'
+# consoleDir = r'bcCode/BeisChayim/console'
+# jsDir = r'bcCode/BeisChayim/js'
+# imgDir = r'bcCode/BeisChayim/console/img'
+# configDir = r'bcCode/BeisChayim/config'
 # installDir = r'X@-@X/Downloads'
-# dataStaging = r'X@~@~@X/BeisChayim/data/staging'
+# dataStaging = r'bcCode/BeisChayim/data/staging'
 
 # desktop
 # pythonDir = r'/home/efraim/Ccode/BeisChayim/python'
@@ -15,7 +15,7 @@
 # jsDir = r'/home/efraim/Ccode/BeisChayim/js/'
 # installDir = r'/home/efraim/Downloads'
 # bindir = r'/home/efraim/bin'
-# dataStaging = r'X@~@~@X/BeisChayim/data/staging'
+# dataStaging = r'bcCode/BeisChayim/data/staging'
 
 # laptop
 # pythonDir = r'/home/efraiim/code/BeisChayim/python'
@@ -28,15 +28,15 @@
 # dataStaging = r'/home/efraiim/code/BeisChayim/data/staging'
 #
 # install ...
-pythonDir = r'X@~@~@X/BeisChayim/python'
-consoleDir = r'X@~@~@X/BeisChayim/console'
-imgDir = r'X@~@~@X/BeisChayim/console/images'
-configDir = r'X@~@~@X/BeisChayim/config'
-jsDir = r'X@~@~@X/BeisChayim/js/'
-picDir = r'X@~@~@X/BeisChayim/img/'
-pdfDir = r'X@~@~@X/BeisChayim/pdf/'
-dataStaging = r'X@~@~@X/BeisChayim/data/staging'
-installDir = r'X@~@X/Downloads'
-bindir = r'X@~@X/bin'
+pythonDir = r'/home/efraim/bcCode/BeisChayim/python'
+consoleDir = r'/home/efraim/bcCode/BeisChayim/console'
+imgDir = r'/home/efraim/bcCode/BeisChayim/console/images'
+configDir = r'/home/efraim/bcCode/BeisChayim/config'
+jsDir = r'/home/efraim/bcCode/BeisChayim/js/'
+picDir = r'/home/efraim/bcCode/BeisChayim/img/'
+pdfDir = r'/home/efraim/bcCode/BeisChayim/pdf/'
+dataStaging = r'/home/efraim/bcCode/BeisChayim/data/staging'
+installDir = r'/home/efraim/Downloads'
+bindir = r'/home/efraim/bin'
 
 # -*- coding: utf-8 -*-
