@@ -133,8 +133,20 @@ class dataInterface:
         if platform.find('win') > -1:
             cwd = cwd[0:cwd.find("\\BeisChayim")] + "\\BeisChayim"
             target = cwd + "\\" + picDir + "\\" + pic
-        #print("Copying: " + src + " to: " + cwd + "\\" + picDir + "\\" + pic)
+        print("Copying: " + src + " to: " + cwd + "\\" + picDir + "\\" + pic)
         copyfile(src, target)
+
+    def replaceOldData(self, fileString):
+        cwd = os.getcwd()
+        cwd = cwd[0:cwd.find("/BeisChayim")] + "/BeisChayim"
+
+        db01 = cwd + "/" + jsDir + "/db01.js"
+        if platform.find('win') > -1:
+            db01 = cwd + "\\" + jsDir + "\db01.js"
+
+        fd = open(db01, "w+")
+        fd.write(fileString)
+        fd.close()
 
     def writeStagingData(self, fileString):
         cwd = os.getcwd()
@@ -147,6 +159,8 @@ class dataInterface:
         fd = open(filename, "w+")
         fd.write(fileString)
         fd.close()
+        # in case user closes and reopens the file!
+        self.replaceOldData(fileString)
 
     def showData(self):
         if self.var == 2:
