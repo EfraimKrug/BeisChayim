@@ -3,13 +3,17 @@ CYCLE_LOG=$HOME/$CODE_DIRECTORY/BeisChayim/log/CYCLE_LOG
 PIC_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/img
 PDF_DIR=$HOME/$CODE_DIRECTORY/BeisChayim/pdf
 jsFile=$HOME/$CODE_DIRECTORY/BeisChayim/js/db01.js
+configFile=$HOME/$CODE_DIRECTORY/BeisChayim/config/BCConfig
 #
 ###########################################################################################
 ## keep log file in check...
 ###########################################################################################
 cd $HOME/$CODE_DIRECTORY/BeisChayim/log
 FILE_SIZE=$(ls -l | awk '{print $5}')
-if [ $FILE_SIZE > 99999 ] ; then echo -n "" > $CYCLE_LOG ; fi
+if [ $FILE_SIZE -gt 99999 ] ;
+then
+  echo restarting cycle log > $CYCLE_LOG ;
+fi
 #
 ###########################################################################################
 ## set parameters to check for first run
@@ -27,20 +31,32 @@ cd ~/bin
 #rm -f a
 lsblk > .lsblk2
 diff .lsblk1 .lsblk2 | grep media > TEMP
-DIR=$(awk '{print $8}' TEMP)
-cd $DIR
-Q=$(cat .BeisChayim/.LABEL)
-if [[ "$Q" = "INSTALLED" ]] ;
+FILE_SIZE=$(ls -l TEMP | awk '{print $5}')
+if [ $FILE_SIZE -le 25 ] ;
 then
-	cp BeisChayim/img/* $PIC_DIR
-	cp BeisChayim/pdf/* $PDF_DIR
-	[ -n "$(find BeisChayim/data/staging -name 'db01.js' | head -1)" ] && cp BeisChayim/data/staging/db01.js $jsFile
-	mv BeisChayim/data/staging/db01.js BeisChayim/data/db01-old.js
-  cp $jsFile BeisChayim/js/db01.js
-  echo Processed Thumbdrive File  >> $CYCLE_LOG
-  echo `date` Restarting Application >> $CYCLE_LOG
-  $HOME/bin/turnOn $CODE_DIRECTORY
-  exit 0
+  echo Skipping thumbdrive check >> $CYCLE_LOG ;
+else
+    echo $FILE_SIZE
+# reinitialize
+    cp .lsblk2 .lsblk1
+    DIR=$(awk '{print $8}' TEMP)
+    cd $DIR
+    Q=$(cat .BeisChayim/.LABEL)
+    if [[ "$Q" = "INSTALLED" ]] ;
+    then
+    	cp BeisChayim/img/* $PIC_DIR
+    	cp BeisChayim/pdf/* $PDF_DIR
+    	[ -n "$(find BeisChayim/data/staging -name 'db01.js' | head -1)" ] && cp BeisChayim/data/staging/db01.js $jsFile
+    	mv BeisChayim/data/staging/db01.js BeisChayim/data/db01-old.js
+      [ -n "$(find BeisChayim/config -name 'BCConfig' | head -1)" ] && cp BeisChayim/config/BCConfig $configFile
+      mv BeisChayim/config/BCConfig BeisChayim/config/BCConfig-old.js
+      cp $jsFile BeisChayim/js/db01.js
+      cp $configFile BeisChayim/config/BCConfig
+      echo Processed Thumbdrive File  >> $CYCLE_LOG
+      echo `date` Restarting Application >> $CYCLE_LOG
+      $HOME/bin/turnOn $CODE_DIRECTORY
+      exit 0
+    fi
 fi
 
 ###########################################################################################
